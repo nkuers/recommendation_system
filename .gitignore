@@ -1,0 +1,16 @@
+# 排除所有数据文件
+*.csv
+*.json
+*.zip
+*.rar
+
+# 排除深度学习模型文件
+*.pth
+*.pt
+*.h5
+*.ckpt
+
+# 排除大型文件夹
+/data/
+/datasets/
+/temp/
