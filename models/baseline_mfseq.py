@@ -27,12 +27,27 @@ class SeqTrainDataset(TorchDataset):
     def __len__(self):
         return len(self.samples)
 
+    def _sample_neg(self, forbidden):
+        if self.num_items <= 1:
+            return 0
+        max_id = self.num_items - 1
+        if len(forbidden) >= max_id:
+            return random.randint(1, max_id)
+        neg = random.randint(1, max_id)
+        tries = 0
+        while neg in forbidden:
+            neg = random.randint(1, max_id)
+            tries += 1
+            if tries > 1000:
+                break
+        return neg
+
     def __getitem__(self, idx):
         x, y = self.samples[idx]
         # 负采样
-        neg = random.randint(0, self.num_items - 1)
-        while neg == y:
-            neg = random.randint(0, self.num_items - 1)
+        forbidden = set(x)
+        forbidden.add(y)
+        neg = self._sample_neg(forbidden)
         return torch.tensor(x, dtype=torch.long), torch.tensor(y, dtype=torch.long), torch.tensor(neg, dtype=torch.long)
 
 

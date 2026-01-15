@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from preprocess.movielens import load_movielens
 from preprocess.steam import load_steam
 from preprocess.amazon import load_amazon_csv
@@ -9,17 +11,18 @@ from preprocess.base import (
 )
 
 DATASET = "steam"  # 改成 "steam" 就行
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
     if DATASET == "movielens":
-        df = load_movielens("../data/movielens/ratings.csv")
+        df = load_movielens(str(ROOT / "data" / "movielens" / "ratings.csv"))
     elif DATASET == "steam":
-        df = load_steam("../data/steam/steam-200k.csv")
+        df = load_steam(str(ROOT / "data" / "steam" / "steam-200k.csv"))
     elif DATASET == "amazon_books":
-        df = load_amazon_csv("../data/amazon/books_sample.csv", min_rating=None)
-    elif DATASET == "amazon_elec":
-        df = load_amazon_csv("../data/amazon/electronics_sample.csv", min_rating=None)
+        df = load_amazon_csv(str(ROOT / "data" / "amazon" / "books_sample.csv"), min_rating=None)
+    elif DATASET == "amazon_electronics":
+        df = load_amazon_csv(str(ROOT / "data" / "amazon" / "electronics_sample.csv"), min_rating=None)
     else:
         raise ValueError("Unknown dataset")
 

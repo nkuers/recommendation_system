@@ -9,7 +9,7 @@ def load_amazon_csv(
 ) -> pd.DataFrame:
     """
     读取 Amazon 采样后的 CSV（books_sample.csv / electronics_sample.csv）
-    期望列：userId,itemId,timestamp,rating
+    期望列：userId,itemId,timestamp,rating（itemId 从 1 开始，0 预留给 padding）
 
     参数：
     - min_rating: 评分过滤阈值（例如 4.0）。None 表示不过滤
@@ -31,7 +31,8 @@ def load_amazon_csv(
 
     # ID 离散化（字符串 -> int），与 Steam 的 itemName 编码同理
     df["userId"] = df["userId"].astype("category").cat.codes
-    df["itemId"] = df["itemId"].astype("category").cat.codes
+    # itemId 从 1 开始，0 预留给 padding
+    df["itemId"] = df["itemId"].astype("category").cat.codes + 1
 
     # timestamp 确保为 int
     df["timestamp"] = df["timestamp"].astype(int)

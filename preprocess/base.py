@@ -147,7 +147,10 @@ class Dataset:
                 if hour_slices_for_user is not None:
                     self.hour_slices.append(hour_slices_for_user[idx])
 
-        self.num_items = max(max(seq) for seq in self.seq_slices) + 1  # 计算 num_items
+        if len(self.seq_slices) == 0:
+            self.num_items = 0
+        else:
+            self.num_items = max(max(seq) for seq in self.seq_slices) + 1  # 计算 num_items
 
         print(f"[INFO] Dataset prepared: {len(self.seq_slices)} sequences")
 
@@ -160,9 +163,16 @@ class Dataset:
         delta_t_seq = self.delta_t_slices[idx]
         hour_seq = self.hour_slices[idx] if len(self.hour_slices) > 0 else [0] * len(seq)  # 确保 hour_seq 始终存在
 
-        neg = random.randint(0, self.num_items - 1)
-        while neg in seq:
-            neg = random.randint(0, self.num_items - 1)  # 确保负样本不在序列中
+        if self.num_items <= 1:
+            neg = 0
+        else:
+            neg = random.randint(1, self.num_items - 1)
+            tries = 0
+            while neg in seq:
+                neg = random.randint(1, self.num_items - 1)  # 确保负样本不在序列中
+                tries += 1
+                if tries > 1000:
+                    break
 
         # 正样本是序列中的最后一个元素
         y_pos = seq[-1]

@@ -1,104 +1,47 @@
+import math
+from collections import Counter
 import pandas as pd
-from pathlib import Path
-import kagglehub
 
-# ------------------------------
-# 1. 通用加载函数（MovieLens / Steam / Amazon）
-# ------------------------------
+from preprocess.base import sort_by_user_and_time
+from preprocess.amazon import load_amazon_csv
 
-def load_dataset(path: str):
-    """
-    通用数据集加载函数
-    """
-    df = pd.read_csv(path)
-    print(f"[INFO] Loaded dataset: {path}")
-    print(f"[INFO] Raw data shape: {df.shape}")
-    return df
+BINS = [0.0, 1.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0]
 
+def dt_to_bucket(dt_seconds: int) -> int:
+    if dt_seconds is None or dt_seconds < 0:
+        dt_seconds = 0
+    x = math.log1p(int(dt_seconds))
+    for i in range(1, len(BINS)):
+        if x <= BINS[i]:
+            return i
+    return len(BINS)
 
-# ------------------------------
-# 2. 时间排序
-# ------------------------------
-
-def sort_by_user_and_time(df: pd.DataFrame):
-    """
-    按 userId 和 timestamp 排序
-    """
-    return df.sort_values(by=["userId", "timestamp"], ascending=True)
-
-
-# ------------------------------
-# 3. Δt 时间差计算（第四周新增）
-# ------------------------------
-
-def add_delta_t(df: pd.DataFrame):
-    """
-    为每一条行为加入与上一条行为的时间差 Δt（秒）
-    第一条行为的 Δt 记为 0
-    """
-    df["delta_t"] = df.groupby("userId")["timestamp"].diff().fillna(0)
-    return df
-
-
-# ------------------------------
-# 4. 构建基本用户行为序列骨架（itemId + Δt）
-# ------------------------------
-
-def build_sequence_with_dt(df: pd.DataFrame):
-    """
-    返回格式：
-        user_sequences[userId] = [
-            (itemId1, Δt1),
-            (itemId2, Δt2),
-            ...
-        ]
-    """
-    user_sequences = {}
-
-    for uid, group in df.groupby("userId"):
-        items = group["movieId"].tolist()
-        dts = group["delta_t"].tolist()
-        user_sequences[uid] = list(zip(items, dts))
-
-    return user_sequences
-
-
-# ------------------------------
-# 5. 打印示例
-# ------------------------------
-
-def print_example(user_sequences: dict):
-    first_user = list(user_sequences.keys())[0]
-    print("[Example user sequence with Δt]")
-    print(f"user {first_user}: {user_sequences[first_user][:10]} ...")
-
-
-# ------------------------------
-# 6. 主函数
-# ------------------------------
+def summarize(name, dts):
+    flat = [dt_to_bucket(x) for x in dts]
+    cnt = Counter(flat)
+    total = sum(cnt.values())
+    print(f"\n==================== {name} (by user diff) ====================")
+    print(f"[INFO] total dt tokens = {total}")
+    for b, c in cnt.most_common(10):
+        print(f"  bucket {b}: count={c}, ratio={c/total:.4f}")
+    top = cnt.most_common(3)
+    cover3 = sum(c for _, c in top) / total
+    print(f"[COVER] Top-3 ratio = {cover3:.4f}")
 
 def main():
-    # 1. 加载数据集
-    df = load_dataset("ml-latest-small/ratings.csv")
+    # Books
+    df_b = load_amazon_csv("data/amazon/books_sample.csv", keep_rating=False)
+    df_b = sort_by_user_and_time(df_b)
+    df_b["dt"] = df_b.groupby("userId")["timestamp"].diff()
+    dts_b = df_b["dt"].dropna().astype(int).tolist()
+    summarize("amazon_books", dts_b)
 
-    # 2. 时间排序
-    df = sort_by_user_and_time(df)
-
-    # 3. Δt 计算（本周新增）
-    df = add_delta_t(df)
-
-    # 4. 构建序列（包含 itemId + Δt）
-    seqs = build_sequence_with_dt(df)
-
-    # 5. 打印示例
-    print_example(seqs)
-
-
-    # Download latest version
-    path = kagglehub.dataset_download("nikdavis/steam-store-games")
-
-    print("Path to dataset files:", path)
-
+    # Electronics
+    df_e = load_amazon_csv("data/amazon/electronics_sample.csv", keep_rating=False)
+    df_e = sort_by_user_and_time(df_e)
+    df_e["dt"] = df_e.groupby("userId")["timestamp"].diff()
+    dts_e = df_e["dt"].dropna().astype(int).tolist()
+    summarize("amazon_electronics", dts_e)
 
 if __name__ == "__main__":
     main()
