@@ -1,0 +1,299 @@
+Mon 09 Feb 2026 17:46:31 INFO  ['F:\\桌面\\recommendation_system\\scripts\\run_grid.py', '--models', 'timeweaver', '--datasets', 'ml-100k', '--seeds', '42', '--device', 'gpu', '--timeweaver-variant', 'base', '--tag', 'e0p1_k7_d0p2_l2_f512_b1000', '--output', 'results/run_grid_timeweaver_tune.json', '--tw-ema-decay', '0.1', '--tw-tcn-kernel', '7', '--tw-hidden-dropout', '0.2', '--tw-num-layers', '2', '--tw-ffn-hidden', '512', '--tw-time-bucket', '1000']
+Mon 09 Feb 2026 17:46:31 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TimeWeaver
+hidden_size = 64
+num_layers = 2
+hidden_dropout_prob = 0.2
+initializer_range = 0.02
+time_bucket_size = 1000
+ema_decay = 0.1
+tcn_kernel_size = 7
+ffn_hidden_size = 512
+loss_type = CE
+early_stop = 10
+neg_sampling = None
+device = cuda
+use_continuous_time = False
+use_time_gate = False
+use_time_augmentation = False
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Mon 09 Feb 2026 17:46:31 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Mon 09 Feb 2026 17:46:32 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Mon 09 Feb 2026 17:46:32 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Mon 09 Feb 2026 17:46:32 INFO  TimeWeaver(
+  (item_embedding): Embedding(1683, 64, padding_idx=0)
+  (time_aug): TimeAwareAugmentation(
+    (pos_embedding): Embedding(32, 64)
+    (time_embedding): Embedding(1000, 64)
+    (layer_norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (drop): Dropout(p=0.2, inplace=False)
+  )
+  (context_layers): ModuleList(
+    (0-1): 2 x TCNNextBlock(
+      (dw): DepthwiseConv1d(
+        (conv): Conv1d(64, 64, kernel_size=(7,), stride=(1,), padding=(3,), groups=64)
+        (bn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (drop): Dropout(p=0.2, inplace=False)
+      )
+      (norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (conv_inter): ParallelConvInter(
+        (conv1): Conv1d(64, 64, kernel_size=(1,), stride=(1,))
+        (conv3): Conv1d(64, 64, kernel_size=(3,), stride=(1,), padding=(1,))
+        (proj): Conv1d(64, 64, kernel_size=(1,), stride=(1,))
+        (drop): Dropout(p=0.2, inplace=False)
+      )
+      (norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (ffn): Sequential(
+        (0): Linear(in_features=64, out_features=512, bias=True)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.2, inplace=False)
+        (3): Linear(in_features=512, out_features=64, bias=True)
+        (4): Dropout(p=0.2, inplace=False)
+      )
+      (norm3): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (dynamic_layers): ModuleList(
+    (0-1): 2 x EMAStream(
+      (proj): Linear(in_features=64, out_features=64, bias=True)
+    )
+  )
+  (weavers): ModuleList(
+    (0-1): 2 x StreamWeaver(
+      (proj): Linear(in_features=128, out_features=64, bias=True)
+      (norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (loss_fct): CrossEntropyLoss()
+)
+Trainable parameters: 374593.0
+Mon 09 Feb 2026 17:46:33 INFO  FLOPs: 6379520.0
+Mon 09 Feb 2026 17:47:04 INFO  epoch 0 training [time: 30.61s, train loss: 2428.1339]
+Mon 09 Feb 2026 17:47:07 INFO  epoch 0 evaluating [time: 2.15s, valid_score: 0.282800]
+Mon 09 Feb 2026 17:47:07 INFO  valid result: 
+hit@10 : 0.6596    ndcg@10 : 0.371    mrr@10 : 0.2828
+Mon 09 Feb 2026 17:47:07 INFO  Saving current: saved\TimeWeaver-Feb-09-2026_17-46-33.pth
+Mon 09 Feb 2026 17:47:40 INFO  epoch 1 training [time: 32.88s, train loss: 2227.3688]
+Mon 09 Feb 2026 17:47:42 INFO  epoch 1 evaluating [time: 2.20s, valid_score: 0.323300]
+Mon 09 Feb 2026 17:47:42 INFO  valid result: 
+hit@10 : 0.7094    ndcg@10 : 0.4142    mrr@10 : 0.3233
+Mon 09 Feb 2026 17:47:42 INFO  Saving current: saved\TimeWeaver-Feb-09-2026_17-46-33.pth
+Mon 09 Feb 2026 17:48:13 INFO  epoch 2 training [time: 31.31s, train loss: 2182.4886]
+Mon 09 Feb 2026 17:48:15 INFO  epoch 2 evaluating [time: 2.10s, valid_score: 0.341100]
+Mon 09 Feb 2026 17:48:15 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4318    mrr@10 : 0.3411
+Mon 09 Feb 2026 17:48:15 INFO  Saving current: saved\TimeWeaver-Feb-09-2026_17-46-33.pth
+Mon 09 Feb 2026 17:48:46 INFO  epoch 3 training [time: 30.97s, train loss: 2153.4917]
+Mon 09 Feb 2026 17:48:48 INFO  epoch 3 evaluating [time: 2.14s, valid_score: 0.331300]
+Mon 09 Feb 2026 17:48:48 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4257    mrr@10 : 0.3313
+Mon 09 Feb 2026 17:49:20 INFO  epoch 4 training [time: 31.27s, train loss: 2131.8059]
+Mon 09 Feb 2026 17:49:22 INFO  epoch 4 evaluating [time: 2.11s, valid_score: 0.353800]
+Mon 09 Feb 2026 17:49:22 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.4449    mrr@10 : 0.3538
+Mon 09 Feb 2026 17:49:22 INFO  Saving current: saved\TimeWeaver-Feb-09-2026_17-46-33.pth
+Mon 09 Feb 2026 17:49:53 INFO  epoch 5 training [time: 31.27s, train loss: 2114.0024]
+Mon 09 Feb 2026 17:49:55 INFO  epoch 5 evaluating [time: 2.16s, valid_score: 0.342000]
+Mon 09 Feb 2026 17:49:55 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4341    mrr@10 : 0.342
+Mon 09 Feb 2026 17:50:26 INFO  epoch 6 training [time: 31.33s, train loss: 2097.5184]
+Mon 09 Feb 2026 17:50:29 INFO  epoch 6 evaluating [time: 2.15s, valid_score: 0.342300]
+Mon 09 Feb 2026 17:50:29 INFO  valid result: 
+hit@10 : 0.7402    ndcg@10 : 0.4363    mrr@10 : 0.3423
+Mon 09 Feb 2026 17:50:59 INFO  epoch 7 training [time: 30.79s, train loss: 2083.8611]
+Mon 09 Feb 2026 17:51:02 INFO  epoch 7 evaluating [time: 2.15s, valid_score: 0.347800]
+Mon 09 Feb 2026 17:51:02 INFO  valid result: 
+hit@10 : 0.737    ndcg@10 : 0.4401    mrr@10 : 0.3478
+Mon 09 Feb 2026 17:51:35 INFO  epoch 8 training [time: 33.01s, train loss: 2073.0164]
+Mon 09 Feb 2026 17:51:37 INFO  epoch 8 evaluating [time: 2.18s, valid_score: 0.344300]
+Mon 09 Feb 2026 17:51:37 INFO  valid result: 
+hit@10 : 0.7359    ndcg@10 : 0.4371    mrr@10 : 0.3443
+Mon 09 Feb 2026 17:52:08 INFO  epoch 9 training [time: 31.63s, train loss: 2062.5851]
+Mon 09 Feb 2026 17:52:11 INFO  epoch 9 evaluating [time: 2.12s, valid_score: 0.338400]
+Mon 09 Feb 2026 17:52:11 INFO  valid result: 
+hit@10 : 0.7285    ndcg@10 : 0.4309    mrr@10 : 0.3384
+Mon 09 Feb 2026 17:52:41 INFO  epoch 10 training [time: 30.83s, train loss: 2053.0120]
+Mon 09 Feb 2026 17:52:44 INFO  epoch 10 evaluating [time: 2.18s, valid_score: 0.340600]
+Mon 09 Feb 2026 17:52:44 INFO  valid result: 
+hit@10 : 0.7285    ndcg@10 : 0.4322    mrr@10 : 0.3406
+Mon 09 Feb 2026 17:53:15 INFO  epoch 11 training [time: 31.27s, train loss: 2044.9902]
+Mon 09 Feb 2026 17:53:17 INFO  epoch 11 evaluating [time: 2.12s, valid_score: 0.338000]
+Mon 09 Feb 2026 17:53:17 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4306    mrr@10 : 0.338
+Mon 09 Feb 2026 17:53:48 INFO  epoch 12 training [time: 31.24s, train loss: 2036.9573]
+Mon 09 Feb 2026 17:53:50 INFO  epoch 12 evaluating [time: 2.16s, valid_score: 0.335200]
+Mon 09 Feb 2026 17:53:50 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4256    mrr@10 : 0.3352
+Mon 09 Feb 2026 17:54:22 INFO  epoch 13 training [time: 31.44s, train loss: 2030.1033]
+Mon 09 Feb 2026 17:54:24 INFO  epoch 13 evaluating [time: 2.21s, valid_score: 0.346500]
+Mon 09 Feb 2026 17:54:24 INFO  valid result: 
+hit@10 : 0.7328    ndcg@10 : 0.438    mrr@10 : 0.3465
+Mon 09 Feb 2026 17:54:55 INFO  epoch 14 training [time: 30.92s, train loss: 2022.3977]
+Mon 09 Feb 2026 17:54:57 INFO  epoch 14 evaluating [time: 2.10s, valid_score: 0.340300]
+Mon 09 Feb 2026 17:54:57 INFO  valid result: 
+hit@10 : 0.72    ndcg@10 : 0.4299    mrr@10 : 0.3403
+Mon 09 Feb 2026 17:55:30 INFO  epoch 15 training [time: 32.66s, train loss: 2016.3426]
+Mon 09 Feb 2026 17:55:32 INFO  epoch 15 evaluating [time: 2.19s, valid_score: 0.354300]
+Mon 09 Feb 2026 17:55:32 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4413    mrr@10 : 0.3543
+Mon 09 Feb 2026 17:55:32 INFO  Saving current: saved\TimeWeaver-Feb-09-2026_17-46-33.pth
+Mon 09 Feb 2026 17:56:04 INFO  epoch 16 training [time: 31.93s, train loss: 2011.0584]
+Mon 09 Feb 2026 17:56:06 INFO  epoch 16 evaluating [time: 2.07s, valid_score: 0.339000]
+Mon 09 Feb 2026 17:56:06 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.428    mrr@10 : 0.339
+Mon 09 Feb 2026 17:56:37 INFO  epoch 17 training [time: 30.69s, train loss: 2003.3275]
+Mon 09 Feb 2026 17:56:39 INFO  epoch 17 evaluating [time: 2.15s, valid_score: 0.331700]
+Mon 09 Feb 2026 17:56:39 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.425    mrr@10 : 0.3317
+Mon 09 Feb 2026 17:57:10 INFO  epoch 18 training [time: 31.51s, train loss: 1999.6586]
+Mon 09 Feb 2026 17:57:12 INFO  epoch 18 evaluating [time: 2.11s, valid_score: 0.330500]
+Mon 09 Feb 2026 17:57:12 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4245    mrr@10 : 0.3305
+Mon 09 Feb 2026 17:57:44 INFO  epoch 19 training [time: 31.46s, train loss: 1995.4095]
+Mon 09 Feb 2026 17:57:46 INFO  epoch 19 evaluating [time: 2.15s, valid_score: 0.327900]
+Mon 09 Feb 2026 17:57:46 INFO  valid result: 
+hit@10 : 0.7126    ndcg@10 : 0.4192    mrr@10 : 0.3279
+Mon 09 Feb 2026 17:58:17 INFO  epoch 20 training [time: 31.35s, train loss: 1989.8620]
+Mon 09 Feb 2026 17:58:19 INFO  epoch 20 evaluating [time: 2.13s, valid_score: 0.332400]
+Mon 09 Feb 2026 17:58:19 INFO  valid result: 
+hit@10 : 0.7232    ndcg@10 : 0.4252    mrr@10 : 0.3324
+Mon 09 Feb 2026 17:58:50 INFO  epoch 21 training [time: 30.89s, train loss: 1985.0019]
+Mon 09 Feb 2026 17:58:52 INFO  epoch 21 evaluating [time: 2.09s, valid_score: 0.322600]
+Mon 09 Feb 2026 17:58:52 INFO  valid result: 
+hit@10 : 0.7105    ndcg@10 : 0.4146    mrr@10 : 0.3226
+Mon 09 Feb 2026 17:59:25 INFO  epoch 22 training [time: 32.46s, train loss: 1980.0483]
+Mon 09 Feb 2026 17:59:27 INFO  epoch 22 evaluating [time: 2.20s, valid_score: 0.327900]
+Mon 09 Feb 2026 17:59:27 INFO  valid result: 
+hit@10 : 0.72    ndcg@10 : 0.4207    mrr@10 : 0.3279
+Mon 09 Feb 2026 17:59:59 INFO  epoch 23 training [time: 32.33s, train loss: 1974.8458]
+Mon 09 Feb 2026 18:00:02 INFO  epoch 23 evaluating [time: 2.19s, valid_score: 0.332000]
+Mon 09 Feb 2026 18:00:02 INFO  valid result: 
+hit@10 : 0.7179    ndcg@10 : 0.4232    mrr@10 : 0.332
+Mon 09 Feb 2026 18:00:32 INFO  epoch 24 training [time: 30.47s, train loss: 1971.0041]
+Mon 09 Feb 2026 18:00:34 INFO  epoch 24 evaluating [time: 2.18s, valid_score: 0.349700]
+Mon 09 Feb 2026 18:00:34 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4376    mrr@10 : 0.3497
+Mon 09 Feb 2026 18:01:06 INFO  epoch 25 training [time: 31.34s, train loss: 1965.6817]
+Mon 09 Feb 2026 18:01:08 INFO  epoch 25 evaluating [time: 2.09s, valid_score: 0.320900]
+Mon 09 Feb 2026 18:01:08 INFO  valid result: 
+hit@10 : 0.6925    ndcg@10 : 0.409    mrr@10 : 0.3209
+Mon 09 Feb 2026 18:01:39 INFO  epoch 26 training [time: 31.01s, train loss: 1962.4449]
+Mon 09 Feb 2026 18:01:41 INFO  epoch 26 evaluating [time: 2.14s, valid_score: 0.327100]
+Mon 09 Feb 2026 18:01:41 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.4187    mrr@10 : 0.3271
+Mon 09 Feb 2026 18:01:41 INFO  Finished training, best eval result in epoch 15
+Mon 09 Feb 2026 18:01:41 INFO  Loading model structure and parameters from saved\TimeWeaver-Feb-09-2026_17-46-33.pth
+Mon 09 Feb 2026 18:01:44 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     3.20 %     |
++-------------+----------------+
+| GPU         | 0.28 G/6.00 G  |
++-------------+----------------+
+| Memory      | 1.53 G/15.63 G |
++-------------+----------------+
+Mon 09 Feb 2026 18:01:44 INFO  best valid : OrderedDict([('hit@10', 0.7222), ('ndcg@10', 0.4413), ('mrr@10', 0.3543)])
+Mon 09 Feb 2026 18:01:44 INFO  test result: OrderedDict([('hit@10', 0.6872), ('ndcg@10', 0.4079), ('mrr@10', 0.3214)])

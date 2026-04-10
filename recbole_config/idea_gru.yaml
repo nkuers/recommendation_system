@@ -1,0 +1,24 @@
+model: IDEAGRU
+model_name: IDEAGRU
+
+embedding_size: 64
+hidden_size: 128
+num_layers: 1
+dropout_prob: 0.3
+loss_type: CE
+
+num_subseq: 3
+num_env: 4
+temp: 0.1
+fake_ratio: 0.0
+var_hyper: 1.0
+alpha: 0.1
+
+learning_rate: 0.001
+epochs: 100
+early_stop: 10
+train_batch_size: 256
+eval_batch_size: 512
+neg_sampling: null
+show_progress: True
+seed: 2022

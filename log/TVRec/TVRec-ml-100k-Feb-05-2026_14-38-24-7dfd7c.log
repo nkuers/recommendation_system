@@ -1,0 +1,867 @@
+Thu 05 Feb 2026 14:38:24 INFO  ['scripts\\run_grid.py', '--models', 'tvrec', '--datasets', 'ml-100k', '--seeds', '42,2023,2024', '--device', 'gpu']
+Thu 05 Feb 2026 14:38:24 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.0005
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TVRec
+hidden_size = 64
+num_hidden_layers = 2
+hidden_dropout_prob = 0.5
+hidden_act = gelu
+initializer_range = 0.02
+m = 32
+poly_order = -1
+reg_weight = 0.0
+loss_type = CE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Thu 05 Feb 2026 14:38:24 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Thu 05 Feb 2026 14:38:25 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Thu 05 Feb 2026 14:38:25 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Thu 05 Feb 2026 14:38:26 INFO  TVRec(
+  (item_embeddings): Embedding(1683, 64, padding_idx=0)
+  (layer_norm): TVLayerNorm()
+  (dropout): Dropout(p=0.5, inplace=False)
+  (blocks): ModuleList(
+    (0-1): 2 x TVRecBlock(
+      (layer): TVRecLayer(
+        (out_dropout): Dropout(p=0.5, inplace=False)
+        (layer_norm): TVLayerNorm()
+      )
+      (feed_forward): TVFeedForward(
+        (dense_1): Linear(in_features=64, out_features=256, bias=True)
+        (dense_2): Linear(in_features=256, out_features=64, bias=True)
+        (layer_norm): TVLayerNorm()
+        (dropout): Dropout(p=0.5, inplace=False)
+      )
+    )
+  )
+  (loss_fct): CrossEntropyLoss()
+)
+Trainable parameters: 182784
+Thu 05 Feb 2026 14:38:26 INFO  FLOPs: 2099264.0
+Thu 05 Feb 2026 14:40:31 INFO  epoch 0 training [time: 123.02s, train loss: 2526.3465]
+Thu 05 Feb 2026 14:40:37 INFO  epoch 0 evaluating [time: 5.94s, valid_score: 0.280300]
+Thu 05 Feb 2026 14:40:37 INFO  valid result: 
+hit@10 : 0.6575    ndcg@10 : 0.3684    mrr@10 : 0.2803
+Thu 05 Feb 2026 14:40:37 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:41:20 INFO  epoch 1 training [time: 42.99s, train loss: 2268.3039]
+Thu 05 Feb 2026 14:41:22 INFO  epoch 1 evaluating [time: 1.99s, valid_score: 0.318500]
+Thu 05 Feb 2026 14:41:22 INFO  valid result: 
+hit@10 : 0.701    ndcg@10 : 0.4085    mrr@10 : 0.3185
+Thu 05 Feb 2026 14:41:22 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:41:59 INFO  epoch 2 training [time: 37.48s, train loss: 2219.0197]
+Thu 05 Feb 2026 14:42:01 INFO  epoch 2 evaluating [time: 1.98s, valid_score: 0.329900]
+Thu 05 Feb 2026 14:42:01 INFO  valid result: 
+hit@10 : 0.7179    ndcg@10 : 0.4216    mrr@10 : 0.3299
+Thu 05 Feb 2026 14:42:01 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:42:39 INFO  epoch 3 training [time: 37.75s, train loss: 2195.0574]
+Thu 05 Feb 2026 14:42:41 INFO  epoch 3 evaluating [time: 2.01s, valid_score: 0.331600]
+Thu 05 Feb 2026 14:42:41 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.4244    mrr@10 : 0.3316
+Thu 05 Feb 2026 14:42:41 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:43:19 INFO  epoch 4 training [time: 37.91s, train loss: 2180.0382]
+Thu 05 Feb 2026 14:43:21 INFO  epoch 4 evaluating [time: 2.08s, valid_score: 0.351700]
+Thu 05 Feb 2026 14:43:21 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4414    mrr@10 : 0.3517
+Thu 05 Feb 2026 14:43:21 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:44:00 INFO  epoch 5 training [time: 38.49s, train loss: 2169.6427]
+Thu 05 Feb 2026 14:44:02 INFO  epoch 5 evaluating [time: 1.98s, valid_score: 0.337300]
+Thu 05 Feb 2026 14:44:02 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4288    mrr@10 : 0.3373
+Thu 05 Feb 2026 14:44:38 INFO  epoch 6 training [time: 36.90s, train loss: 2160.6056]
+Thu 05 Feb 2026 14:44:41 INFO  epoch 6 evaluating [time: 2.06s, valid_score: 0.345600]
+Thu 05 Feb 2026 14:44:41 INFO  valid result: 
+hit@10 : 0.7476    ndcg@10 : 0.4404    mrr@10 : 0.3456
+Thu 05 Feb 2026 14:45:18 INFO  epoch 7 training [time: 37.46s, train loss: 2153.9638]
+Thu 05 Feb 2026 14:45:20 INFO  epoch 7 evaluating [time: 1.99s, valid_score: 0.350200]
+Thu 05 Feb 2026 14:45:20 INFO  valid result: 
+hit@10 : 0.7381    ndcg@10 : 0.442    mrr@10 : 0.3502
+Thu 05 Feb 2026 14:46:01 INFO  epoch 8 training [time: 41.30s, train loss: 2147.9224]
+Thu 05 Feb 2026 14:46:04 INFO  epoch 8 evaluating [time: 2.78s, valid_score: 0.358700]
+Thu 05 Feb 2026 14:46:04 INFO  valid result: 
+hit@10 : 0.7359    ndcg@10 : 0.4482    mrr@10 : 0.3587
+Thu 05 Feb 2026 14:46:04 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:46:56 INFO  epoch 9 training [time: 51.73s, train loss: 2143.6935]
+Thu 05 Feb 2026 14:46:59 INFO  epoch 9 evaluating [time: 2.90s, valid_score: 0.353000]
+Thu 05 Feb 2026 14:46:59 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.4443    mrr@10 : 0.353
+Thu 05 Feb 2026 14:47:54 INFO  epoch 10 training [time: 55.70s, train loss: 2139.6588]
+Thu 05 Feb 2026 14:47:57 INFO  epoch 10 evaluating [time: 2.79s, valid_score: 0.344900]
+Thu 05 Feb 2026 14:47:57 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4372    mrr@10 : 0.3449
+Thu 05 Feb 2026 14:48:51 INFO  epoch 11 training [time: 53.88s, train loss: 2136.8965]
+Thu 05 Feb 2026 14:48:54 INFO  epoch 11 evaluating [time: 2.84s, valid_score: 0.347400]
+Thu 05 Feb 2026 14:48:54 INFO  valid result: 
+hit@10 : 0.7381    ndcg@10 : 0.4404    mrr@10 : 0.3474
+Thu 05 Feb 2026 14:49:49 INFO  epoch 12 training [time: 54.86s, train loss: 2134.0302]
+Thu 05 Feb 2026 14:49:52 INFO  epoch 12 evaluating [time: 2.89s, valid_score: 0.345600]
+Thu 05 Feb 2026 14:49:52 INFO  valid result: 
+hit@10 : 0.7434    ndcg@10 : 0.4398    mrr@10 : 0.3456
+Thu 05 Feb 2026 14:50:40 INFO  epoch 13 training [time: 47.90s, train loss: 2130.8165]
+Thu 05 Feb 2026 14:50:42 INFO  epoch 13 evaluating [time: 2.30s, valid_score: 0.359800]
+Thu 05 Feb 2026 14:50:42 INFO  valid result: 
+hit@10 : 0.7402    ndcg@10 : 0.4496    mrr@10 : 0.3598
+Thu 05 Feb 2026 14:50:42 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:51:27 INFO  epoch 14 training [time: 44.69s, train loss: 2126.6903]
+Thu 05 Feb 2026 14:51:29 INFO  epoch 14 evaluating [time: 2.51s, valid_score: 0.338300]
+Thu 05 Feb 2026 14:51:29 INFO  valid result: 
+hit@10 : 0.737    ndcg@10 : 0.4329    mrr@10 : 0.3383
+Thu 05 Feb 2026 14:52:13 INFO  epoch 15 training [time: 44.26s, train loss: 2126.0996]
+Thu 05 Feb 2026 14:52:16 INFO  epoch 15 evaluating [time: 2.28s, valid_score: 0.360700]
+Thu 05 Feb 2026 14:52:16 INFO  valid result: 
+hit@10 : 0.7434    ndcg@10 : 0.4512    mrr@10 : 0.3607
+Thu 05 Feb 2026 14:52:16 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:53:00 INFO  epoch 16 training [time: 44.72s, train loss: 2123.9231]
+Thu 05 Feb 2026 14:53:03 INFO  epoch 16 evaluating [time: 2.22s, valid_score: 0.356400]
+Thu 05 Feb 2026 14:53:03 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4453    mrr@10 : 0.3564
+Thu 05 Feb 2026 14:53:46 INFO  epoch 17 training [time: 43.82s, train loss: 2122.4053]
+Thu 05 Feb 2026 14:53:49 INFO  epoch 17 evaluating [time: 2.20s, valid_score: 0.341800]
+Thu 05 Feb 2026 14:53:49 INFO  valid result: 
+hit@10 : 0.7381    ndcg@10 : 0.436    mrr@10 : 0.3418
+Thu 05 Feb 2026 14:54:32 INFO  epoch 18 training [time: 43.14s, train loss: 2120.1988]
+Thu 05 Feb 2026 14:54:34 INFO  epoch 18 evaluating [time: 2.33s, valid_score: 0.343900]
+Thu 05 Feb 2026 14:54:34 INFO  valid result: 
+hit@10 : 0.7402    ndcg@10 : 0.4378    mrr@10 : 0.3439
+Thu 05 Feb 2026 14:55:18 INFO  epoch 19 training [time: 44.39s, train loss: 2119.1026]
+Thu 05 Feb 2026 14:55:21 INFO  epoch 19 evaluating [time: 2.43s, valid_score: 0.362400]
+Thu 05 Feb 2026 14:55:21 INFO  valid result: 
+hit@10 : 0.7434    ndcg@10 : 0.4528    mrr@10 : 0.3624
+Thu 05 Feb 2026 14:55:21 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:56:05 INFO  epoch 20 training [time: 44.35s, train loss: 2117.1475]
+Thu 05 Feb 2026 14:56:07 INFO  epoch 20 evaluating [time: 2.24s, valid_score: 0.349400]
+Thu 05 Feb 2026 14:56:07 INFO  valid result: 
+hit@10 : 0.7402    ndcg@10 : 0.4422    mrr@10 : 0.3494
+Thu 05 Feb 2026 14:56:49 INFO  epoch 21 training [time: 41.94s, train loss: 2115.9492]
+Thu 05 Feb 2026 14:56:52 INFO  epoch 21 evaluating [time: 2.19s, valid_score: 0.349800]
+Thu 05 Feb 2026 14:56:52 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.442    mrr@10 : 0.3498
+Thu 05 Feb 2026 14:57:33 INFO  epoch 22 training [time: 41.65s, train loss: 2114.2347]
+Thu 05 Feb 2026 14:57:36 INFO  epoch 22 evaluating [time: 2.24s, valid_score: 0.347000]
+Thu 05 Feb 2026 14:57:36 INFO  valid result: 
+hit@10 : 0.7455    ndcg@10 : 0.4417    mrr@10 : 0.347
+Thu 05 Feb 2026 14:58:17 INFO  epoch 23 training [time: 41.97s, train loss: 2113.1798]
+Thu 05 Feb 2026 14:58:20 INFO  epoch 23 evaluating [time: 2.23s, valid_score: 0.355000]
+Thu 05 Feb 2026 14:58:20 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4441    mrr@10 : 0.355
+Thu 05 Feb 2026 14:59:02 INFO  epoch 24 training [time: 41.85s, train loss: 2111.6651]
+Thu 05 Feb 2026 14:59:04 INFO  epoch 24 evaluating [time: 2.32s, valid_score: 0.365300]
+Thu 05 Feb 2026 14:59:04 INFO  valid result: 
+hit@10 : 0.7434    ndcg@10 : 0.455    mrr@10 : 0.3653
+Thu 05 Feb 2026 14:59:04 INFO  Saving current: saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 14:59:47 INFO  epoch 25 training [time: 42.82s, train loss: 2110.9119]
+Thu 05 Feb 2026 14:59:49 INFO  epoch 25 evaluating [time: 2.19s, valid_score: 0.343300]
+Thu 05 Feb 2026 14:59:49 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4338    mrr@10 : 0.3433
+Thu 05 Feb 2026 15:00:31 INFO  epoch 26 training [time: 42.06s, train loss: 2108.7025]
+Thu 05 Feb 2026 15:00:33 INFO  epoch 26 evaluating [time: 2.18s, valid_score: 0.354900]
+Thu 05 Feb 2026 15:00:33 INFO  valid result: 
+hit@10 : 0.7423    ndcg@10 : 0.4467    mrr@10 : 0.3549
+Thu 05 Feb 2026 15:01:15 INFO  epoch 27 training [time: 41.70s, train loss: 2107.7253]
+Thu 05 Feb 2026 15:01:17 INFO  epoch 27 evaluating [time: 2.16s, valid_score: 0.346900]
+Thu 05 Feb 2026 15:01:17 INFO  valid result: 
+hit@10 : 0.7434    ndcg@10 : 0.4411    mrr@10 : 0.3469
+Thu 05 Feb 2026 15:02:01 INFO  epoch 28 training [time: 44.09s, train loss: 2107.3849]
+Thu 05 Feb 2026 15:02:03 INFO  epoch 28 evaluating [time: 2.21s, valid_score: 0.350700]
+Thu 05 Feb 2026 15:02:03 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4421    mrr@10 : 0.3507
+Thu 05 Feb 2026 15:02:45 INFO  epoch 29 training [time: 41.99s, train loss: 2106.2078]
+Thu 05 Feb 2026 15:02:48 INFO  epoch 29 evaluating [time: 2.22s, valid_score: 0.352900]
+Thu 05 Feb 2026 15:02:48 INFO  valid result: 
+hit@10 : 0.7497    ndcg@10 : 0.447    mrr@10 : 0.3529
+Thu 05 Feb 2026 15:03:31 INFO  epoch 30 training [time: 43.02s, train loss: 2105.2709]
+Thu 05 Feb 2026 15:03:33 INFO  epoch 30 evaluating [time: 2.20s, valid_score: 0.355700]
+Thu 05 Feb 2026 15:03:33 INFO  valid result: 
+hit@10 : 0.7423    ndcg@10 : 0.4475    mrr@10 : 0.3557
+Thu 05 Feb 2026 15:04:15 INFO  epoch 31 training [time: 41.95s, train loss: 2102.8153]
+Thu 05 Feb 2026 15:04:17 INFO  epoch 31 evaluating [time: 2.18s, valid_score: 0.354200]
+Thu 05 Feb 2026 15:04:17 INFO  valid result: 
+hit@10 : 0.7444    ndcg@10 : 0.4466    mrr@10 : 0.3542
+Thu 05 Feb 2026 15:04:58 INFO  epoch 32 training [time: 41.42s, train loss: 2102.6502]
+Thu 05 Feb 2026 15:05:00 INFO  epoch 32 evaluating [time: 2.14s, valid_score: 0.352100]
+Thu 05 Feb 2026 15:05:00 INFO  valid result: 
+hit@10 : 0.7381    ndcg@10 : 0.4433    mrr@10 : 0.3521
+Thu 05 Feb 2026 15:05:42 INFO  epoch 33 training [time: 41.61s, train loss: 2103.3961]
+Thu 05 Feb 2026 15:05:44 INFO  epoch 33 evaluating [time: 2.25s, valid_score: 0.343600]
+Thu 05 Feb 2026 15:05:44 INFO  valid result: 
+hit@10 : 0.737    ndcg@10 : 0.4368    mrr@10 : 0.3436
+Thu 05 Feb 2026 15:06:26 INFO  epoch 34 training [time: 41.99s, train loss: 2101.4385]
+Thu 05 Feb 2026 15:06:28 INFO  epoch 34 evaluating [time: 2.17s, valid_score: 0.354600]
+Thu 05 Feb 2026 15:06:28 INFO  valid result: 
+hit@10 : 0.7497    ndcg@10 : 0.4481    mrr@10 : 0.3546
+Thu 05 Feb 2026 15:07:10 INFO  epoch 35 training [time: 41.98s, train loss: 2101.1994]
+Thu 05 Feb 2026 15:07:13 INFO  epoch 35 evaluating [time: 2.30s, valid_score: 0.352600]
+Thu 05 Feb 2026 15:07:13 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.4441    mrr@10 : 0.3526
+Thu 05 Feb 2026 15:07:13 INFO  Finished training, best eval result in epoch 24
+Thu 05 Feb 2026 15:07:13 INFO  Loading model structure and parameters from saved\TVRec-Feb-05-2026_14-38-26.pth
+Thu 05 Feb 2026 15:07:16 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     9.20 %     |
++-------------+----------------+
+| GPU         | 0.20 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.59 G/15.63 G |
++-------------+----------------+
+Thu 05 Feb 2026 15:07:16 INFO  best valid : OrderedDict([('hit@10', 0.7434), ('ndcg@10', 0.455), ('mrr@10', 0.3653)])
+Thu 05 Feb 2026 15:07:16 INFO  test result: OrderedDict([('hit@10', 0.7084), ('ndcg@10', 0.4279), ('mrr@10', 0.3409)])
+Thu 05 Feb 2026 15:07:16 WARNING  command line args [--models tvrec --datasets ml-100k --seeds 42,2023,2024 --device gpu] will not be used in RecBole
+Thu 05 Feb 2026 15:07:16 INFO  ['scripts\\run_grid.py', '--models', 'tvrec', '--datasets', 'ml-100k', '--seeds', '42,2023,2024', '--device', 'gpu']
+Thu 05 Feb 2026 15:07:16 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2023
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.0005
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TVRec
+hidden_size = 64
+num_hidden_layers = 2
+hidden_dropout_prob = 0.5
+hidden_act = gelu
+initializer_range = 0.02
+m = 32
+poly_order = -1
+reg_weight = 0.0
+loss_type = CE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Thu 05 Feb 2026 15:07:16 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Thu 05 Feb 2026 15:07:18 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Thu 05 Feb 2026 15:07:18 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Thu 05 Feb 2026 15:07:18 INFO  TVRec(
+  (item_embeddings): Embedding(1683, 64, padding_idx=0)
+  (layer_norm): TVLayerNorm()
+  (dropout): Dropout(p=0.5, inplace=False)
+  (blocks): ModuleList(
+    (0-1): 2 x TVRecBlock(
+      (layer): TVRecLayer(
+        (out_dropout): Dropout(p=0.5, inplace=False)
+        (layer_norm): TVLayerNorm()
+      )
+      (feed_forward): TVFeedForward(
+        (dense_1): Linear(in_features=64, out_features=256, bias=True)
+        (dense_2): Linear(in_features=256, out_features=64, bias=True)
+        (layer_norm): TVLayerNorm()
+        (dropout): Dropout(p=0.5, inplace=False)
+      )
+    )
+  )
+  (loss_fct): CrossEntropyLoss()
+)
+Trainable parameters: 182784
+Thu 05 Feb 2026 15:07:18 INFO  FLOPs: 2099264.0
+Thu 05 Feb 2026 15:08:07 INFO  epoch 0 training [time: 49.04s, train loss: 2528.0396]
+Thu 05 Feb 2026 15:08:09 INFO  epoch 0 evaluating [time: 2.63s, valid_score: 0.266700]
+Thu 05 Feb 2026 15:08:09 INFO  valid result: 
+hit@10 : 0.6331    ndcg@10 : 0.3526    mrr@10 : 0.2667
+Thu 05 Feb 2026 15:08:09 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:09:01 INFO  epoch 1 training [time: 51.41s, train loss: 2268.2710]
+Thu 05 Feb 2026 15:09:03 INFO  epoch 1 evaluating [time: 2.62s, valid_score: 0.309600]
+Thu 05 Feb 2026 15:09:03 INFO  valid result: 
+hit@10 : 0.6914    ndcg@10 : 0.3994    mrr@10 : 0.3096
+Thu 05 Feb 2026 15:09:03 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:09:55 INFO  epoch 2 training [time: 51.06s, train loss: 2219.3608]
+Thu 05 Feb 2026 15:09:57 INFO  epoch 2 evaluating [time: 2.69s, valid_score: 0.332300]
+Thu 05 Feb 2026 15:09:57 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4248    mrr@10 : 0.3323
+Thu 05 Feb 2026 15:09:57 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:10:43 INFO  epoch 3 training [time: 46.03s, train loss: 2194.0120]
+Thu 05 Feb 2026 15:10:46 INFO  epoch 3 evaluating [time: 2.44s, valid_score: 0.343300]
+Thu 05 Feb 2026 15:10:46 INFO  valid result: 
+hit@10 : 0.7275    ndcg@10 : 0.4338    mrr@10 : 0.3433
+Thu 05 Feb 2026 15:10:46 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:11:31 INFO  epoch 4 training [time: 45.35s, train loss: 2179.0104]
+Thu 05 Feb 2026 15:11:33 INFO  epoch 4 evaluating [time: 2.22s, valid_score: 0.340300]
+Thu 05 Feb 2026 15:11:33 INFO  valid result: 
+hit@10 : 0.7328    ndcg@10 : 0.4337    mrr@10 : 0.3403
+Thu 05 Feb 2026 15:12:17 INFO  epoch 5 training [time: 43.33s, train loss: 2168.5060]
+Thu 05 Feb 2026 15:12:19 INFO  epoch 5 evaluating [time: 2.33s, valid_score: 0.349700]
+Thu 05 Feb 2026 15:12:19 INFO  valid result: 
+hit@10 : 0.7338    ndcg@10 : 0.4404    mrr@10 : 0.3497
+Thu 05 Feb 2026 15:12:19 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:13:02 INFO  epoch 6 training [time: 43.28s, train loss: 2159.5706]
+Thu 05 Feb 2026 15:13:04 INFO  epoch 6 evaluating [time: 2.23s, valid_score: 0.343000]
+Thu 05 Feb 2026 15:13:04 INFO  valid result: 
+hit@10 : 0.719    ndcg@10 : 0.4322    mrr@10 : 0.343
+Thu 05 Feb 2026 15:13:48 INFO  epoch 7 training [time: 43.33s, train loss: 2153.7619]
+Thu 05 Feb 2026 15:13:50 INFO  epoch 7 evaluating [time: 2.38s, valid_score: 0.349000]
+Thu 05 Feb 2026 15:13:50 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4406    mrr@10 : 0.349
+Thu 05 Feb 2026 15:14:34 INFO  epoch 8 training [time: 43.70s, train loss: 2148.5244]
+Thu 05 Feb 2026 15:14:36 INFO  epoch 8 evaluating [time: 2.26s, valid_score: 0.343700]
+Thu 05 Feb 2026 15:14:36 INFO  valid result: 
+hit@10 : 0.7413    ndcg@10 : 0.4381    mrr@10 : 0.3437
+Thu 05 Feb 2026 15:15:20 INFO  epoch 9 training [time: 44.22s, train loss: 2144.7460]
+Thu 05 Feb 2026 15:15:23 INFO  epoch 9 evaluating [time: 2.94s, valid_score: 0.341900]
+Thu 05 Feb 2026 15:15:23 INFO  valid result: 
+hit@10 : 0.7338    ndcg@10 : 0.4354    mrr@10 : 0.3419
+Thu 05 Feb 2026 15:16:07 INFO  epoch 10 training [time: 44.11s, train loss: 2140.6556]
+Thu 05 Feb 2026 15:16:10 INFO  epoch 10 evaluating [time: 2.60s, valid_score: 0.348200]
+Thu 05 Feb 2026 15:16:10 INFO  valid result: 
+hit@10 : 0.7359    ndcg@10 : 0.4405    mrr@10 : 0.3482
+Thu 05 Feb 2026 15:16:55 INFO  epoch 11 training [time: 45.28s, train loss: 2137.4740]
+Thu 05 Feb 2026 15:16:58 INFO  epoch 11 evaluating [time: 2.31s, valid_score: 0.361100]
+Thu 05 Feb 2026 15:16:58 INFO  valid result: 
+hit@10 : 0.7476    ndcg@10 : 0.4526    mrr@10 : 0.3611
+Thu 05 Feb 2026 15:16:58 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:17:41 INFO  epoch 12 training [time: 43.76s, train loss: 2134.0625]
+Thu 05 Feb 2026 15:17:44 INFO  epoch 12 evaluating [time: 2.34s, valid_score: 0.360900]
+Thu 05 Feb 2026 15:17:44 INFO  valid result: 
+hit@10 : 0.7317    ndcg@10 : 0.449    mrr@10 : 0.3609
+Thu 05 Feb 2026 15:18:28 INFO  epoch 13 training [time: 44.23s, train loss: 2131.2836]
+Thu 05 Feb 2026 15:18:30 INFO  epoch 13 evaluating [time: 2.38s, valid_score: 0.346600]
+Thu 05 Feb 2026 15:18:30 INFO  valid result: 
+hit@10 : 0.7508    ndcg@10 : 0.4424    mrr@10 : 0.3466
+Thu 05 Feb 2026 15:19:18 INFO  epoch 14 training [time: 47.54s, train loss: 2129.5249]
+Thu 05 Feb 2026 15:19:20 INFO  epoch 14 evaluating [time: 2.50s, valid_score: 0.356700]
+Thu 05 Feb 2026 15:19:20 INFO  valid result: 
+hit@10 : 0.7317    ndcg@10 : 0.4455    mrr@10 : 0.3567
+Thu 05 Feb 2026 15:20:08 INFO  epoch 15 training [time: 47.73s, train loss: 2126.6885]
+Thu 05 Feb 2026 15:20:11 INFO  epoch 15 evaluating [time: 2.54s, valid_score: 0.351800]
+Thu 05 Feb 2026 15:20:11 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.4437    mrr@10 : 0.3518
+Thu 05 Feb 2026 15:20:57 INFO  epoch 16 training [time: 46.32s, train loss: 2125.2283]
+Thu 05 Feb 2026 15:21:00 INFO  epoch 16 evaluating [time: 2.74s, valid_score: 0.357400]
+Thu 05 Feb 2026 15:21:00 INFO  valid result: 
+hit@10 : 0.7455    ndcg@10 : 0.4491    mrr@10 : 0.3574
+Thu 05 Feb 2026 15:21:47 INFO  epoch 17 training [time: 47.52s, train loss: 2122.9582]
+Thu 05 Feb 2026 15:21:50 INFO  epoch 17 evaluating [time: 2.54s, valid_score: 0.365500]
+Thu 05 Feb 2026 15:21:50 INFO  valid result: 
+hit@10 : 0.7423    ndcg@10 : 0.455    mrr@10 : 0.3655
+Thu 05 Feb 2026 15:21:50 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:22:37 INFO  epoch 18 training [time: 47.26s, train loss: 2119.9175]
+Thu 05 Feb 2026 15:22:39 INFO  epoch 18 evaluating [time: 2.42s, valid_score: 0.354800]
+Thu 05 Feb 2026 15:22:39 INFO  valid result: 
+hit@10 : 0.7455    ndcg@10 : 0.4477    mrr@10 : 0.3548
+Thu 05 Feb 2026 15:23:24 INFO  epoch 19 training [time: 44.11s, train loss: 2118.9666]
+Thu 05 Feb 2026 15:23:26 INFO  epoch 19 evaluating [time: 2.44s, valid_score: 0.345700]
+Thu 05 Feb 2026 15:23:26 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4381    mrr@10 : 0.3457
+Thu 05 Feb 2026 15:24:09 INFO  epoch 20 training [time: 43.32s, train loss: 2117.2994]
+Thu 05 Feb 2026 15:24:12 INFO  epoch 20 evaluating [time: 2.23s, valid_score: 0.355000]
+Thu 05 Feb 2026 15:24:12 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.446    mrr@10 : 0.355
+Thu 05 Feb 2026 15:24:54 INFO  epoch 21 training [time: 42.05s, train loss: 2115.5783]
+Thu 05 Feb 2026 15:24:56 INFO  epoch 21 evaluating [time: 2.27s, valid_score: 0.354100]
+Thu 05 Feb 2026 15:24:56 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4434    mrr@10 : 0.3541
+Thu 05 Feb 2026 15:25:38 INFO  epoch 22 training [time: 42.36s, train loss: 2114.9416]
+Thu 05 Feb 2026 15:25:41 INFO  epoch 22 evaluating [time: 2.48s, valid_score: 0.369300]
+Thu 05 Feb 2026 15:25:41 INFO  valid result: 
+hit@10 : 0.7423    ndcg@10 : 0.4578    mrr@10 : 0.3693
+Thu 05 Feb 2026 15:25:41 INFO  Saving current: saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:26:24 INFO  epoch 23 training [time: 43.08s, train loss: 2113.1332]
+Thu 05 Feb 2026 15:26:26 INFO  epoch 23 evaluating [time: 2.31s, valid_score: 0.360700]
+Thu 05 Feb 2026 15:26:26 INFO  valid result: 
+hit@10 : 0.7434    ndcg@10 : 0.4521    mrr@10 : 0.3607
+Thu 05 Feb 2026 15:27:09 INFO  epoch 24 training [time: 43.04s, train loss: 2111.4522]
+Thu 05 Feb 2026 15:27:12 INFO  epoch 24 evaluating [time: 2.41s, valid_score: 0.353300]
+Thu 05 Feb 2026 15:27:12 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4442    mrr@10 : 0.3533
+Thu 05 Feb 2026 15:27:55 INFO  epoch 25 training [time: 43.55s, train loss: 2110.4159]
+Thu 05 Feb 2026 15:27:57 INFO  epoch 25 evaluating [time: 2.21s, valid_score: 0.358100]
+Thu 05 Feb 2026 15:27:57 INFO  valid result: 
+hit@10 : 0.7466    ndcg@10 : 0.4504    mrr@10 : 0.3581
+Thu 05 Feb 2026 15:28:40 INFO  epoch 26 training [time: 42.34s, train loss: 2109.8068]
+Thu 05 Feb 2026 15:28:42 INFO  epoch 26 evaluating [time: 2.17s, valid_score: 0.355200]
+Thu 05 Feb 2026 15:28:42 INFO  valid result: 
+hit@10 : 0.7423    ndcg@10 : 0.4472    mrr@10 : 0.3552
+Thu 05 Feb 2026 15:29:24 INFO  epoch 27 training [time: 41.75s, train loss: 2107.3657]
+Thu 05 Feb 2026 15:29:26 INFO  epoch 27 evaluating [time: 2.19s, valid_score: 0.355400]
+Thu 05 Feb 2026 15:29:26 INFO  valid result: 
+hit@10 : 0.7455    ndcg@10 : 0.4477    mrr@10 : 0.3554
+Thu 05 Feb 2026 15:30:08 INFO  epoch 28 training [time: 41.79s, train loss: 2107.1471]
+Thu 05 Feb 2026 15:30:10 INFO  epoch 28 evaluating [time: 2.26s, valid_score: 0.336800]
+Thu 05 Feb 2026 15:30:10 INFO  valid result: 
+hit@10 : 0.7381    ndcg@10 : 0.4323    mrr@10 : 0.3368
+Thu 05 Feb 2026 15:30:52 INFO  epoch 29 training [time: 41.78s, train loss: 2106.7800]
+Thu 05 Feb 2026 15:30:54 INFO  epoch 29 evaluating [time: 2.20s, valid_score: 0.348900]
+Thu 05 Feb 2026 15:30:54 INFO  valid result: 
+hit@10 : 0.7487    ndcg@10 : 0.4436    mrr@10 : 0.3489
+Thu 05 Feb 2026 15:31:36 INFO  epoch 30 training [time: 42.60s, train loss: 2105.3029]
+Thu 05 Feb 2026 15:31:39 INFO  epoch 30 evaluating [time: 2.21s, valid_score: 0.355200]
+Thu 05 Feb 2026 15:31:39 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4451    mrr@10 : 0.3552
+Thu 05 Feb 2026 15:32:23 INFO  epoch 31 training [time: 43.87s, train loss: 2104.1619]
+Thu 05 Feb 2026 15:32:25 INFO  epoch 31 evaluating [time: 2.30s, valid_score: 0.349000]
+Thu 05 Feb 2026 15:32:25 INFO  valid result: 
+hit@10 : 0.7519    ndcg@10 : 0.4449    mrr@10 : 0.349
+Thu 05 Feb 2026 15:33:09 INFO  epoch 32 training [time: 44.34s, train loss: 2104.1424]
+Thu 05 Feb 2026 15:33:11 INFO  epoch 32 evaluating [time: 2.30s, valid_score: 0.360000]
+Thu 05 Feb 2026 15:33:11 INFO  valid result: 
+hit@10 : 0.7497    ndcg@10 : 0.4525    mrr@10 : 0.36
+Thu 05 Feb 2026 15:33:58 INFO  epoch 33 training [time: 46.07s, train loss: 2102.5407]
+Thu 05 Feb 2026 15:34:00 INFO  epoch 33 evaluating [time: 2.86s, valid_score: 0.348300]
+Thu 05 Feb 2026 15:34:00 INFO  valid result: 
+hit@10 : 0.7434    ndcg@10 : 0.4423    mrr@10 : 0.3483
+Thu 05 Feb 2026 15:34:00 INFO  Finished training, best eval result in epoch 22
+Thu 05 Feb 2026 15:34:00 INFO  Loading model structure and parameters from saved\TVRec-Feb-05-2026_15-07-18.pth
+Thu 05 Feb 2026 15:34:04 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     8.60 %     |
++-------------+----------------+
+| GPU         | 0.20 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.46 G/15.63 G |
++-------------+----------------+
+Thu 05 Feb 2026 15:34:04 INFO  best valid : OrderedDict([('hit@10', 0.7423), ('ndcg@10', 0.4578), ('mrr@10', 0.3693)])
+Thu 05 Feb 2026 15:34:04 INFO  test result: OrderedDict([('hit@10', 0.7105), ('ndcg@10', 0.4325), ('mrr@10', 0.3463)])
+Thu 05 Feb 2026 15:34:04 WARNING  command line args [--models tvrec --datasets ml-100k --seeds 42,2023,2024 --device gpu] will not be used in RecBole
+Thu 05 Feb 2026 15:34:04 INFO  ['scripts\\run_grid.py', '--models', 'tvrec', '--datasets', 'ml-100k', '--seeds', '42,2023,2024', '--device', 'gpu']
+Thu 05 Feb 2026 15:34:04 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2024
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.0005
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TVRec
+hidden_size = 64
+num_hidden_layers = 2
+hidden_dropout_prob = 0.5
+hidden_act = gelu
+initializer_range = 0.02
+m = 32
+poly_order = -1
+reg_weight = 0.0
+loss_type = CE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Thu 05 Feb 2026 15:34:04 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Thu 05 Feb 2026 15:34:06 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Thu 05 Feb 2026 15:34:06 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Thu 05 Feb 2026 15:34:06 INFO  TVRec(
+  (item_embeddings): Embedding(1683, 64, padding_idx=0)
+  (layer_norm): TVLayerNorm()
+  (dropout): Dropout(p=0.5, inplace=False)
+  (blocks): ModuleList(
+    (0-1): 2 x TVRecBlock(
+      (layer): TVRecLayer(
+        (out_dropout): Dropout(p=0.5, inplace=False)
+        (layer_norm): TVLayerNorm()
+      )
+      (feed_forward): TVFeedForward(
+        (dense_1): Linear(in_features=64, out_features=256, bias=True)
+        (dense_2): Linear(in_features=256, out_features=64, bias=True)
+        (layer_norm): TVLayerNorm()
+        (dropout): Dropout(p=0.5, inplace=False)
+      )
+    )
+  )
+  (loss_fct): CrossEntropyLoss()
+)
+Trainable parameters: 182784
+Thu 05 Feb 2026 15:34:06 INFO  FLOPs: 2099264.0
+Thu 05 Feb 2026 15:34:57 INFO  epoch 0 training [time: 50.61s, train loss: 2518.5894]
+Thu 05 Feb 2026 15:35:00 INFO  epoch 0 evaluating [time: 2.81s, valid_score: 0.279900]
+Thu 05 Feb 2026 15:35:00 INFO  valid result: 
+hit@10 : 0.6554    ndcg@10 : 0.3678    mrr@10 : 0.2799
+Thu 05 Feb 2026 15:35:00 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:35:47 INFO  epoch 1 training [time: 47.33s, train loss: 2270.8501]
+Thu 05 Feb 2026 15:35:49 INFO  epoch 1 evaluating [time: 2.43s, valid_score: 0.310100]
+Thu 05 Feb 2026 15:35:49 INFO  valid result: 
+hit@10 : 0.6914    ndcg@10 : 0.3997    mrr@10 : 0.3101
+Thu 05 Feb 2026 15:35:49 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:36:33 INFO  epoch 2 training [time: 43.87s, train loss: 2221.6491]
+Thu 05 Feb 2026 15:36:36 INFO  epoch 2 evaluating [time: 2.32s, valid_score: 0.317300]
+Thu 05 Feb 2026 15:36:36 INFO  valid result: 
+hit@10 : 0.7116    ndcg@10 : 0.4106    mrr@10 : 0.3173
+Thu 05 Feb 2026 15:36:36 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:37:19 INFO  epoch 3 training [time: 43.72s, train loss: 2194.9632]
+Thu 05 Feb 2026 15:37:22 INFO  epoch 3 evaluating [time: 2.43s, valid_score: 0.326300]
+Thu 05 Feb 2026 15:37:22 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4197    mrr@10 : 0.3263
+Thu 05 Feb 2026 15:37:22 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:38:05 INFO  epoch 4 training [time: 43.61s, train loss: 2178.4289]
+Thu 05 Feb 2026 15:38:08 INFO  epoch 4 evaluating [time: 2.19s, valid_score: 0.342200]
+Thu 05 Feb 2026 15:38:08 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4336    mrr@10 : 0.3422
+Thu 05 Feb 2026 15:38:08 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:38:49 INFO  epoch 5 training [time: 41.80s, train loss: 2167.6562]
+Thu 05 Feb 2026 15:38:51 INFO  epoch 5 evaluating [time: 2.15s, valid_score: 0.344100]
+Thu 05 Feb 2026 15:38:51 INFO  valid result: 
+hit@10 : 0.7275    ndcg@10 : 0.4349    mrr@10 : 0.3441
+Thu 05 Feb 2026 15:38:51 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:39:34 INFO  epoch 6 training [time: 42.53s, train loss: 2160.3966]
+Thu 05 Feb 2026 15:39:36 INFO  epoch 6 evaluating [time: 2.19s, valid_score: 0.343500]
+Thu 05 Feb 2026 15:39:36 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4348    mrr@10 : 0.3435
+Thu 05 Feb 2026 15:40:19 INFO  epoch 7 training [time: 43.20s, train loss: 2154.0704]
+Thu 05 Feb 2026 15:40:22 INFO  epoch 7 evaluating [time: 2.36s, valid_score: 0.339800]
+Thu 05 Feb 2026 15:40:22 INFO  valid result: 
+hit@10 : 0.7328    ndcg@10 : 0.4328    mrr@10 : 0.3398
+Thu 05 Feb 2026 15:41:05 INFO  epoch 8 training [time: 43.34s, train loss: 2148.6247]
+Thu 05 Feb 2026 15:41:08 INFO  epoch 8 evaluating [time: 2.71s, valid_score: 0.350100]
+Thu 05 Feb 2026 15:41:08 INFO  valid result: 
+hit@10 : 0.7381    ndcg@10 : 0.442    mrr@10 : 0.3501
+Thu 05 Feb 2026 15:41:08 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:41:55 INFO  epoch 9 training [time: 47.65s, train loss: 2144.2512]
+Thu 05 Feb 2026 15:41:58 INFO  epoch 9 evaluating [time: 2.37s, valid_score: 0.346800]
+Thu 05 Feb 2026 15:41:58 INFO  valid result: 
+hit@10 : 0.7359    ndcg@10 : 0.439    mrr@10 : 0.3468
+Thu 05 Feb 2026 15:42:44 INFO  epoch 10 training [time: 46.54s, train loss: 2140.1188]
+Thu 05 Feb 2026 15:42:47 INFO  epoch 10 evaluating [time: 2.73s, valid_score: 0.362600]
+Thu 05 Feb 2026 15:42:47 INFO  valid result: 
+hit@10 : 0.737    ndcg@10 : 0.4512    mrr@10 : 0.3626
+Thu 05 Feb 2026 15:42:47 INFO  Saving current: saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:43:35 INFO  epoch 11 training [time: 48.03s, train loss: 2136.3725]
+Thu 05 Feb 2026 15:43:38 INFO  epoch 11 evaluating [time: 2.50s, valid_score: 0.349900]
+Thu 05 Feb 2026 15:43:38 INFO  valid result: 
+hit@10 : 0.7264    ndcg@10 : 0.4396    mrr@10 : 0.3499
+Thu 05 Feb 2026 15:44:27 INFO  epoch 12 training [time: 48.94s, train loss: 2133.5737]
+Thu 05 Feb 2026 15:44:29 INFO  epoch 12 evaluating [time: 2.73s, valid_score: 0.353100]
+Thu 05 Feb 2026 15:44:29 INFO  valid result: 
+hit@10 : 0.7317    ndcg@10 : 0.443    mrr@10 : 0.3531
+Thu 05 Feb 2026 15:45:19 INFO  epoch 13 training [time: 49.63s, train loss: 2131.8884]
+Thu 05 Feb 2026 15:45:22 INFO  epoch 13 evaluating [time: 2.85s, valid_score: 0.343000]
+Thu 05 Feb 2026 15:45:22 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.4369    mrr@10 : 0.343
+Thu 05 Feb 2026 15:46:10 INFO  epoch 14 training [time: 47.87s, train loss: 2128.2322]
+Thu 05 Feb 2026 15:46:12 INFO  epoch 14 evaluating [time: 2.42s, valid_score: 0.341700]
+Thu 05 Feb 2026 15:46:12 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.4329    mrr@10 : 0.3417
+Thu 05 Feb 2026 15:46:57 INFO  epoch 15 training [time: 45.16s, train loss: 2126.3275]
+Thu 05 Feb 2026 15:47:00 INFO  epoch 15 evaluating [time: 2.35s, valid_score: 0.349900]
+Thu 05 Feb 2026 15:47:00 INFO  valid result: 
+hit@10 : 0.7381    ndcg@10 : 0.4421    mrr@10 : 0.3499
+Thu 05 Feb 2026 15:47:46 INFO  epoch 16 training [time: 46.42s, train loss: 2124.5424]
+Thu 05 Feb 2026 15:47:48 INFO  epoch 16 evaluating [time: 2.35s, valid_score: 0.352400]
+Thu 05 Feb 2026 15:47:48 INFO  valid result: 
+hit@10 : 0.7391    ndcg@10 : 0.4438    mrr@10 : 0.3524
+Thu 05 Feb 2026 15:48:36 INFO  epoch 17 training [time: 47.25s, train loss: 2122.7385]
+Thu 05 Feb 2026 15:48:38 INFO  epoch 17 evaluating [time: 2.73s, valid_score: 0.350000]
+Thu 05 Feb 2026 15:48:38 INFO  valid result: 
+hit@10 : 0.7402    ndcg@10 : 0.4425    mrr@10 : 0.35
+Thu 05 Feb 2026 15:49:27 INFO  epoch 18 training [time: 48.23s, train loss: 2119.8988]
+Thu 05 Feb 2026 15:49:29 INFO  epoch 18 evaluating [time: 2.64s, valid_score: 0.354400]
+Thu 05 Feb 2026 15:49:29 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4438    mrr@10 : 0.3544
+Thu 05 Feb 2026 15:50:17 INFO  epoch 19 training [time: 47.54s, train loss: 2118.1188]
+Thu 05 Feb 2026 15:50:19 INFO  epoch 19 evaluating [time: 2.35s, valid_score: 0.350300]
+Thu 05 Feb 2026 15:50:19 INFO  valid result: 
+hit@10 : 0.737    ndcg@10 : 0.442    mrr@10 : 0.3503
+Thu 05 Feb 2026 15:51:03 INFO  epoch 20 training [time: 43.44s, train loss: 2117.4399]
+Thu 05 Feb 2026 15:51:05 INFO  epoch 20 evaluating [time: 2.40s, valid_score: 0.344100]
+Thu 05 Feb 2026 15:51:05 INFO  valid result: 
+hit@10 : 0.737    ndcg@10 : 0.4375    mrr@10 : 0.3441
+Thu 05 Feb 2026 15:51:49 INFO  epoch 21 training [time: 44.45s, train loss: 2116.5186]
+Thu 05 Feb 2026 15:51:52 INFO  epoch 21 evaluating [time: 2.28s, valid_score: 0.354400]
+Thu 05 Feb 2026 15:51:52 INFO  valid result: 
+hit@10 : 0.7423    ndcg@10 : 0.4464    mrr@10 : 0.3544
+Thu 05 Feb 2026 15:51:52 INFO  Finished training, best eval result in epoch 10
+Thu 05 Feb 2026 15:51:52 INFO  Loading model structure and parameters from saved\TVRec-Feb-05-2026_15-34-06.pth
+Thu 05 Feb 2026 15:51:55 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    10.80 %     |
++-------------+----------------+
+| GPU         | 0.20 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.59 G/15.63 G |
++-------------+----------------+
+Thu 05 Feb 2026 15:51:55 INFO  best valid : OrderedDict([('hit@10', 0.737), ('ndcg@10', 0.4512), ('mrr@10', 0.3626)])
+Thu 05 Feb 2026 15:51:55 INFO  test result: OrderedDict([('hit@10', 0.7084), ('ndcg@10', 0.4203), ('mrr@10', 0.3311)])

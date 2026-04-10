@@ -1,0 +1,586 @@
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                     SportsLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :         ../data/SportsLong_ours.txt
+item_size                      :                               14557
+log_file                       : output/SASRec-SportsLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='SportsLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=42, star_test=0, eval_mode='full', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/SportsLong_ours.txt', item_size=14557, log_file='output/SASRec-SportsLong_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3920'}
+{'epoch': 1, 'rec_avg_loss': '1.3684'}
+{'Epoch': 1, 'HIT@5': '0.0005', 'NDCG@5': '0.0002', 'HIT@10': '0.0009', 'NDCG@10': '0.0003', 'MRR@10': '0.0002', 'HIT@20': '0.0037', 'NDCG@20': '0.0011'}
+{'epoch': 2, 'rec_avg_loss': '1.3437'}
+{'Epoch': 2, 'HIT@5': '0.0032', 'NDCG@5': '0.0020', 'HIT@10': '0.0055', 'NDCG@10': '0.0027', 'MRR@10': '0.0019', 'HIT@20': '0.0101', 'NDCG@20': '0.0039'}
+{'epoch': 3, 'rec_avg_loss': '1.3091'}
+{'Epoch': 3, 'HIT@5': '0.0041', 'NDCG@5': '0.0022', 'HIT@10': '0.0092', 'NDCG@10': '0.0038', 'MRR@10': '0.0023', 'HIT@20': '0.0156', 'NDCG@20': '0.0055'}
+{'epoch': 4, 'rec_avg_loss': '1.2692'}
+{'Epoch': 4, 'HIT@5': '0.0060', 'NDCG@5': '0.0030', 'HIT@10': '0.0096', 'NDCG@10': '0.0042', 'MRR@10': '0.0025', 'HIT@20': '0.0156', 'NDCG@20': '0.0057'}
+{'epoch': 5, 'rec_avg_loss': '1.2261'}
+{'Epoch': 5, 'HIT@5': '0.0050', 'NDCG@5': '0.0026', 'HIT@10': '0.0087', 'NDCG@10': '0.0037', 'MRR@10': '0.0023', 'HIT@20': '0.0174', 'NDCG@20': '0.0060'}
+{'epoch': 6, 'rec_avg_loss': '1.1890'}
+{'Epoch': 6, 'HIT@5': '0.0055', 'NDCG@5': '0.0032', 'HIT@10': '0.0101', 'NDCG@10': '0.0046', 'MRR@10': '0.0030', 'HIT@20': '0.0170', 'NDCG@20': '0.0064'}
+{'epoch': 7, 'rec_avg_loss': '1.1562'}
+{'Epoch': 7, 'HIT@5': '0.0055', 'NDCG@5': '0.0032', 'HIT@10': '0.0106', 'NDCG@10': '0.0048', 'MRR@10': '0.0031', 'HIT@20': '0.0174', 'NDCG@20': '0.0066'}
+{'epoch': 8, 'rec_avg_loss': '1.1272'}
+{'Epoch': 8, 'HIT@5': '0.0050', 'NDCG@5': '0.0036', 'HIT@10': '0.0106', 'NDCG@10': '0.0054', 'MRR@10': '0.0039', 'HIT@20': '0.0151', 'NDCG@20': '0.0065'}
+{'epoch': 9, 'rec_avg_loss': '1.1013'}
+{'Epoch': 9, 'HIT@5': '0.0060', 'NDCG@5': '0.0038', 'HIT@10': '0.0096', 'NDCG@10': '0.0049', 'MRR@10': '0.0035', 'HIT@20': '0.0151', 'NDCG@20': '0.0062'}
+{'epoch': 10, 'rec_avg_loss': '1.0797'}
+{'Epoch': 10, 'HIT@5': '0.0060', 'NDCG@5': '0.0036', 'HIT@10': '0.0092', 'NDCG@10': '0.0046', 'MRR@10': '0.0033', 'HIT@20': '0.0147', 'NDCG@20': '0.0060'}
+{'epoch': 11, 'rec_avg_loss': '1.0588'}
+{'Epoch': 11, 'HIT@5': '0.0060', 'NDCG@5': '0.0036', 'HIT@10': '0.0092', 'NDCG@10': '0.0046', 'MRR@10': '0.0032', 'HIT@20': '0.0142', 'NDCG@20': '0.0059'}
+{'epoch': 12, 'rec_avg_loss': '1.0473'}
+{'Epoch': 12, 'HIT@5': '0.0055', 'NDCG@5': '0.0031', 'HIT@10': '0.0087', 'NDCG@10': '0.0041', 'MRR@10': '0.0027', 'HIT@20': '0.0138', 'NDCG@20': '0.0053'}
+{'epoch': 13, 'rec_avg_loss': '1.0282'}
+{'Epoch': 13, 'HIT@5': '0.0050', 'NDCG@5': '0.0029', 'HIT@10': '0.0078', 'NDCG@10': '0.0037', 'MRR@10': '0.0025', 'HIT@20': '0.0128', 'NDCG@20': '0.0050'}
+{'epoch': 14, 'rec_avg_loss': '1.0130'}
+{'Epoch': 14, 'HIT@5': '0.0055', 'NDCG@5': '0.0030', 'HIT@10': '0.0096', 'NDCG@10': '0.0043', 'MRR@10': '0.0027', 'HIT@20': '0.0142', 'NDCG@20': '0.0054'}
+{'epoch': 15, 'rec_avg_loss': '0.9947'}
+{'Epoch': 15, 'HIT@5': '0.0064', 'NDCG@5': '0.0033', 'HIT@10': '0.0101', 'NDCG@10': '0.0045', 'MRR@10': '0.0027', 'HIT@20': '0.0165', 'NDCG@20': '0.0060'}
+{'epoch': 16, 'rec_avg_loss': '0.9811'}
+{'Epoch': 16, 'HIT@5': '0.0060', 'NDCG@5': '0.0032', 'HIT@10': '0.0115', 'NDCG@10': '0.0050', 'MRR@10': '0.0030', 'HIT@20': '0.0170', 'NDCG@20': '0.0063'}
+{'epoch': 17, 'rec_avg_loss': '0.9652'}
+{'Epoch': 17, 'HIT@5': '0.0046', 'NDCG@5': '0.0027', 'HIT@10': '0.0106', 'NDCG@10': '0.0047', 'MRR@10': '0.0029', 'HIT@20': '0.0179', 'NDCG@20': '0.0065'}
+{'Epoch': 0, 'HIT@5': '0.0055', 'NDCG@5': '0.0032', 'HIT@10': '0.0106', 'NDCG@10': '0.0049', 'MRR@10': '0.0032', 'HIT@20': '0.0174', 'NDCG@20': '0.0066'}
+SASRec-SportsLong_ours-1
+{'Epoch': 0, 'HIT@5': '0.0055', 'NDCG@5': '0.0032', 'HIT@10': '0.0106', 'NDCG@10': '0.0049', 'MRR@10': '0.0032', 'HIT@20': '0.0174', 'NDCG@20': '0.0066'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                     SportsLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-SportsLong_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :         ../data/SportsLong_ours.txt
+item_size                      :                               14557
+log_file                       : output/SASRec-SportsLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='SportsLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=42, star_test=0, eval_mode='full', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-SportsLong_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/SportsLong_ours.txt', item_size=14557, log_file='output/SASRec-SportsLong_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0055', 'NDCG@5': '0.0032', 'HIT@10': '0.0106', 'NDCG@10': '0.0049', 'MRR@10': '0.0032', 'HIT@20': '0.0174', 'NDCG@20': '0.0066'}
+{'Epoch': 0, 'HIT@5': '0.0055', 'NDCG@5': '0.0031', 'HIT@10': '0.0110', 'NDCG@10': '0.0050', 'MRR@10': '0.0031', 'HIT@20': '0.0193', 'NDCG@20': '0.0070'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                     SportsLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :         ../data/SportsLong_ours.txt
+item_size                      :                               14557
+log_file                       : output/SASRec-SportsLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='SportsLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2023, star_test=0, eval_mode='full', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/SportsLong_ours.txt', item_size=14557, log_file='output/SASRec-SportsLong_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3928'}
+{'epoch': 1, 'rec_avg_loss': '1.3687'}
+{'Epoch': 1, 'HIT@5': '0.0014', 'NDCG@5': '0.0007', 'HIT@10': '0.0018', 'NDCG@10': '0.0009', 'MRR@10': '0.0006', 'HIT@20': '0.0023', 'NDCG@20': '0.0010'}
+{'epoch': 2, 'rec_avg_loss': '1.3443'}
+{'Epoch': 2, 'HIT@5': '0.0028', 'NDCG@5': '0.0016', 'HIT@10': '0.0032', 'NDCG@10': '0.0017', 'MRR@10': '0.0012', 'HIT@20': '0.0069', 'NDCG@20': '0.0026'}
+{'epoch': 3, 'rec_avg_loss': '1.3103'}
+{'Epoch': 3, 'HIT@5': '0.0032', 'NDCG@5': '0.0023', 'HIT@10': '0.0064', 'NDCG@10': '0.0033', 'MRR@10': '0.0024', 'HIT@20': '0.0128', 'NDCG@20': '0.0050'}
+{'epoch': 4, 'rec_avg_loss': '1.2685'}
+{'Epoch': 4, 'HIT@5': '0.0032', 'NDCG@5': '0.0023', 'HIT@10': '0.0064', 'NDCG@10': '0.0033', 'MRR@10': '0.0024', 'HIT@20': '0.0151', 'NDCG@20': '0.0055'}
+{'epoch': 5, 'rec_avg_loss': '1.2251'}
+{'Epoch': 5, 'HIT@5': '0.0032', 'NDCG@5': '0.0022', 'HIT@10': '0.0055', 'NDCG@10': '0.0029', 'MRR@10': '0.0022', 'HIT@20': '0.0147', 'NDCG@20': '0.0052'}
+{'epoch': 6, 'rec_avg_loss': '1.1856'}
+{'Epoch': 6, 'HIT@5': '0.0028', 'NDCG@5': '0.0018', 'HIT@10': '0.0055', 'NDCG@10': '0.0027', 'MRR@10': '0.0019', 'HIT@20': '0.0142', 'NDCG@20': '0.0049'}
+{'epoch': 7, 'rec_avg_loss': '1.1543'}
+{'Epoch': 7, 'HIT@5': '0.0023', 'NDCG@5': '0.0016', 'HIT@10': '0.0060', 'NDCG@10': '0.0028', 'MRR@10': '0.0019', 'HIT@20': '0.0156', 'NDCG@20': '0.0052'}
+{'epoch': 8, 'rec_avg_loss': '1.1259'}
+{'Epoch': 8, 'HIT@5': '0.0028', 'NDCG@5': '0.0018', 'HIT@10': '0.0083', 'NDCG@10': '0.0035', 'MRR@10': '0.0021', 'HIT@20': '0.0156', 'NDCG@20': '0.0053'}
+{'epoch': 9, 'rec_avg_loss': '1.1017'}
+{'Epoch': 9, 'HIT@5': '0.0032', 'NDCG@5': '0.0020', 'HIT@10': '0.0092', 'NDCG@10': '0.0038', 'MRR@10': '0.0023', 'HIT@20': '0.0165', 'NDCG@20': '0.0057'}
+{'epoch': 10, 'rec_avg_loss': '1.0795'}
+{'Epoch': 10, 'HIT@5': '0.0032', 'NDCG@5': '0.0020', 'HIT@10': '0.0092', 'NDCG@10': '0.0038', 'MRR@10': '0.0023', 'HIT@20': '0.0179', 'NDCG@20': '0.0060'}
+{'epoch': 11, 'rec_avg_loss': '1.0629'}
+{'Epoch': 11, 'HIT@5': '0.0028', 'NDCG@5': '0.0018', 'HIT@10': '0.0073', 'NDCG@10': '0.0033', 'MRR@10': '0.0021', 'HIT@20': '0.0193', 'NDCG@20': '0.0063'}
+{'epoch': 12, 'rec_avg_loss': '1.0445'}
+{'Epoch': 12, 'HIT@5': '0.0028', 'NDCG@5': '0.0018', 'HIT@10': '0.0078', 'NDCG@10': '0.0035', 'MRR@10': '0.0022', 'HIT@20': '0.0193', 'NDCG@20': '0.0063'}
+{'epoch': 13, 'rec_avg_loss': '1.0317'}
+{'Epoch': 13, 'HIT@5': '0.0028', 'NDCG@5': '0.0018', 'HIT@10': '0.0083', 'NDCG@10': '0.0036', 'MRR@10': '0.0022', 'HIT@20': '0.0174', 'NDCG@20': '0.0059'}
+{'epoch': 14, 'rec_avg_loss': '1.0127'}
+{'Epoch': 14, 'HIT@5': '0.0032', 'NDCG@5': '0.0020', 'HIT@10': '0.0078', 'NDCG@10': '0.0034', 'MRR@10': '0.0022', 'HIT@20': '0.0170', 'NDCG@20': '0.0058'}
+{'epoch': 15, 'rec_avg_loss': '0.9990'}
+{'Epoch': 15, 'HIT@5': '0.0046', 'NDCG@5': '0.0026', 'HIT@10': '0.0078', 'NDCG@10': '0.0036', 'MRR@10': '0.0023', 'HIT@20': '0.0161', 'NDCG@20': '0.0057'}
+{'epoch': 16, 'rec_avg_loss': '0.9811'}
+{'Epoch': 16, 'HIT@5': '0.0037', 'NDCG@5': '0.0022', 'HIT@10': '0.0069', 'NDCG@10': '0.0032', 'MRR@10': '0.0022', 'HIT@20': '0.0156', 'NDCG@20': '0.0054'}
+{'epoch': 17, 'rec_avg_loss': '0.9678'}
+{'Epoch': 17, 'HIT@5': '0.0037', 'NDCG@5': '0.0022', 'HIT@10': '0.0078', 'NDCG@10': '0.0035', 'MRR@10': '0.0023', 'HIT@20': '0.0161', 'NDCG@20': '0.0056'}
+{'epoch': 18, 'rec_avg_loss': '0.9542'}
+{'Epoch': 18, 'HIT@5': '0.0037', 'NDCG@5': '0.0024', 'HIT@10': '0.0092', 'NDCG@10': '0.0042', 'MRR@10': '0.0027', 'HIT@20': '0.0174', 'NDCG@20': '0.0062'}
+{'epoch': 19, 'rec_avg_loss': '0.9375'}
+{'Epoch': 19, 'HIT@5': '0.0055', 'NDCG@5': '0.0032', 'HIT@10': '0.0110', 'NDCG@10': '0.0050', 'MRR@10': '0.0032', 'HIT@20': '0.0179', 'NDCG@20': '0.0067'}
+{'epoch': 20, 'rec_avg_loss': '0.9256'}
+{'Epoch': 20, 'HIT@5': '0.0041', 'NDCG@5': '0.0026', 'HIT@10': '0.0115', 'NDCG@10': '0.0051', 'MRR@10': '0.0032', 'HIT@20': '0.0193', 'NDCG@20': '0.0070'}
+{'epoch': 21, 'rec_avg_loss': '0.9102'}
+{'Epoch': 21, 'HIT@5': '0.0064', 'NDCG@5': '0.0036', 'HIT@10': '0.0133', 'NDCG@10': '0.0058', 'MRR@10': '0.0037', 'HIT@20': '0.0206', 'NDCG@20': '0.0077'}
+{'epoch': 22, 'rec_avg_loss': '0.8977'}
+{'Epoch': 22, 'HIT@5': '0.0064', 'NDCG@5': '0.0036', 'HIT@10': '0.0133', 'NDCG@10': '0.0058', 'MRR@10': '0.0035', 'HIT@20': '0.0216', 'NDCG@20': '0.0079'}
+{'epoch': 23, 'rec_avg_loss': '0.8832'}
+{'Epoch': 23, 'HIT@5': '0.0069', 'NDCG@5': '0.0040', 'HIT@10': '0.0128', 'NDCG@10': '0.0059', 'MRR@10': '0.0038', 'HIT@20': '0.0229', 'NDCG@20': '0.0084'}
+{'epoch': 24, 'rec_avg_loss': '0.8701'}
+{'Epoch': 24, 'HIT@5': '0.0078', 'NDCG@5': '0.0048', 'HIT@10': '0.0147', 'NDCG@10': '0.0071', 'MRR@10': '0.0048', 'HIT@20': '0.0252', 'NDCG@20': '0.0097'}
+{'epoch': 25, 'rec_avg_loss': '0.8554'}
+{'Epoch': 25, 'HIT@5': '0.0073', 'NDCG@5': '0.0046', 'HIT@10': '0.0138', 'NDCG@10': '0.0066', 'MRR@10': '0.0045', 'HIT@20': '0.0266', 'NDCG@20': '0.0099'}
+{'epoch': 26, 'rec_avg_loss': '0.8440'}
+{'Epoch': 26, 'HIT@5': '0.0083', 'NDCG@5': '0.0053', 'HIT@10': '0.0142', 'NDCG@10': '0.0072', 'MRR@10': '0.0052', 'HIT@20': '0.0271', 'NDCG@20': '0.0105'}
+{'epoch': 27, 'rec_avg_loss': '0.8304'}
+{'Epoch': 27, 'HIT@5': '0.0092', 'NDCG@5': '0.0058', 'HIT@10': '0.0161', 'NDCG@10': '0.0079', 'MRR@10': '0.0055', 'HIT@20': '0.0294', 'NDCG@20': '0.0113'}
+{'epoch': 28, 'rec_avg_loss': '0.8158'}
+{'Epoch': 28, 'HIT@5': '0.0087', 'NDCG@5': '0.0052', 'HIT@10': '0.0165', 'NDCG@10': '0.0076', 'MRR@10': '0.0051', 'HIT@20': '0.0298', 'NDCG@20': '0.0110'}
+{'epoch': 29, 'rec_avg_loss': '0.8028'}
+{'Epoch': 29, 'HIT@5': '0.0078', 'NDCG@5': '0.0048', 'HIT@10': '0.0170', 'NDCG@10': '0.0077', 'MRR@10': '0.0050', 'HIT@20': '0.0289', 'NDCG@20': '0.0107'}
+{'epoch': 30, 'rec_avg_loss': '0.7924'}
+{'Epoch': 30, 'HIT@5': '0.0064', 'NDCG@5': '0.0039', 'HIT@10': '0.0183', 'NDCG@10': '0.0077', 'MRR@10': '0.0046', 'HIT@20': '0.0307', 'NDCG@20': '0.0108'}
+{'epoch': 31, 'rec_avg_loss': '0.7802'}
+{'Epoch': 31, 'HIT@5': '0.0064', 'NDCG@5': '0.0042', 'HIT@10': '0.0170', 'NDCG@10': '0.0075', 'MRR@10': '0.0048', 'HIT@20': '0.0312', 'NDCG@20': '0.0111'}
+{'epoch': 32, 'rec_avg_loss': '0.7664'}
+{'Epoch': 32, 'HIT@5': '0.0073', 'NDCG@5': '0.0047', 'HIT@10': '0.0183', 'NDCG@10': '0.0081', 'MRR@10': '0.0052', 'HIT@20': '0.0326', 'NDCG@20': '0.0117'}
+{'epoch': 33, 'rec_avg_loss': '0.7585'}
+{'Epoch': 33, 'HIT@5': '0.0087', 'NDCG@5': '0.0050', 'HIT@10': '0.0188', 'NDCG@10': '0.0081', 'MRR@10': '0.0050', 'HIT@20': '0.0349', 'NDCG@20': '0.0121'}
+{'epoch': 34, 'rec_avg_loss': '0.7421'}
+{'Epoch': 34, 'HIT@5': '0.0087', 'NDCG@5': '0.0051', 'HIT@10': '0.0211', 'NDCG@10': '0.0091', 'MRR@10': '0.0056', 'HIT@20': '0.0312', 'NDCG@20': '0.0116'}
+{'epoch': 35, 'rec_avg_loss': '0.7310'}
+{'Epoch': 35, 'HIT@5': '0.0092', 'NDCG@5': '0.0058', 'HIT@10': '0.0211', 'NDCG@10': '0.0097', 'MRR@10': '0.0063', 'HIT@20': '0.0321', 'NDCG@20': '0.0123'}
+{'epoch': 36, 'rec_avg_loss': '0.7191'}
+{'Epoch': 36, 'HIT@5': '0.0087', 'NDCG@5': '0.0055', 'HIT@10': '0.0211', 'NDCG@10': '0.0096', 'MRR@10': '0.0062', 'HIT@20': '0.0330', 'NDCG@20': '0.0125'}
+{'epoch': 37, 'rec_avg_loss': '0.7091'}
+{'Epoch': 37, 'HIT@5': '0.0087', 'NDCG@5': '0.0055', 'HIT@10': '0.0193', 'NDCG@10': '0.0089', 'MRR@10': '0.0058', 'HIT@20': '0.0339', 'NDCG@20': '0.0126'}
+{'epoch': 38, 'rec_avg_loss': '0.6970'}
+{'Epoch': 38, 'HIT@5': '0.0106', 'NDCG@5': '0.0064', 'HIT@10': '0.0197', 'NDCG@10': '0.0093', 'MRR@10': '0.0063', 'HIT@20': '0.0317', 'NDCG@20': '0.0123'}
+{'epoch': 39, 'rec_avg_loss': '0.6865'}
+{'Epoch': 39, 'HIT@5': '0.0101', 'NDCG@5': '0.0065', 'HIT@10': '0.0202', 'NDCG@10': '0.0097', 'MRR@10': '0.0066', 'HIT@20': '0.0317', 'NDCG@20': '0.0126'}
+{'epoch': 40, 'rec_avg_loss': '0.6753'}
+{'Epoch': 40, 'HIT@5': '0.0110', 'NDCG@5': '0.0069', 'HIT@10': '0.0188', 'NDCG@10': '0.0094', 'MRR@10': '0.0067', 'HIT@20': '0.0294', 'NDCG@20': '0.0121'}
+{'epoch': 41, 'rec_avg_loss': '0.6698'}
+{'Epoch': 41, 'HIT@5': '0.0106', 'NDCG@5': '0.0066', 'HIT@10': '0.0202', 'NDCG@10': '0.0097', 'MRR@10': '0.0066', 'HIT@20': '0.0321', 'NDCG@20': '0.0127'}
+{'epoch': 42, 'rec_avg_loss': '0.6549'}
+{'Epoch': 42, 'HIT@5': '0.0092', 'NDCG@5': '0.0053', 'HIT@10': '0.0211', 'NDCG@10': '0.0091', 'MRR@10': '0.0056', 'HIT@20': '0.0330', 'NDCG@20': '0.0121'}
+{'epoch': 43, 'rec_avg_loss': '0.6483'}
+{'Epoch': 43, 'HIT@5': '0.0083', 'NDCG@5': '0.0052', 'HIT@10': '0.0206', 'NDCG@10': '0.0091', 'MRR@10': '0.0058', 'HIT@20': '0.0330', 'NDCG@20': '0.0122'}
+{'epoch': 44, 'rec_avg_loss': '0.6388'}
+{'Epoch': 44, 'HIT@5': '0.0078', 'NDCG@5': '0.0043', 'HIT@10': '0.0197', 'NDCG@10': '0.0081', 'MRR@10': '0.0047', 'HIT@20': '0.0321', 'NDCG@20': '0.0112'}
+{'epoch': 45, 'rec_avg_loss': '0.6292'}
+{'Epoch': 45, 'HIT@5': '0.0078', 'NDCG@5': '0.0043', 'HIT@10': '0.0188', 'NDCG@10': '0.0078', 'MRR@10': '0.0046', 'HIT@20': '0.0317', 'NDCG@20': '0.0111'}
+{'epoch': 46, 'rec_avg_loss': '0.6171'}
+{'Epoch': 46, 'HIT@5': '0.0083', 'NDCG@5': '0.0046', 'HIT@10': '0.0188', 'NDCG@10': '0.0080', 'MRR@10': '0.0048', 'HIT@20': '0.0312', 'NDCG@20': '0.0112'}
+{'epoch': 47, 'rec_avg_loss': '0.6062'}
+{'Epoch': 47, 'HIT@5': '0.0073', 'NDCG@5': '0.0044', 'HIT@10': '0.0193', 'NDCG@10': '0.0083', 'MRR@10': '0.0051', 'HIT@20': '0.0312', 'NDCG@20': '0.0113'}
+{'epoch': 48, 'rec_avg_loss': '0.6010'}
+{'Epoch': 48, 'HIT@5': '0.0069', 'NDCG@5': '0.0041', 'HIT@10': '0.0193', 'NDCG@10': '0.0081', 'MRR@10': '0.0049', 'HIT@20': '0.0326', 'NDCG@20': '0.0115'}
+{'epoch': 49, 'rec_avg_loss': '0.5854'}
+{'Epoch': 49, 'HIT@5': '0.0073', 'NDCG@5': '0.0042', 'HIT@10': '0.0174', 'NDCG@10': '0.0075', 'MRR@10': '0.0045', 'HIT@20': '0.0330', 'NDCG@20': '0.0114'}
+{'epoch': 50, 'rec_avg_loss': '0.5805'}
+{'Epoch': 50, 'HIT@5': '0.0064', 'NDCG@5': '0.0039', 'HIT@10': '0.0179', 'NDCG@10': '0.0076', 'MRR@10': '0.0046', 'HIT@20': '0.0317', 'NDCG@20': '0.0110'}
+{'epoch': 51, 'rec_avg_loss': '0.5717'}
+{'Epoch': 51, 'HIT@5': '0.0064', 'NDCG@5': '0.0039', 'HIT@10': '0.0193', 'NDCG@10': '0.0080', 'MRR@10': '0.0048', 'HIT@20': '0.0326', 'NDCG@20': '0.0114'}
+{'Epoch': 0, 'HIT@5': '0.0110', 'NDCG@5': '0.0073', 'HIT@10': '0.0220', 'NDCG@10': '0.0109', 'MRR@10': '0.0076', 'HIT@20': '0.0330', 'NDCG@20': '0.0136'}
+SASRec-SportsLong_ours-1
+{'Epoch': 0, 'HIT@5': '0.0110', 'NDCG@5': '0.0073', 'HIT@10': '0.0220', 'NDCG@10': '0.0109', 'MRR@10': '0.0076', 'HIT@20': '0.0330', 'NDCG@20': '0.0136'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                     SportsLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-SportsLong_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :         ../data/SportsLong_ours.txt
+item_size                      :                               14557
+log_file                       : output/SASRec-SportsLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='SportsLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2023, star_test=0, eval_mode='full', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-SportsLong_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/SportsLong_ours.txt', item_size=14557, log_file='output/SASRec-SportsLong_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0110', 'NDCG@5': '0.0073', 'HIT@10': '0.0220', 'NDCG@10': '0.0109', 'MRR@10': '0.0076', 'HIT@20': '0.0330', 'NDCG@20': '0.0136'}
+{'Epoch': 0, 'HIT@5': '0.0119', 'NDCG@5': '0.0081', 'HIT@10': '0.0211', 'NDCG@10': '0.0111', 'MRR@10': '0.0081', 'HIT@20': '0.0353', 'NDCG@20': '0.0147'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                     SportsLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :         ../data/SportsLong_ours.txt
+item_size                      :                               14557
+log_file                       : output/SASRec-SportsLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='SportsLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2024, star_test=0, eval_mode='full', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/SportsLong_ours.txt', item_size=14557, log_file='output/SASRec-SportsLong_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3902'}
+{'epoch': 1, 'rec_avg_loss': '1.3674'}
+{'Epoch': 1, 'HIT@5': '0.0000', 'NDCG@5': '0.0000', 'HIT@10': '0.0000', 'NDCG@10': '0.0000', 'MRR@10': '0.0000', 'HIT@20': '0.0023', 'NDCG@20': '0.0006'}
+{'epoch': 2, 'rec_avg_loss': '1.3388'}
+{'Epoch': 2, 'HIT@5': '0.0037', 'NDCG@5': '0.0021', 'HIT@10': '0.0050', 'NDCG@10': '0.0026', 'MRR@10': '0.0018', 'HIT@20': '0.0073', 'NDCG@20': '0.0032'}
+{'epoch': 3, 'rec_avg_loss': '1.2988'}
+{'Epoch': 3, 'HIT@5': '0.0046', 'NDCG@5': '0.0022', 'HIT@10': '0.0069', 'NDCG@10': '0.0030', 'MRR@10': '0.0018', 'HIT@20': '0.0142', 'NDCG@20': '0.0049'}
+{'epoch': 4, 'rec_avg_loss': '1.2556'}
+{'Epoch': 4, 'HIT@5': '0.0046', 'NDCG@5': '0.0022', 'HIT@10': '0.0083', 'NDCG@10': '0.0033', 'MRR@10': '0.0019', 'HIT@20': '0.0156', 'NDCG@20': '0.0052'}
+{'epoch': 5, 'rec_avg_loss': '1.2116'}
+{'Epoch': 5, 'HIT@5': '0.0037', 'NDCG@5': '0.0020', 'HIT@10': '0.0060', 'NDCG@10': '0.0027', 'MRR@10': '0.0017', 'HIT@20': '0.0156', 'NDCG@20': '0.0051'}
+{'epoch': 6, 'rec_avg_loss': '1.1738'}
+{'Epoch': 6, 'HIT@5': '0.0023', 'NDCG@5': '0.0016', 'HIT@10': '0.0055', 'NDCG@10': '0.0026', 'MRR@10': '0.0018', 'HIT@20': '0.0161', 'NDCG@20': '0.0053'}
+{'epoch': 7, 'rec_avg_loss': '1.1431'}
+{'Epoch': 7, 'HIT@5': '0.0018', 'NDCG@5': '0.0012', 'HIT@10': '0.0060', 'NDCG@10': '0.0026', 'MRR@10': '0.0016', 'HIT@20': '0.0147', 'NDCG@20': '0.0048'}
+{'epoch': 8, 'rec_avg_loss': '1.1181'}
+{'Epoch': 8, 'HIT@5': '0.0018', 'NDCG@5': '0.0015', 'HIT@10': '0.0073', 'NDCG@10': '0.0033', 'MRR@10': '0.0021', 'HIT@20': '0.0147', 'NDCG@20': '0.0051'}
+{'epoch': 9, 'rec_avg_loss': '1.0984'}
+{'Epoch': 9, 'HIT@5': '0.0028', 'NDCG@5': '0.0016', 'HIT@10': '0.0073', 'NDCG@10': '0.0031', 'MRR@10': '0.0019', 'HIT@20': '0.0161', 'NDCG@20': '0.0054'}
+{'epoch': 10, 'rec_avg_loss': '1.0768'}
+{'Epoch': 10, 'HIT@5': '0.0037', 'NDCG@5': '0.0020', 'HIT@10': '0.0078', 'NDCG@10': '0.0033', 'MRR@10': '0.0019', 'HIT@20': '0.0165', 'NDCG@20': '0.0054'}
+{'epoch': 11, 'rec_avg_loss': '1.0629'}
+{'Epoch': 11, 'HIT@5': '0.0037', 'NDCG@5': '0.0021', 'HIT@10': '0.0083', 'NDCG@10': '0.0035', 'MRR@10': '0.0021', 'HIT@20': '0.0165', 'NDCG@20': '0.0056'}
+{'epoch': 12, 'rec_avg_loss': '1.0434'}
+{'Epoch': 12, 'HIT@5': '0.0032', 'NDCG@5': '0.0021', 'HIT@10': '0.0087', 'NDCG@10': '0.0038', 'MRR@10': '0.0023', 'HIT@20': '0.0188', 'NDCG@20': '0.0062'}
+{'epoch': 13, 'rec_avg_loss': '1.0269'}
+{'Epoch': 13, 'HIT@5': '0.0037', 'NDCG@5': '0.0023', 'HIT@10': '0.0083', 'NDCG@10': '0.0038', 'MRR@10': '0.0025', 'HIT@20': '0.0179', 'NDCG@20': '0.0062'}
+{'epoch': 14, 'rec_avg_loss': '1.0095'}
+{'Epoch': 14, 'HIT@5': '0.0050', 'NDCG@5': '0.0029', 'HIT@10': '0.0092', 'NDCG@10': '0.0042', 'MRR@10': '0.0027', 'HIT@20': '0.0165', 'NDCG@20': '0.0060'}
+{'epoch': 15, 'rec_avg_loss': '0.9952'}
+{'Epoch': 15, 'HIT@5': '0.0046', 'NDCG@5': '0.0027', 'HIT@10': '0.0087', 'NDCG@10': '0.0041', 'MRR@10': '0.0027', 'HIT@20': '0.0156', 'NDCG@20': '0.0058'}
+{'epoch': 16, 'rec_avg_loss': '0.9825'}
+{'Epoch': 16, 'HIT@5': '0.0046', 'NDCG@5': '0.0026', 'HIT@10': '0.0096', 'NDCG@10': '0.0042', 'MRR@10': '0.0026', 'HIT@20': '0.0161', 'NDCG@20': '0.0058'}
+{'epoch': 17, 'rec_avg_loss': '0.9651'}
+{'Epoch': 17, 'HIT@5': '0.0041', 'NDCG@5': '0.0025', 'HIT@10': '0.0106', 'NDCG@10': '0.0045', 'MRR@10': '0.0027', 'HIT@20': '0.0165', 'NDCG@20': '0.0060'}
+{'epoch': 18, 'rec_avg_loss': '0.9527'}
+{'Epoch': 18, 'HIT@5': '0.0050', 'NDCG@5': '0.0030', 'HIT@10': '0.0110', 'NDCG@10': '0.0049', 'MRR@10': '0.0031', 'HIT@20': '0.0179', 'NDCG@20': '0.0066'}
+{'epoch': 19, 'rec_avg_loss': '0.9397'}
+{'Epoch': 19, 'HIT@5': '0.0050', 'NDCG@5': '0.0031', 'HIT@10': '0.0106', 'NDCG@10': '0.0048', 'MRR@10': '0.0031', 'HIT@20': '0.0193', 'NDCG@20': '0.0070'}
+{'epoch': 20, 'rec_avg_loss': '0.9211'}
+{'Epoch': 20, 'HIT@5': '0.0055', 'NDCG@5': '0.0033', 'HIT@10': '0.0110', 'NDCG@10': '0.0050', 'MRR@10': '0.0033', 'HIT@20': '0.0188', 'NDCG@20': '0.0070'}
+{'epoch': 21, 'rec_avg_loss': '0.9111'}
+{'Epoch': 21, 'HIT@5': '0.0060', 'NDCG@5': '0.0036', 'HIT@10': '0.0110', 'NDCG@10': '0.0052', 'MRR@10': '0.0034', 'HIT@20': '0.0193', 'NDCG@20': '0.0073'}
+{'epoch': 22, 'rec_avg_loss': '0.8982'}
+{'Epoch': 22, 'HIT@5': '0.0064', 'NDCG@5': '0.0034', 'HIT@10': '0.0101', 'NDCG@10': '0.0046', 'MRR@10': '0.0029', 'HIT@20': '0.0206', 'NDCG@20': '0.0073'}
+{'epoch': 23, 'rec_avg_loss': '0.8862'}
+{'Epoch': 23, 'HIT@5': '0.0083', 'NDCG@5': '0.0042', 'HIT@10': '0.0119', 'NDCG@10': '0.0054', 'MRR@10': '0.0034', 'HIT@20': '0.0197', 'NDCG@20': '0.0073'}
+{'epoch': 24, 'rec_avg_loss': '0.8695'}
+{'Epoch': 24, 'HIT@5': '0.0096', 'NDCG@5': '0.0049', 'HIT@10': '0.0124', 'NDCG@10': '0.0058', 'MRR@10': '0.0037', 'HIT@20': '0.0225', 'NDCG@20': '0.0083'}
+{'epoch': 25, 'rec_avg_loss': '0.8556'}
+{'Epoch': 25, 'HIT@5': '0.0096', 'NDCG@5': '0.0049', 'HIT@10': '0.0115', 'NDCG@10': '0.0055', 'MRR@10': '0.0036', 'HIT@20': '0.0234', 'NDCG@20': '0.0084'}
+{'epoch': 26, 'rec_avg_loss': '0.8432'}
+{'Epoch': 26, 'HIT@5': '0.0073', 'NDCG@5': '0.0039', 'HIT@10': '0.0115', 'NDCG@10': '0.0052', 'MRR@10': '0.0033', 'HIT@20': '0.0234', 'NDCG@20': '0.0082'}
+{'epoch': 27, 'rec_avg_loss': '0.8307'}
+{'Epoch': 27, 'HIT@5': '0.0078', 'NDCG@5': '0.0043', 'HIT@10': '0.0124', 'NDCG@10': '0.0058', 'MRR@10': '0.0037', 'HIT@20': '0.0239', 'NDCG@20': '0.0086'}
+{'epoch': 28, 'rec_avg_loss': '0.8140'}
+{'Epoch': 28, 'HIT@5': '0.0087', 'NDCG@5': '0.0048', 'HIT@10': '0.0128', 'NDCG@10': '0.0061', 'MRR@10': '0.0040', 'HIT@20': '0.0243', 'NDCG@20': '0.0089'}
+{'epoch': 29, 'rec_avg_loss': '0.8051'}
+{'Epoch': 29, 'HIT@5': '0.0087', 'NDCG@5': '0.0050', 'HIT@10': '0.0119', 'NDCG@10': '0.0060', 'MRR@10': '0.0042', 'HIT@20': '0.0252', 'NDCG@20': '0.0094'}
+{'epoch': 30, 'rec_avg_loss': '0.7914'}
+{'Epoch': 30, 'HIT@5': '0.0101', 'NDCG@5': '0.0057', 'HIT@10': '0.0142', 'NDCG@10': '0.0070', 'MRR@10': '0.0048', 'HIT@20': '0.0271', 'NDCG@20': '0.0102'}
+{'epoch': 31, 'rec_avg_loss': '0.7825'}
+{'Epoch': 31, 'HIT@5': '0.0106', 'NDCG@5': '0.0060', 'HIT@10': '0.0147', 'NDCG@10': '0.0073', 'MRR@10': '0.0050', 'HIT@20': '0.0261', 'NDCG@20': '0.0102'}
+{'epoch': 32, 'rec_avg_loss': '0.7655'}
+{'Epoch': 32, 'HIT@5': '0.0106', 'NDCG@5': '0.0066', 'HIT@10': '0.0151', 'NDCG@10': '0.0081', 'MRR@10': '0.0059', 'HIT@20': '0.0261', 'NDCG@20': '0.0109'}
+{'epoch': 33, 'rec_avg_loss': '0.7580'}
+{'Epoch': 33, 'HIT@5': '0.0101', 'NDCG@5': '0.0061', 'HIT@10': '0.0165', 'NDCG@10': '0.0082', 'MRR@10': '0.0056', 'HIT@20': '0.0261', 'NDCG@20': '0.0106'}
+{'epoch': 34, 'rec_avg_loss': '0.7411'}
+{'Epoch': 34, 'HIT@5': '0.0110', 'NDCG@5': '0.0066', 'HIT@10': '0.0170', 'NDCG@10': '0.0085', 'MRR@10': '0.0059', 'HIT@20': '0.0294', 'NDCG@20': '0.0117'}
+{'epoch': 35, 'rec_avg_loss': '0.7359'}
+{'Epoch': 35, 'HIT@5': '0.0110', 'NDCG@5': '0.0066', 'HIT@10': '0.0183', 'NDCG@10': '0.0089', 'MRR@10': '0.0061', 'HIT@20': '0.0289', 'NDCG@20': '0.0116'}
+{'epoch': 36, 'rec_avg_loss': '0.7192'}
+{'Epoch': 36, 'HIT@5': '0.0115', 'NDCG@5': '0.0069', 'HIT@10': '0.0197', 'NDCG@10': '0.0095', 'MRR@10': '0.0065', 'HIT@20': '0.0294', 'NDCG@20': '0.0120'}
+{'epoch': 37, 'rec_avg_loss': '0.7125'}
+{'Epoch': 37, 'HIT@5': '0.0106', 'NDCG@5': '0.0067', 'HIT@10': '0.0206', 'NDCG@10': '0.0099', 'MRR@10': '0.0067', 'HIT@20': '0.0294', 'NDCG@20': '0.0121'}
+{'epoch': 38, 'rec_avg_loss': '0.6981'}
+{'Epoch': 38, 'HIT@5': '0.0096', 'NDCG@5': '0.0062', 'HIT@10': '0.0197', 'NDCG@10': '0.0094', 'MRR@10': '0.0063', 'HIT@20': '0.0284', 'NDCG@20': '0.0116'}
+{'epoch': 39, 'rec_avg_loss': '0.6922'}
+{'Epoch': 39, 'HIT@5': '0.0110', 'NDCG@5': '0.0068', 'HIT@10': '0.0183', 'NDCG@10': '0.0091', 'MRR@10': '0.0064', 'HIT@20': '0.0294', 'NDCG@20': '0.0119'}
+{'epoch': 40, 'rec_avg_loss': '0.6823'}
+{'Epoch': 40, 'HIT@5': '0.0115', 'NDCG@5': '0.0068', 'HIT@10': '0.0179', 'NDCG@10': '0.0088', 'MRR@10': '0.0060', 'HIT@20': '0.0307', 'NDCG@20': '0.0119'}
+{'epoch': 41, 'rec_avg_loss': '0.6694'}
+{'Epoch': 41, 'HIT@5': '0.0096', 'NDCG@5': '0.0058', 'HIT@10': '0.0179', 'NDCG@10': '0.0084', 'MRR@10': '0.0056', 'HIT@20': '0.0307', 'NDCG@20': '0.0116'}
+{'epoch': 42, 'rec_avg_loss': '0.6608'}
+{'Epoch': 42, 'HIT@5': '0.0106', 'NDCG@5': '0.0061', 'HIT@10': '0.0179', 'NDCG@10': '0.0083', 'MRR@10': '0.0055', 'HIT@20': '0.0298', 'NDCG@20': '0.0114'}
+{'epoch': 43, 'rec_avg_loss': '0.6520'}
+{'Epoch': 43, 'HIT@5': '0.0101', 'NDCG@5': '0.0062', 'HIT@10': '0.0179', 'NDCG@10': '0.0086', 'MRR@10': '0.0058', 'HIT@20': '0.0284', 'NDCG@20': '0.0113'}
+{'epoch': 44, 'rec_avg_loss': '0.6393'}
+{'Epoch': 44, 'HIT@5': '0.0101', 'NDCG@5': '0.0062', 'HIT@10': '0.0179', 'NDCG@10': '0.0088', 'MRR@10': '0.0060', 'HIT@20': '0.0294', 'NDCG@20': '0.0117'}
+{'epoch': 45, 'rec_avg_loss': '0.6292'}
+{'Epoch': 45, 'HIT@5': '0.0106', 'NDCG@5': '0.0064', 'HIT@10': '0.0193', 'NDCG@10': '0.0091', 'MRR@10': '0.0061', 'HIT@20': '0.0312', 'NDCG@20': '0.0122'}
+{'epoch': 46, 'rec_avg_loss': '0.6243'}
+{'Epoch': 46, 'HIT@5': '0.0096', 'NDCG@5': '0.0061', 'HIT@10': '0.0202', 'NDCG@10': '0.0094', 'MRR@10': '0.0062', 'HIT@20': '0.0307', 'NDCG@20': '0.0120'}
+{'epoch': 47, 'rec_avg_loss': '0.6121'}
+{'Epoch': 47, 'HIT@5': '0.0106', 'NDCG@5': '0.0065', 'HIT@10': '0.0197', 'NDCG@10': '0.0095', 'MRR@10': '0.0064', 'HIT@20': '0.0326', 'NDCG@20': '0.0127'}
+{'epoch': 48, 'rec_avg_loss': '0.6039'}
+{'Epoch': 48, 'HIT@5': '0.0101', 'NDCG@5': '0.0063', 'HIT@10': '0.0206', 'NDCG@10': '0.0096', 'MRR@10': '0.0064', 'HIT@20': '0.0326', 'NDCG@20': '0.0127'}
+{'epoch': 49, 'rec_avg_loss': '0.5947'}
+{'Epoch': 49, 'HIT@5': '0.0101', 'NDCG@5': '0.0062', 'HIT@10': '0.0197', 'NDCG@10': '0.0093', 'MRR@10': '0.0062', 'HIT@20': '0.0330', 'NDCG@20': '0.0127'}
+{'epoch': 50, 'rec_avg_loss': '0.5895'}
+{'Epoch': 50, 'HIT@5': '0.0119', 'NDCG@5': '0.0068', 'HIT@10': '0.0202', 'NDCG@10': '0.0094', 'MRR@10': '0.0062', 'HIT@20': '0.0321', 'NDCG@20': '0.0124'}
+{'epoch': 51, 'rec_avg_loss': '0.5810'}
+{'Epoch': 51, 'HIT@5': '0.0115', 'NDCG@5': '0.0068', 'HIT@10': '0.0211', 'NDCG@10': '0.0098', 'MRR@10': '0.0065', 'HIT@20': '0.0326', 'NDCG@20': '0.0127'}
+{'epoch': 52, 'rec_avg_loss': '0.5728'}
+{'Epoch': 52, 'HIT@5': '0.0115', 'NDCG@5': '0.0067', 'HIT@10': '0.0193', 'NDCG@10': '0.0093', 'MRR@10': '0.0062', 'HIT@20': '0.0326', 'NDCG@20': '0.0127'}
+{'epoch': 53, 'rec_avg_loss': '0.5600'}
+{'Epoch': 53, 'HIT@5': '0.0128', 'NDCG@5': '0.0075', 'HIT@10': '0.0225', 'NDCG@10': '0.0105', 'MRR@10': '0.0069', 'HIT@20': '0.0349', 'NDCG@20': '0.0136'}
+{'epoch': 54, 'rec_avg_loss': '0.5542'}
+{'Epoch': 54, 'HIT@5': '0.0115', 'NDCG@5': '0.0072', 'HIT@10': '0.0216', 'NDCG@10': '0.0105', 'MRR@10': '0.0072', 'HIT@20': '0.0321', 'NDCG@20': '0.0131'}
+{'epoch': 55, 'rec_avg_loss': '0.5479'}
+{'Epoch': 55, 'HIT@5': '0.0119', 'NDCG@5': '0.0071', 'HIT@10': '0.0216', 'NDCG@10': '0.0102', 'MRR@10': '0.0068', 'HIT@20': '0.0330', 'NDCG@20': '0.0130'}
+{'epoch': 56, 'rec_avg_loss': '0.5443'}
+{'Epoch': 56, 'HIT@5': '0.0128', 'NDCG@5': '0.0073', 'HIT@10': '0.0206', 'NDCG@10': '0.0098', 'MRR@10': '0.0065', 'HIT@20': '0.0335', 'NDCG@20': '0.0130'}
+{'epoch': 57, 'rec_avg_loss': '0.5322'}
+{'Epoch': 57, 'HIT@5': '0.0119', 'NDCG@5': '0.0069', 'HIT@10': '0.0197', 'NDCG@10': '0.0094', 'MRR@10': '0.0063', 'HIT@20': '0.0330', 'NDCG@20': '0.0128'}
+{'epoch': 58, 'rec_avg_loss': '0.5258'}
+{'Epoch': 58, 'HIT@5': '0.0124', 'NDCG@5': '0.0073', 'HIT@10': '0.0211', 'NDCG@10': '0.0101', 'MRR@10': '0.0069', 'HIT@20': '0.0339', 'NDCG@20': '0.0134'}
+{'epoch': 59, 'rec_avg_loss': '0.5233'}
+{'Epoch': 59, 'HIT@5': '0.0115', 'NDCG@5': '0.0069', 'HIT@10': '0.0220', 'NDCG@10': '0.0103', 'MRR@10': '0.0068', 'HIT@20': '0.0349', 'NDCG@20': '0.0135'}
+{'epoch': 60, 'rec_avg_loss': '0.5121'}
+{'Epoch': 60, 'HIT@5': '0.0119', 'NDCG@5': '0.0072', 'HIT@10': '0.0234', 'NDCG@10': '0.0108', 'MRR@10': '0.0071', 'HIT@20': '0.0344', 'NDCG@20': '0.0136'}
+{'epoch': 61, 'rec_avg_loss': '0.5080'}
+{'Epoch': 61, 'HIT@5': '0.0128', 'NDCG@5': '0.0078', 'HIT@10': '0.0229', 'NDCG@10': '0.0110', 'MRR@10': '0.0075', 'HIT@20': '0.0335', 'NDCG@20': '0.0137'}
+{'epoch': 62, 'rec_avg_loss': '0.5024'}
+{'Epoch': 62, 'HIT@5': '0.0147', 'NDCG@5': '0.0088', 'HIT@10': '0.0206', 'NDCG@10': '0.0107', 'MRR@10': '0.0077', 'HIT@20': '0.0344', 'NDCG@20': '0.0142'}
+{'epoch': 63, 'rec_avg_loss': '0.4935'}
+{'Epoch': 63, 'HIT@5': '0.0147', 'NDCG@5': '0.0086', 'HIT@10': '0.0202', 'NDCG@10': '0.0103', 'MRR@10': '0.0073', 'HIT@20': '0.0349', 'NDCG@20': '0.0140'}
+{'epoch': 64, 'rec_avg_loss': '0.4870'}
+{'Epoch': 64, 'HIT@5': '0.0133', 'NDCG@5': '0.0082', 'HIT@10': '0.0211', 'NDCG@10': '0.0106', 'MRR@10': '0.0074', 'HIT@20': '0.0344', 'NDCG@20': '0.0139'}
+{'epoch': 65, 'rec_avg_loss': '0.4829'}
+{'Epoch': 65, 'HIT@5': '0.0142', 'NDCG@5': '0.0084', 'HIT@10': '0.0216', 'NDCG@10': '0.0107', 'MRR@10': '0.0074', 'HIT@20': '0.0349', 'NDCG@20': '0.0140'}
+{'epoch': 66, 'rec_avg_loss': '0.4738'}
+{'Epoch': 66, 'HIT@5': '0.0142', 'NDCG@5': '0.0085', 'HIT@10': '0.0220', 'NDCG@10': '0.0110', 'MRR@10': '0.0077', 'HIT@20': '0.0362', 'NDCG@20': '0.0146'}
+{'epoch': 67, 'rec_avg_loss': '0.4677'}
+{'Epoch': 67, 'HIT@5': '0.0142', 'NDCG@5': '0.0083', 'HIT@10': '0.0216', 'NDCG@10': '0.0107', 'MRR@10': '0.0074', 'HIT@20': '0.0372', 'NDCG@20': '0.0147'}
+{'epoch': 68, 'rec_avg_loss': '0.4685'}
+{'Epoch': 68, 'HIT@5': '0.0142', 'NDCG@5': '0.0083', 'HIT@10': '0.0206', 'NDCG@10': '0.0105', 'MRR@10': '0.0073', 'HIT@20': '0.0335', 'NDCG@20': '0.0137'}
+{'epoch': 69, 'rec_avg_loss': '0.4587'}
+{'Epoch': 69, 'HIT@5': '0.0151', 'NDCG@5': '0.0088', 'HIT@10': '0.0211', 'NDCG@10': '0.0107', 'MRR@10': '0.0075', 'HIT@20': '0.0339', 'NDCG@20': '0.0139'}
+{'epoch': 70, 'rec_avg_loss': '0.4533'}
+{'Epoch': 70, 'HIT@5': '0.0151', 'NDCG@5': '0.0087', 'HIT@10': '0.0216', 'NDCG@10': '0.0107', 'MRR@10': '0.0074', 'HIT@20': '0.0353', 'NDCG@20': '0.0142'}
+{'epoch': 71, 'rec_avg_loss': '0.4474'}
+{'Epoch': 71, 'HIT@5': '0.0147', 'NDCG@5': '0.0085', 'HIT@10': '0.0220', 'NDCG@10': '0.0109', 'MRR@10': '0.0075', 'HIT@20': '0.0321', 'NDCG@20': '0.0134'}
+{'epoch': 72, 'rec_avg_loss': '0.4446'}
+{'Epoch': 72, 'HIT@5': '0.0128', 'NDCG@5': '0.0076', 'HIT@10': '0.0211', 'NDCG@10': '0.0103', 'MRR@10': '0.0070', 'HIT@20': '0.0358', 'NDCG@20': '0.0139'}
+{'epoch': 73, 'rec_avg_loss': '0.4372'}
+{'Epoch': 73, 'HIT@5': '0.0147', 'NDCG@5': '0.0083', 'HIT@10': '0.0211', 'NDCG@10': '0.0104', 'MRR@10': '0.0071', 'HIT@20': '0.0372', 'NDCG@20': '0.0144'}
+{'epoch': 74, 'rec_avg_loss': '0.4316'}
+{'Epoch': 74, 'HIT@5': '0.0138', 'NDCG@5': '0.0083', 'HIT@10': '0.0216', 'NDCG@10': '0.0108', 'MRR@10': '0.0076', 'HIT@20': '0.0367', 'NDCG@20': '0.0147'}
+{'epoch': 75, 'rec_avg_loss': '0.4272'}
+{'Epoch': 75, 'HIT@5': '0.0156', 'NDCG@5': '0.0094', 'HIT@10': '0.0234', 'NDCG@10': '0.0118', 'MRR@10': '0.0083', 'HIT@20': '0.0381', 'NDCG@20': '0.0155'}
+{'epoch': 76, 'rec_avg_loss': '0.4191'}
+{'Epoch': 76, 'HIT@5': '0.0147', 'NDCG@5': '0.0089', 'HIT@10': '0.0229', 'NDCG@10': '0.0116', 'MRR@10': '0.0081', 'HIT@20': '0.0362', 'NDCG@20': '0.0149'}
+{'epoch': 77, 'rec_avg_loss': '0.4155'}
+{'Epoch': 77, 'HIT@5': '0.0142', 'NDCG@5': '0.0091', 'HIT@10': '0.0234', 'NDCG@10': '0.0121', 'MRR@10': '0.0087', 'HIT@20': '0.0390', 'NDCG@20': '0.0159'}
+{'epoch': 78, 'rec_avg_loss': '0.4153'}
+{'Epoch': 78, 'HIT@5': '0.0142', 'NDCG@5': '0.0090', 'HIT@10': '0.0239', 'NDCG@10': '0.0121', 'MRR@10': '0.0085', 'HIT@20': '0.0385', 'NDCG@20': '0.0157'}
+{'epoch': 79, 'rec_avg_loss': '0.4074'}
+{'Epoch': 79, 'HIT@5': '0.0151', 'NDCG@5': '0.0089', 'HIT@10': '0.0257', 'NDCG@10': '0.0123', 'MRR@10': '0.0083', 'HIT@20': '0.0381', 'NDCG@20': '0.0154'}
+{'epoch': 80, 'rec_avg_loss': '0.4047'}
+{'Epoch': 80, 'HIT@5': '0.0151', 'NDCG@5': '0.0086', 'HIT@10': '0.0248', 'NDCG@10': '0.0117', 'MRR@10': '0.0078', 'HIT@20': '0.0372', 'NDCG@20': '0.0148'}
+{'epoch': 81, 'rec_avg_loss': '0.3980'}
+{'Epoch': 81, 'HIT@5': '0.0138', 'NDCG@5': '0.0081', 'HIT@10': '0.0243', 'NDCG@10': '0.0115', 'MRR@10': '0.0076', 'HIT@20': '0.0362', 'NDCG@20': '0.0145'}
+{'epoch': 82, 'rec_avg_loss': '0.3972'}
+{'Epoch': 82, 'HIT@5': '0.0124', 'NDCG@5': '0.0075', 'HIT@10': '0.0252', 'NDCG@10': '0.0116', 'MRR@10': '0.0076', 'HIT@20': '0.0372', 'NDCG@20': '0.0146'}
+{'epoch': 83, 'rec_avg_loss': '0.3904'}
+{'Epoch': 83, 'HIT@5': '0.0124', 'NDCG@5': '0.0073', 'HIT@10': '0.0239', 'NDCG@10': '0.0110', 'MRR@10': '0.0072', 'HIT@20': '0.0353', 'NDCG@20': '0.0139'}
+{'epoch': 84, 'rec_avg_loss': '0.3886'}
+{'Epoch': 84, 'HIT@5': '0.0128', 'NDCG@5': '0.0075', 'HIT@10': '0.0211', 'NDCG@10': '0.0102', 'MRR@10': '0.0069', 'HIT@20': '0.0367', 'NDCG@20': '0.0142'}
+{'epoch': 85, 'rec_avg_loss': '0.3843'}
+{'Epoch': 85, 'HIT@5': '0.0138', 'NDCG@5': '0.0077', 'HIT@10': '0.0220', 'NDCG@10': '0.0103', 'MRR@10': '0.0068', 'HIT@20': '0.0367', 'NDCG@20': '0.0140'}
+{'epoch': 86, 'rec_avg_loss': '0.3792'}
+{'Epoch': 86, 'HIT@5': '0.0147', 'NDCG@5': '0.0082', 'HIT@10': '0.0229', 'NDCG@10': '0.0107', 'MRR@10': '0.0071', 'HIT@20': '0.0381', 'NDCG@20': '0.0145'}
+{'epoch': 87, 'rec_avg_loss': '0.3761'}
+{'Epoch': 87, 'HIT@5': '0.0133', 'NDCG@5': '0.0081', 'HIT@10': '0.0234', 'NDCG@10': '0.0113', 'MRR@10': '0.0077', 'HIT@20': '0.0381', 'NDCG@20': '0.0150'}
+{'Epoch': 0, 'HIT@5': '0.0156', 'NDCG@5': '0.0111', 'HIT@10': '0.0248', 'NDCG@10': '0.0140', 'MRR@10': '0.0108', 'HIT@20': '0.0404', 'NDCG@20': '0.0178'}
+SASRec-SportsLong_ours-1
+{'Epoch': 0, 'HIT@5': '0.0156', 'NDCG@5': '0.0111', 'HIT@10': '0.0248', 'NDCG@10': '0.0140', 'MRR@10': '0.0108', 'HIT@20': '0.0404', 'NDCG@20': '0.0178'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                     SportsLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-SportsLong_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :         ../data/SportsLong_ours.txt
+item_size                      :                               14557
+log_file                       : output/SASRec-SportsLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='SportsLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2024, star_test=0, eval_mode='full', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-SportsLong_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/SportsLong_ours.txt', item_size=14557, log_file='output/SASRec-SportsLong_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0156', 'NDCG@5': '0.0111', 'HIT@10': '0.0248', 'NDCG@10': '0.0140', 'MRR@10': '0.0108', 'HIT@20': '0.0404', 'NDCG@20': '0.0178'}
+{'Epoch': 0, 'HIT@5': '0.0156', 'NDCG@5': '0.0105', 'HIT@10': '0.0234', 'NDCG@10': '0.0131', 'MRR@10': '0.0100', 'HIT@20': '0.0358', 'NDCG@20': '0.0161'}

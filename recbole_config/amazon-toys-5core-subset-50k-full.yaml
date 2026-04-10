@@ -1,0 +1,28 @@
+# dataset + eval settings for RecBole (amazon-toys-5core-subset-50k, full-sort)
+data_path: data/amazon
+dataset: amazon-toys-5core-subset-50k
+field_separator: "\t"
+MAX_ITEM_LIST_LENGTH: 32
+
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+
+load_col:
+  inter: [user_id, item_id, rating, timestamp]
+
+eval_args:
+  group_by: user
+  order: TO
+  split:
+    LS: valid_and_test
+  mode: full
+
+metrics: ["Hit", "NDCG", "MRR"]
+topk: [10]
+
+# TimeWeaver dataset-specific weak augmentation setting (toys-50k-full only)
+time_aug_prob: 0.05
+time_aug_strength: 0.05
+contrastive_weight: 0.01

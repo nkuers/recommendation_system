@@ -1,0 +1,19 @@
+# model settings for Caser
+model: Caser
+model_name: Caser
+
+embedding_size: 64
+nv: 4
+nh: 8
+reg_weight: 0.0001
+dropout_prob: 0.2
+loss_type: CE
+
+learning_rate: 0.001
+epochs: 100
+early_stop: 10
+train_batch_size: 256
+eval_batch_size: 512
+neg_sampling: null
+show_progress: True
+seed: 2022

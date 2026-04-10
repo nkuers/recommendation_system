@@ -1,0 +1,260 @@
+data_dir                       :                               data/
+output_dir                     :                        output_fair/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                2023
+load_pretrain                  :                                   0
+gpu_id                         :                                   0
+noise_ratio                    :                                 0.0
+training_data_ratio            :                                 1.0
+similarity_model_name          :                          ItemCF_IUF
+base_augment_type              :                              random
+model_name                     :                              BASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+initializer_range              :                                0.02
+max_seq_length                 :                                  32
+lr                             :                               0.001
+batch_size                     :                                 256
+no_cuda                        :                                   0
+log_freq                       :                                   1
+seed                           :                                2023
+weight_decay                   :                                 0.0
+adam_beta1                     :                                 0.9
+adam_beta2                     :                               0.999
+augmentation_warm_up_epoches   :                                 500
+epochs                         :                                 100
+pretrain_epoch                 :                                   0
+start_valid                    :                                   0
+patience                       :                                  10
+eval_mode                      :                              uni100
+num_neg                        :                                 100
+eval_seed                      :                                2023
+n_pairs                        :                                   1
+n_whole_level                  :                                   1
+wml_weight                     :                                 1.0
+aml_weight                     :                                 1.0
+rec_weight                     :                                 1.0
+attention_probs_dropout_prob   :                                 0.2
+hidden_dropout_prob            :                                 0.2
+beta                           :                                 0.3
+rate_min                       :                                 0.2
+rate_max                       :                                0.51
+cuda_condition                 :                                   1
+data_file                      :           data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output_fair/BASRec-Electronics_ours-2023.txt
+Namespace(data_dir='data/', output_dir='output_fair/', data_name='Electronics_ours', do_eval=False, model_idx=2023, load_pretrain=False, gpu_id='0', noise_ratio=0.0, training_data_ratio=1.0, similarity_model_name='ItemCF_IUF', base_augment_type='random', model_name='BASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', initializer_range=0.02, max_seq_length=32, lr=0.001, batch_size=256, no_cuda=False, log_freq=1, seed=2023, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, augmentation_warm_up_epoches=500, epochs=100, pretrain_epoch=0, start_valid=0, patience=10, eval_mode='uni100', num_neg=100, eval_seed=2023, n_pairs=1, n_whole_level=1, wml_weight=1.0, aml_weight=1.0, rec_weight=1.0, attention_probs_dropout_prob=0.2, hidden_dropout_prob=0.2, beta=0.3, rate_min=0.2, rate_max=0.51, cuda_condition=True, data_file='data/Electronics_ours.txt', item_size=54723, log_file='output_fair/BASRec-Electronics_ours-2023.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3879'}
+{'epoch': 1, 'rec_avg_loss': '1.3441'}
+{'Epoch': 1, 'HIT@5': '0.0827', 'NDCG@5': '0.0541', 'HIT@10': '0.1407', 'NDCG@10': '0.0730', 'MRR@10': '0.0527', 'HIT@20': '0.2633', 'NDCG@20': '0.1037'}
+{'epoch': 2, 'rec_avg_loss': '1.3064'}
+{'Epoch': 2, 'HIT@5': '0.1193', 'NDCG@5': '0.0810', 'HIT@10': '0.1947', 'NDCG@10': '0.1052', 'MRR@10': '0.0783', 'HIT@20': '0.3167', 'NDCG@20': '0.1358'}
+{'epoch': 3, 'rec_avg_loss': '1.2679'}
+{'Epoch': 3, 'HIT@5': '0.1753', 'NDCG@5': '0.1219', 'HIT@10': '0.2567', 'NDCG@10': '0.1481', 'MRR@10': '0.1151', 'HIT@20': '0.3913', 'NDCG@20': '0.1820'}
+{'epoch': 4, 'rec_avg_loss': '1.2272'}
+{'Epoch': 4, 'HIT@5': '0.2373', 'NDCG@5': '0.1686', 'HIT@10': '0.3240', 'NDCG@10': '0.1968', 'MRR@10': '0.1577', 'HIT@20': '0.4373', 'NDCG@20': '0.2250'}
+{'epoch': 5, 'rec_avg_loss': '1.1848'}
+{'Epoch': 5, 'HIT@5': '0.2927', 'NDCG@5': '0.2134', 'HIT@10': '0.3700', 'NDCG@10': '0.2383', 'MRR@10': '0.1975', 'HIT@20': '0.4753', 'NDCG@20': '0.2648'}
+{'epoch': 6, 'rec_avg_loss': '1.1418'}
+{'Epoch': 6, 'HIT@5': '0.3127', 'NDCG@5': '0.2344', 'HIT@10': '0.3980', 'NDCG@10': '0.2619', 'MRR@10': '0.2199', 'HIT@20': '0.5040', 'NDCG@20': '0.2886'}
+{'epoch': 7, 'rec_avg_loss': '1.0982'}
+{'Epoch': 7, 'HIT@5': '0.3300', 'NDCG@5': '0.2482', 'HIT@10': '0.4180', 'NDCG@10': '0.2766', 'MRR@10': '0.2327', 'HIT@20': '0.5187', 'NDCG@20': '0.3020'}
+{'epoch': 8, 'rec_avg_loss': '1.0556'}
+{'Epoch': 8, 'HIT@5': '0.3413', 'NDCG@5': '0.2547', 'HIT@10': '0.4307', 'NDCG@10': '0.2838', 'MRR@10': '0.2382', 'HIT@20': '0.5293', 'NDCG@20': '0.3086'}
+{'epoch': 9, 'rec_avg_loss': '1.0182'}
+{'Epoch': 9, 'HIT@5': '0.3453', 'NDCG@5': '0.2564', 'HIT@10': '0.4367', 'NDCG@10': '0.2862', 'MRR@10': '0.2395', 'HIT@20': '0.5320', 'NDCG@20': '0.3104'}
+{'epoch': 10, 'rec_avg_loss': '0.9796'}
+{'Epoch': 10, 'HIT@5': '0.3513', 'NDCG@5': '0.2623', 'HIT@10': '0.4487', 'NDCG@10': '0.2939', 'MRR@10': '0.2460', 'HIT@20': '0.5407', 'NDCG@20': '0.3173'}
+{'epoch': 11, 'rec_avg_loss': '0.9430'}
+{'Epoch': 11, 'HIT@5': '0.3547', 'NDCG@5': '0.2622', 'HIT@10': '0.4533', 'NDCG@10': '0.2942', 'MRR@10': '0.2449', 'HIT@20': '0.5433', 'NDCG@20': '0.3168'}
+{'epoch': 12, 'rec_avg_loss': '0.9130'}
+{'Epoch': 12, 'HIT@5': '0.3533', 'NDCG@5': '0.2629', 'HIT@10': '0.4547', 'NDCG@10': '0.2957', 'MRR@10': '0.2466', 'HIT@20': '0.5480', 'NDCG@20': '0.3192'}
+{'epoch': 13, 'rec_avg_loss': '0.8828'}
+{'Epoch': 13, 'HIT@5': '0.3573', 'NDCG@5': '0.2653', 'HIT@10': '0.4547', 'NDCG@10': '0.2968', 'MRR@10': '0.2481', 'HIT@20': '0.5487', 'NDCG@20': '0.3206'}
+{'epoch': 14, 'rec_avg_loss': '0.8581'}
+{'Epoch': 14, 'HIT@5': '0.3580', 'NDCG@5': '0.2654', 'HIT@10': '0.4573', 'NDCG@10': '0.2974', 'MRR@10': '0.2480', 'HIT@20': '0.5440', 'NDCG@20': '0.3193'}
+{'epoch': 15, 'rec_avg_loss': '0.8302'}
+{'Epoch': 15, 'HIT@5': '0.3540', 'NDCG@5': '0.2631', 'HIT@10': '0.4540', 'NDCG@10': '0.2956', 'MRR@10': '0.2467', 'HIT@20': '0.5460', 'NDCG@20': '0.3189'}
+{'epoch': 16, 'rec_avg_loss': '0.8073'}
+{'Epoch': 16, 'HIT@5': '0.3513', 'NDCG@5': '0.2615', 'HIT@10': '0.4520', 'NDCG@10': '0.2946', 'MRR@10': '0.2458', 'HIT@20': '0.5507', 'NDCG@20': '0.3195'}
+{'epoch': 17, 'rec_avg_loss': '0.7869'}
+{'Epoch': 17, 'HIT@5': '0.3520', 'NDCG@5': '0.2618', 'HIT@10': '0.4487', 'NDCG@10': '0.2935', 'MRR@10': '0.2454', 'HIT@20': '0.5533', 'NDCG@20': '0.3201'}
+{'epoch': 18, 'rec_avg_loss': '0.7695'}
+{'Epoch': 18, 'HIT@5': '0.3573', 'NDCG@5': '0.2632', 'HIT@10': '0.4527', 'NDCG@10': '0.2942', 'MRR@10': '0.2451', 'HIT@20': '0.5513', 'NDCG@20': '0.3193'}
+{'epoch': 19, 'rec_avg_loss': '0.7473'}
+{'Epoch': 19, 'HIT@5': '0.3580', 'NDCG@5': '0.2643', 'HIT@10': '0.4520', 'NDCG@10': '0.2948', 'MRR@10': '0.2461', 'HIT@20': '0.5507', 'NDCG@20': '0.3197'}
+{'epoch': 20, 'rec_avg_loss': '0.7309'}
+{'Epoch': 20, 'HIT@5': '0.3613', 'NDCG@5': '0.2657', 'HIT@10': '0.4547', 'NDCG@10': '0.2959', 'MRR@10': '0.2467', 'HIT@20': '0.5493', 'NDCG@20': '0.3200'}
+{'epoch': 21, 'rec_avg_loss': '0.7164'}
+{'Epoch': 21, 'HIT@5': '0.3660', 'NDCG@5': '0.2688', 'HIT@10': '0.4547', 'NDCG@10': '0.2974', 'MRR@10': '0.2486', 'HIT@20': '0.5540', 'NDCG@20': '0.3225'}
+{'epoch': 22, 'rec_avg_loss': '0.6982'}
+{'Epoch': 22, 'HIT@5': '0.3633', 'NDCG@5': '0.2679', 'HIT@10': '0.4547', 'NDCG@10': '0.2975', 'MRR@10': '0.2485', 'HIT@20': '0.5507', 'NDCG@20': '0.3217'}
+{'epoch': 23, 'rec_avg_loss': '0.6842'}
+{'Epoch': 23, 'HIT@5': '0.3653', 'NDCG@5': '0.2697', 'HIT@10': '0.4527', 'NDCG@10': '0.2979', 'MRR@10': '0.2497', 'HIT@20': '0.5493', 'NDCG@20': '0.3225'}
+{'epoch': 24, 'rec_avg_loss': '0.6690'}
+{'Epoch': 24, 'HIT@5': '0.3620', 'NDCG@5': '0.2690', 'HIT@10': '0.4553', 'NDCG@10': '0.2994', 'MRR@10': '0.2508', 'HIT@20': '0.5467', 'NDCG@20': '0.3226'}
+{'epoch': 25, 'rec_avg_loss': '0.6529'}
+{'Epoch': 25, 'HIT@5': '0.3680', 'NDCG@5': '0.2720', 'HIT@10': '0.4580', 'NDCG@10': '0.3011', 'MRR@10': '0.2523', 'HIT@20': '0.5480', 'NDCG@20': '0.3239'}
+{'epoch': 26, 'rec_avg_loss': '0.6404'}
+{'Epoch': 26, 'HIT@5': '0.3673', 'NDCG@5': '0.2725', 'HIT@10': '0.4527', 'NDCG@10': '0.3003', 'MRR@10': '0.2527', 'HIT@20': '0.5507', 'NDCG@20': '0.3253'}
+{'epoch': 27, 'rec_avg_loss': '0.6292'}
+{'Epoch': 27, 'HIT@5': '0.3673', 'NDCG@5': '0.2713', 'HIT@10': '0.4533', 'NDCG@10': '0.2993', 'MRR@10': '0.2512', 'HIT@20': '0.5533', 'NDCG@20': '0.3246'}
+{'epoch': 28, 'rec_avg_loss': '0.6214'}
+{'Epoch': 28, 'HIT@5': '0.3653', 'NDCG@5': '0.2707', 'HIT@10': '0.4580', 'NDCG@10': '0.3008', 'MRR@10': '0.2519', 'HIT@20': '0.5553', 'NDCG@20': '0.3253'}
+{'epoch': 29, 'rec_avg_loss': '0.6080'}
+{'Epoch': 29, 'HIT@5': '0.3667', 'NDCG@5': '0.2713', 'HIT@10': '0.4587', 'NDCG@10': '0.3011', 'MRR@10': '0.2521', 'HIT@20': '0.5540', 'NDCG@20': '0.3252'}
+{'epoch': 30, 'rec_avg_loss': '0.5946'}
+{'Epoch': 30, 'HIT@5': '0.3660', 'NDCG@5': '0.2712', 'HIT@10': '0.4573', 'NDCG@10': '0.3009', 'MRR@10': '0.2521', 'HIT@20': '0.5507', 'NDCG@20': '0.3245'}
+{'epoch': 31, 'rec_avg_loss': '0.5843'}
+{'Epoch': 31, 'HIT@5': '0.3660', 'NDCG@5': '0.2705', 'HIT@10': '0.4567', 'NDCG@10': '0.3000', 'MRR@10': '0.2512', 'HIT@20': '0.5527', 'NDCG@20': '0.3243'}
+{'epoch': 32, 'rec_avg_loss': '0.5777'}
+{'Epoch': 32, 'HIT@5': '0.3640', 'NDCG@5': '0.2710', 'HIT@10': '0.4553', 'NDCG@10': '0.3007', 'MRR@10': '0.2525', 'HIT@20': '0.5547', 'NDCG@20': '0.3258'}
+{'epoch': 33, 'rec_avg_loss': '0.5632'}
+{'Epoch': 33, 'HIT@5': '0.3640', 'NDCG@5': '0.2709', 'HIT@10': '0.4593', 'NDCG@10': '0.3018', 'MRR@10': '0.2528', 'HIT@20': '0.5507', 'NDCG@20': '0.3248'}
+{'epoch': 34, 'rec_avg_loss': '0.5525'}
+{'Epoch': 34, 'HIT@5': '0.3647', 'NDCG@5': '0.2718', 'HIT@10': '0.4607', 'NDCG@10': '0.3027', 'MRR@10': '0.2536', 'HIT@20': '0.5553', 'NDCG@20': '0.3264'}
+{'epoch': 35, 'rec_avg_loss': '0.5417'}
+{'Epoch': 35, 'HIT@5': '0.3647', 'NDCG@5': '0.2710', 'HIT@10': '0.4593', 'NDCG@10': '0.3016', 'MRR@10': '0.2525', 'HIT@20': '0.5580', 'NDCG@20': '0.3263'}
+{'epoch': 36, 'rec_avg_loss': '0.5352'}
+{'Epoch': 36, 'HIT@5': '0.3673', 'NDCG@5': '0.2717', 'HIT@10': '0.4560', 'NDCG@10': '0.3004', 'MRR@10': '0.2519', 'HIT@20': '0.5573', 'NDCG@20': '0.3260'}
+{'epoch': 37, 'rec_avg_loss': '0.5228'}
+{'Epoch': 37, 'HIT@5': '0.3627', 'NDCG@5': '0.2698', 'HIT@10': '0.4527', 'NDCG@10': '0.2991', 'MRR@10': '0.2511', 'HIT@20': '0.5533', 'NDCG@20': '0.3247'}
+{'epoch': 38, 'rec_avg_loss': '0.5169'}
+{'Epoch': 38, 'HIT@5': '0.3653', 'NDCG@5': '0.2690', 'HIT@10': '0.4567', 'NDCG@10': '0.2985', 'MRR@10': '0.2492', 'HIT@20': '0.5527', 'NDCG@20': '0.3229'}
+{'epoch': 39, 'rec_avg_loss': '0.5066'}
+{'Epoch': 39, 'HIT@5': '0.3687', 'NDCG@5': '0.2708', 'HIT@10': '0.4560', 'NDCG@10': '0.2991', 'MRR@10': '0.2501', 'HIT@20': '0.5520', 'NDCG@20': '0.3235'}
+{'epoch': 40, 'rec_avg_loss': '0.4952'}
+{'Epoch': 40, 'HIT@5': '0.3713', 'NDCG@5': '0.2724', 'HIT@10': '0.4553', 'NDCG@10': '0.2996', 'MRR@10': '0.2508', 'HIT@20': '0.5520', 'NDCG@20': '0.3241'}
+{'epoch': 41, 'rec_avg_loss': '0.4885'}
+{'Epoch': 41, 'HIT@5': '0.3733', 'NDCG@5': '0.2714', 'HIT@10': '0.4580', 'NDCG@10': '0.2987', 'MRR@10': '0.2489', 'HIT@20': '0.5507', 'NDCG@20': '0.3222'}
+{'epoch': 42, 'rec_avg_loss': '0.4789'}
+{'Epoch': 42, 'HIT@5': '0.3760', 'NDCG@5': '0.2758', 'HIT@10': '0.4547', 'NDCG@10': '0.3010', 'MRR@10': '0.2529', 'HIT@20': '0.5513', 'NDCG@20': '0.3257'}
+{'epoch': 43, 'rec_avg_loss': '0.4706'}
+{'Epoch': 43, 'HIT@5': '0.3767', 'NDCG@5': '0.2771', 'HIT@10': '0.4587', 'NDCG@10': '0.3034', 'MRR@10': '0.2548', 'HIT@20': '0.5520', 'NDCG@20': '0.3271'}
+{'epoch': 44, 'rec_avg_loss': '0.4613'}
+{'Epoch': 44, 'HIT@5': '0.3713', 'NDCG@5': '0.2760', 'HIT@10': '0.4573', 'NDCG@10': '0.3037', 'MRR@10': '0.2557', 'HIT@20': '0.5540', 'NDCG@20': '0.3282'}
+{'epoch': 45, 'rec_avg_loss': '0.4566'}
+{'Epoch': 45, 'HIT@5': '0.3720', 'NDCG@5': '0.2774', 'HIT@10': '0.4600', 'NDCG@10': '0.3057', 'MRR@10': '0.2577', 'HIT@20': '0.5513', 'NDCG@20': '0.3288'}
+{'epoch': 46, 'rec_avg_loss': '0.4489'}
+{'Epoch': 46, 'HIT@5': '0.3713', 'NDCG@5': '0.2775', 'HIT@10': '0.4600', 'NDCG@10': '0.3062', 'MRR@10': '0.2582', 'HIT@20': '0.5520', 'NDCG@20': '0.3294'}
+{'epoch': 47, 'rec_avg_loss': '0.4424'}
+{'Epoch': 47, 'HIT@5': '0.3687', 'NDCG@5': '0.2767', 'HIT@10': '0.4560', 'NDCG@10': '0.3052', 'MRR@10': '0.2581', 'HIT@20': '0.5527', 'NDCG@20': '0.3297'}
+{'epoch': 48, 'rec_avg_loss': '0.4343'}
+{'Epoch': 48, 'HIT@5': '0.3673', 'NDCG@5': '0.2756', 'HIT@10': '0.4567', 'NDCG@10': '0.3047', 'MRR@10': '0.2572', 'HIT@20': '0.5533', 'NDCG@20': '0.3291'}
+{'epoch': 49, 'rec_avg_loss': '0.4304'}
+{'Epoch': 49, 'HIT@5': '0.3687', 'NDCG@5': '0.2745', 'HIT@10': '0.4587', 'NDCG@10': '0.3038', 'MRR@10': '0.2554', 'HIT@20': '0.5533', 'NDCG@20': '0.3277'}
+{'epoch': 50, 'rec_avg_loss': '0.4207'}
+{'Epoch': 50, 'HIT@5': '0.3680', 'NDCG@5': '0.2764', 'HIT@10': '0.4573', 'NDCG@10': '0.3054', 'MRR@10': '0.2580', 'HIT@20': '0.5540', 'NDCG@20': '0.3297'}
+{'epoch': 51, 'rec_avg_loss': '0.4141'}
+{'Epoch': 51, 'HIT@5': '0.3667', 'NDCG@5': '0.2748', 'HIT@10': '0.4580', 'NDCG@10': '0.3044', 'MRR@10': '0.2565', 'HIT@20': '0.5520', 'NDCG@20': '0.3281'}
+{'epoch': 52, 'rec_avg_loss': '0.4054'}
+{'Epoch': 52, 'HIT@5': '0.3687', 'NDCG@5': '0.2743', 'HIT@10': '0.4547', 'NDCG@10': '0.3021', 'MRR@10': '0.2545', 'HIT@20': '0.5473', 'NDCG@20': '0.3255'}
+{'epoch': 53, 'rec_avg_loss': '0.4003'}
+{'Epoch': 53, 'HIT@5': '0.3673', 'NDCG@5': '0.2748', 'HIT@10': '0.4527', 'NDCG@10': '0.3026', 'MRR@10': '0.2557', 'HIT@20': '0.5453', 'NDCG@20': '0.3260'}
+{'epoch': 54, 'rec_avg_loss': '0.3972'}
+{'Epoch': 54, 'HIT@5': '0.3627', 'NDCG@5': '0.2726', 'HIT@10': '0.4513', 'NDCG@10': '0.3016', 'MRR@10': '0.2548', 'HIT@20': '0.5487', 'NDCG@20': '0.3261'}
+{'epoch': 55, 'rec_avg_loss': '0.3950'}
+{'Epoch': 55, 'HIT@5': '0.3647', 'NDCG@5': '0.2726', 'HIT@10': '0.4507', 'NDCG@10': '0.3006', 'MRR@10': '0.2537', 'HIT@20': '0.5487', 'NDCG@20': '0.3253'}
+{'epoch': 56, 'rec_avg_loss': '0.3837'}
+{'Epoch': 56, 'HIT@5': '0.3693', 'NDCG@5': '0.2737', 'HIT@10': '0.4520', 'NDCG@10': '0.3006', 'MRR@10': '0.2531', 'HIT@20': '0.5507', 'NDCG@20': '0.3254'}
+{'epoch': 57, 'rec_avg_loss': '0.3788'}
+{'Epoch': 57, 'HIT@5': '0.3667', 'NDCG@5': '0.2738', 'HIT@10': '0.4567', 'NDCG@10': '0.3031', 'MRR@10': '0.2552', 'HIT@20': '0.5493', 'NDCG@20': '0.3263'}
+{'Epoch': 0, 'HIT@5': '0.3080', 'NDCG@5': '0.2254', 'HIT@10': '0.4060', 'NDCG@10': '0.2572', 'MRR@10': '0.2112', 'HIT@20': '0.4947', 'NDCG@20': '0.2797'}
+BASRec-Electronics_ours-2023
+{'Epoch': 0, 'HIT@5': '0.3080', 'NDCG@5': '0.2254', 'HIT@10': '0.4060', 'NDCG@10': '0.2572', 'MRR@10': '0.2112', 'HIT@20': '0.4947', 'NDCG@20': '0.2797'}
+data_dir                       :                               data/
+output_dir                     :                        output_fair/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                2023
+load_pretrain                  :                                   0
+gpu_id                         :                                   0
+noise_ratio                    :                                 0.0
+training_data_ratio            :                                 1.0
+similarity_model_name          :                          ItemCF_IUF
+base_augment_type              :                              random
+model_name                     :                              BASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+initializer_range              :                                0.02
+max_seq_length                 :                                  32
+lr                             :                               0.001
+batch_size                     :                                 256
+no_cuda                        :                                   0
+log_freq                       :                                   1
+seed                           :                                2023
+weight_decay                   :                                 0.0
+adam_beta1                     :                                 0.9
+adam_beta2                     :                               0.999
+augmentation_warm_up_epoches   :                                 500
+epochs                         :                                 100
+pretrain_epoch                 :                                   0
+start_valid                    :                                   0
+patience                       :                                  10
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2023
+n_pairs                        :                                   1
+n_whole_level                  :                                   1
+wml_weight                     :                                 1.0
+aml_weight                     :                                 1.0
+rec_weight                     :                                 1.0
+attention_probs_dropout_prob   :                                 0.2
+hidden_dropout_prob            :                                 0.2
+beta                           :                                 0.3
+rate_min                       :                                 0.2
+rate_max                       :                                0.51
+cuda_condition                 :                                   1
+data_file                      :           data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output_fair/BASRec-Electronics_ours-2023.txt
+Namespace(data_dir='data/', output_dir='output_fair/', data_name='Electronics_ours', do_eval=False, model_idx=2023, load_pretrain=False, gpu_id='0', noise_ratio=0.0, training_data_ratio=1.0, similarity_model_name='ItemCF_IUF', base_augment_type='random', model_name='BASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', initializer_range=0.02, max_seq_length=32, lr=0.001, batch_size=256, no_cuda=False, log_freq=1, seed=2023, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, augmentation_warm_up_epoches=500, epochs=100, pretrain_epoch=0, start_valid=0, patience=10, eval_mode='full', num_neg=100, eval_seed=2023, n_pairs=1, n_whole_level=1, wml_weight=1.0, aml_weight=1.0, rec_weight=1.0, attention_probs_dropout_prob=0.2, hidden_dropout_prob=0.2, beta=0.3, rate_min=0.2, rate_max=0.51, cuda_condition=True, data_file='data/Electronics_ours.txt', item_size=54723, log_file='output_fair/BASRec-Electronics_ours-2023.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3879'}
+{'epoch': 1, 'rec_avg_loss': '1.3441'}
+{'Epoch': 1, 'HIT@5': '0.0000', 'NDCG@5': '0.0000', 'HIT@10': '0.0007', 'NDCG@10': '0.0002', 'MRR@10': '0.0001', 'HIT@20': '0.0007', 'NDCG@20': '0.0002'}
+{'epoch': 2, 'rec_avg_loss': '1.3064'}
+{'Epoch': 2, 'HIT@5': '0.0020', 'NDCG@5': '0.0009', 'HIT@10': '0.0020', 'NDCG@10': '0.0009', 'MRR@10': '0.0005', 'HIT@20': '0.0027', 'NDCG@20': '0.0010'}
+{'epoch': 3, 'rec_avg_loss': '1.2679'}
+{'Epoch': 3, 'HIT@5': '0.0033', 'NDCG@5': '0.0021', 'HIT@10': '0.0053', 'NDCG@10': '0.0028', 'MRR@10': '0.0020', 'HIT@20': '0.0093', 'NDCG@20': '0.0037'}
+{'epoch': 4, 'rec_avg_loss': '1.2272'}
+{'Epoch': 4, 'HIT@5': '0.0053', 'NDCG@5': '0.0043', 'HIT@10': '0.0107', 'NDCG@10': '0.0061', 'MRR@10': '0.0048', 'HIT@20': '0.0153', 'NDCG@20': '0.0073'}
+{'epoch': 5, 'rec_avg_loss': '1.1848'}
+{'Epoch': 5, 'HIT@5': '0.0053', 'NDCG@5': '0.0037', 'HIT@10': '0.0133', 'NDCG@10': '0.0062', 'MRR@10': '0.0042', 'HIT@20': '0.0167', 'NDCG@20': '0.0070'}
+{'epoch': 6, 'rec_avg_loss': '1.1418'}
+{'Epoch': 6, 'HIT@5': '0.0060', 'NDCG@5': '0.0043', 'HIT@10': '0.0120', 'NDCG@10': '0.0061', 'MRR@10': '0.0044', 'HIT@20': '0.0187', 'NDCG@20': '0.0078'}
+{'epoch': 7, 'rec_avg_loss': '1.0982'}
+{'Epoch': 7, 'HIT@5': '0.0060', 'NDCG@5': '0.0044', 'HIT@10': '0.0093', 'NDCG@10': '0.0054', 'MRR@10': '0.0043', 'HIT@20': '0.0187', 'NDCG@20': '0.0078'}
+{'epoch': 8, 'rec_avg_loss': '1.0556'}
+{'Epoch': 8, 'HIT@5': '0.0053', 'NDCG@5': '0.0041', 'HIT@10': '0.0087', 'NDCG@10': '0.0052', 'MRR@10': '0.0042', 'HIT@20': '0.0193', 'NDCG@20': '0.0080'}
+{'epoch': 9, 'rec_avg_loss': '1.0182'}
+{'Epoch': 9, 'HIT@5': '0.0047', 'NDCG@5': '0.0038', 'HIT@10': '0.0100', 'NDCG@10': '0.0056', 'MRR@10': '0.0043', 'HIT@20': '0.0200', 'NDCG@20': '0.0081'}
+{'epoch': 10, 'rec_avg_loss': '0.9796'}
+{'Epoch': 10, 'HIT@5': '0.0060', 'NDCG@5': '0.0046', 'HIT@10': '0.0100', 'NDCG@10': '0.0059', 'MRR@10': '0.0047', 'HIT@20': '0.0193', 'NDCG@20': '0.0083'}
+{'epoch': 11, 'rec_avg_loss': '0.9430'}
+{'Epoch': 11, 'HIT@5': '0.0060', 'NDCG@5': '0.0043', 'HIT@10': '0.0107', 'NDCG@10': '0.0058', 'MRR@10': '0.0044', 'HIT@20': '0.0193', 'NDCG@20': '0.0079'}
+{'epoch': 12, 'rec_avg_loss': '0.9130'}
+{'Epoch': 12, 'HIT@5': '0.0067', 'NDCG@5': '0.0046', 'HIT@10': '0.0113', 'NDCG@10': '0.0061', 'MRR@10': '0.0045', 'HIT@20': '0.0193', 'NDCG@20': '0.0080'}
+{'epoch': 13, 'rec_avg_loss': '0.8828'}
+{'Epoch': 13, 'HIT@5': '0.0060', 'NDCG@5': '0.0044', 'HIT@10': '0.0113', 'NDCG@10': '0.0061', 'MRR@10': '0.0045', 'HIT@20': '0.0200', 'NDCG@20': '0.0082'}
+{'epoch': 14, 'rec_avg_loss': '0.8581'}
+{'Epoch': 14, 'HIT@5': '0.0067', 'NDCG@5': '0.0045', 'HIT@10': '0.0113', 'NDCG@10': '0.0060', 'MRR@10': '0.0044', 'HIT@20': '0.0180', 'NDCG@20': '0.0076'}
+{'epoch': 15, 'rec_avg_loss': '0.8302'}
+{'Epoch': 15, 'HIT@5': '0.0060', 'NDCG@5': '0.0041', 'HIT@10': '0.0100', 'NDCG@10': '0.0055', 'MRR@10': '0.0041', 'HIT@20': '0.0160', 'NDCG@20': '0.0070'}
+{'epoch': 16, 'rec_avg_loss': '0.8073'}
+{'Epoch': 16, 'HIT@5': '0.0053', 'NDCG@5': '0.0039', 'HIT@10': '0.0107', 'NDCG@10': '0.0056', 'MRR@10': '0.0041', 'HIT@20': '0.0167', 'NDCG@20': '0.0071'}
+{'epoch': 17, 'rec_avg_loss': '0.7869'}
+{'Epoch': 17, 'HIT@5': '0.0047', 'NDCG@5': '0.0037', 'HIT@10': '0.0107', 'NDCG@10': '0.0056', 'MRR@10': '0.0042', 'HIT@20': '0.0173', 'NDCG@20': '0.0073'}
+{'epoch': 18, 'rec_avg_loss': '0.7695'}
+{'Epoch': 18, 'HIT@5': '0.0053', 'NDCG@5': '0.0038', 'HIT@10': '0.0107', 'NDCG@10': '0.0055', 'MRR@10': '0.0041', 'HIT@20': '0.0193', 'NDCG@20': '0.0076'}
+{'epoch': 19, 'rec_avg_loss': '0.7473'}
+{'Epoch': 19, 'HIT@5': '0.0060', 'NDCG@5': '0.0042', 'HIT@10': '0.0100', 'NDCG@10': '0.0055', 'MRR@10': '0.0042', 'HIT@20': '0.0187', 'NDCG@20': '0.0077'}
+{'epoch': 20, 'rec_avg_loss': '0.7309'}
+{'Epoch': 20, 'HIT@5': '0.0073', 'NDCG@5': '0.0047', 'HIT@10': '0.0100', 'NDCG@10': '0.0055', 'MRR@10': '0.0041', 'HIT@20': '0.0207', 'NDCG@20': '0.0081'}
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0044', 'HIT@10': '0.0120', 'NDCG@10': '0.0062', 'MRR@10': '0.0044', 'HIT@20': '0.0200', 'NDCG@20': '0.0082'}
+BASRec-Electronics_ours-2023
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0044', 'HIT@10': '0.0120', 'NDCG@10': '0.0062', 'MRR@10': '0.0044', 'HIT@20': '0.0200', 'NDCG@20': '0.0082'}

@@ -1,0 +1,27 @@
+# dataset + eval settings for RecBole (ml-100k)
+data_path: data/movielens/ml-100k
+dataset: ml-100k
+field_separator: "\t"
+MAX_ITEM_LIST_LENGTH: 32
+
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+
+load_col:
+  inter: [user_id, item_id, rating, timestamp]
+  user: [user_id, age, gender, occupation, zip_code]
+  item: [item_id, movie_title, release_year, class]
+
+eval_args:
+  group_by: user
+  order: TO
+  split:
+    LS: valid_and_test
+  mode:
+    valid: uni100
+    test: uni100
+
+metrics: ["Hit", "NDCG", "MRR"]
+topk: [10]

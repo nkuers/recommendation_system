@@ -1,0 +1,579 @@
+Tue 27 Jan 2026 16:18:15 INFO  ['scripts/run_recbole_trimlp.py']
+Tue 27 Jan 2026 16:18:15 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2022
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TriMLP
+hidden_size = 128
+dropout = 0.5
+n_session = 2
+loss_type = CE
+initializer_range = 0.02
+early_stop = 10
+neg_sampling = None
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cuda
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Tue 27 Jan 2026 16:18:15 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Tue 27 Jan 2026 16:18:17 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Tue 27 Jan 2026 16:18:17 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Tue 27 Jan 2026 16:18:17 INFO  TriMLP(
+  (item_embedding): Embedding(1683, 128, padding_idx=0)
+  (drop): Dropout(p=0.5, inplace=False)
+  (mixer): TriMixer(
+    (act): Sigmoid()
+  )
+  (final_layer): Linear(in_features=128, out_features=1683, bias=True)
+  (loss_fct): CrossEntropyLoss()
+)
+Trainable parameters: 434579
+Tue 27 Jan 2026 16:18:17 INFO  FLOPs: 4096.0
+Tue 27 Jan 2026 16:18:25 INFO  epoch 0 training [time: 6.86s, train loss: 2598.3231]
+Tue 27 Jan 2026 16:18:26 INFO  epoch 0 evaluating [time: 1.20s, valid_score: 0.133900]
+Tue 27 Jan 2026 16:18:26 INFO  valid result: 
+hit@10 : 0.3563    ndcg@10 : 0.1853    mrr@10 : 0.1339
+Tue 27 Jan 2026 16:18:26 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:18:34 INFO  epoch 1 training [time: 7.39s, train loss: 2577.3434]
+Tue 27 Jan 2026 16:18:35 INFO  epoch 1 evaluating [time: 1.22s, valid_score: 0.134400]
+Tue 27 Jan 2026 16:18:35 INFO  valid result: 
+hit@10 : 0.3659    ndcg@10 : 0.1879    mrr@10 : 0.1344
+Tue 27 Jan 2026 16:18:35 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:18:43 INFO  epoch 2 training [time: 7.48s, train loss: 2566.3340]
+Tue 27 Jan 2026 16:18:44 INFO  epoch 2 evaluating [time: 1.21s, valid_score: 0.141400]
+Tue 27 Jan 2026 16:18:44 INFO  valid result: 
+hit@10 : 0.3712    ndcg@10 : 0.1946    mrr@10 : 0.1414
+Tue 27 Jan 2026 16:18:44 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:18:52 INFO  epoch 3 training [time: 8.00s, train loss: 2552.5889]
+Tue 27 Jan 2026 16:18:53 INFO  epoch 3 evaluating [time: 1.31s, valid_score: 0.153500]
+Tue 27 Jan 2026 16:18:53 INFO  valid result: 
+hit@10 : 0.4136    ndcg@10 : 0.2141    mrr@10 : 0.1535
+Tue 27 Jan 2026 16:18:53 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:19:01 INFO  epoch 4 training [time: 7.99s, train loss: 2535.0439]
+Tue 27 Jan 2026 16:19:02 INFO  epoch 4 evaluating [time: 1.29s, valid_score: 0.164400]
+Tue 27 Jan 2026 16:19:02 INFO  valid result: 
+hit@10 : 0.421    ndcg@10 : 0.2241    mrr@10 : 0.1644
+Tue 27 Jan 2026 16:19:02 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:19:10 INFO  epoch 5 training [time: 7.78s, train loss: 2512.7710]
+Tue 27 Jan 2026 16:19:12 INFO  epoch 5 evaluating [time: 1.40s, valid_score: 0.184900]
+Tue 27 Jan 2026 16:19:12 INFO  valid result: 
+hit@10 : 0.4507    ndcg@10 : 0.2465    mrr@10 : 0.1849
+Tue 27 Jan 2026 16:19:12 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:19:20 INFO  epoch 6 training [time: 8.05s, train loss: 2490.3925]
+Tue 27 Jan 2026 16:19:21 INFO  epoch 6 evaluating [time: 1.35s, valid_score: 0.179600]
+Tue 27 Jan 2026 16:19:21 INFO  valid result: 
+hit@10 : 0.4867    ndcg@10 : 0.2507    mrr@10 : 0.1796
+Tue 27 Jan 2026 16:19:29 INFO  epoch 7 training [time: 8.18s, train loss: 2470.7939]
+Tue 27 Jan 2026 16:19:31 INFO  epoch 7 evaluating [time: 1.39s, valid_score: 0.177800]
+Tue 27 Jan 2026 16:19:31 INFO  valid result: 
+hit@10 : 0.4677    ndcg@10 : 0.2452    mrr@10 : 0.1778
+Tue 27 Jan 2026 16:19:38 INFO  epoch 8 training [time: 7.70s, train loss: 2453.0115]
+Tue 27 Jan 2026 16:19:40 INFO  epoch 8 evaluating [time: 1.46s, valid_score: 0.191700]
+Tue 27 Jan 2026 16:19:40 INFO  valid result: 
+hit@10 : 0.4857    ndcg@10 : 0.2603    mrr@10 : 0.1917
+Tue 27 Jan 2026 16:19:40 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:19:48 INFO  epoch 9 training [time: 8.06s, train loss: 2437.4058]
+Tue 27 Jan 2026 16:19:49 INFO  epoch 9 evaluating [time: 1.48s, valid_score: 0.199100]
+Tue 27 Jan 2026 16:19:49 INFO  valid result: 
+hit@10 : 0.509    ndcg@10 : 0.2714    mrr@10 : 0.1991
+Tue 27 Jan 2026 16:19:49 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:19:57 INFO  epoch 10 training [time: 8.09s, train loss: 2422.7214]
+Tue 27 Jan 2026 16:19:59 INFO  epoch 10 evaluating [time: 1.40s, valid_score: 0.199900]
+Tue 27 Jan 2026 16:19:59 INFO  valid result: 
+hit@10 : 0.5207    ndcg@10 : 0.2744    mrr@10 : 0.1999
+Tue 27 Jan 2026 16:19:59 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:20:07 INFO  epoch 11 training [time: 8.28s, train loss: 2409.3198]
+Tue 27 Jan 2026 16:20:08 INFO  epoch 11 evaluating [time: 1.35s, valid_score: 0.217600]
+Tue 27 Jan 2026 16:20:08 INFO  valid result: 
+hit@10 : 0.5483    ndcg@10 : 0.2946    mrr@10 : 0.2176
+Tue 27 Jan 2026 16:20:08 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:20:17 INFO  epoch 12 training [time: 8.18s, train loss: 2396.5392]
+Tue 27 Jan 2026 16:20:18 INFO  epoch 12 evaluating [time: 1.32s, valid_score: 0.218000]
+Tue 27 Jan 2026 16:20:18 INFO  valid result: 
+hit@10 : 0.5302    ndcg@10 : 0.2908    mrr@10 : 0.218
+Tue 27 Jan 2026 16:20:18 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:20:26 INFO  epoch 13 training [time: 8.18s, train loss: 2385.1533]
+Tue 27 Jan 2026 16:20:28 INFO  epoch 13 evaluating [time: 1.54s, valid_score: 0.225300]
+Tue 27 Jan 2026 16:20:28 INFO  valid result: 
+hit@10 : 0.5525    ndcg@10 : 0.3016    mrr@10 : 0.2253
+Tue 27 Jan 2026 16:20:28 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:20:36 INFO  epoch 14 training [time: 8.32s, train loss: 2374.9151]
+Tue 27 Jan 2026 16:20:37 INFO  epoch 14 evaluating [time: 1.40s, valid_score: 0.220600]
+Tue 27 Jan 2026 16:20:37 INFO  valid result: 
+hit@10 : 0.5557    ndcg@10 : 0.299    mrr@10 : 0.2206
+Tue 27 Jan 2026 16:20:45 INFO  epoch 15 training [time: 7.72s, train loss: 2364.4504]
+Tue 27 Jan 2026 16:20:46 INFO  epoch 15 evaluating [time: 1.27s, valid_score: 0.217300]
+Tue 27 Jan 2026 16:20:46 INFO  valid result: 
+hit@10 : 0.5642    ndcg@10 : 0.2983    mrr@10 : 0.2173
+Tue 27 Jan 2026 16:20:54 INFO  epoch 16 training [time: 7.78s, train loss: 2355.2991]
+Tue 27 Jan 2026 16:20:55 INFO  epoch 16 evaluating [time: 1.25s, valid_score: 0.238800]
+Tue 27 Jan 2026 16:20:55 INFO  valid result: 
+hit@10 : 0.5779    ndcg@10 : 0.3184    mrr@10 : 0.2388
+Tue 27 Jan 2026 16:20:55 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:21:03 INFO  epoch 17 training [time: 7.70s, train loss: 2346.9890]
+Tue 27 Jan 2026 16:21:04 INFO  epoch 17 evaluating [time: 1.23s, valid_score: 0.239300]
+Tue 27 Jan 2026 16:21:04 INFO  valid result: 
+hit@10 : 0.5928    ndcg@10 : 0.322    mrr@10 : 0.2393
+Tue 27 Jan 2026 16:21:04 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:21:12 INFO  epoch 18 training [time: 7.74s, train loss: 2338.7909]
+Tue 27 Jan 2026 16:21:13 INFO  epoch 18 evaluating [time: 1.23s, valid_score: 0.248800]
+Tue 27 Jan 2026 16:21:13 INFO  valid result: 
+hit@10 : 0.5854    ndcg@10 : 0.3277    mrr@10 : 0.2488
+Tue 27 Jan 2026 16:21:13 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:21:21 INFO  epoch 19 training [time: 7.70s, train loss: 2331.4230]
+Tue 27 Jan 2026 16:21:22 INFO  epoch 19 evaluating [time: 1.27s, valid_score: 0.244400]
+Tue 27 Jan 2026 16:21:22 INFO  valid result: 
+hit@10 : 0.6013    ndcg@10 : 0.3277    mrr@10 : 0.2444
+Tue 27 Jan 2026 16:21:30 INFO  epoch 20 training [time: 7.82s, train loss: 2324.3450]
+Tue 27 Jan 2026 16:21:31 INFO  epoch 20 evaluating [time: 1.24s, valid_score: 0.250200]
+Tue 27 Jan 2026 16:21:31 INFO  valid result: 
+hit@10 : 0.6066    ndcg@10 : 0.3336    mrr@10 : 0.2502
+Tue 27 Jan 2026 16:21:31 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:21:39 INFO  epoch 21 training [time: 8.01s, train loss: 2317.9953]
+Tue 27 Jan 2026 16:21:41 INFO  epoch 21 evaluating [time: 1.59s, valid_score: 0.244600]
+Tue 27 Jan 2026 16:21:41 INFO  valid result: 
+hit@10 : 0.6161    ndcg@10 : 0.3318    mrr@10 : 0.2446
+Tue 27 Jan 2026 16:21:51 INFO  epoch 22 training [time: 9.59s, train loss: 2311.5934]
+Tue 27 Jan 2026 16:21:52 INFO  epoch 22 evaluating [time: 1.34s, valid_score: 0.250600]
+Tue 27 Jan 2026 16:21:52 INFO  valid result: 
+hit@10 : 0.6098    ndcg@10 : 0.3351    mrr@10 : 0.2506
+Tue 27 Jan 2026 16:21:52 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:22:00 INFO  epoch 23 training [time: 8.00s, train loss: 2306.0069]
+Tue 27 Jan 2026 16:22:01 INFO  epoch 23 evaluating [time: 1.33s, valid_score: 0.256200]
+Tue 27 Jan 2026 16:22:01 INFO  valid result: 
+hit@10 : 0.6172    ndcg@10 : 0.3406    mrr@10 : 0.2562
+Tue 27 Jan 2026 16:22:01 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:22:09 INFO  epoch 24 training [time: 7.62s, train loss: 2300.3149]
+Tue 27 Jan 2026 16:22:10 INFO  epoch 24 evaluating [time: 1.39s, valid_score: 0.248900]
+Tue 27 Jan 2026 16:22:10 INFO  valid result: 
+hit@10 : 0.6161    ndcg@10 : 0.3353    mrr@10 : 0.2489
+Tue 27 Jan 2026 16:22:18 INFO  epoch 25 training [time: 7.49s, train loss: 2295.6850]
+Tue 27 Jan 2026 16:22:19 INFO  epoch 25 evaluating [time: 1.35s, valid_score: 0.252700]
+Tue 27 Jan 2026 16:22:19 INFO  valid result: 
+hit@10 : 0.6119    ndcg@10 : 0.3372    mrr@10 : 0.2527
+Tue 27 Jan 2026 16:22:27 INFO  epoch 26 training [time: 7.69s, train loss: 2290.2423]
+Tue 27 Jan 2026 16:22:28 INFO  epoch 26 evaluating [time: 1.20s, valid_score: 0.253600]
+Tue 27 Jan 2026 16:22:28 INFO  valid result: 
+hit@10 : 0.6278    ndcg@10 : 0.3418    mrr@10 : 0.2536
+Tue 27 Jan 2026 16:22:36 INFO  epoch 27 training [time: 7.49s, train loss: 2286.2279]
+Tue 27 Jan 2026 16:22:37 INFO  epoch 27 evaluating [time: 1.29s, valid_score: 0.271300]
+Tue 27 Jan 2026 16:22:37 INFO  valid result: 
+hit@10 : 0.6299    ndcg@10 : 0.3554    mrr@10 : 0.2713
+Tue 27 Jan 2026 16:22:37 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:22:45 INFO  epoch 28 training [time: 7.71s, train loss: 2281.7620]
+Tue 27 Jan 2026 16:22:46 INFO  epoch 28 evaluating [time: 1.26s, valid_score: 0.269300]
+Tue 27 Jan 2026 16:22:46 INFO  valid result: 
+hit@10 : 0.6437    ndcg@10 : 0.3569    mrr@10 : 0.2693
+Tue 27 Jan 2026 16:22:53 INFO  epoch 29 training [time: 7.61s, train loss: 2277.4176]
+Tue 27 Jan 2026 16:22:55 INFO  epoch 29 evaluating [time: 1.32s, valid_score: 0.266700]
+Tue 27 Jan 2026 16:22:55 INFO  valid result: 
+hit@10 : 0.6278    ndcg@10 : 0.3509    mrr@10 : 0.2667
+Tue 27 Jan 2026 16:23:02 INFO  epoch 30 training [time: 7.68s, train loss: 2273.9034]
+Tue 27 Jan 2026 16:23:04 INFO  epoch 30 evaluating [time: 1.28s, valid_score: 0.267900]
+Tue 27 Jan 2026 16:23:04 INFO  valid result: 
+hit@10 : 0.632    ndcg@10 : 0.3534    mrr@10 : 0.2679
+Tue 27 Jan 2026 16:23:11 INFO  epoch 31 training [time: 7.73s, train loss: 2269.6955]
+Tue 27 Jan 2026 16:23:13 INFO  epoch 31 evaluating [time: 1.29s, valid_score: 0.273000]
+Tue 27 Jan 2026 16:23:13 INFO  valid result: 
+hit@10 : 0.6511    ndcg@10 : 0.3621    mrr@10 : 0.273
+Tue 27 Jan 2026 16:23:13 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:23:20 INFO  epoch 32 training [time: 7.58s, train loss: 2266.1930]
+Tue 27 Jan 2026 16:23:22 INFO  epoch 32 evaluating [time: 1.32s, valid_score: 0.282400]
+Tue 27 Jan 2026 16:23:22 INFO  valid result: 
+hit@10 : 0.6617    ndcg@10 : 0.371    mrr@10 : 0.2824
+Tue 27 Jan 2026 16:23:22 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:23:29 INFO  epoch 33 training [time: 7.63s, train loss: 2263.0372]
+Tue 27 Jan 2026 16:23:31 INFO  epoch 33 evaluating [time: 1.47s, valid_score: 0.276700]
+Tue 27 Jan 2026 16:23:31 INFO  valid result: 
+hit@10 : 0.6469    ndcg@10 : 0.3638    mrr@10 : 0.2767
+Tue 27 Jan 2026 16:23:38 INFO  epoch 34 training [time: 7.58s, train loss: 2259.7198]
+Tue 27 Jan 2026 16:23:40 INFO  epoch 34 evaluating [time: 1.44s, valid_score: 0.282000]
+Tue 27 Jan 2026 16:23:40 INFO  valid result: 
+hit@10 : 0.6543    ndcg@10 : 0.3692    mrr@10 : 0.282
+Tue 27 Jan 2026 16:23:48 INFO  epoch 35 training [time: 8.12s, train loss: 2256.8772]
+Tue 27 Jan 2026 16:23:49 INFO  epoch 35 evaluating [time: 1.19s, valid_score: 0.285800]
+Tue 27 Jan 2026 16:23:49 INFO  valid result: 
+hit@10 : 0.6575    ndcg@10 : 0.373    mrr@10 : 0.2858
+Tue 27 Jan 2026 16:23:49 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:23:57 INFO  epoch 36 training [time: 7.89s, train loss: 2253.4222]
+Tue 27 Jan 2026 16:23:58 INFO  epoch 36 evaluating [time: 1.37s, valid_score: 0.290200]
+Tue 27 Jan 2026 16:23:58 INFO  valid result: 
+hit@10 : 0.6681    ndcg@10 : 0.3789    mrr@10 : 0.2902
+Tue 27 Jan 2026 16:23:58 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:24:07 INFO  epoch 37 training [time: 8.25s, train loss: 2250.5738]
+Tue 27 Jan 2026 16:24:08 INFO  epoch 37 evaluating [time: 1.35s, valid_score: 0.273500]
+Tue 27 Jan 2026 16:24:08 INFO  valid result: 
+hit@10 : 0.6554    ndcg@10 : 0.3636    mrr@10 : 0.2735
+Tue 27 Jan 2026 16:24:16 INFO  epoch 38 training [time: 8.15s, train loss: 2247.4854]
+Tue 27 Jan 2026 16:24:18 INFO  epoch 38 evaluating [time: 1.52s, valid_score: 0.282200]
+Tue 27 Jan 2026 16:24:18 INFO  valid result: 
+hit@10 : 0.667    ndcg@10 : 0.3724    mrr@10 : 0.2822
+Tue 27 Jan 2026 16:24:26 INFO  epoch 39 training [time: 7.92s, train loss: 2245.1579]
+Tue 27 Jan 2026 16:24:27 INFO  epoch 39 evaluating [time: 1.37s, valid_score: 0.273700]
+Tue 27 Jan 2026 16:24:27 INFO  valid result: 
+hit@10 : 0.6734    ndcg@10 : 0.3675    mrr@10 : 0.2737
+Tue 27 Jan 2026 16:24:35 INFO  epoch 40 training [time: 7.87s, train loss: 2242.8733]
+Tue 27 Jan 2026 16:24:36 INFO  epoch 40 evaluating [time: 1.33s, valid_score: 0.288600]
+Tue 27 Jan 2026 16:24:36 INFO  valid result: 
+hit@10 : 0.6617    ndcg@10 : 0.3768    mrr@10 : 0.2886
+Tue 27 Jan 2026 16:24:44 INFO  epoch 41 training [time: 7.78s, train loss: 2239.7480]
+Tue 27 Jan 2026 16:24:45 INFO  epoch 41 evaluating [time: 1.39s, valid_score: 0.287100]
+Tue 27 Jan 2026 16:24:45 INFO  valid result: 
+hit@10 : 0.6723    ndcg@10 : 0.3775    mrr@10 : 0.2871
+Tue 27 Jan 2026 16:24:53 INFO  epoch 42 training [time: 7.84s, train loss: 2237.5170]
+Tue 27 Jan 2026 16:24:54 INFO  epoch 42 evaluating [time: 1.24s, valid_score: 0.278800]
+Tue 27 Jan 2026 16:24:54 INFO  valid result: 
+hit@10 : 0.6713    ndcg@10 : 0.3716    mrr@10 : 0.2788
+Tue 27 Jan 2026 16:25:02 INFO  epoch 43 training [time: 7.80s, train loss: 2235.2274]
+Tue 27 Jan 2026 16:25:03 INFO  epoch 43 evaluating [time: 1.28s, valid_score: 0.285900]
+Tue 27 Jan 2026 16:25:03 INFO  valid result: 
+hit@10 : 0.6628    ndcg@10 : 0.3749    mrr@10 : 0.2859
+Tue 27 Jan 2026 16:25:11 INFO  epoch 44 training [time: 7.77s, train loss: 2232.6998]
+Tue 27 Jan 2026 16:25:12 INFO  epoch 44 evaluating [time: 1.22s, valid_score: 0.282500]
+Tue 27 Jan 2026 16:25:12 INFO  valid result: 
+hit@10 : 0.6723    ndcg@10 : 0.3743    mrr@10 : 0.2825
+Tue 27 Jan 2026 16:25:20 INFO  epoch 45 training [time: 7.84s, train loss: 2230.5555]
+Tue 27 Jan 2026 16:25:22 INFO  epoch 45 evaluating [time: 1.36s, valid_score: 0.291100]
+Tue 27 Jan 2026 16:25:22 INFO  valid result: 
+hit@10 : 0.667    ndcg@10 : 0.3798    mrr@10 : 0.2911
+Tue 27 Jan 2026 16:25:22 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:25:29 INFO  epoch 46 training [time: 7.75s, train loss: 2228.2733]
+Tue 27 Jan 2026 16:25:31 INFO  epoch 46 evaluating [time: 1.29s, valid_score: 0.295500]
+Tue 27 Jan 2026 16:25:31 INFO  valid result: 
+hit@10 : 0.6702    ndcg@10 : 0.3837    mrr@10 : 0.2955
+Tue 27 Jan 2026 16:25:31 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:25:39 INFO  epoch 47 training [time: 7.87s, train loss: 2226.6018]
+Tue 27 Jan 2026 16:25:40 INFO  epoch 47 evaluating [time: 1.69s, valid_score: 0.297400]
+Tue 27 Jan 2026 16:25:40 INFO  valid result: 
+hit@10 : 0.6829    ndcg@10 : 0.3878    mrr@10 : 0.2974
+Tue 27 Jan 2026 16:25:40 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:25:48 INFO  epoch 48 training [time: 7.80s, train loss: 2224.5163]
+Tue 27 Jan 2026 16:25:49 INFO  epoch 48 evaluating [time: 1.30s, valid_score: 0.282600]
+Tue 27 Jan 2026 16:25:49 INFO  valid result: 
+hit@10 : 0.6649    ndcg@10 : 0.3726    mrr@10 : 0.2826
+Tue 27 Jan 2026 16:25:57 INFO  epoch 49 training [time: 7.85s, train loss: 2222.3577]
+Tue 27 Jan 2026 16:25:59 INFO  epoch 49 evaluating [time: 1.38s, valid_score: 0.291100]
+Tue 27 Jan 2026 16:25:59 INFO  valid result: 
+hit@10 : 0.6681    ndcg@10 : 0.3799    mrr@10 : 0.2911
+Tue 27 Jan 2026 16:26:06 INFO  epoch 50 training [time: 7.73s, train loss: 2220.0095]
+Tue 27 Jan 2026 16:26:08 INFO  epoch 50 evaluating [time: 1.27s, valid_score: 0.290800]
+Tue 27 Jan 2026 16:26:08 INFO  valid result: 
+hit@10 : 0.6723    ndcg@10 : 0.3808    mrr@10 : 0.2908
+Tue 27 Jan 2026 16:26:15 INFO  epoch 51 training [time: 7.77s, train loss: 2218.2687]
+Tue 27 Jan 2026 16:26:17 INFO  epoch 51 evaluating [time: 1.29s, valid_score: 0.299500]
+Tue 27 Jan 2026 16:26:17 INFO  valid result: 
+hit@10 : 0.666    ndcg@10 : 0.386    mrr@10 : 0.2995
+Tue 27 Jan 2026 16:26:17 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:26:25 INFO  epoch 52 training [time: 7.99s, train loss: 2216.3722]
+Tue 27 Jan 2026 16:26:26 INFO  epoch 52 evaluating [time: 1.27s, valid_score: 0.305200]
+Tue 27 Jan 2026 16:26:26 INFO  valid result: 
+hit@10 : 0.701    ndcg@10 : 0.3982    mrr@10 : 0.3052
+Tue 27 Jan 2026 16:26:26 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:26:34 INFO  epoch 53 training [time: 7.89s, train loss: 2214.7989]
+Tue 27 Jan 2026 16:26:35 INFO  epoch 53 evaluating [time: 1.24s, valid_score: 0.294600]
+Tue 27 Jan 2026 16:26:35 INFO  valid result: 
+hit@10 : 0.685    ndcg@10 : 0.3866    mrr@10 : 0.2946
+Tue 27 Jan 2026 16:26:43 INFO  epoch 54 training [time: 8.18s, train loss: 2212.7343]
+Tue 27 Jan 2026 16:26:45 INFO  epoch 54 evaluating [time: 1.29s, valid_score: 0.308400]
+Tue 27 Jan 2026 16:26:45 INFO  valid result: 
+hit@10 : 0.6808    ndcg@10 : 0.3965    mrr@10 : 0.3084
+Tue 27 Jan 2026 16:26:45 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:26:52 INFO  epoch 55 training [time: 7.80s, train loss: 2211.0452]
+Tue 27 Jan 2026 16:26:54 INFO  epoch 55 evaluating [time: 1.35s, valid_score: 0.304900]
+Tue 27 Jan 2026 16:26:54 INFO  valid result: 
+hit@10 : 0.6755    ndcg@10 : 0.3925    mrr@10 : 0.3049
+Tue 27 Jan 2026 16:27:01 INFO  epoch 56 training [time: 7.71s, train loss: 2209.2162]
+Tue 27 Jan 2026 16:27:03 INFO  epoch 56 evaluating [time: 1.26s, valid_score: 0.301400]
+Tue 27 Jan 2026 16:27:03 INFO  valid result: 
+hit@10 : 0.6861    ndcg@10 : 0.3923    mrr@10 : 0.3014
+Tue 27 Jan 2026 16:27:11 INFO  epoch 57 training [time: 7.90s, train loss: 2207.8175]
+Tue 27 Jan 2026 16:27:12 INFO  epoch 57 evaluating [time: 1.42s, valid_score: 0.303400]
+Tue 27 Jan 2026 16:27:12 INFO  valid result: 
+hit@10 : 0.6819    ndcg@10 : 0.3928    mrr@10 : 0.3034
+Tue 27 Jan 2026 16:27:20 INFO  epoch 58 training [time: 7.87s, train loss: 2206.1071]
+Tue 27 Jan 2026 16:27:21 INFO  epoch 58 evaluating [time: 1.26s, valid_score: 0.302600]
+Tue 27 Jan 2026 16:27:21 INFO  valid result: 
+hit@10 : 0.684    ndcg@10 : 0.3925    mrr@10 : 0.3026
+Tue 27 Jan 2026 16:27:29 INFO  epoch 59 training [time: 7.79s, train loss: 2203.8748]
+Tue 27 Jan 2026 16:27:30 INFO  epoch 59 evaluating [time: 1.23s, valid_score: 0.297900]
+Tue 27 Jan 2026 16:27:30 INFO  valid result: 
+hit@10 : 0.6882    ndcg@10 : 0.3901    mrr@10 : 0.2979
+Tue 27 Jan 2026 16:27:38 INFO  epoch 60 training [time: 7.72s, train loss: 2202.6861]
+Tue 27 Jan 2026 16:27:39 INFO  epoch 60 evaluating [time: 1.43s, valid_score: 0.305900]
+Tue 27 Jan 2026 16:27:39 INFO  valid result: 
+hit@10 : 0.685    ndcg@10 : 0.3954    mrr@10 : 0.3059
+Tue 27 Jan 2026 16:27:48 INFO  epoch 61 training [time: 8.16s, train loss: 2200.7961]
+Tue 27 Jan 2026 16:27:49 INFO  epoch 61 evaluating [time: 1.31s, valid_score: 0.314000]
+Tue 27 Jan 2026 16:27:49 INFO  valid result: 
+hit@10 : 0.6893    ndcg@10 : 0.4029    mrr@10 : 0.314
+Tue 27 Jan 2026 16:27:49 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:27:57 INFO  epoch 62 training [time: 8.18s, train loss: 2199.6658]
+Tue 27 Jan 2026 16:27:58 INFO  epoch 62 evaluating [time: 1.34s, valid_score: 0.310300]
+Tue 27 Jan 2026 16:27:58 INFO  valid result: 
+hit@10 : 0.684    ndcg@10 : 0.3983    mrr@10 : 0.3103
+Tue 27 Jan 2026 16:28:07 INFO  epoch 63 training [time: 8.62s, train loss: 2197.6194]
+Tue 27 Jan 2026 16:28:08 INFO  epoch 63 evaluating [time: 1.46s, valid_score: 0.315100]
+Tue 27 Jan 2026 16:28:08 INFO  valid result: 
+hit@10 : 0.6861    ndcg@10 : 0.4027    mrr@10 : 0.3151
+Tue 27 Jan 2026 16:28:08 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:28:16 INFO  epoch 64 training [time: 7.84s, train loss: 2196.1572]
+Tue 27 Jan 2026 16:28:18 INFO  epoch 64 evaluating [time: 1.33s, valid_score: 0.308100]
+Tue 27 Jan 2026 16:28:18 INFO  valid result: 
+hit@10 : 0.6946    ndcg@10 : 0.3993    mrr@10 : 0.3081
+Tue 27 Jan 2026 16:28:26 INFO  epoch 65 training [time: 8.04s, train loss: 2195.0352]
+Tue 27 Jan 2026 16:28:27 INFO  epoch 65 evaluating [time: 1.32s, valid_score: 0.317000]
+Tue 27 Jan 2026 16:28:27 INFO  valid result: 
+hit@10 : 0.6935    ndcg@10 : 0.406    mrr@10 : 0.317
+Tue 27 Jan 2026 16:28:27 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:28:35 INFO  epoch 66 training [time: 7.94s, train loss: 2193.6829]
+Tue 27 Jan 2026 16:28:36 INFO  epoch 66 evaluating [time: 1.33s, valid_score: 0.309600]
+Tue 27 Jan 2026 16:28:36 INFO  valid result: 
+hit@10 : 0.6914    ndcg@10 : 0.3998    mrr@10 : 0.3096
+Tue 27 Jan 2026 16:28:44 INFO  epoch 67 training [time: 7.66s, train loss: 2191.8514]
+Tue 27 Jan 2026 16:28:45 INFO  epoch 67 evaluating [time: 1.29s, valid_score: 0.310500]
+Tue 27 Jan 2026 16:28:45 INFO  valid result: 
+hit@10 : 0.7041    ndcg@10 : 0.4036    mrr@10 : 0.3105
+Tue 27 Jan 2026 16:28:53 INFO  epoch 68 training [time: 7.71s, train loss: 2190.7266]
+Tue 27 Jan 2026 16:28:54 INFO  epoch 68 evaluating [time: 1.23s, valid_score: 0.308700]
+Tue 27 Jan 2026 16:28:54 INFO  valid result: 
+hit@10 : 0.6935    ndcg@10 : 0.3997    mrr@10 : 0.3087
+Tue 27 Jan 2026 16:29:02 INFO  epoch 69 training [time: 7.73s, train loss: 2188.8626]
+Tue 27 Jan 2026 16:29:03 INFO  epoch 69 evaluating [time: 1.31s, valid_score: 0.310900]
+Tue 27 Jan 2026 16:29:03 INFO  valid result: 
+hit@10 : 0.6882    ndcg@10 : 0.4002    mrr@10 : 0.3109
+Tue 27 Jan 2026 16:29:11 INFO  epoch 70 training [time: 7.73s, train loss: 2188.3681]
+Tue 27 Jan 2026 16:29:12 INFO  epoch 70 evaluating [time: 1.27s, valid_score: 0.310300]
+Tue 27 Jan 2026 16:29:12 INFO  valid result: 
+hit@10 : 0.6893    ndcg@10 : 0.3997    mrr@10 : 0.3103
+Tue 27 Jan 2026 16:29:20 INFO  epoch 71 training [time: 7.71s, train loss: 2186.6921]
+Tue 27 Jan 2026 16:29:21 INFO  epoch 71 evaluating [time: 1.25s, valid_score: 0.307300]
+Tue 27 Jan 2026 16:29:21 INFO  valid result: 
+hit@10 : 0.6935    ndcg@10 : 0.3989    mrr@10 : 0.3073
+Tue 27 Jan 2026 16:29:29 INFO  epoch 72 training [time: 7.63s, train loss: 2185.2092]
+Tue 27 Jan 2026 16:29:30 INFO  epoch 72 evaluating [time: 1.38s, valid_score: 0.313800]
+Tue 27 Jan 2026 16:29:30 INFO  valid result: 
+hit@10 : 0.6808    ndcg@10 : 0.4007    mrr@10 : 0.3138
+Tue 27 Jan 2026 16:29:38 INFO  epoch 73 training [time: 7.75s, train loss: 2184.2195]
+Tue 27 Jan 2026 16:29:39 INFO  epoch 73 evaluating [time: 1.25s, valid_score: 0.308900]
+Tue 27 Jan 2026 16:29:39 INFO  valid result: 
+hit@10 : 0.6914    ndcg@10 : 0.3991    mrr@10 : 0.3089
+Tue 27 Jan 2026 16:29:47 INFO  epoch 74 training [time: 7.66s, train loss: 2182.7809]
+Tue 27 Jan 2026 16:29:48 INFO  epoch 74 evaluating [time: 1.29s, valid_score: 0.317800]
+Tue 27 Jan 2026 16:29:48 INFO  valid result: 
+hit@10 : 0.6946    ndcg@10 : 0.4069    mrr@10 : 0.3178
+Tue 27 Jan 2026 16:29:48 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:29:56 INFO  epoch 75 training [time: 7.77s, train loss: 2181.2888]
+Tue 27 Jan 2026 16:29:57 INFO  epoch 75 evaluating [time: 1.39s, valid_score: 0.306400]
+Tue 27 Jan 2026 16:29:57 INFO  valid result: 
+hit@10 : 0.6914    ndcg@10 : 0.3974    mrr@10 : 0.3064
+Tue 27 Jan 2026 16:30:05 INFO  epoch 76 training [time: 7.63s, train loss: 2180.4990]
+Tue 27 Jan 2026 16:30:06 INFO  epoch 76 evaluating [time: 1.32s, valid_score: 0.308000]
+Tue 27 Jan 2026 16:30:06 INFO  valid result: 
+hit@10 : 0.6988    ndcg@10 : 0.4002    mrr@10 : 0.308
+Tue 27 Jan 2026 16:30:14 INFO  epoch 77 training [time: 7.81s, train loss: 2178.9053]
+Tue 27 Jan 2026 16:30:15 INFO  epoch 77 evaluating [time: 1.26s, valid_score: 0.310500]
+Tue 27 Jan 2026 16:30:15 INFO  valid result: 
+hit@10 : 0.6978    ndcg@10 : 0.4024    mrr@10 : 0.3105
+Tue 27 Jan 2026 16:30:23 INFO  epoch 78 training [time: 7.69s, train loss: 2177.6260]
+Tue 27 Jan 2026 16:30:24 INFO  epoch 78 evaluating [time: 1.35s, valid_score: 0.315400]
+Tue 27 Jan 2026 16:30:24 INFO  valid result: 
+hit@10 : 0.702    ndcg@10 : 0.4066    mrr@10 : 0.3154
+Tue 27 Jan 2026 16:30:32 INFO  epoch 79 training [time: 7.81s, train loss: 2176.6357]
+Tue 27 Jan 2026 16:30:33 INFO  epoch 79 evaluating [time: 1.26s, valid_score: 0.321700]
+Tue 27 Jan 2026 16:30:33 INFO  valid result: 
+hit@10 : 0.6999    ndcg@10 : 0.4111    mrr@10 : 0.3217
+Tue 27 Jan 2026 16:30:33 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:30:41 INFO  epoch 80 training [time: 7.15s, train loss: 2175.1748]
+Tue 27 Jan 2026 16:30:42 INFO  epoch 80 evaluating [time: 1.25s, valid_score: 0.321100]
+Tue 27 Jan 2026 16:30:42 INFO  valid result: 
+hit@10 : 0.6988    ndcg@10 : 0.4105    mrr@10 : 0.3211
+Tue 27 Jan 2026 16:30:49 INFO  epoch 81 training [time: 7.66s, train loss: 2174.2601]
+Tue 27 Jan 2026 16:30:51 INFO  epoch 81 evaluating [time: 1.36s, valid_score: 0.305600]
+Tue 27 Jan 2026 16:30:51 INFO  valid result: 
+hit@10 : 0.6872    ndcg@10 : 0.3957    mrr@10 : 0.3056
+Tue 27 Jan 2026 16:30:59 INFO  epoch 82 training [time: 7.72s, train loss: 2172.8532]
+Tue 27 Jan 2026 16:31:00 INFO  epoch 82 evaluating [time: 1.23s, valid_score: 0.311000]
+Tue 27 Jan 2026 16:31:00 INFO  valid result: 
+hit@10 : 0.6914    ndcg@10 : 0.4012    mrr@10 : 0.311
+Tue 27 Jan 2026 16:31:08 INFO  epoch 83 training [time: 7.74s, train loss: 2171.5752]
+Tue 27 Jan 2026 16:31:09 INFO  epoch 83 evaluating [time: 1.25s, valid_score: 0.305400]
+Tue 27 Jan 2026 16:31:09 INFO  valid result: 
+hit@10 : 0.6776    ndcg@10 : 0.3935    mrr@10 : 0.3054
+Tue 27 Jan 2026 16:31:17 INFO  epoch 84 training [time: 7.70s, train loss: 2170.9046]
+Tue 27 Jan 2026 16:31:18 INFO  epoch 84 evaluating [time: 1.36s, valid_score: 0.312200]
+Tue 27 Jan 2026 16:31:18 INFO  valid result: 
+hit@10 : 0.701    ndcg@10 : 0.4042    mrr@10 : 0.3122
+Tue 27 Jan 2026 16:31:26 INFO  epoch 85 training [time: 7.69s, train loss: 2170.2431]
+Tue 27 Jan 2026 16:31:27 INFO  epoch 85 evaluating [time: 1.26s, valid_score: 0.320600]
+Tue 27 Jan 2026 16:31:27 INFO  valid result: 
+hit@10 : 0.6893    ndcg@10 : 0.4076    mrr@10 : 0.3206
+Tue 27 Jan 2026 16:31:35 INFO  epoch 86 training [time: 7.85s, train loss: 2168.1322]
+Tue 27 Jan 2026 16:31:36 INFO  epoch 86 evaluating [time: 1.27s, valid_score: 0.309700]
+Tue 27 Jan 2026 16:31:36 INFO  valid result: 
+hit@10 : 0.6967    ndcg@10 : 0.4013    mrr@10 : 0.3097
+Tue 27 Jan 2026 16:31:44 INFO  epoch 87 training [time: 8.01s, train loss: 2167.5545]
+Tue 27 Jan 2026 16:31:45 INFO  epoch 87 evaluating [time: 1.39s, valid_score: 0.323100]
+Tue 27 Jan 2026 16:31:45 INFO  valid result: 
+hit@10 : 0.7105    ndcg@10 : 0.4144    mrr@10 : 0.3231
+Tue 27 Jan 2026 16:31:45 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:31:53 INFO  epoch 88 training [time: 8.01s, train loss: 2165.6822]
+Tue 27 Jan 2026 16:31:55 INFO  epoch 88 evaluating [time: 1.33s, valid_score: 0.321700]
+Tue 27 Jan 2026 16:31:55 INFO  valid result: 
+hit@10 : 0.6999    ndcg@10 : 0.4113    mrr@10 : 0.3217
+Tue 27 Jan 2026 16:32:03 INFO  epoch 89 training [time: 8.06s, train loss: 2165.5849]
+Tue 27 Jan 2026 16:32:04 INFO  epoch 89 evaluating [time: 1.36s, valid_score: 0.323400]
+Tue 27 Jan 2026 16:32:04 INFO  valid result: 
+hit@10 : 0.6925    ndcg@10 : 0.411    mrr@10 : 0.3234
+Tue 27 Jan 2026 16:32:04 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:32:12 INFO  epoch 90 training [time: 8.01s, train loss: 2164.1562]
+Tue 27 Jan 2026 16:32:13 INFO  epoch 90 evaluating [time: 1.33s, valid_score: 0.330300]
+Tue 27 Jan 2026 16:32:13 INFO  valid result: 
+hit@10 : 0.7052    ndcg@10 : 0.4191    mrr@10 : 0.3303
+Tue 27 Jan 2026 16:32:13 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:32:21 INFO  epoch 91 training [time: 7.96s, train loss: 2163.4164]
+Tue 27 Jan 2026 16:32:23 INFO  epoch 91 evaluating [time: 1.32s, valid_score: 0.312900]
+Tue 27 Jan 2026 16:32:23 INFO  valid result: 
+hit@10 : 0.6978    ndcg@10 : 0.404    mrr@10 : 0.3129
+Tue 27 Jan 2026 16:32:31 INFO  epoch 92 training [time: 7.85s, train loss: 2162.1012]
+Tue 27 Jan 2026 16:32:32 INFO  epoch 92 evaluating [time: 1.25s, valid_score: 0.317300]
+Tue 27 Jan 2026 16:32:32 INFO  valid result: 
+hit@10 : 0.6935    ndcg@10 : 0.4065    mrr@10 : 0.3173
+Tue 27 Jan 2026 16:32:40 INFO  epoch 93 training [time: 7.81s, train loss: 2161.3827]
+Tue 27 Jan 2026 16:32:41 INFO  epoch 93 evaluating [time: 1.29s, valid_score: 0.318500]
+Tue 27 Jan 2026 16:32:41 INFO  valid result: 
+hit@10 : 0.6925    ndcg@10 : 0.4068    mrr@10 : 0.3185
+Tue 27 Jan 2026 16:32:49 INFO  epoch 94 training [time: 7.89s, train loss: 2160.4683]
+Tue 27 Jan 2026 16:32:50 INFO  epoch 94 evaluating [time: 1.29s, valid_score: 0.315400]
+Tue 27 Jan 2026 16:32:50 INFO  valid result: 
+hit@10 : 0.6903    ndcg@10 : 0.404    mrr@10 : 0.3154
+Tue 27 Jan 2026 16:32:58 INFO  epoch 95 training [time: 7.74s, train loss: 2159.5808]
+Tue 27 Jan 2026 16:32:59 INFO  epoch 95 evaluating [time: 1.25s, valid_score: 0.324000]
+Tue 27 Jan 2026 16:32:59 INFO  valid result: 
+hit@10 : 0.7084    ndcg@10 : 0.4149    mrr@10 : 0.324
+Tue 27 Jan 2026 16:33:07 INFO  epoch 96 training [time: 7.74s, train loss: 2158.2029]
+Tue 27 Jan 2026 16:33:08 INFO  epoch 96 evaluating [time: 1.27s, valid_score: 0.316500]
+Tue 27 Jan 2026 16:33:08 INFO  valid result: 
+hit@10 : 0.684    ndcg@10 : 0.4038    mrr@10 : 0.3165
+Tue 27 Jan 2026 16:33:16 INFO  epoch 97 training [time: 7.86s, train loss: 2157.6543]
+Tue 27 Jan 2026 16:33:17 INFO  epoch 97 evaluating [time: 1.32s, valid_score: 0.332500]
+Tue 27 Jan 2026 16:33:17 INFO  valid result: 
+hit@10 : 0.7084    ndcg@10 : 0.4214    mrr@10 : 0.3325
+Tue 27 Jan 2026 16:33:17 INFO  Saving current: saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:33:25 INFO  epoch 98 training [time: 7.74s, train loss: 2156.1882]
+Tue 27 Jan 2026 16:33:26 INFO  epoch 98 evaluating [time: 1.34s, valid_score: 0.312300]
+Tue 27 Jan 2026 16:33:26 INFO  valid result: 
+hit@10 : 0.6988    ndcg@10 : 0.4039    mrr@10 : 0.3123
+Tue 27 Jan 2026 16:33:34 INFO  epoch 99 training [time: 7.65s, train loss: 2155.5378]
+Tue 27 Jan 2026 16:33:35 INFO  epoch 99 evaluating [time: 1.30s, valid_score: 0.319200]
+Tue 27 Jan 2026 16:33:35 INFO  valid result: 
+hit@10 : 0.7063    ndcg@10 : 0.4106    mrr@10 : 0.3192
+Tue 27 Jan 2026 16:33:35 INFO  Loading model structure and parameters from saved\TriMLP-Jan-27-2026_16-18-17.pth
+Tue 27 Jan 2026 16:33:38 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    10.90 %     |
++-------------+----------------+
+| GPU         | 0.07 G/6.00 G  |
++-------------+----------------+
+| Memory      | 1.19 G/15.63 G |
++-------------+----------------+
+Tue 27 Jan 2026 16:33:38 INFO  best valid : OrderedDict([('hit@10', 0.7084), ('ndcg@10', 0.4214), ('mrr@10', 0.3325)])
+Tue 27 Jan 2026 16:33:38 INFO  test result: OrderedDict([('hit@10', 0.6575), ('ndcg@10', 0.3767), ('mrr@10', 0.2899)])

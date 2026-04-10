@@ -1,0 +1,23 @@
+# dataset + eval settings for RecBole (amazon-beauty-5core-subset, full-sort)
+data_path: data/amazon
+dataset: amazon-beauty-5core-subset
+field_separator: "\t"
+MAX_ITEM_LIST_LENGTH: 32
+
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+
+load_col:
+  inter: [user_id, item_id, rating, timestamp]
+
+eval_args:
+  group_by: user
+  order: TO
+  split:
+    LS: valid_and_test
+  mode: full
+
+metrics: ["Hit", "NDCG", "MRR"]
+topk: [10]

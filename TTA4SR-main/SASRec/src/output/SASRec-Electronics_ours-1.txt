@@ -1,0 +1,758 @@
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                              uni100
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=42, star_test=0, eval_mode='uni100', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3875'}
+{'epoch': 1, 'rec_avg_loss': '1.3660'}
+{'Epoch': 1, 'HIT@5': '0.0527', 'NDCG@5': '0.0341', 'HIT@10': '0.1113', 'NDCG@10': '0.0529', 'MRR@10': '0.0357', 'HIT@20': '0.2193', 'NDCG@20': '0.0800'}
+{'epoch': 2, 'rec_avg_loss': '1.3451'}
+{'Epoch': 2, 'HIT@5': '0.0653', 'NDCG@5': '0.0436', 'HIT@10': '0.1240', 'NDCG@10': '0.0623', 'MRR@10': '0.0441', 'HIT@20': '0.2387', 'NDCG@20': '0.0910'}
+{'epoch': 3, 'rec_avg_loss': '1.3238'}
+{'Epoch': 3, 'HIT@5': '0.0853', 'NDCG@5': '0.0569', 'HIT@10': '0.1487', 'NDCG@10': '0.0772', 'MRR@10': '0.0558', 'HIT@20': '0.2600', 'NDCG@20': '0.1050'}
+{'epoch': 4, 'rec_avg_loss': '1.2991'}
+{'Epoch': 4, 'HIT@5': '0.1273', 'NDCG@5': '0.0897', 'HIT@10': '0.1987', 'NDCG@10': '0.1125', 'MRR@10': '0.0867', 'HIT@20': '0.3147', 'NDCG@20': '0.1417'}
+{'epoch': 5, 'rec_avg_loss': '1.2706'}
+{'Epoch': 5, 'HIT@5': '0.1747', 'NDCG@5': '0.1271', 'HIT@10': '0.2520', 'NDCG@10': '0.1521', 'MRR@10': '0.1217', 'HIT@20': '0.3593', 'NDCG@20': '0.1790'}
+{'epoch': 6, 'rec_avg_loss': '1.2373'}
+{'Epoch': 6, 'HIT@5': '0.2060', 'NDCG@5': '0.1555', 'HIT@10': '0.2867', 'NDCG@10': '0.1814', 'MRR@10': '0.1495', 'HIT@20': '0.3873', 'NDCG@20': '0.2066'}
+{'epoch': 7, 'rec_avg_loss': '1.2013'}
+{'Epoch': 7, 'HIT@5': '0.2407', 'NDCG@5': '0.1772', 'HIT@10': '0.3160', 'NDCG@10': '0.2014', 'MRR@10': '0.1662', 'HIT@20': '0.4153', 'NDCG@20': '0.2262'}
+{'epoch': 8, 'rec_avg_loss': '1.1636'}
+{'Epoch': 8, 'HIT@5': '0.2540', 'NDCG@5': '0.1859', 'HIT@10': '0.3313', 'NDCG@10': '0.2110', 'MRR@10': '0.1737', 'HIT@20': '0.4327', 'NDCG@20': '0.2361'}
+{'epoch': 9, 'rec_avg_loss': '1.1258'}
+{'Epoch': 9, 'HIT@5': '0.2600', 'NDCG@5': '0.1907', 'HIT@10': '0.3407', 'NDCG@10': '0.2168', 'MRR@10': '0.1785', 'HIT@20': '0.4393', 'NDCG@20': '0.2415'}
+{'epoch': 10, 'rec_avg_loss': '1.0919'}
+{'Epoch': 10, 'HIT@5': '0.2653', 'NDCG@5': '0.1920', 'HIT@10': '0.3447', 'NDCG@10': '0.2177', 'MRR@10': '0.1783', 'HIT@20': '0.4433', 'NDCG@20': '0.2425'}
+{'epoch': 11, 'rec_avg_loss': '1.0599'}
+{'Epoch': 11, 'HIT@5': '0.2640', 'NDCG@5': '0.1914', 'HIT@10': '0.3493', 'NDCG@10': '0.2192', 'MRR@10': '0.1789', 'HIT@20': '0.4480', 'NDCG@20': '0.2440'}
+{'epoch': 12, 'rec_avg_loss': '1.0278'}
+{'Epoch': 12, 'HIT@5': '0.2607', 'NDCG@5': '0.1893', 'HIT@10': '0.3487', 'NDCG@10': '0.2180', 'MRR@10': '0.1776', 'HIT@20': '0.4440', 'NDCG@20': '0.2421'}
+{'epoch': 13, 'rec_avg_loss': '1.0016'}
+{'Epoch': 13, 'HIT@5': '0.2633', 'NDCG@5': '0.1906', 'HIT@10': '0.3480', 'NDCG@10': '0.2180', 'MRR@10': '0.1779', 'HIT@20': '0.4420', 'NDCG@20': '0.2417'}
+{'epoch': 14, 'rec_avg_loss': '0.9763'}
+{'Epoch': 14, 'HIT@5': '0.2553', 'NDCG@5': '0.1856', 'HIT@10': '0.3447', 'NDCG@10': '0.2146', 'MRR@10': '0.1746', 'HIT@20': '0.4427', 'NDCG@20': '0.2394'}
+{'epoch': 15, 'rec_avg_loss': '0.9534'}
+{'Epoch': 15, 'HIT@5': '0.2567', 'NDCG@5': '0.1850', 'HIT@10': '0.3427', 'NDCG@10': '0.2129', 'MRR@10': '0.1730', 'HIT@20': '0.4387', 'NDCG@20': '0.2374'}
+{'epoch': 16, 'rec_avg_loss': '0.9326'}
+{'Epoch': 16, 'HIT@5': '0.2607', 'NDCG@5': '0.1860', 'HIT@10': '0.3433', 'NDCG@10': '0.2126', 'MRR@10': '0.1724', 'HIT@20': '0.4420', 'NDCG@20': '0.2375'}
+{'epoch': 17, 'rec_avg_loss': '0.9127'}
+{'Epoch': 17, 'HIT@5': '0.2527', 'NDCG@5': '0.1793', 'HIT@10': '0.3393', 'NDCG@10': '0.2071', 'MRR@10': '0.1665', 'HIT@20': '0.4373', 'NDCG@20': '0.2317'}
+{'epoch': 18, 'rec_avg_loss': '0.8962'}
+{'Epoch': 18, 'HIT@5': '0.2493', 'NDCG@5': '0.1757', 'HIT@10': '0.3327', 'NDCG@10': '0.2024', 'MRR@10': '0.1624', 'HIT@20': '0.4287', 'NDCG@20': '0.2267'}
+{'epoch': 19, 'rec_avg_loss': '0.8812'}
+{'Epoch': 19, 'HIT@5': '0.2433', 'NDCG@5': '0.1730', 'HIT@10': '0.3267', 'NDCG@10': '0.1999', 'MRR@10': '0.1608', 'HIT@20': '0.4280', 'NDCG@20': '0.2255'}
+{'epoch': 20, 'rec_avg_loss': '0.8624'}
+{'Epoch': 20, 'HIT@5': '0.2420', 'NDCG@5': '0.1713', 'HIT@10': '0.3207', 'NDCG@10': '0.1964', 'MRR@10': '0.1582', 'HIT@20': '0.4280', 'NDCG@20': '0.2234'}
+{'epoch': 21, 'rec_avg_loss': '0.8476'}
+{'Epoch': 21, 'HIT@5': '0.2400', 'NDCG@5': '0.1703', 'HIT@10': '0.3233', 'NDCG@10': '0.1969', 'MRR@10': '0.1581', 'HIT@20': '0.4267', 'NDCG@20': '0.2229'}
+{'Epoch': 0, 'HIT@5': '0.2640', 'NDCG@5': '0.1917', 'HIT@10': '0.3493', 'NDCG@10': '0.2195', 'MRR@10': '0.1794', 'HIT@20': '0.4460', 'NDCG@20': '0.2439'}
+SASRec-Electronics_ours-1
+{'Epoch': 0, 'HIT@5': '0.2640', 'NDCG@5': '0.1917', 'HIT@10': '0.3493', 'NDCG@10': '0.2195', 'MRR@10': '0.1794', 'HIT@20': '0.4460', 'NDCG@20': '0.2439'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                              uni100
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-Electronics_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=42, star_test=0, eval_mode='uni100', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-Electronics_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.2640', 'NDCG@5': '0.1917', 'HIT@10': '0.3493', 'NDCG@10': '0.2195', 'MRR@10': '0.1794', 'HIT@20': '0.4460', 'NDCG@20': '0.2439'}
+{'Epoch': 0, 'HIT@5': '0.2707', 'NDCG@5': '0.1984', 'HIT@10': '0.3553', 'NDCG@10': '0.2259', 'MRR@10': '0.1861', 'HIT@20': '0.4587', 'NDCG@20': '0.2521'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                              uni100
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2023, star_test=0, eval_mode='uni100', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3871'}
+{'epoch': 1, 'rec_avg_loss': '1.3650'}
+{'Epoch': 1, 'HIT@5': '0.0527', 'NDCG@5': '0.0339', 'HIT@10': '0.1140', 'NDCG@10': '0.0533', 'MRR@10': '0.0356', 'HIT@20': '0.2173', 'NDCG@20': '0.0792'}
+{'epoch': 2, 'rec_avg_loss': '1.3446'}
+{'Epoch': 2, 'HIT@5': '0.0700', 'NDCG@5': '0.0444', 'HIT@10': '0.1333', 'NDCG@10': '0.0646', 'MRR@10': '0.0443', 'HIT@20': '0.2393', 'NDCG@20': '0.0912'}
+{'epoch': 3, 'rec_avg_loss': '1.3226'}
+{'Epoch': 3, 'HIT@5': '0.0947', 'NDCG@5': '0.0597', 'HIT@10': '0.1600', 'NDCG@10': '0.0805', 'MRR@10': '0.0567', 'HIT@20': '0.2740', 'NDCG@20': '0.1089'}
+{'epoch': 4, 'rec_avg_loss': '1.2969'}
+{'Epoch': 4, 'HIT@5': '0.1387', 'NDCG@5': '0.0912', 'HIT@10': '0.2220', 'NDCG@10': '0.1182', 'MRR@10': '0.0868', 'HIT@20': '0.3360', 'NDCG@20': '0.1468'}
+{'epoch': 5, 'rec_avg_loss': '1.2670'}
+{'Epoch': 5, 'HIT@5': '0.2040', 'NDCG@5': '0.1361', 'HIT@10': '0.2707', 'NDCG@10': '0.1575', 'MRR@10': '0.1227', 'HIT@20': '0.3813', 'NDCG@20': '0.1852'}
+{'epoch': 6, 'rec_avg_loss': '1.2324'}
+{'Epoch': 6, 'HIT@5': '0.2273', 'NDCG@5': '0.1596', 'HIT@10': '0.3113', 'NDCG@10': '0.1868', 'MRR@10': '0.1484', 'HIT@20': '0.4200', 'NDCG@20': '0.2140'}
+{'epoch': 7, 'rec_avg_loss': '1.1961'}
+{'Epoch': 7, 'HIT@5': '0.2593', 'NDCG@5': '0.1799', 'HIT@10': '0.3393', 'NDCG@10': '0.2059', 'MRR@10': '0.1645', 'HIT@20': '0.4327', 'NDCG@20': '0.2296'}
+{'epoch': 8, 'rec_avg_loss': '1.1576'}
+{'Epoch': 8, 'HIT@5': '0.2720', 'NDCG@5': '0.1936', 'HIT@10': '0.3453', 'NDCG@10': '0.2174', 'MRR@10': '0.1776', 'HIT@20': '0.4487', 'NDCG@20': '0.2436'}
+{'epoch': 9, 'rec_avg_loss': '1.1204'}
+{'Epoch': 9, 'HIT@5': '0.2833', 'NDCG@5': '0.1996', 'HIT@10': '0.3613', 'NDCG@10': '0.2249', 'MRR@10': '0.1824', 'HIT@20': '0.4553', 'NDCG@20': '0.2487'}
+{'epoch': 10, 'rec_avg_loss': '1.0851'}
+{'Epoch': 10, 'HIT@5': '0.2820', 'NDCG@5': '0.2000', 'HIT@10': '0.3607', 'NDCG@10': '0.2255', 'MRR@10': '0.1834', 'HIT@20': '0.4513', 'NDCG@20': '0.2485'}
+{'epoch': 11, 'rec_avg_loss': '1.0535'}
+{'Epoch': 11, 'HIT@5': '0.2840', 'NDCG@5': '0.2001', 'HIT@10': '0.3613', 'NDCG@10': '0.2251', 'MRR@10': '0.1827', 'HIT@20': '0.4500', 'NDCG@20': '0.2477'}
+{'epoch': 12, 'rec_avg_loss': '1.0219'}
+{'Epoch': 12, 'HIT@5': '0.2800', 'NDCG@5': '0.1978', 'HIT@10': '0.3633', 'NDCG@10': '0.2246', 'MRR@10': '0.1815', 'HIT@20': '0.4507', 'NDCG@20': '0.2466'}
+{'epoch': 13, 'rec_avg_loss': '0.9957'}
+{'Epoch': 13, 'HIT@5': '0.2740', 'NDCG@5': '0.1936', 'HIT@10': '0.3587', 'NDCG@10': '0.2210', 'MRR@10': '0.1784', 'HIT@20': '0.4487', 'NDCG@20': '0.2439'}
+{'epoch': 14, 'rec_avg_loss': '0.9709'}
+{'Epoch': 14, 'HIT@5': '0.2680', 'NDCG@5': '0.1899', 'HIT@10': '0.3520', 'NDCG@10': '0.2169', 'MRR@10': '0.1751', 'HIT@20': '0.4473', 'NDCG@20': '0.2413'}
+{'epoch': 15, 'rec_avg_loss': '0.9472'}
+{'Epoch': 15, 'HIT@5': '0.2660', 'NDCG@5': '0.1877', 'HIT@10': '0.3520', 'NDCG@10': '0.2154', 'MRR@10': '0.1731', 'HIT@20': '0.4520', 'NDCG@20': '0.2407'}
+{'epoch': 16, 'rec_avg_loss': '0.9277'}
+{'Epoch': 16, 'HIT@5': '0.2633', 'NDCG@5': '0.1867', 'HIT@10': '0.3460', 'NDCG@10': '0.2133', 'MRR@10': '0.1723', 'HIT@20': '0.4473', 'NDCG@20': '0.2391'}
+{'epoch': 17, 'rec_avg_loss': '0.9109'}
+{'Epoch': 17, 'HIT@5': '0.2607', 'NDCG@5': '0.1844', 'HIT@10': '0.3473', 'NDCG@10': '0.2122', 'MRR@10': '0.1706', 'HIT@20': '0.4433', 'NDCG@20': '0.2364'}
+{'epoch': 18, 'rec_avg_loss': '0.8923'}
+{'Epoch': 18, 'HIT@5': '0.2560', 'NDCG@5': '0.1808', 'HIT@10': '0.3447', 'NDCG@10': '0.2092', 'MRR@10': '0.1675', 'HIT@20': '0.4407', 'NDCG@20': '0.2334'}
+{'epoch': 19, 'rec_avg_loss': '0.8763'}
+{'Epoch': 19, 'HIT@5': '0.2567', 'NDCG@5': '0.1816', 'HIT@10': '0.3440', 'NDCG@10': '0.2098', 'MRR@10': '0.1684', 'HIT@20': '0.4373', 'NDCG@20': '0.2335'}
+{'Epoch': 0, 'HIT@5': '0.2840', 'NDCG@5': '0.2008', 'HIT@10': '0.3627', 'NDCG@10': '0.2262', 'MRR@10': '0.1838', 'HIT@20': '0.4560', 'NDCG@20': '0.2498'}
+SASRec-Electronics_ours-1
+{'Epoch': 0, 'HIT@5': '0.2840', 'NDCG@5': '0.2008', 'HIT@10': '0.3627', 'NDCG@10': '0.2262', 'MRR@10': '0.1838', 'HIT@20': '0.4560', 'NDCG@20': '0.2498'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                              uni100
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-Electronics_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2023, star_test=0, eval_mode='uni100', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-Electronics_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.2840', 'NDCG@5': '0.2008', 'HIT@10': '0.3627', 'NDCG@10': '0.2262', 'MRR@10': '0.1838', 'HIT@20': '0.4560', 'NDCG@20': '0.2498'}
+{'Epoch': 0, 'HIT@5': '0.2807', 'NDCG@5': '0.2026', 'HIT@10': '0.3640', 'NDCG@10': '0.2295', 'MRR@10': '0.1878', 'HIT@20': '0.4480', 'NDCG@20': '0.2506'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                              uni100
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2024, star_test=0, eval_mode='uni100', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3878'}
+{'epoch': 1, 'rec_avg_loss': '1.3652'}
+{'Epoch': 1, 'HIT@5': '0.0753', 'NDCG@5': '0.0466', 'HIT@10': '0.1393', 'NDCG@10': '0.0672', 'MRR@10': '0.0457', 'HIT@20': '0.2387', 'NDCG@20': '0.0920'}
+{'epoch': 2, 'rec_avg_loss': '1.3437'}
+{'Epoch': 2, 'HIT@5': '0.0907', 'NDCG@5': '0.0599', 'HIT@10': '0.1587', 'NDCG@10': '0.0817', 'MRR@10': '0.0587', 'HIT@20': '0.2667', 'NDCG@20': '0.1085'}
+{'epoch': 3, 'rec_avg_loss': '1.3204'}
+{'Epoch': 3, 'HIT@5': '0.1240', 'NDCG@5': '0.0825', 'HIT@10': '0.1820', 'NDCG@10': '0.1010', 'MRR@10': '0.0765', 'HIT@20': '0.3053', 'NDCG@20': '0.1320'}
+{'epoch': 4, 'rec_avg_loss': '1.2921'}
+{'Epoch': 4, 'HIT@5': '0.1780', 'NDCG@5': '0.1242', 'HIT@10': '0.2473', 'NDCG@10': '0.1464', 'MRR@10': '0.1155', 'HIT@20': '0.3593', 'NDCG@20': '0.1743'}
+{'epoch': 5, 'rec_avg_loss': '1.2597'}
+{'Epoch': 5, 'HIT@5': '0.2127', 'NDCG@5': '0.1522', 'HIT@10': '0.2833', 'NDCG@10': '0.1753', 'MRR@10': '0.1419', 'HIT@20': '0.3947', 'NDCG@20': '0.2034'}
+{'epoch': 6, 'rec_avg_loss': '1.2226'}
+{'Epoch': 6, 'HIT@5': '0.2440', 'NDCG@5': '0.1742', 'HIT@10': '0.3273', 'NDCG@10': '0.2009', 'MRR@10': '0.1621', 'HIT@20': '0.4233', 'NDCG@20': '0.2254'}
+{'epoch': 7, 'rec_avg_loss': '1.1842'}
+{'Epoch': 7, 'HIT@5': '0.2573', 'NDCG@5': '0.1824', 'HIT@10': '0.3407', 'NDCG@10': '0.2092', 'MRR@10': '0.1686', 'HIT@20': '0.4400', 'NDCG@20': '0.2344'}
+{'epoch': 8, 'rec_avg_loss': '1.1453'}
+{'Epoch': 8, 'HIT@5': '0.2607', 'NDCG@5': '0.1864', 'HIT@10': '0.3500', 'NDCG@10': '0.2153', 'MRR@10': '0.1737', 'HIT@20': '0.4513', 'NDCG@20': '0.2409'}
+{'epoch': 9, 'rec_avg_loss': '1.1087'}
+{'Epoch': 9, 'HIT@5': '0.2680', 'NDCG@5': '0.1898', 'HIT@10': '0.3527', 'NDCG@10': '0.2172', 'MRR@10': '0.1753', 'HIT@20': '0.4547', 'NDCG@20': '0.2432'}
+{'epoch': 10, 'rec_avg_loss': '1.0745'}
+{'Epoch': 10, 'HIT@5': '0.2700', 'NDCG@5': '0.1909', 'HIT@10': '0.3533', 'NDCG@10': '0.2181', 'MRR@10': '0.1761', 'HIT@20': '0.4493', 'NDCG@20': '0.2425'}
+{'epoch': 11, 'rec_avg_loss': '1.0443'}
+{'Epoch': 11, 'HIT@5': '0.2693', 'NDCG@5': '0.1900', 'HIT@10': '0.3567', 'NDCG@10': '0.2182', 'MRR@10': '0.1756', 'HIT@20': '0.4407', 'NDCG@20': '0.2395'}
+{'epoch': 12, 'rec_avg_loss': '1.0165'}
+{'Epoch': 12, 'HIT@5': '0.2627', 'NDCG@5': '0.1858', 'HIT@10': '0.3587', 'NDCG@10': '0.2171', 'MRR@10': '0.1735', 'HIT@20': '0.4407', 'NDCG@20': '0.2379'}
+{'epoch': 13, 'rec_avg_loss': '0.9899'}
+{'Epoch': 13, 'HIT@5': '0.2587', 'NDCG@5': '0.1833', 'HIT@10': '0.3433', 'NDCG@10': '0.2108', 'MRR@10': '0.1699', 'HIT@20': '0.4320', 'NDCG@20': '0.2334'}
+{'epoch': 14, 'rec_avg_loss': '0.9661'}
+{'Epoch': 14, 'HIT@5': '0.2580', 'NDCG@5': '0.1818', 'HIT@10': '0.3480', 'NDCG@10': '0.2109', 'MRR@10': '0.1687', 'HIT@20': '0.4413', 'NDCG@20': '0.2344'}
+{'epoch': 15, 'rec_avg_loss': '0.9457'}
+{'Epoch': 15, 'HIT@5': '0.2500', 'NDCG@5': '0.1787', 'HIT@10': '0.3380', 'NDCG@10': '0.2074', 'MRR@10': '0.1671', 'HIT@20': '0.4413', 'NDCG@20': '0.2334'}
+{'epoch': 16, 'rec_avg_loss': '0.9272'}
+{'Epoch': 16, 'HIT@5': '0.2533', 'NDCG@5': '0.1789', 'HIT@10': '0.3407', 'NDCG@10': '0.2071', 'MRR@10': '0.1660', 'HIT@20': '0.4440', 'NDCG@20': '0.2329'}
+{'epoch': 17, 'rec_avg_loss': '0.9045'}
+{'Epoch': 17, 'HIT@5': '0.2493', 'NDCG@5': '0.1774', 'HIT@10': '0.3333', 'NDCG@10': '0.2046', 'MRR@10': '0.1650', 'HIT@20': '0.4313', 'NDCG@20': '0.2292'}
+{'epoch': 18, 'rec_avg_loss': '0.8932'}
+{'Epoch': 18, 'HIT@5': '0.2447', 'NDCG@5': '0.1746', 'HIT@10': '0.3293', 'NDCG@10': '0.2022', 'MRR@10': '0.1631', 'HIT@20': '0.4287', 'NDCG@20': '0.2274'}
+{'epoch': 19, 'rec_avg_loss': '0.8755'}
+{'Epoch': 19, 'HIT@5': '0.2467', 'NDCG@5': '0.1760', 'HIT@10': '0.3273', 'NDCG@10': '0.2021', 'MRR@10': '0.1636', 'HIT@20': '0.4260', 'NDCG@20': '0.2270'}
+{'Epoch': 0, 'HIT@5': '0.2680', 'NDCG@5': '0.1903', 'HIT@10': '0.3547', 'NDCG@10': '0.2183', 'MRR@10': '0.1762', 'HIT@20': '0.4560', 'NDCG@20': '0.2441'}
+SASRec-Electronics_ours-1
+{'Epoch': 0, 'HIT@5': '0.2680', 'NDCG@5': '0.1903', 'HIT@10': '0.3547', 'NDCG@10': '0.2183', 'MRR@10': '0.1762', 'HIT@20': '0.4560', 'NDCG@20': '0.2441'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                              uni100
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-Electronics_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2024, star_test=0, eval_mode='uni100', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-Electronics_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.2680', 'NDCG@5': '0.1903', 'HIT@10': '0.3547', 'NDCG@10': '0.2183', 'MRR@10': '0.1762', 'HIT@20': '0.4560', 'NDCG@20': '0.2441'}
+{'Epoch': 0, 'HIT@5': '0.2760', 'NDCG@5': '0.1950', 'HIT@10': '0.3587', 'NDCG@10': '0.2217', 'MRR@10': '0.1793', 'HIT@20': '0.4560', 'NDCG@20': '0.2464'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=42, star_test=0, eval_mode='full', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3875'}
+{'epoch': 1, 'rec_avg_loss': '1.3660'}
+{'Epoch': 1, 'HIT@5': '0.0027', 'NDCG@5': '0.0027', 'HIT@10': '0.0027', 'NDCG@10': '0.0027', 'MRR@10': '0.0027', 'HIT@20': '0.0027', 'NDCG@20': '0.0027'}
+{'epoch': 2, 'rec_avg_loss': '1.3451'}
+{'Epoch': 2, 'HIT@5': '0.0033', 'NDCG@5': '0.0031', 'HIT@10': '0.0033', 'NDCG@10': '0.0031', 'MRR@10': '0.0030', 'HIT@20': '0.0040', 'NDCG@20': '0.0032'}
+{'epoch': 3, 'rec_avg_loss': '1.3238'}
+{'Epoch': 3, 'HIT@5': '0.0053', 'NDCG@5': '0.0041', 'HIT@10': '0.0067', 'NDCG@10': '0.0046', 'MRR@10': '0.0039', 'HIT@20': '0.0113', 'NDCG@20': '0.0057'}
+{'epoch': 4, 'rec_avg_loss': '1.2991'}
+{'Epoch': 4, 'HIT@5': '0.0080', 'NDCG@5': '0.0054', 'HIT@10': '0.0113', 'NDCG@10': '0.0064', 'MRR@10': '0.0049', 'HIT@20': '0.0147', 'NDCG@20': '0.0073'}
+{'epoch': 5, 'rec_avg_loss': '1.2706'}
+{'Epoch': 5, 'HIT@5': '0.0067', 'NDCG@5': '0.0048', 'HIT@10': '0.0100', 'NDCG@10': '0.0058', 'MRR@10': '0.0046', 'HIT@20': '0.0153', 'NDCG@20': '0.0072'}
+{'epoch': 6, 'rec_avg_loss': '1.2373'}
+{'Epoch': 6, 'HIT@5': '0.0080', 'NDCG@5': '0.0053', 'HIT@10': '0.0100', 'NDCG@10': '0.0059', 'MRR@10': '0.0046', 'HIT@20': '0.0167', 'NDCG@20': '0.0076'}
+{'epoch': 7, 'rec_avg_loss': '1.2013'}
+{'Epoch': 7, 'HIT@5': '0.0053', 'NDCG@5': '0.0027', 'HIT@10': '0.0080', 'NDCG@10': '0.0036', 'MRR@10': '0.0022', 'HIT@20': '0.0167', 'NDCG@20': '0.0058'}
+{'epoch': 8, 'rec_avg_loss': '1.1636'}
+{'Epoch': 8, 'HIT@5': '0.0047', 'NDCG@5': '0.0024', 'HIT@10': '0.0080', 'NDCG@10': '0.0035', 'MRR@10': '0.0021', 'HIT@20': '0.0160', 'NDCG@20': '0.0055'}
+{'epoch': 9, 'rec_avg_loss': '1.1258'}
+{'Epoch': 9, 'HIT@5': '0.0047', 'NDCG@5': '0.0024', 'HIT@10': '0.0067', 'NDCG@10': '0.0030', 'MRR@10': '0.0019', 'HIT@20': '0.0127', 'NDCG@20': '0.0045'}
+{'epoch': 10, 'rec_avg_loss': '1.0919'}
+{'Epoch': 10, 'HIT@5': '0.0047', 'NDCG@5': '0.0027', 'HIT@10': '0.0067', 'NDCG@10': '0.0034', 'MRR@10': '0.0024', 'HIT@20': '0.0133', 'NDCG@20': '0.0051'}
+{'epoch': 11, 'rec_avg_loss': '1.0599'}
+{'Epoch': 11, 'HIT@5': '0.0053', 'NDCG@5': '0.0031', 'HIT@10': '0.0067', 'NDCG@10': '0.0035', 'MRR@10': '0.0025', 'HIT@20': '0.0127', 'NDCG@20': '0.0050'}
+{'epoch': 12, 'rec_avg_loss': '1.0278'}
+{'Epoch': 12, 'HIT@5': '0.0053', 'NDCG@5': '0.0031', 'HIT@10': '0.0073', 'NDCG@10': '0.0037', 'MRR@10': '0.0026', 'HIT@20': '0.0140', 'NDCG@20': '0.0054'}
+{'epoch': 13, 'rec_avg_loss': '1.0016'}
+{'Epoch': 13, 'HIT@5': '0.0053', 'NDCG@5': '0.0034', 'HIT@10': '0.0073', 'NDCG@10': '0.0040', 'MRR@10': '0.0030', 'HIT@20': '0.0133', 'NDCG@20': '0.0055'}
+{'epoch': 14, 'rec_avg_loss': '0.9763'}
+{'Epoch': 14, 'HIT@5': '0.0053', 'NDCG@5': '0.0039', 'HIT@10': '0.0067', 'NDCG@10': '0.0043', 'MRR@10': '0.0035', 'HIT@20': '0.0140', 'NDCG@20': '0.0062'}
+{'epoch': 15, 'rec_avg_loss': '0.9534'}
+{'Epoch': 15, 'HIT@5': '0.0053', 'NDCG@5': '0.0039', 'HIT@10': '0.0067', 'NDCG@10': '0.0043', 'MRR@10': '0.0036', 'HIT@20': '0.0140', 'NDCG@20': '0.0062'}
+{'epoch': 16, 'rec_avg_loss': '0.9326'}
+{'Epoch': 16, 'HIT@5': '0.0053', 'NDCG@5': '0.0038', 'HIT@10': '0.0073', 'NDCG@10': '0.0044', 'MRR@10': '0.0035', 'HIT@20': '0.0133', 'NDCG@20': '0.0059'}
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0050', 'HIT@10': '0.0100', 'NDCG@10': '0.0060', 'MRR@10': '0.0049', 'HIT@20': '0.0147', 'NDCG@20': '0.0072'}
+SASRec-Electronics_ours-1
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0050', 'HIT@10': '0.0100', 'NDCG@10': '0.0060', 'MRR@10': '0.0049', 'HIT@20': '0.0147', 'NDCG@20': '0.0072'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-Electronics_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=42, star_test=0, eval_mode='full', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-Electronics_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0050', 'HIT@10': '0.0100', 'NDCG@10': '0.0060', 'MRR@10': '0.0049', 'HIT@20': '0.0147', 'NDCG@20': '0.0072'}
+{'Epoch': 0, 'HIT@5': '0.0053', 'NDCG@5': '0.0030', 'HIT@10': '0.0087', 'NDCG@10': '0.0040', 'MRR@10': '0.0026', 'HIT@20': '0.0133', 'NDCG@20': '0.0052'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2023, star_test=0, eval_mode='full', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3871'}
+{'epoch': 1, 'rec_avg_loss': '1.3650'}
+{'Epoch': 1, 'HIT@5': '0.0027', 'NDCG@5': '0.0027', 'HIT@10': '0.0027', 'NDCG@10': '0.0027', 'MRR@10': '0.0027', 'HIT@20': '0.0027', 'NDCG@20': '0.0027'}
+{'epoch': 2, 'rec_avg_loss': '1.3446'}
+{'Epoch': 2, 'HIT@5': '0.0033', 'NDCG@5': '0.0031', 'HIT@10': '0.0040', 'NDCG@10': '0.0033', 'MRR@10': '0.0031', 'HIT@20': '0.0060', 'NDCG@20': '0.0038'}
+{'epoch': 3, 'rec_avg_loss': '1.3226'}
+{'Epoch': 3, 'HIT@5': '0.0047', 'NDCG@5': '0.0039', 'HIT@10': '0.0053', 'NDCG@10': '0.0042', 'MRR@10': '0.0038', 'HIT@20': '0.0067', 'NDCG@20': '0.0045'}
+{'epoch': 4, 'rec_avg_loss': '1.2969'}
+{'Epoch': 4, 'HIT@5': '0.0053', 'NDCG@5': '0.0034', 'HIT@10': '0.0060', 'NDCG@10': '0.0036', 'MRR@10': '0.0029', 'HIT@20': '0.0080', 'NDCG@20': '0.0041'}
+{'epoch': 5, 'rec_avg_loss': '1.2670'}
+{'Epoch': 5, 'HIT@5': '0.0033', 'NDCG@5': '0.0022', 'HIT@10': '0.0067', 'NDCG@10': '0.0032', 'MRR@10': '0.0022', 'HIT@20': '0.0093', 'NDCG@20': '0.0039'}
+{'epoch': 6, 'rec_avg_loss': '1.2324'}
+{'Epoch': 6, 'HIT@5': '0.0020', 'NDCG@5': '0.0012', 'HIT@10': '0.0060', 'NDCG@10': '0.0025', 'MRR@10': '0.0015', 'HIT@20': '0.0107', 'NDCG@20': '0.0037'}
+{'epoch': 7, 'rec_avg_loss': '1.1961'}
+{'Epoch': 7, 'HIT@5': '0.0027', 'NDCG@5': '0.0012', 'HIT@10': '0.0047', 'NDCG@10': '0.0019', 'MRR@10': '0.0011', 'HIT@20': '0.0087', 'NDCG@20': '0.0029'}
+{'epoch': 8, 'rec_avg_loss': '1.1576'}
+{'Epoch': 8, 'HIT@5': '0.0040', 'NDCG@5': '0.0017', 'HIT@10': '0.0060', 'NDCG@10': '0.0023', 'MRR@10': '0.0012', 'HIT@20': '0.0093', 'NDCG@20': '0.0031'}
+{'epoch': 9, 'rec_avg_loss': '1.1204'}
+{'Epoch': 9, 'HIT@5': '0.0020', 'NDCG@5': '0.0010', 'HIT@10': '0.0053', 'NDCG@10': '0.0021', 'MRR@10': '0.0011', 'HIT@20': '0.0093', 'NDCG@20': '0.0031'}
+{'epoch': 10, 'rec_avg_loss': '1.0851'}
+{'Epoch': 10, 'HIT@5': '0.0020', 'NDCG@5': '0.0013', 'HIT@10': '0.0053', 'NDCG@10': '0.0023', 'MRR@10': '0.0015', 'HIT@20': '0.0087', 'NDCG@20': '0.0031'}
+{'epoch': 11, 'rec_avg_loss': '1.0535'}
+{'Epoch': 11, 'HIT@5': '0.0027', 'NDCG@5': '0.0016', 'HIT@10': '0.0047', 'NDCG@10': '0.0022', 'MRR@10': '0.0015', 'HIT@20': '0.0080', 'NDCG@20': '0.0031'}
+{'epoch': 12, 'rec_avg_loss': '1.0219'}
+{'Epoch': 12, 'HIT@5': '0.0020', 'NDCG@5': '0.0013', 'HIT@10': '0.0053', 'NDCG@10': '0.0024', 'MRR@10': '0.0016', 'HIT@20': '0.0073', 'NDCG@20': '0.0029'}
+{'epoch': 13, 'rec_avg_loss': '0.9957'}
+{'Epoch': 13, 'HIT@5': '0.0027', 'NDCG@5': '0.0016', 'HIT@10': '0.0060', 'NDCG@10': '0.0026', 'MRR@10': '0.0016', 'HIT@20': '0.0100', 'NDCG@20': '0.0036'}
+{'Epoch': 0, 'HIT@5': '0.0027', 'NDCG@5': '0.0023', 'HIT@10': '0.0027', 'NDCG@10': '0.0023', 'MRR@10': '0.0021', 'HIT@20': '0.0040', 'NDCG@20': '0.0026'}
+SASRec-Electronics_ours-1
+{'Epoch': 0, 'HIT@5': '0.0027', 'NDCG@5': '0.0023', 'HIT@10': '0.0027', 'NDCG@10': '0.0023', 'MRR@10': '0.0021', 'HIT@20': '0.0040', 'NDCG@20': '0.0026'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-Electronics_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2023, star_test=0, eval_mode='full', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-Electronics_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0027', 'NDCG@5': '0.0023', 'HIT@10': '0.0027', 'NDCG@10': '0.0023', 'MRR@10': '0.0021', 'HIT@20': '0.0040', 'NDCG@20': '0.0026'}
+{'Epoch': 0, 'HIT@5': '0.0007', 'NDCG@5': '0.0007', 'HIT@10': '0.0020', 'NDCG@10': '0.0011', 'MRR@10': '0.0009', 'HIT@20': '0.0020', 'NDCG@20': '0.0011'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2024, star_test=0, eval_mode='full', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3878'}
+{'epoch': 1, 'rec_avg_loss': '1.3652'}
+{'Epoch': 1, 'HIT@5': '0.0040', 'NDCG@5': '0.0033', 'HIT@10': '0.0040', 'NDCG@10': '0.0033', 'MRR@10': '0.0031', 'HIT@20': '0.0047', 'NDCG@20': '0.0035'}
+{'epoch': 2, 'rec_avg_loss': '1.3437'}
+{'Epoch': 2, 'HIT@5': '0.0047', 'NDCG@5': '0.0039', 'HIT@10': '0.0053', 'NDCG@10': '0.0041', 'MRR@10': '0.0037', 'HIT@20': '0.0093', 'NDCG@20': '0.0051'}
+{'epoch': 3, 'rec_avg_loss': '1.3204'}
+{'Epoch': 3, 'HIT@5': '0.0100', 'NDCG@5': '0.0070', 'HIT@10': '0.0107', 'NDCG@10': '0.0072', 'MRR@10': '0.0061', 'HIT@20': '0.0127', 'NDCG@20': '0.0077'}
+{'epoch': 4, 'rec_avg_loss': '1.2921'}
+{'Epoch': 4, 'HIT@5': '0.0067', 'NDCG@5': '0.0048', 'HIT@10': '0.0113', 'NDCG@10': '0.0062', 'MRR@10': '0.0047', 'HIT@20': '0.0187', 'NDCG@20': '0.0081'}
+{'epoch': 5, 'rec_avg_loss': '1.2597'}
+{'Epoch': 5, 'HIT@5': '0.0087', 'NDCG@5': '0.0057', 'HIT@10': '0.0113', 'NDCG@10': '0.0065', 'MRR@10': '0.0050', 'HIT@20': '0.0193', 'NDCG@20': '0.0085'}
+{'epoch': 6, 'rec_avg_loss': '1.2226'}
+{'Epoch': 6, 'HIT@5': '0.0067', 'NDCG@5': '0.0045', 'HIT@10': '0.0100', 'NDCG@10': '0.0055', 'MRR@10': '0.0042', 'HIT@20': '0.0127', 'NDCG@20': '0.0062'}
+{'epoch': 7, 'rec_avg_loss': '1.1842'}
+{'Epoch': 7, 'HIT@5': '0.0060', 'NDCG@5': '0.0042', 'HIT@10': '0.0080', 'NDCG@10': '0.0049', 'MRR@10': '0.0039', 'HIT@20': '0.0107', 'NDCG@20': '0.0055'}
+{'epoch': 8, 'rec_avg_loss': '1.1453'}
+{'Epoch': 8, 'HIT@5': '0.0053', 'NDCG@5': '0.0036', 'HIT@10': '0.0080', 'NDCG@10': '0.0044', 'MRR@10': '0.0034', 'HIT@20': '0.0093', 'NDCG@20': '0.0048'}
+{'epoch': 9, 'rec_avg_loss': '1.1087'}
+{'Epoch': 9, 'HIT@5': '0.0047', 'NDCG@5': '0.0034', 'HIT@10': '0.0080', 'NDCG@10': '0.0044', 'MRR@10': '0.0033', 'HIT@20': '0.0113', 'NDCG@20': '0.0052'}
+{'epoch': 10, 'rec_avg_loss': '1.0745'}
+{'Epoch': 10, 'HIT@5': '0.0053', 'NDCG@5': '0.0032', 'HIT@10': '0.0073', 'NDCG@10': '0.0038', 'MRR@10': '0.0028', 'HIT@20': '0.0127', 'NDCG@20': '0.0052'}
+{'epoch': 11, 'rec_avg_loss': '1.0443'}
+{'Epoch': 11, 'HIT@5': '0.0047', 'NDCG@5': '0.0032', 'HIT@10': '0.0073', 'NDCG@10': '0.0040', 'MRR@10': '0.0030', 'HIT@20': '0.0127', 'NDCG@20': '0.0053'}
+{'epoch': 12, 'rec_avg_loss': '1.0165'}
+{'Epoch': 12, 'HIT@5': '0.0047', 'NDCG@5': '0.0031', 'HIT@10': '0.0060', 'NDCG@10': '0.0036', 'MRR@10': '0.0029', 'HIT@20': '0.0127', 'NDCG@20': '0.0052'}
+{'epoch': 13, 'rec_avg_loss': '0.9899'}
+{'Epoch': 13, 'HIT@5': '0.0040', 'NDCG@5': '0.0037', 'HIT@10': '0.0060', 'NDCG@10': '0.0043', 'MRR@10': '0.0038', 'HIT@20': '0.0133', 'NDCG@20': '0.0061'}
+{'epoch': 14, 'rec_avg_loss': '0.9661'}
+{'Epoch': 14, 'HIT@5': '0.0040', 'NDCG@5': '0.0031', 'HIT@10': '0.0060', 'NDCG@10': '0.0038', 'MRR@10': '0.0031', 'HIT@20': '0.0120', 'NDCG@20': '0.0053'}
+{'epoch': 15, 'rec_avg_loss': '0.9457'}
+{'Epoch': 15, 'HIT@5': '0.0047', 'NDCG@5': '0.0036', 'HIT@10': '0.0067', 'NDCG@10': '0.0043', 'MRR@10': '0.0036', 'HIT@20': '0.0127', 'NDCG@20': '0.0058'}
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0043', 'HIT@10': '0.0107', 'NDCG@10': '0.0055', 'MRR@10': '0.0039', 'HIT@20': '0.0173', 'NDCG@20': '0.0072'}
+SASRec-Electronics_ours-1
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0043', 'HIT@10': '0.0107', 'NDCG@10': '0.0055', 'MRR@10': '0.0039', 'HIT@20': '0.0173', 'NDCG@20': '0.0072'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                    Electronics_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-Electronics_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :        ../data/Electronics_ours.txt
+item_size                      :                               54723
+log_file                       : output/SASRec-Electronics_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='Electronics_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2024, star_test=0, eval_mode='full', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-Electronics_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/Electronics_ours.txt', item_size=54723, log_file='output/SASRec-Electronics_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0043', 'HIT@10': '0.0107', 'NDCG@10': '0.0055', 'MRR@10': '0.0039', 'HIT@20': '0.0173', 'NDCG@20': '0.0072'}
+{'Epoch': 0, 'HIT@5': '0.0060', 'NDCG@5': '0.0038', 'HIT@10': '0.0087', 'NDCG@10': '0.0047', 'MRR@10': '0.0034', 'HIT@20': '0.0133', 'NDCG@20': '0.0059'}

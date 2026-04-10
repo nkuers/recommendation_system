@@ -1,0 +1,248 @@
+Sun 15 Feb 2026 10:44:22 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = dataset/Amazon_Beauty_ours
+show_progress = True
+save_dataset = False
+save_dataloaders = False
+benchmark_filename = None
+
+Training Hyper Parameters:
+checkpoint_dir = saved
+epochs = 30
+train_batch_size = 256
+learner = adam
+learning_rate = 0.0001
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'group_by': 'user', 'order': 'TO', 'mode': 'full'}
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 256
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'item': ['item_id', 'categories']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [5,inf)
+item_inter_num_interval = [5,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+
+Other Hyper Parameters: 
+neg_sampling = None
+multi_gpus = False
+repeatable = True
+MODEL_TYPE = ModelType.SEQUENTIAL
+n_layers = 2
+n_heads = 2
+embedding_size = 64
+hidden_size = 64
+inner_size = 128
+hidden_dropout_prob = 0.2
+attn_dropout_prob = 0.2
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+loss_type = CE
+n_facet_all = 5
+new_repr_dp = 1
+n_newc_repr = 4
+disen_lambda = 0.3
+idra = 1
+align_lambda = 0.4
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+device = cuda
+train_neg_sample_args = {'strategy': 'none'}
+eval_neg_sample_args = {'strategy': 'full', 'distribution': 'uniform'}
+
+
+Sun 15 Feb 2026 10:44:22 INFO  Amazon_Beauty_ours
+The number of users: 6828
+Average actions of users: 13.269225135491432
+The number of items: 5798
+Average actions of items: 15.62687597032948
+The number of inters: 90589
+The sparsity of the dataset: 99.77117485717658%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'categories']
+Sun 15 Feb 2026 10:56:33 INFO  [Training]: train_batch_size = [256] negative sampling: [None]
+Sun 15 Feb 2026 10:56:33 INFO  [Evaluation]: eval_batch_size = [256] eval_args: [{'split': {'LS': 'valid_and_test'}, 'group_by': 'user', 'order': 'TO', 'mode': 'full'}]
+Sun 15 Feb 2026 10:56:43 INFO  epoch 0 training [time: 9.11s, train loss: 4179.9724]
+Sun 15 Feb 2026 10:56:44 INFO  epoch 0 evaluating [time: 0.20s, valid_score: 0.001400]
+Sun 15 Feb 2026 10:56:44 INFO  valid result: 
+hit@10 : 0.0031    ndcg@10 : 0.0014    mrr@10 : 0.0009    
+Sun 15 Feb 2026 10:56:44 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:56:52 INFO  epoch 1 training [time: 8.14s, train loss: 3468.6481]
+Sun 15 Feb 2026 10:56:52 INFO  epoch 1 evaluating [time: 0.18s, valid_score: 0.001600]
+Sun 15 Feb 2026 10:56:52 INFO  valid result: 
+hit@10 : 0.0034    ndcg@10 : 0.0016    mrr@10 : 0.001    
+Sun 15 Feb 2026 10:56:52 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:57:00 INFO  epoch 2 training [time: 7.97s, train loss: 3435.7894]
+Sun 15 Feb 2026 10:57:00 INFO  epoch 2 evaluating [time: 0.19s, valid_score: 0.001800]
+Sun 15 Feb 2026 10:57:00 INFO  valid result: 
+hit@10 : 0.0047    ndcg@10 : 0.0018    mrr@10 : 0.001    
+Sun 15 Feb 2026 10:57:00 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:57:08 INFO  epoch 3 training [time: 8.08s, train loss: 3399.6499]
+Sun 15 Feb 2026 10:57:08 INFO  epoch 3 evaluating [time: 0.18s, valid_score: 0.002700]
+Sun 15 Feb 2026 10:57:08 INFO  valid result: 
+hit@10 : 0.0069    ndcg@10 : 0.0027    mrr@10 : 0.0015    
+Sun 15 Feb 2026 10:57:08 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:57:16 INFO  epoch 4 training [time: 7.20s, train loss: 3361.4420]
+Sun 15 Feb 2026 10:57:16 INFO  epoch 4 evaluating [time: 0.16s, valid_score: 0.002900]
+Sun 15 Feb 2026 10:57:16 INFO  valid result: 
+hit@10 : 0.0073    ndcg@10 : 0.0029    mrr@10 : 0.0016    
+Sun 15 Feb 2026 10:57:16 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:57:23 INFO  epoch 5 training [time: 6.72s, train loss: 3324.0100]
+Sun 15 Feb 2026 10:57:23 INFO  epoch 5 evaluating [time: 0.16s, valid_score: 0.002600]
+Sun 15 Feb 2026 10:57:23 INFO  valid result: 
+hit@10 : 0.0062    ndcg@10 : 0.0026    mrr@10 : 0.0015    
+Sun 15 Feb 2026 10:57:29 INFO  epoch 6 training [time: 6.74s, train loss: 3286.6963]
+Sun 15 Feb 2026 10:57:30 INFO  epoch 6 evaluating [time: 0.16s, valid_score: 0.002500]
+Sun 15 Feb 2026 10:57:30 INFO  valid result: 
+hit@10 : 0.0062    ndcg@10 : 0.0025    mrr@10 : 0.0015    
+Sun 15 Feb 2026 10:57:36 INFO  epoch 7 training [time: 6.88s, train loss: 3251.5881]
+Sun 15 Feb 2026 10:57:37 INFO  epoch 7 evaluating [time: 0.17s, valid_score: 0.002900]
+Sun 15 Feb 2026 10:57:37 INFO  valid result: 
+hit@10 : 0.0078    ndcg@10 : 0.0029    mrr@10 : 0.0015    
+Sun 15 Feb 2026 10:57:44 INFO  epoch 8 training [time: 7.00s, train loss: 3219.4406]
+Sun 15 Feb 2026 10:57:44 INFO  epoch 8 evaluating [time: 0.18s, valid_score: 0.002600]
+Sun 15 Feb 2026 10:57:44 INFO  valid result: 
+hit@10 : 0.0066    ndcg@10 : 0.0026    mrr@10 : 0.0015    
+Sun 15 Feb 2026 10:57:52 INFO  epoch 9 training [time: 7.68s, train loss: 3190.4842]
+Sun 15 Feb 2026 10:57:52 INFO  epoch 9 evaluating [time: 0.18s, valid_score: 0.003000]
+Sun 15 Feb 2026 10:57:52 INFO  valid result: 
+hit@10 : 0.0078    ndcg@10 : 0.003    mrr@10 : 0.0016    
+Sun 15 Feb 2026 10:57:52 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:57:59 INFO  epoch 10 training [time: 7.47s, train loss: 3166.2009]
+Sun 15 Feb 2026 10:57:59 INFO  epoch 10 evaluating [time: 0.17s, valid_score: 0.002200]
+Sun 15 Feb 2026 10:57:59 INFO  valid result: 
+hit@10 : 0.005    ndcg@10 : 0.0022    mrr@10 : 0.0014    
+Sun 15 Feb 2026 10:58:07 INFO  epoch 11 training [time: 7.72s, train loss: 3145.8005]
+Sun 15 Feb 2026 10:58:07 INFO  epoch 11 evaluating [time: 0.18s, valid_score: 0.002100]
+Sun 15 Feb 2026 10:58:07 INFO  valid result: 
+hit@10 : 0.005    ndcg@10 : 0.0021    mrr@10 : 0.0012    
+Sun 15 Feb 2026 10:58:15 INFO  epoch 12 training [time: 7.31s, train loss: 3127.7078]
+Sun 15 Feb 2026 10:58:15 INFO  epoch 12 evaluating [time: 0.17s, valid_score: 0.002200]
+Sun 15 Feb 2026 10:58:15 INFO  valid result: 
+hit@10 : 0.005    ndcg@10 : 0.0022    mrr@10 : 0.0013    
+Sun 15 Feb 2026 10:58:22 INFO  epoch 13 training [time: 7.14s, train loss: 3110.6187]
+Sun 15 Feb 2026 10:58:22 INFO  epoch 13 evaluating [time: 0.18s, valid_score: 0.002200]
+Sun 15 Feb 2026 10:58:22 INFO  valid result: 
+hit@10 : 0.005    ndcg@10 : 0.0022    mrr@10 : 0.0014    
+Sun 15 Feb 2026 10:58:29 INFO  epoch 14 training [time: 7.15s, train loss: 3095.1748]
+Sun 15 Feb 2026 10:58:29 INFO  epoch 14 evaluating [time: 0.18s, valid_score: 0.002200]
+Sun 15 Feb 2026 10:58:29 INFO  valid result: 
+hit@10 : 0.0051    ndcg@10 : 0.0022    mrr@10 : 0.0014    
+Sun 15 Feb 2026 10:58:36 INFO  epoch 15 training [time: 7.08s, train loss: 3072.6526]
+Sun 15 Feb 2026 10:58:37 INFO  epoch 15 evaluating [time: 0.17s, valid_score: 0.002400]
+Sun 15 Feb 2026 10:58:37 INFO  valid result: 
+hit@10 : 0.0057    ndcg@10 : 0.0024    mrr@10 : 0.0015    
+Sun 15 Feb 2026 10:58:44 INFO  epoch 16 training [time: 7.11s, train loss: 3025.9056]
+Sun 15 Feb 2026 10:58:44 INFO  epoch 16 evaluating [time: 0.17s, valid_score: 0.004700]
+Sun 15 Feb 2026 10:58:44 INFO  valid result: 
+hit@10 : 0.01    ndcg@10 : 0.0047    mrr@10 : 0.0032    
+Sun 15 Feb 2026 10:58:44 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:58:51 INFO  epoch 17 training [time: 7.06s, train loss: 2984.3156]
+Sun 15 Feb 2026 10:58:51 INFO  epoch 17 evaluating [time: 0.17s, valid_score: 0.008600]
+Sun 15 Feb 2026 10:58:51 INFO  valid result: 
+hit@10 : 0.0185    ndcg@10 : 0.0086    mrr@10 : 0.0056    
+Sun 15 Feb 2026 10:58:51 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:58:58 INFO  epoch 18 training [time: 7.00s, train loss: 2943.0937]
+Sun 15 Feb 2026 10:58:58 INFO  epoch 18 evaluating [time: 0.16s, valid_score: 0.009800]
+Sun 15 Feb 2026 10:58:58 INFO  valid result: 
+hit@10 : 0.0209    ndcg@10 : 0.0098    mrr@10 : 0.0064    
+Sun 15 Feb 2026 10:58:58 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:59:05 INFO  epoch 19 training [time: 6.99s, train loss: 2900.7698]
+Sun 15 Feb 2026 10:59:06 INFO  epoch 19 evaluating [time: 0.16s, valid_score: 0.010100]
+Sun 15 Feb 2026 10:59:06 INFO  valid result: 
+hit@10 : 0.0221    ndcg@10 : 0.0101    mrr@10 : 0.0064    
+Sun 15 Feb 2026 10:59:06 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:59:13 INFO  epoch 20 training [time: 6.99s, train loss: 2854.4467]
+Sun 15 Feb 2026 10:59:13 INFO  epoch 20 evaluating [time: 0.16s, valid_score: 0.009900]
+Sun 15 Feb 2026 10:59:13 INFO  valid result: 
+hit@10 : 0.0218    ndcg@10 : 0.0099    mrr@10 : 0.0064    
+Sun 15 Feb 2026 10:59:20 INFO  epoch 21 training [time: 7.01s, train loss: 2810.4794]
+Sun 15 Feb 2026 10:59:20 INFO  epoch 21 evaluating [time: 0.17s, valid_score: 0.010200]
+Sun 15 Feb 2026 10:59:20 INFO  valid result: 
+hit@10 : 0.0229    ndcg@10 : 0.0102    mrr@10 : 0.0064    
+Sun 15 Feb 2026 10:59:20 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:59:27 INFO  epoch 22 training [time: 6.95s, train loss: 2768.0109]
+Sun 15 Feb 2026 10:59:27 INFO  epoch 22 evaluating [time: 0.17s, valid_score: 0.011500]
+Sun 15 Feb 2026 10:59:27 INFO  valid result: 
+hit@10 : 0.0261    ndcg@10 : 0.0115    mrr@10 : 0.0071    
+Sun 15 Feb 2026 10:59:27 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:59:34 INFO  epoch 23 training [time: 7.01s, train loss: 2725.8775]
+Sun 15 Feb 2026 10:59:34 INFO  epoch 23 evaluating [time: 0.17s, valid_score: 0.015100]
+Sun 15 Feb 2026 10:59:34 INFO  valid result: 
+hit@10 : 0.0354    ndcg@10 : 0.0151    mrr@10 : 0.009    
+Sun 15 Feb 2026 10:59:34 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:59:41 INFO  epoch 24 training [time: 6.99s, train loss: 2685.6106]
+Sun 15 Feb 2026 10:59:41 INFO  epoch 24 evaluating [time: 0.17s, valid_score: 0.016700]
+Sun 15 Feb 2026 10:59:41 INFO  valid result: 
+hit@10 : 0.0385    ndcg@10 : 0.0167    mrr@10 : 0.0102    
+Sun 15 Feb 2026 10:59:41 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:59:48 INFO  epoch 25 training [time: 7.00s, train loss: 2651.3789]
+Sun 15 Feb 2026 10:59:49 INFO  epoch 25 evaluating [time: 0.16s, valid_score: 0.017600]
+Sun 15 Feb 2026 10:59:49 INFO  valid result: 
+hit@10 : 0.04    ndcg@10 : 0.0176    mrr@10 : 0.011    
+Sun 15 Feb 2026 10:59:49 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 10:59:56 INFO  epoch 26 training [time: 7.14s, train loss: 2620.6106]
+Sun 15 Feb 2026 10:59:56 INFO  epoch 26 evaluating [time: 0.17s, valid_score: 0.019000]
+Sun 15 Feb 2026 10:59:56 INFO  valid result: 
+hit@10 : 0.0415    ndcg@10 : 0.019    mrr@10 : 0.0122    
+Sun 15 Feb 2026 10:59:56 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 11:00:03 INFO  epoch 27 training [time: 7.21s, train loss: 2590.0000]
+Sun 15 Feb 2026 11:00:03 INFO  epoch 27 evaluating [time: 0.16s, valid_score: 0.020800]
+Sun 15 Feb 2026 11:00:03 INFO  valid result: 
+hit@10 : 0.0451    ndcg@10 : 0.0208    mrr@10 : 0.0135    
+Sun 15 Feb 2026 11:00:03 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 11:00:10 INFO  epoch 28 training [time: 7.23s, train loss: 2558.3452]
+Sun 15 Feb 2026 11:00:11 INFO  epoch 28 evaluating [time: 0.17s, valid_score: 0.022800]
+Sun 15 Feb 2026 11:00:11 INFO  valid result: 
+hit@10 : 0.0491    ndcg@10 : 0.0228    mrr@10 : 0.015    
+Sun 15 Feb 2026 11:00:11 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth
+Sun 15 Feb 2026 11:00:19 INFO  epoch 29 training [time: 8.57s, train loss: 2529.2723]
+Sun 15 Feb 2026 11:00:19 INFO  epoch 29 evaluating [time: 0.19s, valid_score: 0.023700]
+Sun 15 Feb 2026 11:00:19 INFO  valid result: 
+hit@10 : 0.0517    ndcg@10 : 0.0237    mrr@10 : 0.0153    
+Sun 15 Feb 2026 11:00:19 INFO  Saving current best: saved/Amazon_Beauty_ours\SASRec_IDURL-K4-IDRA1-lmd-0_4-IDRD_lmd0_3-H2-L2-Feb-15-2026_10-56-33.pth

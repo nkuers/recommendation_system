@@ -1,0 +1,1313 @@
+Sun 25 Jan 2026 16:35:47 INFO  ['scripts/run_recbole_smlprec_repeats.py']
+Sun 25 Jan 2026 16:35:47 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.0001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+n_layers = 4
+n_heads = 1
+hidden_size = 128
+hidden_dropout_prob = 0.5
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+loss_type = BPR
+early_stop = 10
+neg_sampling = None
+selected_features = ['class', 'movie_title', 'release_year']
+pooling_mode = mean
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sun 25 Jan 2026 16:35:47 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Sun 25 Jan 2026 16:35:49 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sun 25 Jan 2026 16:35:49 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sun 25 Jan 2026 16:35:49 INFO  SMLPREC(
+  (item_embedding): Embedding(1683, 128, padding_idx=0)
+  (feature_embed_layer): FeatureSeqEmbLayer(
+    (token_embedding_table): ModuleDict(
+      (item): FMEmbedding(
+        (embedding): Embedding(74, 128)
+      )
+    )
+    (float_embedding_table): ModuleDict()
+    (token_seq_embedding_table): ModuleDict(
+      (item): ModuleList(
+        (0): Embedding(20, 128)
+        (1): Embedding(2653, 128)
+      )
+    )
+    (float_seq_embedding_table): ModuleDict(
+      (item): ModuleList()
+    )
+  )
+  (layers): ModuleList(
+    (0): SMLP(
+      (c): Sequential(
+        (0): Linear(in_features=4, out_features=12, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=12, out_features=4, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (h): Sequential(
+        (0): Linear(in_features=50, out_features=150, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=150, out_features=50, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (w): Sequential(
+        (0): Linear(in_features=128, out_features=384, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=384, out_features=128, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (LayerNorm): LayerNorm((128,), eps=1e-12, elementwise_affine=True)
+  (loss_fct): BPRLoss()
+)
+Trainable parameters: 680952
+Sun 25 Jan 2026 16:35:49 INFO  FLOPs: 112173184.0
+Sun 25 Jan 2026 16:37:16 INFO  epoch 0 training [time: 85.28s, train loss: 265.8503]
+Sun 25 Jan 2026 16:37:30 INFO  epoch 0 evaluating [time: 13.52s, valid_score: 0.071900]
+Sun 25 Jan 2026 16:37:30 INFO  valid result: 
+hit@10 : 0.2322    ndcg@10 : 0.1087    mrr@10 : 0.0719
+Sun 25 Jan 2026 16:37:30 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:38:59 INFO  epoch 1 training [time: 89.63s, train loss: 209.7639]
+Sun 25 Jan 2026 16:39:13 INFO  epoch 1 evaluating [time: 14.00s, valid_score: 0.125100]
+Sun 25 Jan 2026 16:39:13 INFO  valid result: 
+hit@10 : 0.3648    ndcg@10 : 0.1806    mrr@10 : 0.1251
+Sun 25 Jan 2026 16:39:13 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:40:45 INFO  epoch 2 training [time: 91.54s, train loss: 166.8607]
+Sun 25 Jan 2026 16:40:59 INFO  epoch 2 evaluating [time: 14.22s, valid_score: 0.127000]
+Sun 25 Jan 2026 16:40:59 INFO  valid result: 
+hit@10 : 0.3701    ndcg@10 : 0.1833    mrr@10 : 0.127
+Sun 25 Jan 2026 16:40:59 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:42:31 INFO  epoch 3 training [time: 91.86s, train loss: 150.8986]
+Sun 25 Jan 2026 16:42:45 INFO  epoch 3 evaluating [time: 14.61s, valid_score: 0.155800]
+Sun 25 Jan 2026 16:42:45 INFO  valid result: 
+hit@10 : 0.4263    ndcg@10 : 0.2188    mrr@10 : 0.1558
+Sun 25 Jan 2026 16:42:45 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:44:19 INFO  epoch 4 training [time: 93.39s, train loss: 135.1406]
+Sun 25 Jan 2026 16:44:33 INFO  epoch 4 evaluating [time: 14.60s, valid_score: 0.208200]
+Sun 25 Jan 2026 16:44:33 INFO  valid result: 
+hit@10 : 0.5323    ndcg@10 : 0.2842    mrr@10 : 0.2082
+Sun 25 Jan 2026 16:44:33 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:46:07 INFO  epoch 5 training [time: 93.07s, train loss: 119.3326]
+Sun 25 Jan 2026 16:46:22 INFO  epoch 5 evaluating [time: 15.33s, valid_score: 0.244400]
+Sun 25 Jan 2026 16:46:22 INFO  valid result: 
+hit@10 : 0.6013    ndcg@10 : 0.3277    mrr@10 : 0.2444
+Sun 25 Jan 2026 16:46:22 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:47:56 INFO  epoch 6 training [time: 93.77s, train loss: 105.2989]
+Sun 25 Jan 2026 16:48:10 INFO  epoch 6 evaluating [time: 14.72s, valid_score: 0.266300]
+Sun 25 Jan 2026 16:48:10 INFO  valid result: 
+hit@10 : 0.6235    ndcg@10 : 0.3502    mrr@10 : 0.2663
+Sun 25 Jan 2026 16:48:10 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:49:49 INFO  epoch 7 training [time: 98.87s, train loss: 98.2704]
+Sun 25 Jan 2026 16:50:05 INFO  epoch 7 evaluating [time: 15.33s, valid_score: 0.271500]
+Sun 25 Jan 2026 16:50:05 INFO  valid result: 
+hit@10 : 0.6405    ndcg@10 : 0.3582    mrr@10 : 0.2715
+Sun 25 Jan 2026 16:50:05 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:51:42 INFO  epoch 8 training [time: 97.69s, train loss: 91.8837]
+Sun 25 Jan 2026 16:51:57 INFO  epoch 8 evaluating [time: 15.18s, valid_score: 0.288800]
+Sun 25 Jan 2026 16:51:57 INFO  valid result: 
+hit@10 : 0.6543    ndcg@10 : 0.3744    mrr@10 : 0.2888
+Sun 25 Jan 2026 16:51:57 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 16:53:35 INFO  epoch 9 training [time: 97.46s, train loss: 87.5868]
+Sun 25 Jan 2026 16:53:50 INFO  epoch 9 evaluating [time: 15.10s, valid_score: 0.273300]
+Sun 25 Jan 2026 16:53:50 INFO  valid result: 
+hit@10 : 0.666    ndcg@10 : 0.3654    mrr@10 : 0.2733
+Sun 25 Jan 2026 16:55:40 INFO  epoch 10 training [time: 109.88s, train loss: 85.6081]
+Sun 25 Jan 2026 16:55:58 INFO  epoch 10 evaluating [time: 17.69s, valid_score: 0.279000]
+Sun 25 Jan 2026 16:55:58 INFO  valid result: 
+hit@10 : 0.6734    ndcg@10 : 0.3713    mrr@10 : 0.279
+Sun 25 Jan 2026 16:57:50 INFO  epoch 11 training [time: 112.28s, train loss: 82.6018]
+Sun 25 Jan 2026 16:58:05 INFO  epoch 11 evaluating [time: 15.22s, valid_score: 0.287400]
+Sun 25 Jan 2026 16:58:05 INFO  valid result: 
+hit@10 : 0.685    ndcg@10 : 0.3806    mrr@10 : 0.2874
+Sun 25 Jan 2026 16:59:41 INFO  epoch 12 training [time: 95.60s, train loss: 79.6479]
+Sun 25 Jan 2026 16:59:56 INFO  epoch 12 evaluating [time: 15.21s, valid_score: 0.281400]
+Sun 25 Jan 2026 16:59:56 INFO  valid result: 
+hit@10 : 0.6903    ndcg@10 : 0.3769    mrr@10 : 0.2814
+Sun 25 Jan 2026 17:01:45 INFO  epoch 13 training [time: 108.59s, train loss: 78.9709]
+Sun 25 Jan 2026 17:02:02 INFO  epoch 13 evaluating [time: 17.32s, valid_score: 0.286300]
+Sun 25 Jan 2026 17:02:02 INFO  valid result: 
+hit@10 : 0.6914    ndcg@10 : 0.3817    mrr@10 : 0.2863
+Sun 25 Jan 2026 17:03:51 INFO  epoch 14 training [time: 108.96s, train loss: 77.8844]
+Sun 25 Jan 2026 17:04:08 INFO  epoch 14 evaluating [time: 17.45s, valid_score: 0.293900]
+Sun 25 Jan 2026 17:04:08 INFO  valid result: 
+hit@10 : 0.6946    ndcg@10 : 0.3882    mrr@10 : 0.2939
+Sun 25 Jan 2026 17:04:08 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:05:54 INFO  epoch 15 training [time: 105.70s, train loss: 76.2419]
+Sun 25 Jan 2026 17:06:10 INFO  epoch 15 evaluating [time: 16.17s, valid_score: 0.282900]
+Sun 25 Jan 2026 17:06:10 INFO  valid result: 
+hit@10 : 0.6999    ndcg@10 : 0.3814    mrr@10 : 0.2829
+Sun 25 Jan 2026 17:07:53 INFO  epoch 16 training [time: 102.59s, train loss: 75.7705]
+Sun 25 Jan 2026 17:08:08 INFO  epoch 16 evaluating [time: 15.64s, valid_score: 0.288600]
+Sun 25 Jan 2026 17:08:08 INFO  valid result: 
+hit@10 : 0.6957    ndcg@10 : 0.385    mrr@10 : 0.2886
+Sun 25 Jan 2026 17:09:50 INFO  epoch 17 training [time: 101.38s, train loss: 74.4051]
+Sun 25 Jan 2026 17:10:07 INFO  epoch 17 evaluating [time: 17.19s, valid_score: 0.294400]
+Sun 25 Jan 2026 17:10:07 INFO  valid result: 
+hit@10 : 0.7147    ndcg@10 : 0.3934    mrr@10 : 0.2944
+Sun 25 Jan 2026 17:10:07 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:11:47 INFO  epoch 18 training [time: 100.04s, train loss: 72.8962]
+Sun 25 Jan 2026 17:12:04 INFO  epoch 18 evaluating [time: 16.58s, valid_score: 0.298000]
+Sun 25 Jan 2026 17:12:04 INFO  valid result: 
+hit@10 : 0.701    ndcg@10 : 0.3933    mrr@10 : 0.298
+Sun 25 Jan 2026 17:12:04 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:13:45 INFO  epoch 19 training [time: 101.67s, train loss: 71.7678]
+Sun 25 Jan 2026 17:14:02 INFO  epoch 19 evaluating [time: 16.24s, valid_score: 0.299100]
+Sun 25 Jan 2026 17:14:02 INFO  valid result: 
+hit@10 : 0.719    ndcg@10 : 0.3976    mrr@10 : 0.2991
+Sun 25 Jan 2026 17:14:02 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:15:42 INFO  epoch 20 training [time: 100.59s, train loss: 70.5428]
+Sun 25 Jan 2026 17:16:00 INFO  epoch 20 evaluating [time: 17.38s, valid_score: 0.302800]
+Sun 25 Jan 2026 17:16:00 INFO  valid result: 
+hit@10 : 0.719    ndcg@10 : 0.4004    mrr@10 : 0.3028
+Sun 25 Jan 2026 17:16:00 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:17:51 INFO  epoch 21 training [time: 111.63s, train loss: 70.1890]
+Sun 25 Jan 2026 17:18:08 INFO  epoch 21 evaluating [time: 16.54s, valid_score: 0.296000]
+Sun 25 Jan 2026 17:18:08 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.3969    mrr@10 : 0.296
+Sun 25 Jan 2026 17:19:52 INFO  epoch 22 training [time: 103.88s, train loss: 69.7272]
+Sun 25 Jan 2026 17:20:07 INFO  epoch 22 evaluating [time: 15.69s, valid_score: 0.294900]
+Sun 25 Jan 2026 17:20:07 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.3942    mrr@10 : 0.2949
+Sun 25 Jan 2026 17:21:52 INFO  epoch 23 training [time: 104.90s, train loss: 69.1563]
+Sun 25 Jan 2026 17:22:09 INFO  epoch 23 evaluating [time: 16.48s, valid_score: 0.301800]
+Sun 25 Jan 2026 17:22:09 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4013    mrr@10 : 0.3018
+Sun 25 Jan 2026 17:23:45 INFO  epoch 24 training [time: 96.83s, train loss: 68.0141]
+Sun 25 Jan 2026 17:24:01 INFO  epoch 24 evaluating [time: 15.45s, valid_score: 0.295200]
+Sun 25 Jan 2026 17:24:01 INFO  valid result: 
+hit@10 : 0.7105    ndcg@10 : 0.393    mrr@10 : 0.2952
+Sun 25 Jan 2026 17:25:51 INFO  epoch 25 training [time: 110.47s, train loss: 67.3265]
+Sun 25 Jan 2026 17:26:09 INFO  epoch 25 evaluating [time: 17.18s, valid_score: 0.298000]
+Sun 25 Jan 2026 17:26:09 INFO  valid result: 
+hit@10 : 0.7084    ndcg@10 : 0.395    mrr@10 : 0.298
+Sun 25 Jan 2026 17:27:57 INFO  epoch 26 training [time: 108.54s, train loss: 66.7270]
+Sun 25 Jan 2026 17:28:14 INFO  epoch 26 evaluating [time: 16.86s, valid_score: 0.302200]
+Sun 25 Jan 2026 17:28:14 INFO  valid result: 
+hit@10 : 0.7126    ndcg@10 : 0.399    mrr@10 : 0.3022
+Sun 25 Jan 2026 17:29:47 INFO  epoch 27 training [time: 93.12s, train loss: 65.1922]
+Sun 25 Jan 2026 17:30:03 INFO  epoch 27 evaluating [time: 15.43s, valid_score: 0.309100]
+Sun 25 Jan 2026 17:30:03 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4066    mrr@10 : 0.3091
+Sun 25 Jan 2026 17:30:03 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:31:42 INFO  epoch 28 training [time: 99.78s, train loss: 65.9235]
+Sun 25 Jan 2026 17:31:57 INFO  epoch 28 evaluating [time: 14.93s, valid_score: 0.313500]
+Sun 25 Jan 2026 17:31:57 INFO  valid result: 
+hit@10 : 0.7147    ndcg@10 : 0.4081    mrr@10 : 0.3135
+Sun 25 Jan 2026 17:31:57 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:33:34 INFO  epoch 29 training [time: 96.51s, train loss: 65.2060]
+Sun 25 Jan 2026 17:33:49 INFO  epoch 29 evaluating [time: 15.24s, valid_score: 0.311300]
+Sun 25 Jan 2026 17:33:49 INFO  valid result: 
+hit@10 : 0.7137    ndcg@10 : 0.4065    mrr@10 : 0.3113
+Sun 25 Jan 2026 17:35:26 INFO  epoch 30 training [time: 96.58s, train loss: 64.9189]
+Sun 25 Jan 2026 17:35:42 INFO  epoch 30 evaluating [time: 16.07s, valid_score: 0.314000]
+Sun 25 Jan 2026 17:35:42 INFO  valid result: 
+hit@10 : 0.7116    ndcg@10 : 0.4078    mrr@10 : 0.314
+Sun 25 Jan 2026 17:35:42 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:37:34 INFO  epoch 31 training [time: 112.02s, train loss: 63.9072]
+Sun 25 Jan 2026 17:37:52 INFO  epoch 31 evaluating [time: 18.09s, valid_score: 0.312500]
+Sun 25 Jan 2026 17:37:52 INFO  valid result: 
+hit@10 : 0.7317    ndcg@10 : 0.4115    mrr@10 : 0.3125
+Sun 25 Jan 2026 17:39:42 INFO  epoch 32 training [time: 109.81s, train loss: 64.1488]
+Sun 25 Jan 2026 17:39:57 INFO  epoch 32 evaluating [time: 15.56s, valid_score: 0.320200]
+Sun 25 Jan 2026 17:39:57 INFO  valid result: 
+hit@10 : 0.7211    ndcg@10 : 0.4149    mrr@10 : 0.3202
+Sun 25 Jan 2026 17:39:57 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:41:46 INFO  epoch 33 training [time: 109.18s, train loss: 63.8949]
+Sun 25 Jan 2026 17:42:04 INFO  epoch 33 evaluating [time: 17.46s, valid_score: 0.323500]
+Sun 25 Jan 2026 17:42:04 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4184    mrr@10 : 0.3235
+Sun 25 Jan 2026 17:42:04 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:43:53 INFO  epoch 34 training [time: 109.59s, train loss: 63.3790]
+Sun 25 Jan 2026 17:44:10 INFO  epoch 34 evaluating [time: 16.78s, valid_score: 0.321400]
+Sun 25 Jan 2026 17:44:10 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.415    mrr@10 : 0.3214
+Sun 25 Jan 2026 17:45:52 INFO  epoch 35 training [time: 102.11s, train loss: 61.8943]
+Sun 25 Jan 2026 17:46:08 INFO  epoch 35 evaluating [time: 16.00s, valid_score: 0.324000]
+Sun 25 Jan 2026 17:46:08 INFO  valid result: 
+hit@10 : 0.7328    ndcg@10 : 0.4208    mrr@10 : 0.324
+Sun 25 Jan 2026 17:46:08 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:47:58 INFO  epoch 36 training [time: 109.67s, train loss: 61.4388]
+Sun 25 Jan 2026 17:48:16 INFO  epoch 36 evaluating [time: 17.85s, valid_score: 0.321300]
+Sun 25 Jan 2026 17:48:16 INFO  valid result: 
+hit@10 : 0.7063    ndcg@10 : 0.4127    mrr@10 : 0.3213
+Sun 25 Jan 2026 17:49:54 INFO  epoch 37 training [time: 97.64s, train loss: 61.0838]
+Sun 25 Jan 2026 17:50:09 INFO  epoch 37 evaluating [time: 15.27s, valid_score: 0.318200]
+Sun 25 Jan 2026 17:50:09 INFO  valid result: 
+hit@10 : 0.7126    ndcg@10 : 0.4112    mrr@10 : 0.3182
+Sun 25 Jan 2026 17:51:45 INFO  epoch 38 training [time: 96.13s, train loss: 61.3454]
+Sun 25 Jan 2026 17:52:00 INFO  epoch 38 evaluating [time: 15.34s, valid_score: 0.317800]
+Sun 25 Jan 2026 17:52:00 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.414    mrr@10 : 0.3178
+Sun 25 Jan 2026 17:53:36 INFO  epoch 39 training [time: 95.45s, train loss: 60.8735]
+Sun 25 Jan 2026 17:53:51 INFO  epoch 39 evaluating [time: 15.20s, valid_score: 0.330900]
+Sun 25 Jan 2026 17:53:51 INFO  valid result: 
+hit@10 : 0.7137    ndcg@10 : 0.4214    mrr@10 : 0.3309
+Sun 25 Jan 2026 17:53:51 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 17:55:31 INFO  epoch 40 training [time: 100.27s, train loss: 60.4619]
+Sun 25 Jan 2026 17:55:48 INFO  epoch 40 evaluating [time: 16.77s, valid_score: 0.327700]
+Sun 25 Jan 2026 17:55:48 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4228    mrr@10 : 0.3277
+Sun 25 Jan 2026 17:57:24 INFO  epoch 41 training [time: 96.22s, train loss: 59.6449]
+Sun 25 Jan 2026 17:57:40 INFO  epoch 41 evaluating [time: 15.34s, valid_score: 0.317300]
+Sun 25 Jan 2026 17:57:40 INFO  valid result: 
+hit@10 : 0.7126    ndcg@10 : 0.4108    mrr@10 : 0.3173
+Sun 25 Jan 2026 17:59:21 INFO  epoch 42 training [time: 101.85s, train loss: 60.0223]
+Sun 25 Jan 2026 17:59:39 INFO  epoch 42 evaluating [time: 17.84s, valid_score: 0.331900]
+Sun 25 Jan 2026 17:59:39 INFO  valid result: 
+hit@10 : 0.7211    ndcg@10 : 0.4238    mrr@10 : 0.3319
+Sun 25 Jan 2026 17:59:39 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 18:01:15 INFO  epoch 43 training [time: 96.18s, train loss: 58.1802]
+Sun 25 Jan 2026 18:01:30 INFO  epoch 43 evaluating [time: 14.49s, valid_score: 0.336400]
+Sun 25 Jan 2026 18:01:30 INFO  valid result: 
+hit@10 : 0.7317    ndcg@10 : 0.4295    mrr@10 : 0.3364
+Sun 25 Jan 2026 18:01:30 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 18:03:00 INFO  epoch 44 training [time: 89.88s, train loss: 57.7058]
+Sun 25 Jan 2026 18:03:14 INFO  epoch 44 evaluating [time: 14.68s, valid_score: 0.326900]
+Sun 25 Jan 2026 18:03:14 INFO  valid result: 
+hit@10 : 0.7147    ndcg@10 : 0.4184    mrr@10 : 0.3269
+Sun 25 Jan 2026 18:04:45 INFO  epoch 45 training [time: 90.89s, train loss: 57.8432]
+Sun 25 Jan 2026 18:05:00 INFO  epoch 45 evaluating [time: 14.55s, valid_score: 0.320900]
+Sun 25 Jan 2026 18:05:00 INFO  valid result: 
+hit@10 : 0.7455    ndcg@10 : 0.421    mrr@10 : 0.3209
+Sun 25 Jan 2026 18:06:30 INFO  epoch 46 training [time: 89.88s, train loss: 58.5760]
+Sun 25 Jan 2026 18:06:44 INFO  epoch 46 evaluating [time: 14.62s, valid_score: 0.327600]
+Sun 25 Jan 2026 18:06:44 INFO  valid result: 
+hit@10 : 0.7232    ndcg@10 : 0.421    mrr@10 : 0.3276
+Sun 25 Jan 2026 18:08:15 INFO  epoch 47 training [time: 90.68s, train loss: 58.0021]
+Sun 25 Jan 2026 18:08:30 INFO  epoch 47 evaluating [time: 14.61s, valid_score: 0.328000]
+Sun 25 Jan 2026 18:08:30 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.4199    mrr@10 : 0.328
+Sun 25 Jan 2026 18:10:03 INFO  epoch 48 training [time: 93.79s, train loss: 57.0115]
+Sun 25 Jan 2026 18:10:19 INFO  epoch 48 evaluating [time: 15.34s, valid_score: 0.322500]
+Sun 25 Jan 2026 18:10:19 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4157    mrr@10 : 0.3225
+Sun 25 Jan 2026 18:11:53 INFO  epoch 49 training [time: 94.45s, train loss: 56.4025]
+Sun 25 Jan 2026 18:12:08 INFO  epoch 49 evaluating [time: 14.99s, valid_score: 0.338300]
+Sun 25 Jan 2026 18:12:08 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4312    mrr@10 : 0.3383
+Sun 25 Jan 2026 18:12:08 INFO  Saving current: saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 18:13:42 INFO  epoch 50 training [time: 93.54s, train loss: 56.2264]
+Sun 25 Jan 2026 18:13:57 INFO  epoch 50 evaluating [time: 14.89s, valid_score: 0.325400]
+Sun 25 Jan 2026 18:13:57 INFO  valid result: 
+hit@10 : 0.7232    ndcg@10 : 0.4195    mrr@10 : 0.3254
+Sun 25 Jan 2026 18:15:34 INFO  epoch 51 training [time: 97.42s, train loss: 56.3224]
+Sun 25 Jan 2026 18:15:49 INFO  epoch 51 evaluating [time: 15.18s, valid_score: 0.331100]
+Sun 25 Jan 2026 18:15:49 INFO  valid result: 
+hit@10 : 0.7084    ndcg@10 : 0.4206    mrr@10 : 0.3311
+Sun 25 Jan 2026 18:17:29 INFO  epoch 52 training [time: 99.55s, train loss: 55.8628]
+Sun 25 Jan 2026 18:17:44 INFO  epoch 52 evaluating [time: 15.03s, valid_score: 0.319200]
+Sun 25 Jan 2026 18:17:44 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.4129    mrr@10 : 0.3192
+Sun 25 Jan 2026 18:19:20 INFO  epoch 53 training [time: 96.09s, train loss: 56.1186]
+Sun 25 Jan 2026 18:19:35 INFO  epoch 53 evaluating [time: 15.10s, valid_score: 0.325800]
+Sun 25 Jan 2026 18:19:35 INFO  valid result: 
+hit@10 : 0.6999    ndcg@10 : 0.4144    mrr@10 : 0.3258
+Sun 25 Jan 2026 18:21:13 INFO  epoch 54 training [time: 98.29s, train loss: 54.6507]
+Sun 25 Jan 2026 18:21:29 INFO  epoch 54 evaluating [time: 15.38s, valid_score: 0.324400]
+Sun 25 Jan 2026 18:21:29 INFO  valid result: 
+hit@10 : 0.7084    ndcg@10 : 0.4152    mrr@10 : 0.3244
+Sun 25 Jan 2026 18:23:07 INFO  epoch 55 training [time: 98.15s, train loss: 55.7722]
+Sun 25 Jan 2026 18:23:25 INFO  epoch 55 evaluating [time: 18.01s, valid_score: 0.320400]
+Sun 25 Jan 2026 18:23:25 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4156    mrr@10 : 0.3204
+Sun 25 Jan 2026 18:25:19 INFO  epoch 56 training [time: 113.87s, train loss: 55.2606]
+Sun 25 Jan 2026 18:25:37 INFO  epoch 56 evaluating [time: 18.14s, valid_score: 0.321900]
+Sun 25 Jan 2026 18:25:37 INFO  valid result: 
+hit@10 : 0.7116    ndcg@10 : 0.414    mrr@10 : 0.3219
+Sun 25 Jan 2026 18:27:23 INFO  epoch 57 training [time: 106.23s, train loss: 54.6587]
+Sun 25 Jan 2026 18:27:39 INFO  epoch 57 evaluating [time: 16.07s, valid_score: 0.331500]
+Sun 25 Jan 2026 18:27:39 INFO  valid result: 
+hit@10 : 0.7285    ndcg@10 : 0.4252    mrr@10 : 0.3315
+Sun 25 Jan 2026 18:29:18 INFO  epoch 58 training [time: 98.62s, train loss: 53.9689]
+Sun 25 Jan 2026 18:29:34 INFO  epoch 58 evaluating [time: 16.07s, valid_score: 0.320500]
+Sun 25 Jan 2026 18:29:34 INFO  valid result: 
+hit@10 : 0.7105    ndcg@10 : 0.4128    mrr@10 : 0.3205
+Sun 25 Jan 2026 18:31:12 INFO  epoch 59 training [time: 98.18s, train loss: 53.5920]
+Sun 25 Jan 2026 18:31:28 INFO  epoch 59 evaluating [time: 16.05s, valid_score: 0.334200]
+Sun 25 Jan 2026 18:31:28 INFO  valid result: 
+hit@10 : 0.719    ndcg@10 : 0.4252    mrr@10 : 0.3342
+Sun 25 Jan 2026 18:33:11 INFO  epoch 60 training [time: 102.95s, train loss: 53.4710]
+Sun 25 Jan 2026 18:33:28 INFO  epoch 60 evaluating [time: 16.62s, valid_score: 0.330800]
+Sun 25 Jan 2026 18:33:28 INFO  valid result: 
+hit@10 : 0.6957    ndcg@10 : 0.4176    mrr@10 : 0.3308
+Sun 25 Jan 2026 18:33:28 INFO  Finished training, best eval result in epoch 49
+Sun 25 Jan 2026 18:33:28 INFO  Loading model structure and parameters from saved\SMLPREC-Jan-25-2026_16-35-49.pth
+Sun 25 Jan 2026 18:33:46 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     9.20 %     |
++-------------+----------------+
+| GPU         | 3.12 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.40 G/15.63 G |
++-------------+----------------+
+Sun 25 Jan 2026 18:33:46 INFO  best valid : OrderedDict([('hit@10', 0.7306), ('ndcg@10', 0.4312), ('mrr@10', 0.3383)])
+Sun 25 Jan 2026 18:33:46 INFO  test result: OrderedDict([('hit@10', 0.6585), ('ndcg@10', 0.3871), ('mrr@10', 0.3035)])
+Sun 25 Jan 2026 18:33:46 INFO  ['scripts/run_recbole_smlprec_repeats.py']
+Sun 25 Jan 2026 18:33:46 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2023
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.0001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+n_layers = 4
+n_heads = 1
+hidden_size = 128
+hidden_dropout_prob = 0.5
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+loss_type = BPR
+early_stop = 10
+neg_sampling = None
+selected_features = ['class', 'movie_title', 'release_year']
+pooling_mode = mean
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sun 25 Jan 2026 18:33:47 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Sun 25 Jan 2026 18:33:49 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sun 25 Jan 2026 18:33:49 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sun 25 Jan 2026 18:33:49 INFO  SMLPREC(
+  (item_embedding): Embedding(1683, 128, padding_idx=0)
+  (feature_embed_layer): FeatureSeqEmbLayer(
+    (token_embedding_table): ModuleDict(
+      (item): FMEmbedding(
+        (embedding): Embedding(74, 128)
+      )
+    )
+    (float_embedding_table): ModuleDict()
+    (token_seq_embedding_table): ModuleDict(
+      (item): ModuleList(
+        (0): Embedding(20, 128)
+        (1): Embedding(2653, 128)
+      )
+    )
+    (float_seq_embedding_table): ModuleDict(
+      (item): ModuleList()
+    )
+  )
+  (layers): ModuleList(
+    (0): SMLP(
+      (c): Sequential(
+        (0): Linear(in_features=4, out_features=12, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=12, out_features=4, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (h): Sequential(
+        (0): Linear(in_features=50, out_features=150, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=150, out_features=50, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (w): Sequential(
+        (0): Linear(in_features=128, out_features=384, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=384, out_features=128, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (LayerNorm): LayerNorm((128,), eps=1e-12, elementwise_affine=True)
+  (loss_fct): BPRLoss()
+)
+Trainable parameters: 680952
+Sun 25 Jan 2026 18:33:49 INFO  FLOPs: 112173184.0
+Sun 25 Jan 2026 18:35:30 INFO  epoch 0 training [time: 100.42s, train loss: 255.5995]
+Sun 25 Jan 2026 18:35:45 INFO  epoch 0 evaluating [time: 15.13s, valid_score: 0.114000]
+Sun 25 Jan 2026 18:35:45 INFO  valid result: 
+hit@10 : 0.334    ndcg@10 : 0.1644    mrr@10 : 0.114
+Sun 25 Jan 2026 18:35:45 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:37:22 INFO  epoch 1 training [time: 96.96s, train loss: 190.0143]
+Sun 25 Jan 2026 18:37:37 INFO  epoch 1 evaluating [time: 15.16s, valid_score: 0.132700]
+Sun 25 Jan 2026 18:37:37 INFO  valid result: 
+hit@10 : 0.3765    ndcg@10 : 0.1888    mrr@10 : 0.1327
+Sun 25 Jan 2026 18:37:37 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:39:13 INFO  epoch 2 training [time: 95.44s, train loss: 161.1165]
+Sun 25 Jan 2026 18:39:28 INFO  epoch 2 evaluating [time: 15.05s, valid_score: 0.146800]
+Sun 25 Jan 2026 18:39:28 INFO  valid result: 
+hit@10 : 0.3945    ndcg@10 : 0.2042    mrr@10 : 0.1468
+Sun 25 Jan 2026 18:39:28 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:41:06 INFO  epoch 3 training [time: 97.98s, train loss: 142.9317]
+Sun 25 Jan 2026 18:41:23 INFO  epoch 3 evaluating [time: 17.03s, valid_score: 0.202700]
+Sun 25 Jan 2026 18:41:23 INFO  valid result: 
+hit@10 : 0.5037    ndcg@10 : 0.2731    mrr@10 : 0.2027
+Sun 25 Jan 2026 18:41:23 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:43:05 INFO  epoch 4 training [time: 102.44s, train loss: 124.3533]
+Sun 25 Jan 2026 18:43:21 INFO  epoch 4 evaluating [time: 16.18s, valid_score: 0.239800]
+Sun 25 Jan 2026 18:43:21 INFO  valid result: 
+hit@10 : 0.5737    ndcg@10 : 0.3186    mrr@10 : 0.2398
+Sun 25 Jan 2026 18:43:21 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:45:04 INFO  epoch 5 training [time: 102.48s, train loss: 110.8271]
+Sun 25 Jan 2026 18:45:21 INFO  epoch 5 evaluating [time: 17.48s, valid_score: 0.261300]
+Sun 25 Jan 2026 18:45:21 INFO  valid result: 
+hit@10 : 0.6246    ndcg@10 : 0.3466    mrr@10 : 0.2613
+Sun 25 Jan 2026 18:45:21 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:47:08 INFO  epoch 6 training [time: 106.39s, train loss: 100.5673]
+Sun 25 Jan 2026 18:47:23 INFO  epoch 6 evaluating [time: 15.68s, valid_score: 0.266000]
+Sun 25 Jan 2026 18:47:23 INFO  valid result: 
+hit@10 : 0.6405    ndcg@10 : 0.3539    mrr@10 : 0.266
+Sun 25 Jan 2026 18:47:23 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:49:13 INFO  epoch 7 training [time: 109.45s, train loss: 94.3147]
+Sun 25 Jan 2026 18:49:30 INFO  epoch 7 evaluating [time: 17.70s, valid_score: 0.272300]
+Sun 25 Jan 2026 18:49:30 INFO  valid result: 
+hit@10 : 0.6585    ndcg@10 : 0.3632    mrr@10 : 0.2723
+Sun 25 Jan 2026 18:49:31 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:51:18 INFO  epoch 8 training [time: 107.80s, train loss: 89.1549]
+Sun 25 Jan 2026 18:51:37 INFO  epoch 8 evaluating [time: 18.34s, valid_score: 0.274200]
+Sun 25 Jan 2026 18:51:37 INFO  valid result: 
+hit@10 : 0.6575    ndcg@10 : 0.3639    mrr@10 : 0.2742
+Sun 25 Jan 2026 18:51:37 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:53:36 INFO  epoch 9 training [time: 118.92s, train loss: 85.9474]
+Sun 25 Jan 2026 18:53:53 INFO  epoch 9 evaluating [time: 17.38s, valid_score: 0.271500]
+Sun 25 Jan 2026 18:53:53 INFO  valid result: 
+hit@10 : 0.6617    ndcg@10 : 0.3627    mrr@10 : 0.2715
+Sun 25 Jan 2026 18:55:29 INFO  epoch 10 training [time: 95.83s, train loss: 83.6870]
+Sun 25 Jan 2026 18:55:44 INFO  epoch 10 evaluating [time: 15.17s, valid_score: 0.287100]
+Sun 25 Jan 2026 18:55:44 INFO  valid result: 
+hit@10 : 0.6649    ndcg@10 : 0.3758    mrr@10 : 0.2871
+Sun 25 Jan 2026 18:55:44 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 18:57:18 INFO  epoch 11 training [time: 94.18s, train loss: 82.1528]
+Sun 25 Jan 2026 18:57:33 INFO  epoch 11 evaluating [time: 15.05s, valid_score: 0.281900]
+Sun 25 Jan 2026 18:57:33 INFO  valid result: 
+hit@10 : 0.6702    ndcg@10 : 0.3735    mrr@10 : 0.2819
+Sun 25 Jan 2026 18:59:08 INFO  epoch 12 training [time: 94.57s, train loss: 79.7425]
+Sun 25 Jan 2026 18:59:23 INFO  epoch 12 evaluating [time: 15.04s, valid_score: 0.281900]
+Sun 25 Jan 2026 18:59:23 INFO  valid result: 
+hit@10 : 0.6925    ndcg@10 : 0.3785    mrr@10 : 0.2819
+Sun 25 Jan 2026 19:00:58 INFO  epoch 13 training [time: 94.91s, train loss: 78.9888]
+Sun 25 Jan 2026 19:01:13 INFO  epoch 13 evaluating [time: 15.12s, valid_score: 0.296800]
+Sun 25 Jan 2026 19:01:13 INFO  valid result: 
+hit@10 : 0.701    ndcg@10 : 0.3918    mrr@10 : 0.2968
+Sun 25 Jan 2026 19:01:13 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:02:47 INFO  epoch 14 training [time: 94.09s, train loss: 77.0628]
+Sun 25 Jan 2026 19:03:02 INFO  epoch 14 evaluating [time: 15.10s, valid_score: 0.288300]
+Sun 25 Jan 2026 19:03:02 INFO  valid result: 
+hit@10 : 0.6893    ndcg@10 : 0.3825    mrr@10 : 0.2883
+Sun 25 Jan 2026 19:04:45 INFO  epoch 15 training [time: 103.20s, train loss: 75.8697]
+Sun 25 Jan 2026 19:05:03 INFO  epoch 15 evaluating [time: 17.51s, valid_score: 0.281000]
+Sun 25 Jan 2026 19:05:03 INFO  valid result: 
+hit@10 : 0.6957    ndcg@10 : 0.3783    mrr@10 : 0.281
+Sun 25 Jan 2026 19:06:52 INFO  epoch 16 training [time: 108.94s, train loss: 75.2036]
+Sun 25 Jan 2026 19:07:09 INFO  epoch 16 evaluating [time: 17.62s, valid_score: 0.298000]
+Sun 25 Jan 2026 19:07:09 INFO  valid result: 
+hit@10 : 0.6861    ndcg@10 : 0.3891    mrr@10 : 0.298
+Sun 25 Jan 2026 19:07:09 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:08:51 INFO  epoch 17 training [time: 101.62s, train loss: 74.2810]
+Sun 25 Jan 2026 19:09:06 INFO  epoch 17 evaluating [time: 15.35s, valid_score: 0.296000]
+Sun 25 Jan 2026 19:09:06 INFO  valid result: 
+hit@10 : 0.7073    ndcg@10 : 0.3927    mrr@10 : 0.296
+Sun 25 Jan 2026 19:10:50 INFO  epoch 18 training [time: 104.07s, train loss: 73.3046]
+Sun 25 Jan 2026 19:11:08 INFO  epoch 18 evaluating [time: 17.11s, valid_score: 0.304700]
+Sun 25 Jan 2026 19:11:08 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.403    mrr@10 : 0.3047
+Sun 25 Jan 2026 19:11:08 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:12:55 INFO  epoch 19 training [time: 107.54s, train loss: 72.6274]
+Sun 25 Jan 2026 19:13:13 INFO  epoch 19 evaluating [time: 17.47s, valid_score: 0.299200]
+Sun 25 Jan 2026 19:13:13 INFO  valid result: 
+hit@10 : 0.7063    ndcg@10 : 0.3949    mrr@10 : 0.2992
+Sun 25 Jan 2026 19:14:56 INFO  epoch 20 training [time: 103.15s, train loss: 70.4032]
+Sun 25 Jan 2026 19:15:13 INFO  epoch 20 evaluating [time: 17.52s, valid_score: 0.296900]
+Sun 25 Jan 2026 19:15:13 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.3956    mrr@10 : 0.2969
+Sun 25 Jan 2026 19:17:02 INFO  epoch 21 training [time: 108.67s, train loss: 69.6867]
+Sun 25 Jan 2026 19:17:19 INFO  epoch 21 evaluating [time: 17.32s, valid_score: 0.302800]
+Sun 25 Jan 2026 19:17:19 INFO  valid result: 
+hit@10 : 0.7052    ndcg@10 : 0.398    mrr@10 : 0.3028
+Sun 25 Jan 2026 19:19:06 INFO  epoch 22 training [time: 106.74s, train loss: 69.2913]
+Sun 25 Jan 2026 19:19:23 INFO  epoch 22 evaluating [time: 17.38s, valid_score: 0.308900]
+Sun 25 Jan 2026 19:19:23 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4061    mrr@10 : 0.3089
+Sun 25 Jan 2026 19:19:23 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:21:11 INFO  epoch 23 training [time: 107.64s, train loss: 69.2885]
+Sun 25 Jan 2026 19:21:28 INFO  epoch 23 evaluating [time: 17.13s, valid_score: 0.303100]
+Sun 25 Jan 2026 19:21:28 INFO  valid result: 
+hit@10 : 0.6988    ndcg@10 : 0.3966    mrr@10 : 0.3031
+Sun 25 Jan 2026 19:23:13 INFO  epoch 24 training [time: 104.78s, train loss: 67.6465]
+Sun 25 Jan 2026 19:23:30 INFO  epoch 24 evaluating [time: 17.23s, valid_score: 0.317100]
+Sun 25 Jan 2026 19:23:30 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4144    mrr@10 : 0.3171
+Sun 25 Jan 2026 19:23:30 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:25:17 INFO  epoch 25 training [time: 106.65s, train loss: 68.3368]
+Sun 25 Jan 2026 19:25:34 INFO  epoch 25 evaluating [time: 17.21s, valid_score: 0.322400]
+Sun 25 Jan 2026 19:25:34 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4169    mrr@10 : 0.3224
+Sun 25 Jan 2026 19:25:34 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:27:17 INFO  epoch 26 training [time: 102.89s, train loss: 66.4671]
+Sun 25 Jan 2026 19:27:32 INFO  epoch 26 evaluating [time: 15.33s, valid_score: 0.308600]
+Sun 25 Jan 2026 19:27:32 INFO  valid result: 
+hit@10 : 0.7264    ndcg@10 : 0.4074    mrr@10 : 0.3086
+Sun 25 Jan 2026 19:29:20 INFO  epoch 27 training [time: 107.95s, train loss: 66.6037]
+Sun 25 Jan 2026 19:29:38 INFO  epoch 27 evaluating [time: 17.92s, valid_score: 0.315600]
+Sun 25 Jan 2026 19:29:38 INFO  valid result: 
+hit@10 : 0.7137    ndcg@10 : 0.4096    mrr@10 : 0.3156
+Sun 25 Jan 2026 19:31:25 INFO  epoch 28 training [time: 107.34s, train loss: 66.5930]
+Sun 25 Jan 2026 19:31:41 INFO  epoch 28 evaluating [time: 15.46s, valid_score: 0.321300]
+Sun 25 Jan 2026 19:31:41 INFO  valid result: 
+hit@10 : 0.7211    ndcg@10 : 0.4159    mrr@10 : 0.3213
+Sun 25 Jan 2026 19:33:21 INFO  epoch 29 training [time: 100.17s, train loss: 65.2247]
+Sun 25 Jan 2026 19:33:36 INFO  epoch 29 evaluating [time: 15.38s, valid_score: 0.305000]
+Sun 25 Jan 2026 19:33:36 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4038    mrr@10 : 0.305
+Sun 25 Jan 2026 19:35:20 INFO  epoch 30 training [time: 103.78s, train loss: 64.5787]
+Sun 25 Jan 2026 19:35:38 INFO  epoch 30 evaluating [time: 17.69s, valid_score: 0.305900]
+Sun 25 Jan 2026 19:35:38 INFO  valid result: 
+hit@10 : 0.7275    ndcg@10 : 0.4053    mrr@10 : 0.3059
+Sun 25 Jan 2026 19:37:18 INFO  epoch 31 training [time: 99.86s, train loss: 64.3314]
+Sun 25 Jan 2026 19:37:33 INFO  epoch 31 evaluating [time: 15.60s, valid_score: 0.317500]
+Sun 25 Jan 2026 19:37:33 INFO  valid result: 
+hit@10 : 0.7105    ndcg@10 : 0.4103    mrr@10 : 0.3175
+Sun 25 Jan 2026 19:39:08 INFO  epoch 32 training [time: 94.44s, train loss: 63.7758]
+Sun 25 Jan 2026 19:39:23 INFO  epoch 32 evaluating [time: 15.19s, valid_score: 0.324000]
+Sun 25 Jan 2026 19:39:23 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.4184    mrr@10 : 0.324
+Sun 25 Jan 2026 19:39:23 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:40:58 INFO  epoch 33 training [time: 94.56s, train loss: 63.0063]
+Sun 25 Jan 2026 19:41:13 INFO  epoch 33 evaluating [time: 15.09s, valid_score: 0.319900]
+Sun 25 Jan 2026 19:41:13 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.4157    mrr@10 : 0.3199
+Sun 25 Jan 2026 19:42:48 INFO  epoch 34 training [time: 95.17s, train loss: 62.4402]
+Sun 25 Jan 2026 19:43:04 INFO  epoch 34 evaluating [time: 15.62s, valid_score: 0.327300]
+Sun 25 Jan 2026 19:43:04 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.424    mrr@10 : 0.3273
+Sun 25 Jan 2026 19:43:04 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:44:39 INFO  epoch 35 training [time: 95.50s, train loss: 62.3414]
+Sun 25 Jan 2026 19:44:54 INFO  epoch 35 evaluating [time: 15.06s, valid_score: 0.323800]
+Sun 25 Jan 2026 19:44:54 INFO  valid result: 
+hit@10 : 0.7264    ndcg@10 : 0.4187    mrr@10 : 0.3238
+Sun 25 Jan 2026 19:46:28 INFO  epoch 36 training [time: 93.80s, train loss: 61.7673]
+Sun 25 Jan 2026 19:46:43 INFO  epoch 36 evaluating [time: 14.97s, valid_score: 0.310300]
+Sun 25 Jan 2026 19:46:43 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4064    mrr@10 : 0.3103
+Sun 25 Jan 2026 19:48:32 INFO  epoch 37 training [time: 109.48s, train loss: 61.4771]
+Sun 25 Jan 2026 19:48:51 INFO  epoch 37 evaluating [time: 18.43s, valid_score: 0.319200]
+Sun 25 Jan 2026 19:48:51 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.4131    mrr@10 : 0.3192
+Sun 25 Jan 2026 19:50:29 INFO  epoch 38 training [time: 98.19s, train loss: 61.0710]
+Sun 25 Jan 2026 19:50:44 INFO  epoch 38 evaluating [time: 15.31s, valid_score: 0.326600]
+Sun 25 Jan 2026 19:50:44 INFO  valid result: 
+hit@10 : 0.7317    ndcg@10 : 0.4226    mrr@10 : 0.3266
+Sun 25 Jan 2026 19:52:20 INFO  epoch 39 training [time: 95.92s, train loss: 60.3830]
+Sun 25 Jan 2026 19:52:36 INFO  epoch 39 evaluating [time: 15.37s, valid_score: 0.332500]
+Sun 25 Jan 2026 19:52:36 INFO  valid result: 
+hit@10 : 0.7338    ndcg@10 : 0.4272    mrr@10 : 0.3325
+Sun 25 Jan 2026 19:52:36 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:54:10 INFO  epoch 40 training [time: 94.88s, train loss: 60.5186]
+Sun 25 Jan 2026 19:54:26 INFO  epoch 40 evaluating [time: 15.28s, valid_score: 0.328500]
+Sun 25 Jan 2026 19:54:26 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4202    mrr@10 : 0.3285
+Sun 25 Jan 2026 19:56:02 INFO  epoch 41 training [time: 95.93s, train loss: 59.5484]
+Sun 25 Jan 2026 19:56:17 INFO  epoch 41 evaluating [time: 15.39s, valid_score: 0.328400]
+Sun 25 Jan 2026 19:56:17 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4245    mrr@10 : 0.3284
+Sun 25 Jan 2026 19:57:52 INFO  epoch 42 training [time: 94.92s, train loss: 58.9448]
+Sun 25 Jan 2026 19:58:07 INFO  epoch 42 evaluating [time: 15.23s, valid_score: 0.340300]
+Sun 25 Jan 2026 19:58:07 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4297    mrr@10 : 0.3403
+Sun 25 Jan 2026 19:58:07 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 19:59:43 INFO  epoch 43 training [time: 95.85s, train loss: 59.8206]
+Sun 25 Jan 2026 19:59:58 INFO  epoch 43 evaluating [time: 15.37s, valid_score: 0.331600]
+Sun 25 Jan 2026 19:59:58 INFO  valid result: 
+hit@10 : 0.7285    ndcg@10 : 0.4255    mrr@10 : 0.3316
+Sun 25 Jan 2026 20:01:37 INFO  epoch 44 training [time: 98.65s, train loss: 59.0981]
+Sun 25 Jan 2026 20:01:55 INFO  epoch 44 evaluating [time: 17.96s, valid_score: 0.333700]
+Sun 25 Jan 2026 20:01:55 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4274    mrr@10 : 0.3337
+Sun 25 Jan 2026 20:03:35 INFO  epoch 45 training [time: 99.88s, train loss: 57.6531]
+Sun 25 Jan 2026 20:03:50 INFO  epoch 45 evaluating [time: 15.30s, valid_score: 0.345600]
+Sun 25 Jan 2026 20:03:50 INFO  valid result: 
+hit@10 : 0.7275    ndcg@10 : 0.436    mrr@10 : 0.3456
+Sun 25 Jan 2026 20:03:50 INFO  Saving current: saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 20:05:24 INFO  epoch 46 training [time: 94.05s, train loss: 57.9784]
+Sun 25 Jan 2026 20:05:39 INFO  epoch 46 evaluating [time: 14.86s, valid_score: 0.331500]
+Sun 25 Jan 2026 20:05:39 INFO  valid result: 
+hit@10 : 0.7179    ndcg@10 : 0.4232    mrr@10 : 0.3315
+Sun 25 Jan 2026 20:07:14 INFO  epoch 47 training [time: 94.45s, train loss: 56.6101]
+Sun 25 Jan 2026 20:07:29 INFO  epoch 47 evaluating [time: 15.00s, valid_score: 0.338700]
+Sun 25 Jan 2026 20:07:29 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.4299    mrr@10 : 0.3387
+Sun 25 Jan 2026 20:09:04 INFO  epoch 48 training [time: 95.23s, train loss: 56.8459]
+Sun 25 Jan 2026 20:09:22 INFO  epoch 48 evaluating [time: 17.97s, valid_score: 0.340100]
+Sun 25 Jan 2026 20:09:22 INFO  valid result: 
+hit@10 : 0.7328    ndcg@10 : 0.4333    mrr@10 : 0.3401
+Sun 25 Jan 2026 20:11:03 INFO  epoch 49 training [time: 101.63s, train loss: 56.9707]
+Sun 25 Jan 2026 20:11:19 INFO  epoch 49 evaluating [time: 15.20s, valid_score: 0.329900]
+Sun 25 Jan 2026 20:11:19 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4215    mrr@10 : 0.3299
+Sun 25 Jan 2026 20:12:55 INFO  epoch 50 training [time: 96.01s, train loss: 56.5784]
+Sun 25 Jan 2026 20:13:10 INFO  epoch 50 evaluating [time: 15.10s, valid_score: 0.337200]
+Sun 25 Jan 2026 20:13:10 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4291    mrr@10 : 0.3372
+Sun 25 Jan 2026 20:14:47 INFO  epoch 51 training [time: 97.36s, train loss: 56.0709]
+Sun 25 Jan 2026 20:15:02 INFO  epoch 51 evaluating [time: 15.18s, valid_score: 0.333800]
+Sun 25 Jan 2026 20:15:02 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4257    mrr@10 : 0.3338
+Sun 25 Jan 2026 20:16:38 INFO  epoch 52 training [time: 95.56s, train loss: 55.9846]
+Sun 25 Jan 2026 20:16:53 INFO  epoch 52 evaluating [time: 15.22s, valid_score: 0.337100]
+Sun 25 Jan 2026 20:16:53 INFO  valid result: 
+hit@10 : 0.7285    ndcg@10 : 0.4298    mrr@10 : 0.3371
+Sun 25 Jan 2026 20:18:37 INFO  epoch 53 training [time: 103.93s, train loss: 55.9639]
+Sun 25 Jan 2026 20:18:55 INFO  epoch 53 evaluating [time: 17.46s, valid_score: 0.322400]
+Sun 25 Jan 2026 20:18:55 INFO  valid result: 
+hit@10 : 0.7179    ndcg@10 : 0.4161    mrr@10 : 0.3224
+Sun 25 Jan 2026 20:20:47 INFO  epoch 54 training [time: 112.37s, train loss: 54.5208]
+Sun 25 Jan 2026 20:21:05 INFO  epoch 54 evaluating [time: 17.95s, valid_score: 0.331700]
+Sun 25 Jan 2026 20:21:05 INFO  valid result: 
+hit@10 : 0.719    ndcg@10 : 0.4234    mrr@10 : 0.3317
+Sun 25 Jan 2026 20:22:57 INFO  epoch 55 training [time: 112.32s, train loss: 55.5208]
+Sun 25 Jan 2026 20:23:15 INFO  epoch 55 evaluating [time: 18.07s, valid_score: 0.326300]
+Sun 25 Jan 2026 20:23:15 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4214    mrr@10 : 0.3263
+Sun 25 Jan 2026 20:25:08 INFO  epoch 56 training [time: 112.74s, train loss: 54.8212]
+Sun 25 Jan 2026 20:25:26 INFO  epoch 56 evaluating [time: 17.85s, valid_score: 0.337800]
+Sun 25 Jan 2026 20:25:26 INFO  valid result: 
+hit@10 : 0.7264    ndcg@10 : 0.4299    mrr@10 : 0.3378
+Sun 25 Jan 2026 20:25:26 INFO  Finished training, best eval result in epoch 45
+Sun 25 Jan 2026 20:25:26 INFO  Loading model structure and parameters from saved\SMLPREC-Jan-25-2026_18-33-49.pth
+Sun 25 Jan 2026 20:25:45 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    12.80 %     |
++-------------+----------------+
+| GPU         | 3.12 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.56 G/15.63 G |
++-------------+----------------+
+Sun 25 Jan 2026 20:25:45 INFO  best valid : OrderedDict([('hit@10', 0.7275), ('ndcg@10', 0.436), ('mrr@10', 0.3456)])
+Sun 25 Jan 2026 20:25:45 INFO  test result: OrderedDict([('hit@10', 0.6734), ('ndcg@10', 0.3877), ('mrr@10', 0.2995)])
+Sun 25 Jan 2026 20:25:45 INFO  ['scripts/run_recbole_smlprec_repeats.py']
+Sun 25 Jan 2026 20:25:45 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2024
+state = INFO
+reproducibility = True
+data_path = F:\anaconda3\envs\rec39\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.0001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation', 'zip_code'], 'item': ['item_id', 'movie_title', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+n_layers = 4
+n_heads = 1
+hidden_size = 128
+hidden_dropout_prob = 0.5
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+loss_type = BPR
+early_stop = 10
+neg_sampling = None
+selected_features = ['class', 'movie_title', 'release_year']
+pooling_mode = mean
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sun 25 Jan 2026 20:25:46 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp', 'age', 'gender', 'occupation', 'zip_code', 'movie_title', 'release_year', 'class']
+Sun 25 Jan 2026 20:25:48 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sun 25 Jan 2026 20:25:48 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sun 25 Jan 2026 20:25:48 INFO  SMLPREC(
+  (item_embedding): Embedding(1683, 128, padding_idx=0)
+  (feature_embed_layer): FeatureSeqEmbLayer(
+    (token_embedding_table): ModuleDict(
+      (item): FMEmbedding(
+        (embedding): Embedding(74, 128)
+      )
+    )
+    (float_embedding_table): ModuleDict()
+    (token_seq_embedding_table): ModuleDict(
+      (item): ModuleList(
+        (0): Embedding(20, 128)
+        (1): Embedding(2653, 128)
+      )
+    )
+    (float_seq_embedding_table): ModuleDict(
+      (item): ModuleList()
+    )
+  )
+  (layers): ModuleList(
+    (0): SMLP(
+      (c): Sequential(
+        (0): Linear(in_features=4, out_features=12, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=12, out_features=4, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (h): Sequential(
+        (0): Linear(in_features=50, out_features=150, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=150, out_features=50, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (w): Sequential(
+        (0): Linear(in_features=128, out_features=384, bias=False)
+        (1): GELU(approximate='none')
+        (2): Dropout(p=0.5, inplace=False)
+        (3): Linear(in_features=384, out_features=128, bias=False)
+        (4): Dropout(p=0.5, inplace=False)
+      )
+      (norm2): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (LayerNorm): LayerNorm((128,), eps=1e-12, elementwise_affine=True)
+  (loss_fct): BPRLoss()
+)
+Trainable parameters: 680952
+Sun 25 Jan 2026 20:25:48 INFO  FLOPs: 112173184.0
+Sun 25 Jan 2026 20:27:34 INFO  epoch 0 training [time: 105.77s, train loss: 247.6774]
+Sun 25 Jan 2026 20:27:52 INFO  epoch 0 evaluating [time: 17.83s, valid_score: 0.117100]
+Sun 25 Jan 2026 20:27:52 INFO  valid result: 
+hit@10 : 0.369    ndcg@10 : 0.1751    mrr@10 : 0.1171
+Sun 25 Jan 2026 20:27:52 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:29:26 INFO  epoch 1 training [time: 94.56s, train loss: 182.5891]
+Sun 25 Jan 2026 20:29:41 INFO  epoch 1 evaluating [time: 14.88s, valid_score: 0.131300]
+Sun 25 Jan 2026 20:29:41 INFO  valid result: 
+hit@10 : 0.3743    ndcg@10 : 0.1875    mrr@10 : 0.1313
+Sun 25 Jan 2026 20:29:41 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:31:15 INFO  epoch 2 training [time: 93.58s, train loss: 158.3762]
+Sun 25 Jan 2026 20:31:30 INFO  epoch 2 evaluating [time: 14.99s, valid_score: 0.147800]
+Sun 25 Jan 2026 20:31:30 INFO  valid result: 
+hit@10 : 0.4104    ndcg@10 : 0.2088    mrr@10 : 0.1478
+Sun 25 Jan 2026 20:31:30 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:33:04 INFO  epoch 3 training [time: 94.50s, train loss: 139.9425]
+Sun 25 Jan 2026 20:33:19 INFO  epoch 3 evaluating [time: 14.92s, valid_score: 0.216300]
+Sun 25 Jan 2026 20:33:19 INFO  valid result: 
+hit@10 : 0.5069    ndcg@10 : 0.2841    mrr@10 : 0.2163
+Sun 25 Jan 2026 20:33:19 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:34:53 INFO  epoch 4 training [time: 93.54s, train loss: 123.4538]
+Sun 25 Jan 2026 20:35:08 INFO  epoch 4 evaluating [time: 15.01s, valid_score: 0.229800]
+Sun 25 Jan 2026 20:35:08 INFO  valid result: 
+hit@10 : 0.5695    ndcg@10 : 0.3098    mrr@10 : 0.2298
+Sun 25 Jan 2026 20:35:08 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:36:50 INFO  epoch 5 training [time: 101.89s, train loss: 110.3415]
+Sun 25 Jan 2026 20:37:07 INFO  epoch 5 evaluating [time: 17.59s, valid_score: 0.256100]
+Sun 25 Jan 2026 20:37:07 INFO  valid result: 
+hit@10 : 0.6225    ndcg@10 : 0.3419    mrr@10 : 0.2561
+Sun 25 Jan 2026 20:37:07 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:38:55 INFO  epoch 6 training [time: 108.15s, train loss: 99.9302]
+Sun 25 Jan 2026 20:39:13 INFO  epoch 6 evaluating [time: 17.45s, valid_score: 0.276900]
+Sun 25 Jan 2026 20:39:13 INFO  valid result: 
+hit@10 : 0.6426    ndcg@10 : 0.3627    mrr@10 : 0.2769
+Sun 25 Jan 2026 20:39:13 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:41:02 INFO  epoch 7 training [time: 109.15s, train loss: 94.8100]
+Sun 25 Jan 2026 20:41:19 INFO  epoch 7 evaluating [time: 17.39s, valid_score: 0.276500]
+Sun 25 Jan 2026 20:41:19 INFO  valid result: 
+hit@10 : 0.6649    ndcg@10 : 0.3674    mrr@10 : 0.2765
+Sun 25 Jan 2026 20:43:10 INFO  epoch 8 training [time: 110.96s, train loss: 89.4870]
+Sun 25 Jan 2026 20:43:26 INFO  epoch 8 evaluating [time: 15.26s, valid_score: 0.285600]
+Sun 25 Jan 2026 20:43:26 INFO  valid result: 
+hit@10 : 0.6702    ndcg@10 : 0.3758    mrr@10 : 0.2856
+Sun 25 Jan 2026 20:43:26 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:45:15 INFO  epoch 9 training [time: 109.84s, train loss: 86.3608]
+Sun 25 Jan 2026 20:45:33 INFO  epoch 9 evaluating [time: 17.72s, valid_score: 0.274100]
+Sun 25 Jan 2026 20:45:33 INFO  valid result: 
+hit@10 : 0.6787    ndcg@10 : 0.3691    mrr@10 : 0.2741
+Sun 25 Jan 2026 20:47:14 INFO  epoch 10 training [time: 101.01s, train loss: 82.8871]
+Sun 25 Jan 2026 20:47:31 INFO  epoch 10 evaluating [time: 16.41s, valid_score: 0.274300]
+Sun 25 Jan 2026 20:47:31 INFO  valid result: 
+hit@10 : 0.6766    ndcg@10 : 0.3685    mrr@10 : 0.2743
+Sun 25 Jan 2026 20:49:06 INFO  epoch 11 training [time: 95.20s, train loss: 80.7225]
+Sun 25 Jan 2026 20:49:21 INFO  epoch 11 evaluating [time: 15.17s, valid_score: 0.285000]
+Sun 25 Jan 2026 20:49:21 INFO  valid result: 
+hit@10 : 0.6723    ndcg@10 : 0.3759    mrr@10 : 0.285
+Sun 25 Jan 2026 20:50:56 INFO  epoch 12 training [time: 94.74s, train loss: 78.7102]
+Sun 25 Jan 2026 20:51:11 INFO  epoch 12 evaluating [time: 15.20s, valid_score: 0.284600]
+Sun 25 Jan 2026 20:51:11 INFO  valid result: 
+hit@10 : 0.6797    ndcg@10 : 0.3777    mrr@10 : 0.2846
+Sun 25 Jan 2026 20:52:46 INFO  epoch 13 training [time: 94.88s, train loss: 78.3664]
+Sun 25 Jan 2026 20:53:01 INFO  epoch 13 evaluating [time: 15.22s, valid_score: 0.293300]
+Sun 25 Jan 2026 20:53:01 INFO  valid result: 
+hit@10 : 0.6776    ndcg@10 : 0.3838    mrr@10 : 0.2933
+Sun 25 Jan 2026 20:53:01 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:54:35 INFO  epoch 14 training [time: 93.78s, train loss: 76.1636]
+Sun 25 Jan 2026 20:54:50 INFO  epoch 14 evaluating [time: 15.21s, valid_score: 0.284400]
+Sun 25 Jan 2026 20:54:50 INFO  valid result: 
+hit@10 : 0.6978    ndcg@10 : 0.3817    mrr@10 : 0.2844
+Sun 25 Jan 2026 20:56:32 INFO  epoch 15 training [time: 101.62s, train loss: 75.3095]
+Sun 25 Jan 2026 20:56:48 INFO  epoch 15 evaluating [time: 16.27s, valid_score: 0.302900]
+Sun 25 Jan 2026 20:56:48 INFO  valid result: 
+hit@10 : 0.7063    ndcg@10 : 0.3976    mrr@10 : 0.3029
+Sun 25 Jan 2026 20:56:48 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 20:58:26 INFO  epoch 16 training [time: 98.10s, train loss: 73.7245]
+Sun 25 Jan 2026 20:58:41 INFO  epoch 16 evaluating [time: 15.24s, valid_score: 0.299600]
+Sun 25 Jan 2026 20:58:41 INFO  valid result: 
+hit@10 : 0.702    ndcg@10 : 0.3942    mrr@10 : 0.2996
+Sun 25 Jan 2026 21:00:28 INFO  epoch 17 training [time: 106.73s, train loss: 72.9261]
+Sun 25 Jan 2026 21:00:46 INFO  epoch 17 evaluating [time: 17.77s, valid_score: 0.293900]
+Sun 25 Jan 2026 21:00:46 INFO  valid result: 
+hit@10 : 0.7116    ndcg@10 : 0.392    mrr@10 : 0.2939
+Sun 25 Jan 2026 21:02:35 INFO  epoch 18 training [time: 109.52s, train loss: 72.6639]
+Sun 25 Jan 2026 21:02:53 INFO  epoch 18 evaluating [time: 18.21s, valid_score: 0.298400]
+Sun 25 Jan 2026 21:02:53 INFO  valid result: 
+hit@10 : 0.7137    ndcg@10 : 0.3961    mrr@10 : 0.2984
+Sun 25 Jan 2026 21:04:48 INFO  epoch 19 training [time: 114.66s, train loss: 71.2614]
+Sun 25 Jan 2026 21:05:05 INFO  epoch 19 evaluating [time: 17.14s, valid_score: 0.297900]
+Sun 25 Jan 2026 21:05:05 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.3981    mrr@10 : 0.2979
+Sun 25 Jan 2026 21:06:42 INFO  epoch 20 training [time: 96.89s, train loss: 70.7533]
+Sun 25 Jan 2026 21:06:57 INFO  epoch 20 evaluating [time: 15.28s, valid_score: 0.307800]
+Sun 25 Jan 2026 21:06:57 INFO  valid result: 
+hit@10 : 0.7253    ndcg@10 : 0.4059    mrr@10 : 0.3078
+Sun 25 Jan 2026 21:06:57 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 21:08:43 INFO  epoch 21 training [time: 105.96s, train loss: 69.9503]
+Sun 25 Jan 2026 21:09:00 INFO  epoch 21 evaluating [time: 16.49s, valid_score: 0.317100]
+Sun 25 Jan 2026 21:09:00 INFO  valid result: 
+hit@10 : 0.7126    ndcg@10 : 0.4098    mrr@10 : 0.3171
+Sun 25 Jan 2026 21:09:00 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 21:10:42 INFO  epoch 22 training [time: 101.60s, train loss: 69.5995]
+Sun 25 Jan 2026 21:10:56 INFO  epoch 22 evaluating [time: 14.62s, valid_score: 0.313600]
+Sun 25 Jan 2026 21:10:56 INFO  valid result: 
+hit@10 : 0.719    ndcg@10 : 0.4088    mrr@10 : 0.3136
+Sun 25 Jan 2026 21:12:28 INFO  epoch 23 training [time: 92.17s, train loss: 68.6370]
+Sun 25 Jan 2026 21:12:43 INFO  epoch 23 evaluating [time: 14.65s, valid_score: 0.315600]
+Sun 25 Jan 2026 21:12:43 INFO  valid result: 
+hit@10 : 0.7116    ndcg@10 : 0.4089    mrr@10 : 0.3156
+Sun 25 Jan 2026 21:14:14 INFO  epoch 24 training [time: 90.84s, train loss: 67.0170]
+Sun 25 Jan 2026 21:14:28 INFO  epoch 24 evaluating [time: 14.62s, valid_score: 0.311500]
+Sun 25 Jan 2026 21:14:28 INFO  valid result: 
+hit@10 : 0.7232    ndcg@10 : 0.4084    mrr@10 : 0.3115
+Sun 25 Jan 2026 21:16:01 INFO  epoch 25 training [time: 92.79s, train loss: 67.4746]
+Sun 25 Jan 2026 21:16:16 INFO  epoch 25 evaluating [time: 14.75s, valid_score: 0.306300]
+Sun 25 Jan 2026 21:16:16 INFO  valid result: 
+hit@10 : 0.7211    ndcg@10 : 0.4042    mrr@10 : 0.3063
+Sun 25 Jan 2026 21:17:47 INFO  epoch 26 training [time: 91.40s, train loss: 67.4333]
+Sun 25 Jan 2026 21:18:02 INFO  epoch 26 evaluating [time: 14.67s, valid_score: 0.310700]
+Sun 25 Jan 2026 21:18:02 INFO  valid result: 
+hit@10 : 0.7232    ndcg@10 : 0.4081    mrr@10 : 0.3107
+Sun 25 Jan 2026 21:19:34 INFO  epoch 27 training [time: 92.11s, train loss: 65.6900]
+Sun 25 Jan 2026 21:19:49 INFO  epoch 27 evaluating [time: 14.81s, valid_score: 0.317700]
+Sun 25 Jan 2026 21:19:49 INFO  valid result: 
+hit@10 : 0.7275    ndcg@10 : 0.4146    mrr@10 : 0.3177
+Sun 25 Jan 2026 21:19:49 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 21:21:21 INFO  epoch 28 training [time: 91.82s, train loss: 65.1077]
+Sun 25 Jan 2026 21:21:36 INFO  epoch 28 evaluating [time: 14.76s, valid_score: 0.316500]
+Sun 25 Jan 2026 21:21:36 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4121    mrr@10 : 0.3165
+Sun 25 Jan 2026 21:23:07 INFO  epoch 29 training [time: 91.74s, train loss: 64.6998]
+Sun 25 Jan 2026 21:23:22 INFO  epoch 29 evaluating [time: 14.65s, valid_score: 0.328400]
+Sun 25 Jan 2026 21:23:22 INFO  valid result: 
+hit@10 : 0.7296    ndcg@10 : 0.4227    mrr@10 : 0.3284
+Sun 25 Jan 2026 21:23:22 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 21:24:54 INFO  epoch 30 training [time: 92.02s, train loss: 64.0369]
+Sun 25 Jan 2026 21:25:09 INFO  epoch 30 evaluating [time: 14.60s, valid_score: 0.327600]
+Sun 25 Jan 2026 21:25:09 INFO  valid result: 
+hit@10 : 0.7243    ndcg@10 : 0.4214    mrr@10 : 0.3276
+Sun 25 Jan 2026 21:26:40 INFO  epoch 31 training [time: 91.00s, train loss: 64.1009]
+Sun 25 Jan 2026 21:26:54 INFO  epoch 31 evaluating [time: 14.63s, valid_score: 0.323400]
+Sun 25 Jan 2026 21:26:54 INFO  valid result: 
+hit@10 : 0.7211    ndcg@10 : 0.4175    mrr@10 : 0.3234
+Sun 25 Jan 2026 21:28:29 INFO  epoch 32 training [time: 94.45s, train loss: 63.6801]
+Sun 25 Jan 2026 21:28:45 INFO  epoch 32 evaluating [time: 16.10s, valid_score: 0.318400]
+Sun 25 Jan 2026 21:28:45 INFO  valid result: 
+hit@10 : 0.737    ndcg@10 : 0.4173    mrr@10 : 0.3184
+Sun 25 Jan 2026 21:30:26 INFO  epoch 33 training [time: 101.20s, train loss: 63.2352]
+Sun 25 Jan 2026 21:30:43 INFO  epoch 33 evaluating [time: 17.12s, valid_score: 0.327100]
+Sun 25 Jan 2026 21:30:43 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.4229    mrr@10 : 0.3271
+Sun 25 Jan 2026 21:32:35 INFO  epoch 34 training [time: 111.83s, train loss: 62.4155]
+Sun 25 Jan 2026 21:32:53 INFO  epoch 34 evaluating [time: 17.82s, valid_score: 0.332700]
+Sun 25 Jan 2026 21:32:53 INFO  valid result: 
+hit@10 : 0.72    ndcg@10 : 0.4245    mrr@10 : 0.3327
+Sun 25 Jan 2026 21:32:53 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 21:34:43 INFO  epoch 35 training [time: 110.02s, train loss: 61.9727]
+Sun 25 Jan 2026 21:35:01 INFO  epoch 35 evaluating [time: 17.99s, valid_score: 0.326300]
+Sun 25 Jan 2026 21:35:01 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4184    mrr@10 : 0.3263
+Sun 25 Jan 2026 21:36:52 INFO  epoch 36 training [time: 110.98s, train loss: 61.4618]
+Sun 25 Jan 2026 21:37:09 INFO  epoch 36 evaluating [time: 17.04s, valid_score: 0.328100]
+Sun 25 Jan 2026 21:37:09 INFO  valid result: 
+hit@10 : 0.7264    ndcg@10 : 0.4224    mrr@10 : 0.3281
+Sun 25 Jan 2026 21:38:54 INFO  epoch 37 training [time: 105.14s, train loss: 61.1490]
+Sun 25 Jan 2026 21:39:09 INFO  epoch 37 evaluating [time: 15.37s, valid_score: 0.338700]
+Sun 25 Jan 2026 21:39:09 INFO  valid result: 
+hit@10 : 0.7328    ndcg@10 : 0.4322    mrr@10 : 0.3387
+Sun 25 Jan 2026 21:39:09 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 21:40:44 INFO  epoch 38 training [time: 94.42s, train loss: 60.2488]
+Sun 25 Jan 2026 21:40:59 INFO  epoch 38 evaluating [time: 14.97s, valid_score: 0.328500]
+Sun 25 Jan 2026 21:40:59 INFO  valid result: 
+hit@10 : 0.7338    ndcg@10 : 0.4242    mrr@10 : 0.3285
+Sun 25 Jan 2026 21:42:34 INFO  epoch 39 training [time: 94.90s, train loss: 60.3060]
+Sun 25 Jan 2026 21:42:49 INFO  epoch 39 evaluating [time: 14.99s, valid_score: 0.338200]
+Sun 25 Jan 2026 21:42:49 INFO  valid result: 
+hit@10 : 0.7232    ndcg@10 : 0.4296    mrr@10 : 0.3382
+Sun 25 Jan 2026 21:44:25 INFO  epoch 40 training [time: 96.47s, train loss: 59.9682]
+Sun 25 Jan 2026 21:44:40 INFO  epoch 40 evaluating [time: 15.38s, valid_score: 0.330100]
+Sun 25 Jan 2026 21:44:40 INFO  valid result: 
+hit@10 : 0.7264    ndcg@10 : 0.4238    mrr@10 : 0.3301
+Sun 25 Jan 2026 21:46:19 INFO  epoch 41 training [time: 98.11s, train loss: 58.8057]
+Sun 25 Jan 2026 21:46:34 INFO  epoch 41 evaluating [time: 15.35s, valid_score: 0.329500]
+Sun 25 Jan 2026 21:46:34 INFO  valid result: 
+hit@10 : 0.7169    ndcg@10 : 0.4215    mrr@10 : 0.3295
+Sun 25 Jan 2026 21:48:11 INFO  epoch 42 training [time: 97.05s, train loss: 58.9957]
+Sun 25 Jan 2026 21:48:26 INFO  epoch 42 evaluating [time: 15.42s, valid_score: 0.323500]
+Sun 25 Jan 2026 21:48:26 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.4165    mrr@10 : 0.3235
+Sun 25 Jan 2026 21:50:04 INFO  epoch 43 training [time: 97.32s, train loss: 58.2512]
+Sun 25 Jan 2026 21:50:19 INFO  epoch 43 evaluating [time: 14.89s, valid_score: 0.327100]
+Sun 25 Jan 2026 21:50:19 INFO  valid result: 
+hit@10 : 0.7147    ndcg@10 : 0.4189    mrr@10 : 0.3271
+Sun 25 Jan 2026 21:52:06 INFO  epoch 44 training [time: 107.56s, train loss: 58.7004]
+Sun 25 Jan 2026 21:52:24 INFO  epoch 44 evaluating [time: 17.67s, valid_score: 0.342900]
+Sun 25 Jan 2026 21:52:24 INFO  valid result: 
+hit@10 : 0.7105    ndcg@10 : 0.43    mrr@10 : 0.3429
+Sun 25 Jan 2026 21:52:24 INFO  Saving current: saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 21:54:14 INFO  epoch 45 training [time: 110.05s, train loss: 58.1584]
+Sun 25 Jan 2026 21:54:32 INFO  epoch 45 evaluating [time: 17.74s, valid_score: 0.317600]
+Sun 25 Jan 2026 21:54:32 INFO  valid result: 
+hit@10 : 0.719    ndcg@10 : 0.4123    mrr@10 : 0.3176
+Sun 25 Jan 2026 21:56:25 INFO  epoch 46 training [time: 112.89s, train loss: 57.7026]
+Sun 25 Jan 2026 21:56:43 INFO  epoch 46 evaluating [time: 18.16s, valid_score: 0.319700]
+Sun 25 Jan 2026 21:56:43 INFO  valid result: 
+hit@10 : 0.7306    ndcg@10 : 0.417    mrr@10 : 0.3197
+Sun 25 Jan 2026 21:58:16 INFO  epoch 47 training [time: 93.66s, train loss: 57.7066]
+Sun 25 Jan 2026 21:58:31 INFO  epoch 47 evaluating [time: 14.64s, valid_score: 0.336800]
+Sun 25 Jan 2026 21:58:31 INFO  valid result: 
+hit@10 : 0.7158    ndcg@10 : 0.4267    mrr@10 : 0.3368
+Sun 25 Jan 2026 22:00:04 INFO  epoch 48 training [time: 92.79s, train loss: 57.5714]
+Sun 25 Jan 2026 22:00:19 INFO  epoch 48 evaluating [time: 14.89s, valid_score: 0.337500]
+Sun 25 Jan 2026 22:00:19 INFO  valid result: 
+hit@10 : 0.7275    ndcg@10 : 0.4296    mrr@10 : 0.3375
+Sun 25 Jan 2026 22:01:50 INFO  epoch 49 training [time: 90.95s, train loss: 57.2485]
+Sun 25 Jan 2026 22:02:04 INFO  epoch 49 evaluating [time: 14.57s, valid_score: 0.338600]
+Sun 25 Jan 2026 22:02:04 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4292    mrr@10 : 0.3386
+Sun 25 Jan 2026 22:03:36 INFO  epoch 50 training [time: 91.92s, train loss: 56.4091]
+Sun 25 Jan 2026 22:03:51 INFO  epoch 50 evaluating [time: 14.68s, valid_score: 0.336600]
+Sun 25 Jan 2026 22:03:51 INFO  valid result: 
+hit@10 : 0.7275    ndcg@10 : 0.4292    mrr@10 : 0.3366
+Sun 25 Jan 2026 22:05:23 INFO  epoch 51 training [time: 91.96s, train loss: 56.3060]
+Sun 25 Jan 2026 22:05:37 INFO  epoch 51 evaluating [time: 14.65s, valid_score: 0.318800]
+Sun 25 Jan 2026 22:05:37 INFO  valid result: 
+hit@10 : 0.7126    ndcg@10 : 0.4117    mrr@10 : 0.3188
+Sun 25 Jan 2026 22:07:09 INFO  epoch 52 training [time: 91.84s, train loss: 56.1231]
+Sun 25 Jan 2026 22:07:24 INFO  epoch 52 evaluating [time: 14.67s, valid_score: 0.337600]
+Sun 25 Jan 2026 22:07:24 INFO  valid result: 
+hit@10 : 0.7285    ndcg@10 : 0.4298    mrr@10 : 0.3376
+Sun 25 Jan 2026 22:08:56 INFO  epoch 53 training [time: 91.92s, train loss: 54.8786]
+Sun 25 Jan 2026 22:09:10 INFO  epoch 53 evaluating [time: 14.60s, valid_score: 0.324400]
+Sun 25 Jan 2026 22:09:10 INFO  valid result: 
+hit@10 : 0.7126    ndcg@10 : 0.4164    mrr@10 : 0.3244
+Sun 25 Jan 2026 22:10:42 INFO  epoch 54 training [time: 91.09s, train loss: 55.3182]
+Sun 25 Jan 2026 22:10:56 INFO  epoch 54 evaluating [time: 14.56s, valid_score: 0.323100]
+Sun 25 Jan 2026 22:10:56 INFO  valid result: 
+hit@10 : 0.7349    ndcg@10 : 0.4205    mrr@10 : 0.3231
+Sun 25 Jan 2026 22:12:29 INFO  epoch 55 training [time: 93.25s, train loss: 55.3727]
+Sun 25 Jan 2026 22:12:44 INFO  epoch 55 evaluating [time: 14.64s, valid_score: 0.329100]
+Sun 25 Jan 2026 22:12:44 INFO  valid result: 
+hit@10 : 0.7222    ndcg@10 : 0.4224    mrr@10 : 0.3291
+Sun 25 Jan 2026 22:12:44 INFO  Finished training, best eval result in epoch 44
+Sun 25 Jan 2026 22:12:44 INFO  Loading model structure and parameters from saved\SMLPREC-Jan-25-2026_20-25-48.pth
+Sun 25 Jan 2026 22:13:00 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     6.90 %     |
++-------------+----------------+
+| GPU         | 3.12 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.38 G/15.63 G |
++-------------+----------------+
+Sun 25 Jan 2026 22:13:00 INFO  best valid : OrderedDict([('hit@10', 0.7105), ('ndcg@10', 0.43), ('mrr@10', 0.3429)])
+Sun 25 Jan 2026 22:13:00 INFO  test result: OrderedDict([('hit@10', 0.6797), ('ndcg@10', 0.3945), ('mrr@10', 0.3063)])

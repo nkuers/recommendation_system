@@ -1,0 +1,93 @@
+data_dir                       :                               data/
+output_dir                     :                        output_fair/
+data_name                      :                        Toys50K_ours
+do_eval                        :                                   0
+model_idx                      :                                  42
+load_pretrain                  :                                   0
+gpu_id                         :                                   0
+noise_ratio                    :                                 0.0
+training_data_ratio            :                                 1.0
+similarity_model_name          :                          ItemCF_IUF
+base_augment_type              :                              random
+model_name                     :                              BASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+initializer_range              :                                0.02
+max_seq_length                 :                                  32
+lr                             :                               0.001
+batch_size                     :                                 256
+no_cuda                        :                                   0
+log_freq                       :                                   1
+seed                           :                                  42
+weight_decay                   :                                 0.0
+adam_beta1                     :                                 0.9
+adam_beta2                     :                               0.999
+augmentation_warm_up_epoches   :                                 500
+epochs                         :                                 100
+pretrain_epoch                 :                                   0
+start_valid                    :                                   0
+patience                       :                                  10
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                  42
+n_pairs                        :                                   1
+n_whole_level                  :                                   1
+wml_weight                     :                                 1.0
+aml_weight                     :                                 1.0
+rec_weight                     :                                 1.0
+attention_probs_dropout_prob   :                                 0.2
+hidden_dropout_prob            :                                 0.2
+beta                           :                                 0.3
+rate_min                       :                                 0.2
+rate_max                       :                                0.51
+cuda_condition                 :                                   1
+data_file                      :               data/Toys50K_ours.txt
+item_size                      :                               10508
+log_file                       : output_fair/BASRec-Toys50K_ours-42.txt
+Namespace(data_dir='data/', output_dir='output_fair/', data_name='Toys50K_ours', do_eval=False, model_idx=42, load_pretrain=False, gpu_id='0', noise_ratio=0.0, training_data_ratio=1.0, similarity_model_name='ItemCF_IUF', base_augment_type='random', model_name='BASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', initializer_range=0.02, max_seq_length=32, lr=0.001, batch_size=256, no_cuda=False, log_freq=1, seed=42, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, augmentation_warm_up_epoches=500, epochs=100, pretrain_epoch=0, start_valid=0, patience=10, eval_mode='full', num_neg=100, eval_seed=42, n_pairs=1, n_whole_level=1, wml_weight=1.0, aml_weight=1.0, rec_weight=1.0, attention_probs_dropout_prob=0.2, hidden_dropout_prob=0.2, beta=0.3, rate_min=0.2, rate_max=0.51, cuda_condition=True, data_file='data/Toys50K_ours.txt', item_size=10508, log_file='output_fair/BASRec-Toys50K_ours-42.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3882'}
+{'epoch': 1, 'rec_avg_loss': '1.3416'}
+{'Epoch': 1, 'HIT@5': '0.0072', 'NDCG@5': '0.0043', 'HIT@10': '0.0191', 'NDCG@10': '0.0081', 'MRR@10': '0.0050', 'HIT@20': '0.0291', 'NDCG@20': '0.0106'}
+{'epoch': 2, 'rec_avg_loss': '1.2856'}
+{'Epoch': 2, 'HIT@5': '0.0062', 'NDCG@5': '0.0035', 'HIT@10': '0.0172', 'NDCG@10': '0.0069', 'MRR@10': '0.0040', 'HIT@20': '0.0286', 'NDCG@20': '0.0099'}
+{'epoch': 3, 'rec_avg_loss': '1.2249'}
+{'Epoch': 3, 'HIT@5': '0.0081', 'NDCG@5': '0.0046', 'HIT@10': '0.0172', 'NDCG@10': '0.0075', 'MRR@10': '0.0047', 'HIT@20': '0.0286', 'NDCG@20': '0.0104'}
+{'epoch': 4, 'rec_avg_loss': '1.1644'}
+{'Epoch': 4, 'HIT@5': '0.0072', 'NDCG@5': '0.0043', 'HIT@10': '0.0157', 'NDCG@10': '0.0071', 'MRR@10': '0.0046', 'HIT@20': '0.0329', 'NDCG@20': '0.0114'}
+{'epoch': 5, 'rec_avg_loss': '1.1125'}
+{'Epoch': 5, 'HIT@5': '0.0095', 'NDCG@5': '0.0052', 'HIT@10': '0.0167', 'NDCG@10': '0.0076', 'MRR@10': '0.0049', 'HIT@20': '0.0334', 'NDCG@20': '0.0118'}
+{'epoch': 6, 'rec_avg_loss': '1.0715'}
+{'Epoch': 6, 'HIT@5': '0.0100', 'NDCG@5': '0.0058', 'HIT@10': '0.0196', 'NDCG@10': '0.0088', 'MRR@10': '0.0056', 'HIT@20': '0.0329', 'NDCG@20': '0.0122'}
+{'epoch': 7, 'rec_avg_loss': '1.0344'}
+{'Epoch': 7, 'HIT@5': '0.0105', 'NDCG@5': '0.0063', 'HIT@10': '0.0196', 'NDCG@10': '0.0092', 'MRR@10': '0.0061', 'HIT@20': '0.0343', 'NDCG@20': '0.0129'}
+{'epoch': 8, 'rec_avg_loss': '1.0017'}
+{'Epoch': 8, 'HIT@5': '0.0129', 'NDCG@5': '0.0075', 'HIT@10': '0.0238', 'NDCG@10': '0.0110', 'MRR@10': '0.0071', 'HIT@20': '0.0329', 'NDCG@20': '0.0132'}
+{'epoch': 9, 'rec_avg_loss': '0.9803'}
+{'Epoch': 9, 'HIT@5': '0.0148', 'NDCG@5': '0.0084', 'HIT@10': '0.0219', 'NDCG@10': '0.0107', 'MRR@10': '0.0073', 'HIT@20': '0.0339', 'NDCG@20': '0.0137'}
+{'epoch': 10, 'rec_avg_loss': '0.9495'}
+{'Epoch': 10, 'HIT@5': '0.0138', 'NDCG@5': '0.0083', 'HIT@10': '0.0229', 'NDCG@10': '0.0112', 'MRR@10': '0.0076', 'HIT@20': '0.0358', 'NDCG@20': '0.0143'}
+{'epoch': 11, 'rec_avg_loss': '0.9277'}
+{'Epoch': 11, 'HIT@5': '0.0110', 'NDCG@5': '0.0063', 'HIT@10': '0.0224', 'NDCG@10': '0.0100', 'MRR@10': '0.0063', 'HIT@20': '0.0324', 'NDCG@20': '0.0125'}
+{'epoch': 12, 'rec_avg_loss': '0.9022'}
+{'Epoch': 12, 'HIT@5': '0.0124', 'NDCG@5': '0.0071', 'HIT@10': '0.0215', 'NDCG@10': '0.0101', 'MRR@10': '0.0066', 'HIT@20': '0.0367', 'NDCG@20': '0.0139'}
+{'epoch': 13, 'rec_avg_loss': '0.8835'}
+{'Epoch': 13, 'HIT@5': '0.0124', 'NDCG@5': '0.0070', 'HIT@10': '0.0200', 'NDCG@10': '0.0094', 'MRR@10': '0.0062', 'HIT@20': '0.0329', 'NDCG@20': '0.0127'}
+{'epoch': 14, 'rec_avg_loss': '0.8542'}
+{'Epoch': 14, 'HIT@5': '0.0129', 'NDCG@5': '0.0080', 'HIT@10': '0.0229', 'NDCG@10': '0.0111', 'MRR@10': '0.0076', 'HIT@20': '0.0334', 'NDCG@20': '0.0138'}
+{'epoch': 15, 'rec_avg_loss': '0.8397'}
+{'Epoch': 15, 'HIT@5': '0.0134', 'NDCG@5': '0.0080', 'HIT@10': '0.0243', 'NDCG@10': '0.0114', 'MRR@10': '0.0076', 'HIT@20': '0.0362', 'NDCG@20': '0.0143'}
+{'epoch': 16, 'rec_avg_loss': '0.8205'}
+{'Epoch': 16, 'HIT@5': '0.0134', 'NDCG@5': '0.0080', 'HIT@10': '0.0215', 'NDCG@10': '0.0107', 'MRR@10': '0.0075', 'HIT@20': '0.0343', 'NDCG@20': '0.0140'}
+{'epoch': 17, 'rec_avg_loss': '0.8041'}
+{'Epoch': 17, 'HIT@5': '0.0124', 'NDCG@5': '0.0072', 'HIT@10': '0.0210', 'NDCG@10': '0.0100', 'MRR@10': '0.0067', 'HIT@20': '0.0339', 'NDCG@20': '0.0132'}
+{'epoch': 18, 'rec_avg_loss': '0.7837'}
+{'Epoch': 18, 'HIT@5': '0.0138', 'NDCG@5': '0.0085', 'HIT@10': '0.0219', 'NDCG@10': '0.0111', 'MRR@10': '0.0078', 'HIT@20': '0.0339', 'NDCG@20': '0.0141'}
+{'epoch': 19, 'rec_avg_loss': '0.7619'}
+{'Epoch': 19, 'HIT@5': '0.0143', 'NDCG@5': '0.0086', 'HIT@10': '0.0215', 'NDCG@10': '0.0108', 'MRR@10': '0.0076', 'HIT@20': '0.0315', 'NDCG@20': '0.0134'}
+{'epoch': 20, 'rec_avg_loss': '0.7428'}
+{'Epoch': 20, 'HIT@5': '0.0134', 'NDCG@5': '0.0080', 'HIT@10': '0.0215', 'NDCG@10': '0.0106', 'MRR@10': '0.0073', 'HIT@20': '0.0315', 'NDCG@20': '0.0131'}
+{'Epoch': 0, 'HIT@5': '0.0110', 'NDCG@5': '0.0064', 'HIT@10': '0.0143', 'NDCG@10': '0.0074', 'MRR@10': '0.0053', 'HIT@20': '0.0253', 'NDCG@20': '0.0102'}
+BASRec-Toys50K_ours-42
+{'Epoch': 0, 'HIT@5': '0.0110', 'NDCG@5': '0.0064', 'HIT@10': '0.0143', 'NDCG@10': '0.0074', 'MRR@10': '0.0053', 'HIT@20': '0.0253', 'NDCG@20': '0.0102'}

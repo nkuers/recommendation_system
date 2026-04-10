@@ -1,0 +1,168 @@
+Namespace(data_dir='./data/', output_dir='output_fair/', data_name='Electronics_ours', do_eval=False, load_model='MLM4Rec-ml-1m-0', data_aug=False, gpu_id='0', model_name='MLM4Rec', model_desc='42', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=32, kernel=3, shift_size=1, cmlp_type=1, noise_ratio=0.0, merge_type='weightavg', lr=0.001, batch_size=256, epochs=100, no_cuda=False, log_freq=1, patience=10, seed=42, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, variance=5, eval_mode='uni100', num_neg=100, eval_seed=42, cuda_condition=True, data_file='./data/Electronics_ours.txt', train_data_file='./data/Electronics_ours_32.txt', item_size=54722, log_file='output_fair/MLM4Rec-Electronics_ours-42.txt')
+{'epoch': 0, 'rec_loss': '1.3362'}
+{'Epoch': 0, 'HIT@1': '0.1193', 'NDCG@1': '0.1193', 'HIT@5': '0.2833', 'NDCG@5': '0.2051', 'HIT@10': '0.3733', 'NDCG@10': '0.2341', 'MRR': '0.2096'}
+{'epoch': 1, 'rec_loss': '1.1506'}
+{'Epoch': 1, 'HIT@1': '0.1147', 'NDCG@1': '0.1147', 'HIT@5': '0.3113', 'NDCG@5': '0.2169', 'HIT@10': '0.3880', 'NDCG@10': '0.2419', 'MRR': '0.2143'}
+{'epoch': 2, 'rec_loss': '1.0051'}
+{'Epoch': 2, 'HIT@1': '0.1133', 'NDCG@1': '0.1133', 'HIT@5': '0.2973', 'NDCG@5': '0.2085', 'HIT@10': '0.3947', 'NDCG@10': '0.2400', 'MRR': '0.2105'}
+{'epoch': 3, 'rec_loss': '0.8827'}
+{'Epoch': 3, 'HIT@1': '0.1180', 'NDCG@1': '0.1180', 'HIT@5': '0.3020', 'NDCG@5': '0.2151', 'HIT@10': '0.4067', 'NDCG@10': '0.2489', 'MRR': '0.2175'}
+{'epoch': 4, 'rec_loss': '0.7814'}
+{'Epoch': 4, 'HIT@1': '0.1127', 'NDCG@1': '0.1127', 'HIT@5': '0.3033', 'NDCG@5': '0.2122', 'HIT@10': '0.4160', 'NDCG@10': '0.2487', 'MRR': '0.2137'}
+{'epoch': 5, 'rec_loss': '0.6996'}
+{'Epoch': 5, 'HIT@1': '0.1167', 'NDCG@1': '0.1167', 'HIT@5': '0.3120', 'NDCG@5': '0.2174', 'HIT@10': '0.4107', 'NDCG@10': '0.2495', 'MRR': '0.2165'}
+{'epoch': 6, 'rec_loss': '0.6301'}
+{'Epoch': 6, 'HIT@1': '0.1200', 'NDCG@1': '0.1200', 'HIT@5': '0.3040', 'NDCG@5': '0.2152', 'HIT@10': '0.4040', 'NDCG@10': '0.2477', 'MRR': '0.2170'}
+{'epoch': 7, 'rec_loss': '0.5807'}
+{'Epoch': 7, 'HIT@1': '0.1187', 'NDCG@1': '0.1187', 'HIT@5': '0.3100', 'NDCG@5': '0.2178', 'HIT@10': '0.4180', 'NDCG@10': '0.2528', 'MRR': '0.2182'}
+{'epoch': 8, 'rec_loss': '0.5288'}
+{'Epoch': 8, 'HIT@1': '0.1120', 'NDCG@1': '0.1120', 'HIT@5': '0.3073', 'NDCG@5': '0.2139', 'HIT@10': '0.4153', 'NDCG@10': '0.2488', 'MRR': '0.2139'}
+{'epoch': 9, 'rec_loss': '0.4884'}
+{'Epoch': 9, 'HIT@1': '0.1280', 'NDCG@1': '0.1280', 'HIT@5': '0.3127', 'NDCG@5': '0.2224', 'HIT@10': '0.4133', 'NDCG@10': '0.2549', 'MRR': '0.2226'}
+{'epoch': 10, 'rec_loss': '0.4479'}
+{'Epoch': 10, 'HIT@1': '0.1253', 'NDCG@1': '0.1253', 'HIT@5': '0.3120', 'NDCG@5': '0.2211', 'HIT@10': '0.4173', 'NDCG@10': '0.2552', 'MRR': '0.2215'}
+{'epoch': 11, 'rec_loss': '0.4178'}
+{'Epoch': 11, 'HIT@1': '0.1347', 'NDCG@1': '0.1347', 'HIT@5': '0.3280', 'NDCG@5': '0.2339', 'HIT@10': '0.4227', 'NDCG@10': '0.2648', 'MRR': '0.2319'}
+{'epoch': 12, 'rec_loss': '0.3843'}
+{'Epoch': 12, 'HIT@1': '0.1360', 'NDCG@1': '0.1360', 'HIT@5': '0.3287', 'NDCG@5': '0.2355', 'HIT@10': '0.4160', 'NDCG@10': '0.2636', 'MRR': '0.2326'}
+{'epoch': 13, 'rec_loss': '0.3543'}
+{'Epoch': 13, 'HIT@1': '0.1353', 'NDCG@1': '0.1353', 'HIT@5': '0.3247', 'NDCG@5': '0.2333', 'HIT@10': '0.4107', 'NDCG@10': '0.2612', 'MRR': '0.2314'}
+{'epoch': 14, 'rec_loss': '0.3289'}
+{'Epoch': 14, 'HIT@1': '0.1307', 'NDCG@1': '0.1307', 'HIT@5': '0.3220', 'NDCG@5': '0.2291', 'HIT@10': '0.4180', 'NDCG@10': '0.2598', 'MRR': '0.2273'}
+{'epoch': 15, 'rec_loss': '0.3062'}
+{'Epoch': 15, 'HIT@1': '0.1373', 'NDCG@1': '0.1373', 'HIT@5': '0.3207', 'NDCG@5': '0.2326', 'HIT@10': '0.4133', 'NDCG@10': '0.2625', 'MRR': '0.2327'}
+{'epoch': 16, 'rec_loss': '0.2876'}
+{'Epoch': 16, 'HIT@1': '0.1367', 'NDCG@1': '0.1367', 'HIT@5': '0.3260', 'NDCG@5': '0.2341', 'HIT@10': '0.4180', 'NDCG@10': '0.2637', 'MRR': '0.2322'}
+{'epoch': 17, 'rec_loss': '0.2660'}
+{'Epoch': 17, 'HIT@1': '0.1447', 'NDCG@1': '0.1447', 'HIT@5': '0.3167', 'NDCG@5': '0.2339', 'HIT@10': '0.4113', 'NDCG@10': '0.2648', 'MRR': '0.2365'}
+{'epoch': 18, 'rec_loss': '0.2501'}
+{'Epoch': 18, 'HIT@1': '0.1453', 'NDCG@1': '0.1453', 'HIT@5': '0.3167', 'NDCG@5': '0.2346', 'HIT@10': '0.4147', 'NDCG@10': '0.2662', 'MRR': '0.2371'}
+{'epoch': 19, 'rec_loss': '0.2327'}
+{'Epoch': 19, 'HIT@1': '0.1493', 'NDCG@1': '0.1493', 'HIT@5': '0.3387', 'NDCG@5': '0.2477', 'HIT@10': '0.4193', 'NDCG@10': '0.2738', 'MRR': '0.2450'}
+{'epoch': 20, 'rec_loss': '0.2229'}
+{'Epoch': 20, 'HIT@1': '0.1533', 'NDCG@1': '0.1533', 'HIT@5': '0.3320', 'NDCG@5': '0.2469', 'HIT@10': '0.4147', 'NDCG@10': '0.2740', 'MRR': '0.2470'}
+{'epoch': 21, 'rec_loss': '0.2088'}
+{'Epoch': 21, 'HIT@1': '0.1507', 'NDCG@1': '0.1507', 'HIT@5': '0.3373', 'NDCG@5': '0.2476', 'HIT@10': '0.4113', 'NDCG@10': '0.2718', 'MRR': '0.2449'}
+{'epoch': 22, 'rec_loss': '0.1961'}
+{'Epoch': 22, 'HIT@1': '0.1573', 'NDCG@1': '0.1573', 'HIT@5': '0.3367', 'NDCG@5': '0.2527', 'HIT@10': '0.4207', 'NDCG@10': '0.2795', 'MRR': '0.2516'}
+{'epoch': 23, 'rec_loss': '0.1878'}
+{'Epoch': 23, 'HIT@1': '0.1513', 'NDCG@1': '0.1513', 'HIT@5': '0.3220', 'NDCG@5': '0.2416', 'HIT@10': '0.4127', 'NDCG@10': '0.2715', 'MRR': '0.2440'}
+{'epoch': 24, 'rec_loss': '0.1728'}
+{'Epoch': 24, 'HIT@1': '0.1527', 'NDCG@1': '0.1527', 'HIT@5': '0.3327', 'NDCG@5': '0.2456', 'HIT@10': '0.4113', 'NDCG@10': '0.2711', 'MRR': '0.2442'}
+{'epoch': 25, 'rec_loss': '0.1702'}
+{'Epoch': 25, 'HIT@1': '0.1513', 'NDCG@1': '0.1513', 'HIT@5': '0.3307', 'NDCG@5': '0.2457', 'HIT@10': '0.4127', 'NDCG@10': '0.2722', 'MRR': '0.2451'}
+{'epoch': 26, 'rec_loss': '0.1645'}
+{'Epoch': 26, 'HIT@1': '0.1540', 'NDCG@1': '0.1540', 'HIT@5': '0.3273', 'NDCG@5': '0.2461', 'HIT@10': '0.4120', 'NDCG@10': '0.2734', 'MRR': '0.2469'}
+{'epoch': 27, 'rec_loss': '0.1518'}
+{'Epoch': 27, 'HIT@1': '0.1547', 'NDCG@1': '0.1547', 'HIT@5': '0.3340', 'NDCG@5': '0.2477', 'HIT@10': '0.4067', 'NDCG@10': '0.2712', 'MRR': '0.2459'}
+{'epoch': 28, 'rec_loss': '0.1497'}
+{'Epoch': 28, 'HIT@1': '0.1507', 'NDCG@1': '0.1507', 'HIT@5': '0.3327', 'NDCG@5': '0.2464', 'HIT@10': '0.4220', 'NDCG@10': '0.2751', 'MRR': '0.2455'}
+{'epoch': 29, 'rec_loss': '0.1436'}
+{'Epoch': 29, 'HIT@1': '0.1540', 'NDCG@1': '0.1540', 'HIT@5': '0.3387', 'NDCG@5': '0.2504', 'HIT@10': '0.4180', 'NDCG@10': '0.2760', 'MRR': '0.2481'}
+{'epoch': 30, 'rec_loss': '0.1391'}
+{'Epoch': 30, 'HIT@1': '0.1560', 'NDCG@1': '0.1560', 'HIT@5': '0.3367', 'NDCG@5': '0.2505', 'HIT@10': '0.4160', 'NDCG@10': '0.2763', 'MRR': '0.2493'}
+{'epoch': 31, 'rec_loss': '0.1385'}
+{'Epoch': 31, 'HIT@1': '0.1587', 'NDCG@1': '0.1587', 'HIT@5': '0.3333', 'NDCG@5': '0.2501', 'HIT@10': '0.4133', 'NDCG@10': '0.2761', 'MRR': '0.2500'}
+{'epoch': 32, 'rec_loss': '0.1349'}
+{'Epoch': 32, 'HIT@1': '0.1667', 'NDCG@1': '0.1667', 'HIT@5': '0.3340', 'NDCG@5': '0.2538', 'HIT@10': '0.4127', 'NDCG@10': '0.2793', 'MRR': '0.2545'}
+{'epoch': 33, 'rec_loss': '0.1313'}
+{'Epoch': 33, 'HIT@1': '0.1587', 'NDCG@1': '0.1587', 'HIT@5': '0.3300', 'NDCG@5': '0.2482', 'HIT@10': '0.4067', 'NDCG@10': '0.2728', 'MRR': '0.2480'}
+{'epoch': 34, 'rec_loss': '0.1215'}
+{'Epoch': 34, 'HIT@1': '0.1580', 'NDCG@1': '0.1580', 'HIT@5': '0.3400', 'NDCG@5': '0.2530', 'HIT@10': '0.4053', 'NDCG@10': '0.2742', 'MRR': '0.2499'}
+{'epoch': 35, 'rec_loss': '0.1179'}
+{'Epoch': 35, 'HIT@1': '0.1667', 'NDCG@1': '0.1667', 'HIT@5': '0.3300', 'NDCG@5': '0.2534', 'HIT@10': '0.4020', 'NDCG@10': '0.2768', 'MRR': '0.2547'}
+{'epoch': 36, 'rec_loss': '0.1169'}
+{'Epoch': 36, 'HIT@1': '0.1620', 'NDCG@1': '0.1620', 'HIT@5': '0.3353', 'NDCG@5': '0.2540', 'HIT@10': '0.4053', 'NDCG@10': '0.2764', 'MRR': '0.2529'}
+{'epoch': 37, 'rec_loss': '0.1109'}
+{'Epoch': 37, 'HIT@1': '0.1613', 'NDCG@1': '0.1613', 'HIT@5': '0.3347', 'NDCG@5': '0.2521', 'HIT@10': '0.4080', 'NDCG@10': '0.2757', 'MRR': '0.2511'}
+{'epoch': 38, 'rec_loss': '0.1058'}
+{'Epoch': 38, 'HIT@1': '0.1540', 'NDCG@1': '0.1540', 'HIT@5': '0.3367', 'NDCG@5': '0.2509', 'HIT@10': '0.4113', 'NDCG@10': '0.2750', 'MRR': '0.2485'}
+{'epoch': 39, 'rec_loss': '0.1092'}
+{'Epoch': 39, 'HIT@1': '0.1667', 'NDCG@1': '0.1667', 'HIT@5': '0.3367', 'NDCG@5': '0.2576', 'HIT@10': '0.4173', 'NDCG@10': '0.2835', 'MRR': '0.2578'}
+{'epoch': 40, 'rec_loss': '0.1056'}
+{'Epoch': 40, 'HIT@1': '0.1680', 'NDCG@1': '0.1680', 'HIT@5': '0.3353', 'NDCG@5': '0.2568', 'HIT@10': '0.4133', 'NDCG@10': '0.2816', 'MRR': '0.2570'}
+{'epoch': 41, 'rec_loss': '0.1033'}
+{'Epoch': 41, 'HIT@1': '0.1647', 'NDCG@1': '0.1647', 'HIT@5': '0.3367', 'NDCG@5': '0.2548', 'HIT@10': '0.4093', 'NDCG@10': '0.2783', 'MRR': '0.2540'}
+{'epoch': 42, 'rec_loss': '0.1041'}
+{'Epoch': 42, 'HIT@1': '0.1627', 'NDCG@1': '0.1627', 'HIT@5': '0.3353', 'NDCG@5': '0.2528', 'HIT@10': '0.4107', 'NDCG@10': '0.2770', 'MRR': '0.2519'}
+{'epoch': 43, 'rec_loss': '0.0994'}
+{'Epoch': 43, 'HIT@1': '0.1567', 'NDCG@1': '0.1567', 'HIT@5': '0.3253', 'NDCG@5': '0.2478', 'HIT@10': '0.4000', 'NDCG@10': '0.2718', 'MRR': '0.2492'}
+{'epoch': 44, 'rec_loss': '0.0977'}
+{'Epoch': 44, 'HIT@1': '0.1540', 'NDCG@1': '0.1540', 'HIT@5': '0.3333', 'NDCG@5': '0.2478', 'HIT@10': '0.4067', 'NDCG@10': '0.2714', 'MRR': '0.2459'}
+{'epoch': 45, 'rec_loss': '0.0964'}
+{'Epoch': 45, 'HIT@1': '0.1567', 'NDCG@1': '0.1567', 'HIT@5': '0.3220', 'NDCG@5': '0.2440', 'HIT@10': '0.4000', 'NDCG@10': '0.2693', 'MRR': '0.2458'}
+{'epoch': 46, 'rec_loss': '0.0917'}
+{'Epoch': 46, 'HIT@1': '0.1660', 'NDCG@1': '0.1660', 'HIT@5': '0.3360', 'NDCG@5': '0.2549', 'HIT@10': '0.4060', 'NDCG@10': '0.2775', 'MRR': '0.2544'}
+{'epoch': 47, 'rec_loss': '0.0948'}
+{'Epoch': 47, 'HIT@1': '0.1613', 'NDCG@1': '0.1613', 'HIT@5': '0.3313', 'NDCG@5': '0.2512', 'HIT@10': '0.4013', 'NDCG@10': '0.2739', 'MRR': '0.2513'}
+{'epoch': 48, 'rec_loss': '0.0885'}
+{'Epoch': 48, 'HIT@1': '0.1727', 'NDCG@1': '0.1727', 'HIT@5': '0.3187', 'NDCG@5': '0.2493', 'HIT@10': '0.4040', 'NDCG@10': '0.2768', 'MRR': '0.2545'}
+{'epoch': 49, 'rec_loss': '0.0900'}
+{'Epoch': 49, 'HIT@1': '0.1587', 'NDCG@1': '0.1587', 'HIT@5': '0.3247', 'NDCG@5': '0.2464', 'HIT@10': '0.4013', 'NDCG@10': '0.2712', 'MRR': '0.2478'}
+{'Epoch': 0, 'HIT@1': '0.1307', 'NDCG@1': '0.1307', 'HIT@5': '0.2620', 'NDCG@5': '0.2008', 'HIT@10': '0.3353', 'NDCG@10': '0.2241', 'MRR': '0.2075'}
+MLM4Rec-Electronics_ours-42
+{'Epoch': 0, 'HIT@1': '0.1307', 'NDCG@1': '0.1307', 'HIT@5': '0.2620', 'NDCG@5': '0.2008', 'HIT@10': '0.3353', 'NDCG@10': '0.2241', 'MRR': '0.2075'}
+Namespace(data_dir='./data/', output_dir='output_fair/', data_name='Electronics_ours', do_eval=False, load_model='MLM4Rec-ml-1m-0', data_aug=False, gpu_id='0', model_name='MLM4Rec', model_desc='42', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=32, kernel=3, shift_size=1, cmlp_type=1, noise_ratio=0.0, merge_type='weightavg', lr=0.001, batch_size=256, epochs=100, no_cuda=False, log_freq=1, patience=10, seed=42, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, variance=5, eval_mode='full', num_neg=100, eval_seed=42, cuda_condition=True, data_file='./data/Electronics_ours.txt', train_data_file='./data/Electronics_ours_32.txt', item_size=54722, log_file='output_fair/MLM4Rec-Electronics_ours-42.txt')
+{'epoch': 0, 'rec_loss': '1.3362'}
+{'Epoch': 0, 'HIT@5': '0.0000', 'NDCG@5': '0.0000', 'HIT@10': '0.0027', 'NDCG@10': '0.0009', 'HIT@20': '0.0073', 'NDCG@20': '0.0020'}
+{'epoch': 1, 'rec_loss': '1.1506'}
+{'Epoch': 1, 'HIT@5': '0.0027', 'NDCG@5': '0.0020', 'HIT@10': '0.0047', 'NDCG@10': '0.0027', 'HIT@20': '0.0107', 'NDCG@20': '0.0041'}
+{'epoch': 2, 'rec_loss': '1.0051'}
+{'Epoch': 2, 'HIT@5': '0.0033', 'NDCG@5': '0.0018', 'HIT@10': '0.0067', 'NDCG@10': '0.0028', 'HIT@20': '0.0120', 'NDCG@20': '0.0042'}
+{'epoch': 3, 'rec_loss': '0.8827'}
+{'Epoch': 3, 'HIT@5': '0.0060', 'NDCG@5': '0.0030', 'HIT@10': '0.0067', 'NDCG@10': '0.0032', 'HIT@20': '0.0140', 'NDCG@20': '0.0051'}
+{'epoch': 4, 'rec_loss': '0.7814'}
+{'Epoch': 4, 'HIT@5': '0.0020', 'NDCG@5': '0.0011', 'HIT@10': '0.0040', 'NDCG@10': '0.0018', 'HIT@20': '0.0147', 'NDCG@20': '0.0044'}
+{'epoch': 5, 'rec_loss': '0.6996'}
+{'Epoch': 5, 'HIT@5': '0.0033', 'NDCG@5': '0.0016', 'HIT@10': '0.0060', 'NDCG@10': '0.0025', 'HIT@20': '0.0093', 'NDCG@20': '0.0033'}
+{'epoch': 6, 'rec_loss': '0.6301'}
+{'Epoch': 6, 'HIT@5': '0.0020', 'NDCG@5': '0.0008', 'HIT@10': '0.0033', 'NDCG@10': '0.0012', 'HIT@20': '0.0060', 'NDCG@20': '0.0019'}
+{'epoch': 7, 'rec_loss': '0.5807'}
+{'Epoch': 7, 'HIT@5': '0.0007', 'NDCG@5': '0.0003', 'HIT@10': '0.0020', 'NDCG@10': '0.0007', 'HIT@20': '0.0060', 'NDCG@20': '0.0017'}
+{'epoch': 8, 'rec_loss': '0.5288'}
+{'Epoch': 8, 'HIT@5': '0.0013', 'NDCG@5': '0.0005', 'HIT@10': '0.0047', 'NDCG@10': '0.0016', 'HIT@20': '0.0100', 'NDCG@20': '0.0029'}
+{'epoch': 9, 'rec_loss': '0.4884'}
+{'Epoch': 9, 'HIT@5': '0.0007', 'NDCG@5': '0.0003', 'HIT@10': '0.0033', 'NDCG@10': '0.0011', 'HIT@20': '0.0100', 'NDCG@20': '0.0027'}
+{'epoch': 10, 'rec_loss': '0.4479'}
+{'Epoch': 10, 'HIT@5': '0.0033', 'NDCG@5': '0.0015', 'HIT@10': '0.0060', 'NDCG@10': '0.0024', 'HIT@20': '0.0107', 'NDCG@20': '0.0035'}
+{'epoch': 11, 'rec_loss': '0.4178'}
+{'Epoch': 11, 'HIT@5': '0.0027', 'NDCG@5': '0.0020', 'HIT@10': '0.0073', 'NDCG@10': '0.0035', 'HIT@20': '0.0113', 'NDCG@20': '0.0045'}
+{'epoch': 12, 'rec_loss': '0.3843'}
+{'Epoch': 12, 'HIT@5': '0.0013', 'NDCG@5': '0.0007', 'HIT@10': '0.0033', 'NDCG@10': '0.0013', 'HIT@20': '0.0087', 'NDCG@20': '0.0027'}
+{'epoch': 13, 'rec_loss': '0.3543'}
+{'Epoch': 13, 'HIT@5': '0.0013', 'NDCG@5': '0.0006', 'HIT@10': '0.0040', 'NDCG@10': '0.0014', 'HIT@20': '0.0093', 'NDCG@20': '0.0028'}
+{'Epoch': 0, 'HIT@5': '0.0020', 'NDCG@5': '0.0016', 'HIT@10': '0.0053', 'NDCG@10': '0.0026', 'HIT@20': '0.0120', 'NDCG@20': '0.0044'}
+MLM4Rec-Electronics_ours-42
+{'Epoch': 0, 'HIT@5': '0.0020', 'NDCG@5': '0.0016', 'HIT@10': '0.0053', 'NDCG@10': '0.0026', 'HIT@20': '0.0120', 'NDCG@20': '0.0044'}
+Namespace(data_dir='./data/', output_dir='output_fair/', data_name='Electronics_ours', do_eval=False, load_model='MLM4Rec-ml-1m-0', data_aug=False, gpu_id='0', model_name='MLM4Rec', model_desc='42', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=32, kernel=3, shift_size=1, cmlp_type=1, noise_ratio=0.0, merge_type='weightavg', lr=0.001, batch_size=256, epochs=100, no_cuda=False, log_freq=1, patience=10, seed=42, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, variance=5, eval_mode='full', num_neg=100, eval_seed=42, cuda_condition=True, data_file='./data/Electronics_ours.txt', train_data_file='./data/Electronics_ours_32.txt', item_size=54722, log_file='output_fair/MLM4Rec-Electronics_ours-42.txt')
+{'epoch': 0, 'rec_loss': '1.3362'}
+{'Epoch': 0, 'HIT@5': '0.0000', 'NDCG@5': '0.0000', 'HIT@10': '0.0027', 'NDCG@10': '0.0009', 'MRR@10': '0.0004', 'HIT@20': '0.0073', 'NDCG@20': '0.0020'}
+{'epoch': 1, 'rec_loss': '1.1506'}
+{'Epoch': 1, 'HIT@5': '0.0027', 'NDCG@5': '0.0020', 'HIT@10': '0.0047', 'NDCG@10': '0.0027', 'MRR@10': '0.0021', 'HIT@20': '0.0107', 'NDCG@20': '0.0041'}
+{'epoch': 2, 'rec_loss': '1.0051'}
+{'Epoch': 2, 'HIT@5': '0.0033', 'NDCG@5': '0.0018', 'HIT@10': '0.0067', 'NDCG@10': '0.0028', 'MRR@10': '0.0017', 'HIT@20': '0.0120', 'NDCG@20': '0.0042'}
+{'epoch': 3, 'rec_loss': '0.8827'}
+{'Epoch': 3, 'HIT@5': '0.0060', 'NDCG@5': '0.0030', 'HIT@10': '0.0067', 'NDCG@10': '0.0032', 'MRR@10': '0.0021', 'HIT@20': '0.0140', 'NDCG@20': '0.0051'}
+{'epoch': 4, 'rec_loss': '0.7814'}
+{'Epoch': 4, 'HIT@5': '0.0020', 'NDCG@5': '0.0011', 'HIT@10': '0.0040', 'NDCG@10': '0.0018', 'MRR@10': '0.0011', 'HIT@20': '0.0147', 'NDCG@20': '0.0044'}
+{'epoch': 5, 'rec_loss': '0.6996'}
+{'Epoch': 5, 'HIT@5': '0.0033', 'NDCG@5': '0.0016', 'HIT@10': '0.0060', 'NDCG@10': '0.0025', 'MRR@10': '0.0014', 'HIT@20': '0.0093', 'NDCG@20': '0.0033'}
+{'epoch': 6, 'rec_loss': '0.6301'}
+{'Epoch': 6, 'HIT@5': '0.0020', 'NDCG@5': '0.0008', 'HIT@10': '0.0033', 'NDCG@10': '0.0012', 'MRR@10': '0.0006', 'HIT@20': '0.0060', 'NDCG@20': '0.0019'}
+{'epoch': 7, 'rec_loss': '0.5807'}
+{'Epoch': 7, 'HIT@5': '0.0007', 'NDCG@5': '0.0003', 'HIT@10': '0.0020', 'NDCG@10': '0.0007', 'MRR@10': '0.0003', 'HIT@20': '0.0060', 'NDCG@20': '0.0017'}
+{'epoch': 8, 'rec_loss': '0.5288'}
+{'Epoch': 8, 'HIT@5': '0.0013', 'NDCG@5': '0.0005', 'HIT@10': '0.0047', 'NDCG@10': '0.0016', 'MRR@10': '0.0007', 'HIT@20': '0.0100', 'NDCG@20': '0.0029'}
+{'epoch': 9, 'rec_loss': '0.4884'}
+{'Epoch': 9, 'HIT@5': '0.0007', 'NDCG@5': '0.0003', 'HIT@10': '0.0033', 'NDCG@10': '0.0011', 'MRR@10': '0.0004', 'HIT@20': '0.0100', 'NDCG@20': '0.0027'}
+{'epoch': 10, 'rec_loss': '0.4479'}
+{'Epoch': 10, 'HIT@5': '0.0033', 'NDCG@5': '0.0015', 'HIT@10': '0.0060', 'NDCG@10': '0.0024', 'MRR@10': '0.0013', 'HIT@20': '0.0107', 'NDCG@20': '0.0035'}
+{'epoch': 11, 'rec_loss': '0.4178'}
+{'Epoch': 11, 'HIT@5': '0.0027', 'NDCG@5': '0.0020', 'HIT@10': '0.0073', 'NDCG@10': '0.0035', 'MRR@10': '0.0024', 'HIT@20': '0.0113', 'NDCG@20': '0.0045'}
+{'epoch': 12, 'rec_loss': '0.3843'}
+{'Epoch': 12, 'HIT@5': '0.0013', 'NDCG@5': '0.0007', 'HIT@10': '0.0033', 'NDCG@10': '0.0013', 'MRR@10': '0.0007', 'HIT@20': '0.0087', 'NDCG@20': '0.0027'}
+{'epoch': 13, 'rec_loss': '0.3543'}
+{'Epoch': 13, 'HIT@5': '0.0013', 'NDCG@5': '0.0006', 'HIT@10': '0.0040', 'NDCG@10': '0.0014', 'MRR@10': '0.0007', 'HIT@20': '0.0093', 'NDCG@20': '0.0028'}
+{'Epoch': 0, 'HIT@5': '0.0020', 'NDCG@5': '0.0016', 'HIT@10': '0.0053', 'NDCG@10': '0.0026', 'MRR@10': '0.0019', 'HIT@20': '0.0120', 'NDCG@20': '0.0044'}
+MLM4Rec-Electronics_ours-42
+{'Epoch': 0, 'HIT@5': '0.0020', 'NDCG@5': '0.0016', 'HIT@10': '0.0053', 'NDCG@10': '0.0026', 'MRR@10': '0.0019', 'HIT@20': '0.0120', 'NDCG@20': '0.0044'}

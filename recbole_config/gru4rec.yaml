@@ -1,0 +1,18 @@
+# model settings for GRU4Rec
+model: GRU4Rec
+model_name: GRU4Rec
+
+embedding_size: 64
+hidden_size: 128
+num_layers: 2
+dropout_prob: 0.4
+loss_type: CE
+
+learning_rate: 0.001
+epochs: 100
+early_stop: 10
+train_batch_size: 256
+eval_batch_size: 512
+neg_sampling: null
+show_progress: True
+seed: 2022

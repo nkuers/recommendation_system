@@ -1,0 +1,462 @@
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                       ToysLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :           ../data/ToysLong_ours.txt
+item_size                      :                               10184
+log_file                       :   output/SASRec-ToysLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='ToysLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=42, star_test=0, eval_mode='full', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/ToysLong_ours.txt', item_size=10184, log_file='output/SASRec-ToysLong_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3907'}
+{'epoch': 1, 'rec_avg_loss': '1.3696'}
+{'Epoch': 1, 'HIT@5': '0.0050', 'NDCG@5': '0.0025', 'HIT@10': '0.0078', 'NDCG@10': '0.0034', 'MRR@10': '0.0020', 'HIT@20': '0.0089', 'NDCG@20': '0.0036'}
+{'epoch': 2, 'rec_avg_loss': '1.3478'}
+{'Epoch': 2, 'HIT@5': '0.0089', 'NDCG@5': '0.0048', 'HIT@10': '0.0145', 'NDCG@10': '0.0065', 'MRR@10': '0.0041', 'HIT@20': '0.0246', 'NDCG@20': '0.0091'}
+{'epoch': 3, 'rec_avg_loss': '1.3152'}
+{'Epoch': 3, 'HIT@5': '0.0067', 'NDCG@5': '0.0043', 'HIT@10': '0.0095', 'NDCG@10': '0.0052', 'MRR@10': '0.0039', 'HIT@20': '0.0213', 'NDCG@20': '0.0081'}
+{'epoch': 4, 'rec_avg_loss': '1.2737'}
+{'Epoch': 4, 'HIT@5': '0.0045', 'NDCG@5': '0.0034', 'HIT@10': '0.0089', 'NDCG@10': '0.0048', 'MRR@10': '0.0036', 'HIT@20': '0.0179', 'NDCG@20': '0.0071'}
+{'epoch': 5, 'rec_avg_loss': '1.2269'}
+{'Epoch': 5, 'HIT@5': '0.0067', 'NDCG@5': '0.0054', 'HIT@10': '0.0123', 'NDCG@10': '0.0071', 'MRR@10': '0.0057', 'HIT@20': '0.0196', 'NDCG@20': '0.0089'}
+{'epoch': 6, 'rec_avg_loss': '1.1797'}
+{'Epoch': 6, 'HIT@5': '0.0056', 'NDCG@5': '0.0045', 'HIT@10': '0.0106', 'NDCG@10': '0.0061', 'MRR@10': '0.0048', 'HIT@20': '0.0168', 'NDCG@20': '0.0077'}
+{'epoch': 7, 'rec_avg_loss': '1.1388'}
+{'Epoch': 7, 'HIT@5': '0.0073', 'NDCG@5': '0.0052', 'HIT@10': '0.0112', 'NDCG@10': '0.0065', 'MRR@10': '0.0051', 'HIT@20': '0.0179', 'NDCG@20': '0.0082'}
+{'epoch': 8, 'rec_avg_loss': '1.1011'}
+{'Epoch': 8, 'HIT@5': '0.0056', 'NDCG@5': '0.0050', 'HIT@10': '0.0101', 'NDCG@10': '0.0065', 'MRR@10': '0.0055', 'HIT@20': '0.0196', 'NDCG@20': '0.0088'}
+{'epoch': 9, 'rec_avg_loss': '1.0705'}
+{'Epoch': 9, 'HIT@5': '0.0056', 'NDCG@5': '0.0051', 'HIT@10': '0.0089', 'NDCG@10': '0.0062', 'MRR@10': '0.0054', 'HIT@20': '0.0157', 'NDCG@20': '0.0079'}
+{'epoch': 10, 'rec_avg_loss': '1.0443'}
+{'Epoch': 10, 'HIT@5': '0.0073', 'NDCG@5': '0.0057', 'HIT@10': '0.0106', 'NDCG@10': '0.0067', 'MRR@10': '0.0055', 'HIT@20': '0.0168', 'NDCG@20': '0.0083'}
+{'epoch': 11, 'rec_avg_loss': '1.0224'}
+{'Epoch': 11, 'HIT@5': '0.0062', 'NDCG@5': '0.0051', 'HIT@10': '0.0117', 'NDCG@10': '0.0069', 'MRR@10': '0.0055', 'HIT@20': '0.0201', 'NDCG@20': '0.0090'}
+{'epoch': 12, 'rec_avg_loss': '1.0028'}
+{'Epoch': 12, 'HIT@5': '0.0073', 'NDCG@5': '0.0056', 'HIT@10': '0.0134', 'NDCG@10': '0.0076', 'MRR@10': '0.0058', 'HIT@20': '0.0240', 'NDCG@20': '0.0102'}
+{'epoch': 13, 'rec_avg_loss': '0.9809'}
+{'Epoch': 13, 'HIT@5': '0.0089', 'NDCG@5': '0.0064', 'HIT@10': '0.0157', 'NDCG@10': '0.0085', 'MRR@10': '0.0065', 'HIT@20': '0.0285', 'NDCG@20': '0.0117'}
+{'epoch': 14, 'rec_avg_loss': '0.9674'}
+{'Epoch': 14, 'HIT@5': '0.0089', 'NDCG@5': '0.0058', 'HIT@10': '0.0173', 'NDCG@10': '0.0085', 'MRR@10': '0.0059', 'HIT@20': '0.0302', 'NDCG@20': '0.0117'}
+{'epoch': 15, 'rec_avg_loss': '0.9505'}
+{'Epoch': 15, 'HIT@5': '0.0106', 'NDCG@5': '0.0057', 'HIT@10': '0.0185', 'NDCG@10': '0.0081', 'MRR@10': '0.0051', 'HIT@20': '0.0296', 'NDCG@20': '0.0109'}
+{'epoch': 16, 'rec_avg_loss': '0.9306'}
+{'Epoch': 16, 'HIT@5': '0.0123', 'NDCG@5': '0.0070', 'HIT@10': '0.0196', 'NDCG@10': '0.0093', 'MRR@10': '0.0062', 'HIT@20': '0.0319', 'NDCG@20': '0.0123'}
+{'epoch': 17, 'rec_avg_loss': '0.9194'}
+{'Epoch': 17, 'HIT@5': '0.0117', 'NDCG@5': '0.0064', 'HIT@10': '0.0185', 'NDCG@10': '0.0085', 'MRR@10': '0.0055', 'HIT@20': '0.0291', 'NDCG@20': '0.0112'}
+{'epoch': 18, 'rec_avg_loss': '0.9021'}
+{'Epoch': 18, 'HIT@5': '0.0112', 'NDCG@5': '0.0066', 'HIT@10': '0.0162', 'NDCG@10': '0.0082', 'MRR@10': '0.0057', 'HIT@20': '0.0268', 'NDCG@20': '0.0109'}
+{'epoch': 19, 'rec_avg_loss': '0.8872'}
+{'Epoch': 19, 'HIT@5': '0.0101', 'NDCG@5': '0.0075', 'HIT@10': '0.0190', 'NDCG@10': '0.0104', 'MRR@10': '0.0078', 'HIT@20': '0.0274', 'NDCG@20': '0.0125'}
+{'epoch': 20, 'rec_avg_loss': '0.8748'}
+{'Epoch': 20, 'HIT@5': '0.0123', 'NDCG@5': '0.0084', 'HIT@10': '0.0162', 'NDCG@10': '0.0097', 'MRR@10': '0.0076', 'HIT@20': '0.0252', 'NDCG@20': '0.0119'}
+{'epoch': 21, 'rec_avg_loss': '0.8576'}
+{'Epoch': 21, 'HIT@5': '0.0134', 'NDCG@5': '0.0092', 'HIT@10': '0.0179', 'NDCG@10': '0.0106', 'MRR@10': '0.0083', 'HIT@20': '0.0274', 'NDCG@20': '0.0129'}
+{'epoch': 22, 'rec_avg_loss': '0.8463'}
+{'Epoch': 22, 'HIT@5': '0.0123', 'NDCG@5': '0.0073', 'HIT@10': '0.0173', 'NDCG@10': '0.0089', 'MRR@10': '0.0063', 'HIT@20': '0.0274', 'NDCG@20': '0.0114'}
+{'epoch': 23, 'rec_avg_loss': '0.8307'}
+{'Epoch': 23, 'HIT@5': '0.0101', 'NDCG@5': '0.0061', 'HIT@10': '0.0173', 'NDCG@10': '0.0085', 'MRR@10': '0.0059', 'HIT@20': '0.0280', 'NDCG@20': '0.0112'}
+{'epoch': 24, 'rec_avg_loss': '0.8216'}
+{'Epoch': 24, 'HIT@5': '0.0112', 'NDCG@5': '0.0065', 'HIT@10': '0.0168', 'NDCG@10': '0.0083', 'MRR@10': '0.0058', 'HIT@20': '0.0308', 'NDCG@20': '0.0118'}
+{'epoch': 25, 'rec_avg_loss': '0.8073'}
+{'Epoch': 25, 'HIT@5': '0.0123', 'NDCG@5': '0.0072', 'HIT@10': '0.0190', 'NDCG@10': '0.0094', 'MRR@10': '0.0064', 'HIT@20': '0.0302', 'NDCG@20': '0.0121'}
+{'epoch': 26, 'rec_avg_loss': '0.7962'}
+{'Epoch': 26, 'HIT@5': '0.0106', 'NDCG@5': '0.0064', 'HIT@10': '0.0157', 'NDCG@10': '0.0081', 'MRR@10': '0.0058', 'HIT@20': '0.0280', 'NDCG@20': '0.0111'}
+{'epoch': 27, 'rec_avg_loss': '0.7846'}
+{'Epoch': 27, 'HIT@5': '0.0101', 'NDCG@5': '0.0062', 'HIT@10': '0.0168', 'NDCG@10': '0.0084', 'MRR@10': '0.0059', 'HIT@20': '0.0313', 'NDCG@20': '0.0119'}
+{'epoch': 28, 'rec_avg_loss': '0.7714'}
+{'Epoch': 28, 'HIT@5': '0.0078', 'NDCG@5': '0.0047', 'HIT@10': '0.0145', 'NDCG@10': '0.0069', 'MRR@10': '0.0046', 'HIT@20': '0.0257', 'NDCG@20': '0.0097'}
+{'epoch': 29, 'rec_avg_loss': '0.7586'}
+{'Epoch': 29, 'HIT@5': '0.0112', 'NDCG@5': '0.0066', 'HIT@10': '0.0185', 'NDCG@10': '0.0088', 'MRR@10': '0.0060', 'HIT@20': '0.0291', 'NDCG@20': '0.0115'}
+{'epoch': 30, 'rec_avg_loss': '0.7469'}
+{'Epoch': 30, 'HIT@5': '0.0106', 'NDCG@5': '0.0060', 'HIT@10': '0.0190', 'NDCG@10': '0.0087', 'MRR@10': '0.0056', 'HIT@20': '0.0296', 'NDCG@20': '0.0113'}
+{'epoch': 31, 'rec_avg_loss': '0.7369'}
+{'Epoch': 31, 'HIT@5': '0.0095', 'NDCG@5': '0.0056', 'HIT@10': '0.0179', 'NDCG@10': '0.0083', 'MRR@10': '0.0054', 'HIT@20': '0.0308', 'NDCG@20': '0.0115'}
+{'Epoch': 0, 'HIT@5': '0.0140', 'NDCG@5': '0.0096', 'HIT@10': '0.0179', 'NDCG@10': '0.0109', 'MRR@10': '0.0087', 'HIT@20': '0.0291', 'NDCG@20': '0.0136'}
+SASRec-ToysLong_ours-1
+{'Epoch': 0, 'HIT@5': '0.0140', 'NDCG@5': '0.0096', 'HIT@10': '0.0179', 'NDCG@10': '0.0109', 'MRR@10': '0.0087', 'HIT@20': '0.0291', 'NDCG@20': '0.0136'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                       ToysLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                  42
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                  42
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-ToysLong_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :           ../data/ToysLong_ours.txt
+item_size                      :                               10184
+log_file                       :   output/SASRec-ToysLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='ToysLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=42, star_test=0, eval_mode='full', num_neg=100, eval_seed=42, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-ToysLong_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/ToysLong_ours.txt', item_size=10184, log_file='output/SASRec-ToysLong_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0140', 'NDCG@5': '0.0096', 'HIT@10': '0.0179', 'NDCG@10': '0.0109', 'MRR@10': '0.0087', 'HIT@20': '0.0291', 'NDCG@20': '0.0136'}
+{'Epoch': 0, 'HIT@5': '0.0112', 'NDCG@5': '0.0080', 'HIT@10': '0.0151', 'NDCG@10': '0.0092', 'MRR@10': '0.0074', 'HIT@20': '0.0252', 'NDCG@20': '0.0117'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                       ToysLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :           ../data/ToysLong_ours.txt
+item_size                      :                               10184
+log_file                       :   output/SASRec-ToysLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='ToysLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2023, star_test=0, eval_mode='full', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/ToysLong_ours.txt', item_size=10184, log_file='output/SASRec-ToysLong_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3911'}
+{'epoch': 1, 'rec_avg_loss': '1.3707'}
+{'Epoch': 1, 'HIT@5': '0.0011', 'NDCG@5': '0.0006', 'HIT@10': '0.0034', 'NDCG@10': '0.0013', 'MRR@10': '0.0007', 'HIT@20': '0.0056', 'NDCG@20': '0.0019'}
+{'epoch': 2, 'rec_avg_loss': '1.3487'}
+{'Epoch': 2, 'HIT@5': '0.0045', 'NDCG@5': '0.0021', 'HIT@10': '0.0089', 'NDCG@10': '0.0035', 'MRR@10': '0.0019', 'HIT@20': '0.0173', 'NDCG@20': '0.0056'}
+{'epoch': 3, 'rec_avg_loss': '1.3157'}
+{'Epoch': 3, 'HIT@5': '0.0039', 'NDCG@5': '0.0019', 'HIT@10': '0.0067', 'NDCG@10': '0.0027', 'MRR@10': '0.0016', 'HIT@20': '0.0140', 'NDCG@20': '0.0046'}
+{'epoch': 4, 'rec_avg_loss': '1.2740'}
+{'Epoch': 4, 'HIT@5': '0.0017', 'NDCG@5': '0.0008', 'HIT@10': '0.0045', 'NDCG@10': '0.0017', 'MRR@10': '0.0009', 'HIT@20': '0.0106', 'NDCG@20': '0.0033'}
+{'epoch': 5, 'rec_avg_loss': '1.2261'}
+{'Epoch': 5, 'HIT@5': '0.0045', 'NDCG@5': '0.0025', 'HIT@10': '0.0084', 'NDCG@10': '0.0038', 'MRR@10': '0.0024', 'HIT@20': '0.0129', 'NDCG@20': '0.0049'}
+{'epoch': 6, 'rec_avg_loss': '1.1802'}
+{'Epoch': 6, 'HIT@5': '0.0045', 'NDCG@5': '0.0021', 'HIT@10': '0.0073', 'NDCG@10': '0.0029', 'MRR@10': '0.0016', 'HIT@20': '0.0112', 'NDCG@20': '0.0039'}
+{'epoch': 7, 'rec_avg_loss': '1.1402'}
+{'Epoch': 7, 'HIT@5': '0.0045', 'NDCG@5': '0.0020', 'HIT@10': '0.0095', 'NDCG@10': '0.0036', 'MRR@10': '0.0019', 'HIT@20': '0.0112', 'NDCG@20': '0.0040'}
+{'epoch': 8, 'rec_avg_loss': '1.1045'}
+{'Epoch': 8, 'HIT@5': '0.0045', 'NDCG@5': '0.0023', 'HIT@10': '0.0101', 'NDCG@10': '0.0042', 'MRR@10': '0.0024', 'HIT@20': '0.0123', 'NDCG@20': '0.0047'}
+{'epoch': 9, 'rec_avg_loss': '1.0734'}
+{'Epoch': 9, 'HIT@5': '0.0050', 'NDCG@5': '0.0023', 'HIT@10': '0.0101', 'NDCG@10': '0.0040', 'MRR@10': '0.0022', 'HIT@20': '0.0145', 'NDCG@20': '0.0051'}
+{'epoch': 10, 'rec_avg_loss': '1.0473'}
+{'Epoch': 10, 'HIT@5': '0.0062', 'NDCG@5': '0.0031', 'HIT@10': '0.0123', 'NDCG@10': '0.0051', 'MRR@10': '0.0030', 'HIT@20': '0.0157', 'NDCG@20': '0.0060'}
+{'epoch': 11, 'rec_avg_loss': '1.0253'}
+{'Epoch': 11, 'HIT@5': '0.0095', 'NDCG@5': '0.0053', 'HIT@10': '0.0134', 'NDCG@10': '0.0066', 'MRR@10': '0.0045', 'HIT@20': '0.0190', 'NDCG@20': '0.0080'}
+{'epoch': 12, 'rec_avg_loss': '1.0068'}
+{'Epoch': 12, 'HIT@5': '0.0078', 'NDCG@5': '0.0042', 'HIT@10': '0.0134', 'NDCG@10': '0.0060', 'MRR@10': '0.0038', 'HIT@20': '0.0196', 'NDCG@20': '0.0075'}
+{'epoch': 13, 'rec_avg_loss': '0.9846'}
+{'Epoch': 13, 'HIT@5': '0.0073', 'NDCG@5': '0.0040', 'HIT@10': '0.0129', 'NDCG@10': '0.0058', 'MRR@10': '0.0037', 'HIT@20': '0.0196', 'NDCG@20': '0.0075'}
+{'epoch': 14, 'rec_avg_loss': '0.9706'}
+{'Epoch': 14, 'HIT@5': '0.0095', 'NDCG@5': '0.0054', 'HIT@10': '0.0140', 'NDCG@10': '0.0069', 'MRR@10': '0.0048', 'HIT@20': '0.0196', 'NDCG@20': '0.0084'}
+{'epoch': 15, 'rec_avg_loss': '0.9533'}
+{'Epoch': 15, 'HIT@5': '0.0112', 'NDCG@5': '0.0068', 'HIT@10': '0.0162', 'NDCG@10': '0.0085', 'MRR@10': '0.0061', 'HIT@20': '0.0213', 'NDCG@20': '0.0097'}
+{'epoch': 16, 'rec_avg_loss': '0.9344'}
+{'Epoch': 16, 'HIT@5': '0.0106', 'NDCG@5': '0.0062', 'HIT@10': '0.0151', 'NDCG@10': '0.0077', 'MRR@10': '0.0054', 'HIT@20': '0.0207', 'NDCG@20': '0.0091'}
+{'epoch': 17, 'rec_avg_loss': '0.9216'}
+{'Epoch': 17, 'HIT@5': '0.0129', 'NDCG@5': '0.0083', 'HIT@10': '0.0162', 'NDCG@10': '0.0094', 'MRR@10': '0.0073', 'HIT@20': '0.0235', 'NDCG@20': '0.0113'}
+{'epoch': 18, 'rec_avg_loss': '0.9100'}
+{'Epoch': 18, 'HIT@5': '0.0129', 'NDCG@5': '0.0076', 'HIT@10': '0.0185', 'NDCG@10': '0.0094', 'MRR@10': '0.0065', 'HIT@20': '0.0263', 'NDCG@20': '0.0113'}
+{'epoch': 19, 'rec_avg_loss': '0.8942'}
+{'Epoch': 19, 'HIT@5': '0.0140', 'NDCG@5': '0.0082', 'HIT@10': '0.0196', 'NDCG@10': '0.0101', 'MRR@10': '0.0071', 'HIT@20': '0.0324', 'NDCG@20': '0.0134'}
+{'epoch': 20, 'rec_avg_loss': '0.8771'}
+{'Epoch': 20, 'HIT@5': '0.0129', 'NDCG@5': '0.0073', 'HIT@10': '0.0190', 'NDCG@10': '0.0093', 'MRR@10': '0.0063', 'HIT@20': '0.0285', 'NDCG@20': '0.0117'}
+{'epoch': 21, 'rec_avg_loss': '0.8660'}
+{'Epoch': 21, 'HIT@5': '0.0179', 'NDCG@5': '0.0100', 'HIT@10': '0.0235', 'NDCG@10': '0.0118', 'MRR@10': '0.0082', 'HIT@20': '0.0330', 'NDCG@20': '0.0142'}
+{'epoch': 22, 'rec_avg_loss': '0.8552'}
+{'Epoch': 22, 'HIT@5': '0.0190', 'NDCG@5': '0.0109', 'HIT@10': '0.0246', 'NDCG@10': '0.0127', 'MRR@10': '0.0089', 'HIT@20': '0.0336', 'NDCG@20': '0.0149'}
+{'epoch': 23, 'rec_avg_loss': '0.8378'}
+{'Epoch': 23, 'HIT@5': '0.0157', 'NDCG@5': '0.0079', 'HIT@10': '0.0224', 'NDCG@10': '0.0100', 'MRR@10': '0.0062', 'HIT@20': '0.0302', 'NDCG@20': '0.0120'}
+{'epoch': 24, 'rec_avg_loss': '0.8248'}
+{'Epoch': 24, 'HIT@5': '0.0168', 'NDCG@5': '0.0092', 'HIT@10': '0.0246', 'NDCG@10': '0.0117', 'MRR@10': '0.0077', 'HIT@20': '0.0336', 'NDCG@20': '0.0139'}
+{'epoch': 25, 'rec_avg_loss': '0.8145'}
+{'Epoch': 25, 'HIT@5': '0.0140', 'NDCG@5': '0.0074', 'HIT@10': '0.0246', 'NDCG@10': '0.0109', 'MRR@10': '0.0068', 'HIT@20': '0.0347', 'NDCG@20': '0.0135'}
+{'epoch': 26, 'rec_avg_loss': '0.7973'}
+{'Epoch': 26, 'HIT@5': '0.0106', 'NDCG@5': '0.0057', 'HIT@10': '0.0185', 'NDCG@10': '0.0081', 'MRR@10': '0.0050', 'HIT@20': '0.0347', 'NDCG@20': '0.0123'}
+{'epoch': 27, 'rec_avg_loss': '0.7866'}
+{'Epoch': 27, 'HIT@5': '0.0101', 'NDCG@5': '0.0051', 'HIT@10': '0.0218', 'NDCG@10': '0.0088', 'MRR@10': '0.0049', 'HIT@20': '0.0369', 'NDCG@20': '0.0126'}
+{'epoch': 28, 'rec_avg_loss': '0.7733'}
+{'Epoch': 28, 'HIT@5': '0.0089', 'NDCG@5': '0.0047', 'HIT@10': '0.0151', 'NDCG@10': '0.0066', 'MRR@10': '0.0041', 'HIT@20': '0.0308', 'NDCG@20': '0.0106'}
+{'epoch': 29, 'rec_avg_loss': '0.7622'}
+{'Epoch': 29, 'HIT@5': '0.0095', 'NDCG@5': '0.0055', 'HIT@10': '0.0190', 'NDCG@10': '0.0085', 'MRR@10': '0.0053', 'HIT@20': '0.0336', 'NDCG@20': '0.0121'}
+{'epoch': 30, 'rec_avg_loss': '0.7511'}
+{'Epoch': 30, 'HIT@5': '0.0084', 'NDCG@5': '0.0052', 'HIT@10': '0.0173', 'NDCG@10': '0.0080', 'MRR@10': '0.0053', 'HIT@20': '0.0336', 'NDCG@20': '0.0121'}
+{'epoch': 31, 'rec_avg_loss': '0.7379'}
+{'Epoch': 31, 'HIT@5': '0.0106', 'NDCG@5': '0.0059', 'HIT@10': '0.0185', 'NDCG@10': '0.0085', 'MRR@10': '0.0054', 'HIT@20': '0.0369', 'NDCG@20': '0.0133'}
+{'epoch': 32, 'rec_avg_loss': '0.7271'}
+{'Epoch': 32, 'HIT@5': '0.0117', 'NDCG@5': '0.0062', 'HIT@10': '0.0196', 'NDCG@10': '0.0086', 'MRR@10': '0.0053', 'HIT@20': '0.0364', 'NDCG@20': '0.0130'}
+{'Epoch': 0, 'HIT@5': '0.0190', 'NDCG@5': '0.0118', 'HIT@10': '0.0246', 'NDCG@10': '0.0136', 'MRR@10': '0.0102', 'HIT@20': '0.0347', 'NDCG@20': '0.0161'}
+SASRec-ToysLong_ours-1
+{'Epoch': 0, 'HIT@5': '0.0190', 'NDCG@5': '0.0118', 'HIT@10': '0.0246', 'NDCG@10': '0.0136', 'MRR@10': '0.0102', 'HIT@20': '0.0347', 'NDCG@20': '0.0161'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                       ToysLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2023
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2023
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-ToysLong_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :           ../data/ToysLong_ours.txt
+item_size                      :                               10184
+log_file                       :   output/SASRec-ToysLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='ToysLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2023, star_test=0, eval_mode='full', num_neg=100, eval_seed=2023, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-ToysLong_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/ToysLong_ours.txt', item_size=10184, log_file='output/SASRec-ToysLong_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0190', 'NDCG@5': '0.0118', 'HIT@10': '0.0246', 'NDCG@10': '0.0136', 'MRR@10': '0.0102', 'HIT@20': '0.0347', 'NDCG@20': '0.0161'}
+{'Epoch': 0, 'HIT@5': '0.0117', 'NDCG@5': '0.0069', 'HIT@10': '0.0179', 'NDCG@10': '0.0088', 'MRR@10': '0.0060', 'HIT@20': '0.0280', 'NDCG@20': '0.0113'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                       ToysLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 100
+patience                       :                                  10
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.6
+m                              :                                  10
+TTA                            :                                   0
+TTA_type                       :                             TMask-R
+input_num                      :                                   7
+output_num                     :                                   5
+pretrained_path                :                                    
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :           ../data/ToysLong_ours.txt
+item_size                      :                               10184
+log_file                       :   output/SASRec-ToysLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='ToysLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=100, patience=10, log_freq=1, seed=2024, star_test=0, eval_mode='full', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.6, m=10, TTA=False, TTA_type='TMask-R', input_num=7, output_num=5, pretrained_path='', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/ToysLong_ours.txt', item_size=10184, log_file='output/SASRec-ToysLong_ours-1.txt')
+{'epoch': 0, 'rec_avg_loss': '1.3916'}
+{'epoch': 1, 'rec_avg_loss': '1.3692'}
+{'Epoch': 1, 'HIT@5': '0.0011', 'NDCG@5': '0.0008', 'HIT@10': '0.0017', 'NDCG@10': '0.0010', 'MRR@10': '0.0008', 'HIT@20': '0.0028', 'NDCG@20': '0.0012'}
+{'epoch': 2, 'rec_avg_loss': '1.3491'}
+{'Epoch': 2, 'HIT@5': '0.0034', 'NDCG@5': '0.0019', 'HIT@10': '0.0084', 'NDCG@10': '0.0035', 'MRR@10': '0.0021', 'HIT@20': '0.0123', 'NDCG@20': '0.0045'}
+{'epoch': 3, 'rec_avg_loss': '1.3193'}
+{'Epoch': 3, 'HIT@5': '0.0062', 'NDCG@5': '0.0035', 'HIT@10': '0.0117', 'NDCG@10': '0.0052', 'MRR@10': '0.0033', 'HIT@20': '0.0229', 'NDCG@20': '0.0081'}
+{'epoch': 4, 'rec_avg_loss': '1.2797'}
+{'Epoch': 4, 'HIT@5': '0.0045', 'NDCG@5': '0.0023', 'HIT@10': '0.0129', 'NDCG@10': '0.0050', 'MRR@10': '0.0027', 'HIT@20': '0.0185', 'NDCG@20': '0.0064'}
+{'epoch': 5, 'rec_avg_loss': '1.2337'}
+{'Epoch': 5, 'HIT@5': '0.0062', 'NDCG@5': '0.0043', 'HIT@10': '0.0140', 'NDCG@10': '0.0068', 'MRR@10': '0.0047', 'HIT@20': '0.0224', 'NDCG@20': '0.0089'}
+{'epoch': 6, 'rec_avg_loss': '1.1877'}
+{'Epoch': 6, 'HIT@5': '0.0062', 'NDCG@5': '0.0039', 'HIT@10': '0.0117', 'NDCG@10': '0.0058', 'MRR@10': '0.0040', 'HIT@20': '0.0196', 'NDCG@20': '0.0078'}
+{'epoch': 7, 'rec_avg_loss': '1.1451'}
+{'Epoch': 7, 'HIT@5': '0.0062', 'NDCG@5': '0.0032', 'HIT@10': '0.0117', 'NDCG@10': '0.0050', 'MRR@10': '0.0030', 'HIT@20': '0.0168', 'NDCG@20': '0.0064'}
+{'epoch': 8, 'rec_avg_loss': '1.1097'}
+{'Epoch': 8, 'HIT@5': '0.0073', 'NDCG@5': '0.0039', 'HIT@10': '0.0117', 'NDCG@10': '0.0052', 'MRR@10': '0.0033', 'HIT@20': '0.0162', 'NDCG@20': '0.0063'}
+{'epoch': 9, 'rec_avg_loss': '1.0774'}
+{'Epoch': 9, 'HIT@5': '0.0056', 'NDCG@5': '0.0031', 'HIT@10': '0.0106', 'NDCG@10': '0.0048', 'MRR@10': '0.0031', 'HIT@20': '0.0173', 'NDCG@20': '0.0064'}
+{'epoch': 10, 'rec_avg_loss': '1.0511'}
+{'Epoch': 10, 'HIT@5': '0.0067', 'NDCG@5': '0.0040', 'HIT@10': '0.0112', 'NDCG@10': '0.0055', 'MRR@10': '0.0037', 'HIT@20': '0.0201', 'NDCG@20': '0.0077'}
+{'epoch': 11, 'rec_avg_loss': '1.0279'}
+{'Epoch': 11, 'HIT@5': '0.0050', 'NDCG@5': '0.0029', 'HIT@10': '0.0112', 'NDCG@10': '0.0048', 'MRR@10': '0.0029', 'HIT@20': '0.0207', 'NDCG@20': '0.0072'}
+{'epoch': 12, 'rec_avg_loss': '1.0048'}
+{'Epoch': 12, 'HIT@5': '0.0050', 'NDCG@5': '0.0032', 'HIT@10': '0.0129', 'NDCG@10': '0.0057', 'MRR@10': '0.0036', 'HIT@20': '0.0240', 'NDCG@20': '0.0085'}
+{'epoch': 13, 'rec_avg_loss': '0.9845'}
+{'Epoch': 13, 'HIT@5': '0.0078', 'NDCG@5': '0.0045', 'HIT@10': '0.0134', 'NDCG@10': '0.0063', 'MRR@10': '0.0042', 'HIT@20': '0.0268', 'NDCG@20': '0.0097'}
+{'epoch': 14, 'rec_avg_loss': '0.9673'}
+{'Epoch': 14, 'HIT@5': '0.0056', 'NDCG@5': '0.0034', 'HIT@10': '0.0134', 'NDCG@10': '0.0061', 'MRR@10': '0.0039', 'HIT@20': '0.0252', 'NDCG@20': '0.0090'}
+{'epoch': 15, 'rec_avg_loss': '0.9438'}
+{'Epoch': 15, 'HIT@5': '0.0101', 'NDCG@5': '0.0057', 'HIT@10': '0.0173', 'NDCG@10': '0.0080', 'MRR@10': '0.0052', 'HIT@20': '0.0302', 'NDCG@20': '0.0112'}
+{'epoch': 16, 'rec_avg_loss': '0.9281'}
+{'Epoch': 16, 'HIT@5': '0.0067', 'NDCG@5': '0.0040', 'HIT@10': '0.0168', 'NDCG@10': '0.0073', 'MRR@10': '0.0045', 'HIT@20': '0.0285', 'NDCG@20': '0.0102'}
+{'epoch': 17, 'rec_avg_loss': '0.9178'}
+{'Epoch': 17, 'HIT@5': '0.0084', 'NDCG@5': '0.0046', 'HIT@10': '0.0173', 'NDCG@10': '0.0076', 'MRR@10': '0.0046', 'HIT@20': '0.0291', 'NDCG@20': '0.0105'}
+{'epoch': 18, 'rec_avg_loss': '0.8988'}
+{'Epoch': 18, 'HIT@5': '0.0067', 'NDCG@5': '0.0037', 'HIT@10': '0.0151', 'NDCG@10': '0.0064', 'MRR@10': '0.0039', 'HIT@20': '0.0263', 'NDCG@20': '0.0093'}
+{'epoch': 19, 'rec_avg_loss': '0.8852'}
+{'Epoch': 19, 'HIT@5': '0.0078', 'NDCG@5': '0.0044', 'HIT@10': '0.0157', 'NDCG@10': '0.0069', 'MRR@10': '0.0043', 'HIT@20': '0.0274', 'NDCG@20': '0.0098'}
+{'epoch': 20, 'rec_avg_loss': '0.8721'}
+{'Epoch': 20, 'HIT@5': '0.0095', 'NDCG@5': '0.0061', 'HIT@10': '0.0173', 'NDCG@10': '0.0086', 'MRR@10': '0.0060', 'HIT@20': '0.0296', 'NDCG@20': '0.0117'}
+{'epoch': 21, 'rec_avg_loss': '0.8556'}
+{'Epoch': 21, 'HIT@5': '0.0084', 'NDCG@5': '0.0057', 'HIT@10': '0.0157', 'NDCG@10': '0.0081', 'MRR@10': '0.0058', 'HIT@20': '0.0285', 'NDCG@20': '0.0113'}
+{'epoch': 22, 'rec_avg_loss': '0.8419'}
+{'Epoch': 22, 'HIT@5': '0.0078', 'NDCG@5': '0.0049', 'HIT@10': '0.0145', 'NDCG@10': '0.0070', 'MRR@10': '0.0048', 'HIT@20': '0.0257', 'NDCG@20': '0.0098'}
+{'epoch': 23, 'rec_avg_loss': '0.8277'}
+{'Epoch': 23, 'HIT@5': '0.0095', 'NDCG@5': '0.0061', 'HIT@10': '0.0162', 'NDCG@10': '0.0082', 'MRR@10': '0.0058', 'HIT@20': '0.0296', 'NDCG@20': '0.0115'}
+{'epoch': 24, 'rec_avg_loss': '0.8156'}
+{'Epoch': 24, 'HIT@5': '0.0073', 'NDCG@5': '0.0044', 'HIT@10': '0.0134', 'NDCG@10': '0.0064', 'MRR@10': '0.0043', 'HIT@20': '0.0257', 'NDCG@20': '0.0095'}
+{'epoch': 25, 'rec_avg_loss': '0.8088'}
+{'Epoch': 25, 'HIT@5': '0.0117', 'NDCG@5': '0.0068', 'HIT@10': '0.0196', 'NDCG@10': '0.0092', 'MRR@10': '0.0061', 'HIT@20': '0.0285', 'NDCG@20': '0.0114'}
+{'epoch': 26, 'rec_avg_loss': '0.7919'}
+{'Epoch': 26, 'HIT@5': '0.0089', 'NDCG@5': '0.0058', 'HIT@10': '0.0145', 'NDCG@10': '0.0075', 'MRR@10': '0.0054', 'HIT@20': '0.0280', 'NDCG@20': '0.0109'}
+{'epoch': 27, 'rec_avg_loss': '0.7835'}
+{'Epoch': 27, 'HIT@5': '0.0084', 'NDCG@5': '0.0052', 'HIT@10': '0.0151', 'NDCG@10': '0.0073', 'MRR@10': '0.0050', 'HIT@20': '0.0274', 'NDCG@20': '0.0103'}
+{'epoch': 28, 'rec_avg_loss': '0.7722'}
+{'Epoch': 28, 'HIT@5': '0.0067', 'NDCG@5': '0.0044', 'HIT@10': '0.0157', 'NDCG@10': '0.0073', 'MRR@10': '0.0048', 'HIT@20': '0.0274', 'NDCG@20': '0.0102'}
+{'epoch': 29, 'rec_avg_loss': '0.7553'}
+{'Epoch': 29, 'HIT@5': '0.0084', 'NDCG@5': '0.0052', 'HIT@10': '0.0179', 'NDCG@10': '0.0082', 'MRR@10': '0.0054', 'HIT@20': '0.0308', 'NDCG@20': '0.0115'}
+{'epoch': 30, 'rec_avg_loss': '0.7429'}
+{'Epoch': 30, 'HIT@5': '0.0078', 'NDCG@5': '0.0047', 'HIT@10': '0.0145', 'NDCG@10': '0.0068', 'MRR@10': '0.0045', 'HIT@20': '0.0319', 'NDCG@20': '0.0111'}
+{'Epoch': 0, 'HIT@5': '0.0095', 'NDCG@5': '0.0065', 'HIT@10': '0.0173', 'NDCG@10': '0.0090', 'MRR@10': '0.0065', 'HIT@20': '0.0296', 'NDCG@20': '0.0121'}
+SASRec-ToysLong_ours-1
+{'Epoch': 0, 'HIT@5': '0.0095', 'NDCG@5': '0.0065', 'HIT@10': '0.0173', 'NDCG@10': '0.0090', 'MRR@10': '0.0065', 'HIT@20': '0.0296', 'NDCG@20': '0.0121'}
+data_dir                       :                            ../data/
+output_dir                     :                             output/
+data_name                      :                       ToysLong_ours
+do_eval                        :                                   0
+model_idx                      :                                   1
+gpu_id                         :                                   0
+no_cuda                        :                                   0
+model_name                     :                              SASRec
+hidden_size                    :                                  64
+num_hidden_layers              :                                   2
+num_attention_heads            :                                   2
+hidden_act                     :                                gelu
+attention_probs_dropout_prob   :                                 0.5
+hidden_dropout_prob            :                                 0.5
+initializer_range              :                                0.02
+max_seq_length                 :                                  50
+weight_decay                   :                                 0.0
+lr                             :                               0.001
+batch_size                     :                                 256
+epochs                         :                                 500
+patience                       :                                  20
+log_freq                       :                                   1
+seed                           :                                2024
+star_test                      :                                   0
+eval_mode                      :                                full
+num_neg                        :                                 100
+eval_seed                      :                                2024
+a                              :                                   1
+b                              :                                 0.5
+sigma                          :                                 0.5
+m                              :                                   5
+TTA                            :                                   1
+TTA_type                       :                             TMask-R
+input_num                      :                                   5
+output_num                     :                                   3
+pretrained_path                : F:\桌面\recommendation_system\TTA4SR-main\SASRec\src\output\SASRec-ToysLong_ours-1.pt
+a_1                            :                                   1
+b_1                            :                                 0.5
+cuda_condition                 :                                   1
+data_file                      :           ../data/ToysLong_ours.txt
+item_size                      :                               10184
+log_file                       :   output/SASRec-ToysLong_ours-1.txt
+Namespace(data_dir='../data/', output_dir='output/', data_name='ToysLong_ours', do_eval=False, model_idx=1, gpu_id='0', no_cuda=False, model_name='SASRec', hidden_size=64, num_hidden_layers=2, num_attention_heads=2, hidden_act='gelu', attention_probs_dropout_prob=0.5, hidden_dropout_prob=0.5, initializer_range=0.02, max_seq_length=50, weight_decay=0.0, lr=0.001, batch_size=256, epochs=500, patience=20, log_freq=1, seed=2024, star_test=0, eval_mode='full', num_neg=100, eval_seed=2024, a=1, b=0.5, sigma=0.5, m=5, TTA=True, TTA_type='TMask-R', input_num=5, output_num=3, pretrained_path='F:\\桌面\\recommendation_system\\TTA4SR-main\\SASRec\\src\\output\\SASRec-ToysLong_ours-1.pt', a_1=1, b_1=0.5, cuda_condition=True, data_file='../data/ToysLong_ours.txt', item_size=10184, log_file='output/SASRec-ToysLong_ours-1.txt')
+{'Epoch': 0, 'HIT@5': '0.0095', 'NDCG@5': '0.0065', 'HIT@10': '0.0173', 'NDCG@10': '0.0090', 'MRR@10': '0.0065', 'HIT@20': '0.0296', 'NDCG@20': '0.0121'}
+{'Epoch': 0, 'HIT@5': '0.0067', 'NDCG@5': '0.0040', 'HIT@10': '0.0145', 'NDCG@10': '0.0066', 'MRR@10': '0.0042', 'HIT@20': '0.0257', 'NDCG@20': '0.0094'}

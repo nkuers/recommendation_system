@@ -1,0 +1,2071 @@
+Sat 07 Feb 2026 13:01:53 INFO  ['scripts/run_grid.py', '--models', 'tisasrec', '--datasets', 'amazon-beauty-5core-subset,amazon-electronics-5core-subset']
+Sat 07 Feb 2026 13:01:53 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/amazon\amazon-beauty-5core-subset
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TiSASRec
+hidden_size = 64
+inner_size = 256
+n_layers = 2
+n_heads = 4
+hidden_dropout_prob = 0.2
+attn_dropout_prob = 0.2
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+time_span = 512
+loss_type = BCE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sat 07 Feb 2026 13:01:53 INFO  amazon-beauty-5core-subset
+The number of users: 7001
+Average actions of users: 15.458
+The number of items: 11924
+Average actions of items: 9.075400486454752
+The number of inters: 108206
+The sparsity of the dataset: 99.87038081155896%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Sat 07 Feb 2026 13:01:55 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sat 07 Feb 2026 13:01:55 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sat 07 Feb 2026 13:01:55 INFO  TiSASRec(
+  (item_embedding): Embedding(11924, 64, padding_idx=0)
+  (time_matrix_K_emb): Embedding(513, 64)
+  (time_matrix_V_emb): Embedding(513, 64)
+  (position_key_embedding): Embedding(32, 64)
+  (position_value_embedding): Embedding(32, 64)
+  (trm_encoder): TransformerEncoder(
+    (layer): ModuleList(
+      (0-1): 2 x TransformerLayer(
+        (multi_head_attention): MultiHeadAttention(
+          (query): Linear(in_features=64, out_features=64, bias=True)
+          (key): Linear(in_features=64, out_features=64, bias=True)
+          (value): Linear(in_features=64, out_features=64, bias=True)
+          (softmax): Softmax(dim=-1)
+          (attn_dropout): Dropout(p=0.2, inplace=False)
+          (dense): Linear(in_features=64, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (out_dropout): Dropout(p=0.2, inplace=False)
+        )
+        (feed_forward): FeedForward(
+          (dense_1): Linear(in_features=64, out_features=256, bias=True)
+          (dense_2): Linear(in_features=256, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (dropout): Dropout(p=0.2, inplace=False)
+        )
+      )
+    )
+  )
+  (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+)
+Trainable parameters: 932992
+Sat 07 Feb 2026 13:01:56 INFO  FLOPs: 3327808.0
+Sat 07 Feb 2026 13:03:31 INFO  epoch 0 training [time: 93.56s, train loss: 424.7497]
+Sat 07 Feb 2026 13:04:10 INFO  epoch 0 evaluating [time: 39.39s, valid_score: 0.185100]
+Sat 07 Feb 2026 13:04:10 INFO  valid result: 
+hit@10 : 0.4023    ndcg@10 : 0.2359    mrr@10 : 0.1851
+Sat 07 Feb 2026 13:04:10 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:06:35 INFO  epoch 1 training [time: 144.37s, train loss: 340.2544]
+Sat 07 Feb 2026 13:07:01 INFO  epoch 1 evaluating [time: 25.92s, valid_score: 0.223300]
+Sat 07 Feb 2026 13:07:01 INFO  valid result: 
+hit@10 : 0.4573    ndcg@10 : 0.2788    mrr@10 : 0.2233
+Sat 07 Feb 2026 13:07:01 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:07:59 INFO  epoch 2 training [time: 57.98s, train loss: 281.7068]
+Sat 07 Feb 2026 13:08:25 INFO  epoch 2 evaluating [time: 26.10s, valid_score: 0.243000]
+Sat 07 Feb 2026 13:08:25 INFO  valid result: 
+hit@10 : 0.4856    ndcg@10 : 0.3005    mrr@10 : 0.243
+Sat 07 Feb 2026 13:08:25 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:09:21 INFO  epoch 3 training [time: 56.31s, train loss: 232.2438]
+Sat 07 Feb 2026 13:09:48 INFO  epoch 3 evaluating [time: 26.56s, valid_score: 0.262800]
+Sat 07 Feb 2026 13:09:48 INFO  valid result: 
+hit@10 : 0.4966    ndcg@10 : 0.3185    mrr@10 : 0.2628
+Sat 07 Feb 2026 13:09:48 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:10:45 INFO  epoch 4 training [time: 57.19s, train loss: 192.7045]
+Sat 07 Feb 2026 13:11:11 INFO  epoch 4 evaluating [time: 26.18s, valid_score: 0.269700]
+Sat 07 Feb 2026 13:11:11 INFO  valid result: 
+hit@10 : 0.4944    ndcg@10 : 0.3232    mrr@10 : 0.2697
+Sat 07 Feb 2026 13:11:11 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:12:09 INFO  epoch 5 training [time: 57.77s, train loss: 164.0407]
+Sat 07 Feb 2026 13:12:35 INFO  epoch 5 evaluating [time: 26.17s, valid_score: 0.286400]
+Sat 07 Feb 2026 13:12:35 INFO  valid result: 
+hit@10 : 0.4931    ndcg@10 : 0.3357    mrr@10 : 0.2864
+Sat 07 Feb 2026 13:12:35 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:13:31 INFO  epoch 6 training [time: 56.41s, train loss: 141.1764]
+Sat 07 Feb 2026 13:13:58 INFO  epoch 6 evaluating [time: 26.84s, valid_score: 0.289500]
+Sat 07 Feb 2026 13:13:58 INFO  valid result: 
+hit@10 : 0.5043    ndcg@10 : 0.3408    mrr@10 : 0.2895
+Sat 07 Feb 2026 13:13:58 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:15:09 INFO  epoch 7 training [time: 70.67s, train loss: 124.7106]
+Sat 07 Feb 2026 13:15:37 INFO  epoch 7 evaluating [time: 27.67s, valid_score: 0.294900]
+Sat 07 Feb 2026 13:15:37 INFO  valid result: 
+hit@10 : 0.4991    ndcg@10 : 0.3436    mrr@10 : 0.2949
+Sat 07 Feb 2026 13:15:37 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:16:42 INFO  epoch 8 training [time: 65.58s, train loss: 112.8922]
+Sat 07 Feb 2026 13:17:09 INFO  epoch 8 evaluating [time: 27.23s, valid_score: 0.298400]
+Sat 07 Feb 2026 13:17:09 INFO  valid result: 
+hit@10 : 0.4956    ndcg@10 : 0.3455    mrr@10 : 0.2984
+Sat 07 Feb 2026 13:17:09 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:18:15 INFO  epoch 9 training [time: 65.13s, train loss: 102.9779]
+Sat 07 Feb 2026 13:18:42 INFO  epoch 9 evaluating [time: 27.20s, valid_score: 0.298400]
+Sat 07 Feb 2026 13:18:42 INFO  valid result: 
+hit@10 : 0.4964    ndcg@10 : 0.3457    mrr@10 : 0.2984
+Sat 07 Feb 2026 13:18:42 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:19:49 INFO  epoch 10 training [time: 66.75s, train loss: 95.4942]
+Sat 07 Feb 2026 13:20:16 INFO  epoch 10 evaluating [time: 27.36s, valid_score: 0.299300]
+Sat 07 Feb 2026 13:20:16 INFO  valid result: 
+hit@10 : 0.4916    ndcg@10 : 0.3454    mrr@10 : 0.2993
+Sat 07 Feb 2026 13:20:16 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:21:21 INFO  epoch 11 training [time: 64.78s, train loss: 87.5776]
+Sat 07 Feb 2026 13:21:48 INFO  epoch 11 evaluating [time: 27.57s, valid_score: 0.305000]
+Sat 07 Feb 2026 13:21:48 INFO  valid result: 
+hit@10 : 0.4954    ndcg@10 : 0.3504    mrr@10 : 0.305
+Sat 07 Feb 2026 13:21:48 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:22:54 INFO  epoch 12 training [time: 65.30s, train loss: 84.8487]
+Sat 07 Feb 2026 13:23:21 INFO  epoch 12 evaluating [time: 27.40s, valid_score: 0.305100]
+Sat 07 Feb 2026 13:23:21 INFO  valid result: 
+hit@10 : 0.4983    ndcg@10 : 0.3511    mrr@10 : 0.3051
+Sat 07 Feb 2026 13:23:21 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:24:30 INFO  epoch 13 training [time: 68.78s, train loss: 80.1538]
+Sat 07 Feb 2026 13:24:57 INFO  epoch 13 evaluating [time: 27.60s, valid_score: 0.303800]
+Sat 07 Feb 2026 13:24:57 INFO  valid result: 
+hit@10 : 0.493    ndcg@10 : 0.349    mrr@10 : 0.3038
+Sat 07 Feb 2026 13:26:07 INFO  epoch 14 training [time: 69.68s, train loss: 78.9194]
+Sat 07 Feb 2026 13:26:35 INFO  epoch 14 evaluating [time: 28.17s, valid_score: 0.305200]
+Sat 07 Feb 2026 13:26:35 INFO  valid result: 
+hit@10 : 0.497    ndcg@10 : 0.3511    mrr@10 : 0.3052
+Sat 07 Feb 2026 13:26:35 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:27:50 INFO  epoch 15 training [time: 74.41s, train loss: 75.7804]
+Sat 07 Feb 2026 13:28:18 INFO  epoch 15 evaluating [time: 28.17s, valid_score: 0.300400]
+Sat 07 Feb 2026 13:28:18 INFO  valid result: 
+hit@10 : 0.4951    ndcg@10 : 0.3469    mrr@10 : 0.3004
+Sat 07 Feb 2026 13:29:31 INFO  epoch 16 training [time: 72.97s, train loss: 72.4158]
+Sat 07 Feb 2026 13:29:59 INFO  epoch 16 evaluating [time: 28.15s, valid_score: 0.308000]
+Sat 07 Feb 2026 13:29:59 INFO  valid result: 
+hit@10 : 0.5004    ndcg@10 : 0.3538    mrr@10 : 0.308
+Sat 07 Feb 2026 13:29:59 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:31:12 INFO  epoch 17 training [time: 73.37s, train loss: 68.8783]
+Sat 07 Feb 2026 13:31:41 INFO  epoch 17 evaluating [time: 28.33s, valid_score: 0.300700]
+Sat 07 Feb 2026 13:31:41 INFO  valid result: 
+hit@10 : 0.4926    ndcg@10 : 0.3465    mrr@10 : 0.3007
+Sat 07 Feb 2026 13:32:49 INFO  epoch 18 training [time: 68.72s, train loss: 69.1692]
+Sat 07 Feb 2026 13:33:17 INFO  epoch 18 evaluating [time: 27.99s, valid_score: 0.305600]
+Sat 07 Feb 2026 13:33:17 INFO  valid result: 
+hit@10 : 0.4926    ndcg@10 : 0.3501    mrr@10 : 0.3056
+Sat 07 Feb 2026 13:34:30 INFO  epoch 19 training [time: 72.46s, train loss: 67.6826]
+Sat 07 Feb 2026 13:34:58 INFO  epoch 19 evaluating [time: 28.17s, valid_score: 0.299600]
+Sat 07 Feb 2026 13:34:58 INFO  valid result: 
+hit@10 : 0.4891    ndcg@10 : 0.3449    mrr@10 : 0.2996
+Sat 07 Feb 2026 13:36:13 INFO  epoch 20 training [time: 74.87s, train loss: 66.1391]
+Sat 07 Feb 2026 13:36:40 INFO  epoch 20 evaluating [time: 27.55s, valid_score: 0.306600]
+Sat 07 Feb 2026 13:36:40 INFO  valid result: 
+hit@10 : 0.4953    ndcg@10 : 0.3517    mrr@10 : 0.3066
+Sat 07 Feb 2026 13:37:49 INFO  epoch 21 training [time: 68.26s, train loss: 64.7639]
+Sat 07 Feb 2026 13:38:16 INFO  epoch 21 evaluating [time: 27.62s, valid_score: 0.306300]
+Sat 07 Feb 2026 13:38:16 INFO  valid result: 
+hit@10 : 0.4966    ndcg@10 : 0.3516    mrr@10 : 0.3063
+Sat 07 Feb 2026 13:39:32 INFO  epoch 22 training [time: 75.41s, train loss: 63.8867]
+Sat 07 Feb 2026 13:40:01 INFO  epoch 22 evaluating [time: 29.25s, valid_score: 0.303300]
+Sat 07 Feb 2026 13:40:01 INFO  valid result: 
+hit@10 : 0.4919    ndcg@10 : 0.3483    mrr@10 : 0.3033
+Sat 07 Feb 2026 13:41:19 INFO  epoch 23 training [time: 77.57s, train loss: 63.2971]
+Sat 07 Feb 2026 13:41:47 INFO  epoch 23 evaluating [time: 28.04s, valid_score: 0.309700]
+Sat 07 Feb 2026 13:41:47 INFO  valid result: 
+hit@10 : 0.493    ndcg@10 : 0.3534    mrr@10 : 0.3097
+Sat 07 Feb 2026 13:41:47 INFO  Saving current: saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 13:42:54 INFO  epoch 24 training [time: 67.36s, train loss: 61.6719]
+Sat 07 Feb 2026 13:43:22 INFO  epoch 24 evaluating [time: 27.68s, valid_score: 0.305700]
+Sat 07 Feb 2026 13:43:22 INFO  valid result: 
+hit@10 : 0.4906    ndcg@10 : 0.3499    mrr@10 : 0.3057
+Sat 07 Feb 2026 13:44:29 INFO  epoch 25 training [time: 67.51s, train loss: 61.7753]
+Sat 07 Feb 2026 13:44:57 INFO  epoch 25 evaluating [time: 27.52s, valid_score: 0.306900]
+Sat 07 Feb 2026 13:44:57 INFO  valid result: 
+hit@10 : 0.4884    ndcg@10 : 0.3502    mrr@10 : 0.3069
+Sat 07 Feb 2026 13:46:13 INFO  epoch 26 training [time: 75.90s, train loss: 59.1907]
+Sat 07 Feb 2026 13:46:41 INFO  epoch 26 evaluating [time: 28.66s, valid_score: 0.303000]
+Sat 07 Feb 2026 13:46:41 INFO  valid result: 
+hit@10 : 0.4896    ndcg@10 : 0.3476    mrr@10 : 0.303
+Sat 07 Feb 2026 13:47:54 INFO  epoch 27 training [time: 73.00s, train loss: 58.4840]
+Sat 07 Feb 2026 13:48:22 INFO  epoch 27 evaluating [time: 27.24s, valid_score: 0.306100]
+Sat 07 Feb 2026 13:48:22 INFO  valid result: 
+hit@10 : 0.485    ndcg@10 : 0.3489    mrr@10 : 0.3061
+Sat 07 Feb 2026 13:49:29 INFO  epoch 28 training [time: 67.20s, train loss: 58.7528]
+Sat 07 Feb 2026 13:49:57 INFO  epoch 28 evaluating [time: 27.84s, valid_score: 0.307800]
+Sat 07 Feb 2026 13:49:57 INFO  valid result: 
+hit@10 : 0.491    ndcg@10 : 0.3516    mrr@10 : 0.3078
+Sat 07 Feb 2026 13:51:08 INFO  epoch 29 training [time: 71.87s, train loss: 57.7498]
+Sat 07 Feb 2026 13:51:37 INFO  epoch 29 evaluating [time: 28.71s, valid_score: 0.306400]
+Sat 07 Feb 2026 13:51:37 INFO  valid result: 
+hit@10 : 0.4869    ndcg@10 : 0.3494    mrr@10 : 0.3064
+Sat 07 Feb 2026 13:52:46 INFO  epoch 30 training [time: 69.05s, train loss: 58.2674]
+Sat 07 Feb 2026 13:53:13 INFO  epoch 30 evaluating [time: 27.23s, valid_score: 0.300300]
+Sat 07 Feb 2026 13:53:13 INFO  valid result: 
+hit@10 : 0.483    ndcg@10 : 0.3439    mrr@10 : 0.3003
+Sat 07 Feb 2026 13:54:22 INFO  epoch 31 training [time: 68.75s, train loss: 55.5846]
+Sat 07 Feb 2026 13:54:49 INFO  epoch 31 evaluating [time: 27.24s, valid_score: 0.306000]
+Sat 07 Feb 2026 13:54:49 INFO  valid result: 
+hit@10 : 0.4904    ndcg@10 : 0.35    mrr@10 : 0.306
+Sat 07 Feb 2026 13:55:59 INFO  epoch 32 training [time: 69.19s, train loss: 56.5668]
+Sat 07 Feb 2026 13:56:26 INFO  epoch 32 evaluating [time: 27.62s, valid_score: 0.304700]
+Sat 07 Feb 2026 13:56:26 INFO  valid result: 
+hit@10 : 0.4867    ndcg@10 : 0.3482    mrr@10 : 0.3047
+Sat 07 Feb 2026 13:57:43 INFO  epoch 33 training [time: 77.07s, train loss: 55.4762]
+Sat 07 Feb 2026 13:58:12 INFO  epoch 33 evaluating [time: 28.92s, valid_score: 0.300200]
+Sat 07 Feb 2026 13:58:12 INFO  valid result: 
+hit@10 : 0.4814    ndcg@10 : 0.3435    mrr@10 : 0.3002
+Sat 07 Feb 2026 13:59:25 INFO  epoch 34 training [time: 72.93s, train loss: 55.3418]
+Sat 07 Feb 2026 13:59:53 INFO  epoch 34 evaluating [time: 27.94s, valid_score: 0.303200]
+Sat 07 Feb 2026 13:59:53 INFO  valid result: 
+hit@10 : 0.4831    ndcg@10 : 0.3461    mrr@10 : 0.3032
+Sat 07 Feb 2026 13:59:53 INFO  Finished training, best eval result in epoch 23
+Sat 07 Feb 2026 13:59:53 INFO  Loading model structure and parameters from saved\TiSASRec-Feb-07-2026_13-01-56.pth
+Sat 07 Feb 2026 14:00:22 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     8.20 %     |
++-------------+----------------+
+| GPU         | 0.97 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.50 G/15.63 G |
++-------------+----------------+
+Sat 07 Feb 2026 14:00:22 INFO  best valid : OrderedDict([('hit@10', 0.493), ('ndcg@10', 0.3534), ('mrr@10', 0.3097)])
+Sat 07 Feb 2026 14:00:22 INFO  test result: OrderedDict([('hit@10', 0.4421), ('ndcg@10', 0.3064), ('mrr@10', 0.2639)])
+Sat 07 Feb 2026 14:00:22 WARNING  command line args [--models tisasrec --datasets amazon-beauty-5core-subset,amazon-electronics-5core-subset] will not be used in RecBole
+Sat 07 Feb 2026 14:00:22 INFO  ['scripts/run_grid.py', '--models', 'tisasrec', '--datasets', 'amazon-beauty-5core-subset,amazon-electronics-5core-subset']
+Sat 07 Feb 2026 14:00:22 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2023
+state = INFO
+reproducibility = True
+data_path = data/amazon\amazon-beauty-5core-subset
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TiSASRec
+hidden_size = 64
+inner_size = 256
+n_layers = 2
+n_heads = 4
+hidden_dropout_prob = 0.2
+attn_dropout_prob = 0.2
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+time_span = 512
+loss_type = BCE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sat 07 Feb 2026 14:00:23 INFO  amazon-beauty-5core-subset
+The number of users: 7001
+Average actions of users: 15.458
+The number of items: 11924
+Average actions of items: 9.075400486454752
+The number of inters: 108206
+The sparsity of the dataset: 99.87038081155896%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Sat 07 Feb 2026 14:00:25 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sat 07 Feb 2026 14:00:25 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sat 07 Feb 2026 14:00:25 INFO  TiSASRec(
+  (item_embedding): Embedding(11924, 64, padding_idx=0)
+  (time_matrix_K_emb): Embedding(513, 64)
+  (time_matrix_V_emb): Embedding(513, 64)
+  (position_key_embedding): Embedding(32, 64)
+  (position_value_embedding): Embedding(32, 64)
+  (trm_encoder): TransformerEncoder(
+    (layer): ModuleList(
+      (0-1): 2 x TransformerLayer(
+        (multi_head_attention): MultiHeadAttention(
+          (query): Linear(in_features=64, out_features=64, bias=True)
+          (key): Linear(in_features=64, out_features=64, bias=True)
+          (value): Linear(in_features=64, out_features=64, bias=True)
+          (softmax): Softmax(dim=-1)
+          (attn_dropout): Dropout(p=0.2, inplace=False)
+          (dense): Linear(in_features=64, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (out_dropout): Dropout(p=0.2, inplace=False)
+        )
+        (feed_forward): FeedForward(
+          (dense_1): Linear(in_features=64, out_features=256, bias=True)
+          (dense_2): Linear(in_features=256, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (dropout): Dropout(p=0.2, inplace=False)
+        )
+      )
+    )
+  )
+  (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+)
+Trainable parameters: 932992
+Sat 07 Feb 2026 14:00:25 INFO  FLOPs: 3327808.0
+Sat 07 Feb 2026 14:01:34 INFO  epoch 0 training [time: 69.07s, train loss: 422.9431]
+Sat 07 Feb 2026 14:02:02 INFO  epoch 0 evaluating [time: 28.12s, valid_score: 0.158500]
+Sat 07 Feb 2026 14:02:02 INFO  valid result: 
+hit@10 : 0.3853    ndcg@10 : 0.2115    mrr@10 : 0.1585
+Sat 07 Feb 2026 14:02:02 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:03:11 INFO  epoch 1 training [time: 69.16s, train loss: 340.0727]
+Sat 07 Feb 2026 14:03:39 INFO  epoch 1 evaluating [time: 28.34s, valid_score: 0.229200]
+Sat 07 Feb 2026 14:03:39 INFO  valid result: 
+hit@10 : 0.4593    ndcg@10 : 0.2836    mrr@10 : 0.2292
+Sat 07 Feb 2026 14:03:39 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:04:45 INFO  epoch 2 training [time: 65.20s, train loss: 280.1779]
+Sat 07 Feb 2026 14:05:12 INFO  epoch 2 evaluating [time: 27.30s, valid_score: 0.250300]
+Sat 07 Feb 2026 14:05:12 INFO  valid result: 
+hit@10 : 0.4856    ndcg@10 : 0.3062    mrr@10 : 0.2503
+Sat 07 Feb 2026 14:05:12 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:06:16 INFO  epoch 3 training [time: 63.77s, train loss: 230.0353]
+Sat 07 Feb 2026 14:06:43 INFO  epoch 3 evaluating [time: 27.18s, valid_score: 0.264200]
+Sat 07 Feb 2026 14:06:43 INFO  valid result: 
+hit@10 : 0.4929    ndcg@10 : 0.3186    mrr@10 : 0.2642
+Sat 07 Feb 2026 14:06:43 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:07:48 INFO  epoch 4 training [time: 65.28s, train loss: 193.6555]
+Sat 07 Feb 2026 14:08:16 INFO  epoch 4 evaluating [time: 27.41s, valid_score: 0.281400]
+Sat 07 Feb 2026 14:08:16 INFO  valid result: 
+hit@10 : 0.492    ndcg@10 : 0.3317    mrr@10 : 0.2814
+Sat 07 Feb 2026 14:08:16 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:09:20 INFO  epoch 5 training [time: 64.37s, train loss: 163.0655]
+Sat 07 Feb 2026 14:09:47 INFO  epoch 5 evaluating [time: 27.29s, valid_score: 0.288100]
+Sat 07 Feb 2026 14:09:47 INFO  valid result: 
+hit@10 : 0.4956    ndcg@10 : 0.3375    mrr@10 : 0.2881
+Sat 07 Feb 2026 14:09:47 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:10:52 INFO  epoch 6 training [time: 64.63s, train loss: 141.1701]
+Sat 07 Feb 2026 14:11:19 INFO  epoch 6 evaluating [time: 27.45s, valid_score: 0.298500]
+Sat 07 Feb 2026 14:11:19 INFO  valid result: 
+hit@10 : 0.4996    ndcg@10 : 0.3464    mrr@10 : 0.2985
+Sat 07 Feb 2026 14:11:19 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:12:24 INFO  epoch 7 training [time: 64.62s, train loss: 124.6751]
+Sat 07 Feb 2026 14:12:51 INFO  epoch 7 evaluating [time: 27.37s, valid_score: 0.295900]
+Sat 07 Feb 2026 14:12:51 INFO  valid result: 
+hit@10 : 0.5004    ndcg@10 : 0.3446    mrr@10 : 0.2959
+Sat 07 Feb 2026 14:13:55 INFO  epoch 8 training [time: 63.86s, train loss: 112.5439]
+Sat 07 Feb 2026 14:14:22 INFO  epoch 8 evaluating [time: 27.28s, valid_score: 0.300800]
+Sat 07 Feb 2026 14:14:22 INFO  valid result: 
+hit@10 : 0.5001    ndcg@10 : 0.3484    mrr@10 : 0.3008
+Sat 07 Feb 2026 14:14:23 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:15:37 INFO  epoch 9 training [time: 74.89s, train loss: 104.2404]
+Sat 07 Feb 2026 14:16:06 INFO  epoch 9 evaluating [time: 28.73s, valid_score: 0.301900]
+Sat 07 Feb 2026 14:16:06 INFO  valid result: 
+hit@10 : 0.5024    ndcg@10 : 0.3498    mrr@10 : 0.3019
+Sat 07 Feb 2026 14:16:06 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:17:20 INFO  epoch 10 training [time: 73.53s, train loss: 96.2186]
+Sat 07 Feb 2026 14:17:48 INFO  epoch 10 evaluating [time: 28.59s, valid_score: 0.301200]
+Sat 07 Feb 2026 14:17:48 INFO  valid result: 
+hit@10 : 0.496    ndcg@10 : 0.3478    mrr@10 : 0.3012
+Sat 07 Feb 2026 14:19:02 INFO  epoch 11 training [time: 73.27s, train loss: 90.1131]
+Sat 07 Feb 2026 14:19:30 INFO  epoch 11 evaluating [time: 28.86s, valid_score: 0.298000]
+Sat 07 Feb 2026 14:19:30 INFO  valid result: 
+hit@10 : 0.4943    ndcg@10 : 0.3449    mrr@10 : 0.298
+Sat 07 Feb 2026 14:20:43 INFO  epoch 12 training [time: 72.37s, train loss: 86.4336]
+Sat 07 Feb 2026 14:21:11 INFO  epoch 12 evaluating [time: 28.28s, valid_score: 0.301700]
+Sat 07 Feb 2026 14:21:11 INFO  valid result: 
+hit@10 : 0.4997    ndcg@10 : 0.3489    mrr@10 : 0.3017
+Sat 07 Feb 2026 14:22:24 INFO  epoch 13 training [time: 72.60s, train loss: 81.0094]
+Sat 07 Feb 2026 14:22:52 INFO  epoch 13 evaluating [time: 27.85s, valid_score: 0.305000]
+Sat 07 Feb 2026 14:22:52 INFO  valid result: 
+hit@10 : 0.4909    ndcg@10 : 0.3493    mrr@10 : 0.305
+Sat 07 Feb 2026 14:22:52 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:24:01 INFO  epoch 14 training [time: 69.61s, train loss: 78.6201]
+Sat 07 Feb 2026 14:24:29 INFO  epoch 14 evaluating [time: 27.63s, valid_score: 0.305600]
+Sat 07 Feb 2026 14:24:29 INFO  valid result: 
+hit@10 : 0.4914    ndcg@10 : 0.35    mrr@10 : 0.3056
+Sat 07 Feb 2026 14:24:29 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:25:35 INFO  epoch 15 training [time: 66.45s, train loss: 74.3632]
+Sat 07 Feb 2026 14:26:03 INFO  epoch 15 evaluating [time: 27.43s, valid_score: 0.298600]
+Sat 07 Feb 2026 14:26:03 INFO  valid result: 
+hit@10 : 0.4926    ndcg@10 : 0.3449    mrr@10 : 0.2986
+Sat 07 Feb 2026 14:27:11 INFO  epoch 16 training [time: 68.70s, train loss: 72.1301]
+Sat 07 Feb 2026 14:27:39 INFO  epoch 16 evaluating [time: 27.82s, valid_score: 0.308700]
+Sat 07 Feb 2026 14:27:39 INFO  valid result: 
+hit@10 : 0.4914    ndcg@10 : 0.3522    mrr@10 : 0.3087
+Sat 07 Feb 2026 14:27:39 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:28:56 INFO  epoch 17 training [time: 76.29s, train loss: 71.1203]
+Sat 07 Feb 2026 14:29:24 INFO  epoch 17 evaluating [time: 28.26s, valid_score: 0.303200]
+Sat 07 Feb 2026 14:29:24 INFO  valid result: 
+hit@10 : 0.49    ndcg@10 : 0.3479    mrr@10 : 0.3032
+Sat 07 Feb 2026 14:30:36 INFO  epoch 18 training [time: 71.97s, train loss: 68.4015]
+Sat 07 Feb 2026 14:31:04 INFO  epoch 18 evaluating [time: 28.25s, valid_score: 0.304600]
+Sat 07 Feb 2026 14:31:04 INFO  valid result: 
+hit@10 : 0.4853    ndcg@10 : 0.3477    mrr@10 : 0.3046
+Sat 07 Feb 2026 14:32:16 INFO  epoch 19 training [time: 72.45s, train loss: 66.5021]
+Sat 07 Feb 2026 14:32:45 INFO  epoch 19 evaluating [time: 28.49s, valid_score: 0.308000]
+Sat 07 Feb 2026 14:32:45 INFO  valid result: 
+hit@10 : 0.4939    ndcg@10 : 0.3522    mrr@10 : 0.308
+Sat 07 Feb 2026 14:33:57 INFO  epoch 20 training [time: 71.83s, train loss: 66.1513]
+Sat 07 Feb 2026 14:34:26 INFO  epoch 20 evaluating [time: 28.73s, valid_score: 0.301600]
+Sat 07 Feb 2026 14:34:26 INFO  valid result: 
+hit@10 : 0.488    ndcg@10 : 0.3462    mrr@10 : 0.3016
+Sat 07 Feb 2026 14:35:40 INFO  epoch 21 training [time: 74.04s, train loss: 64.6553]
+Sat 07 Feb 2026 14:36:08 INFO  epoch 21 evaluating [time: 28.41s, valid_score: 0.304200]
+Sat 07 Feb 2026 14:36:08 INFO  valid result: 
+hit@10 : 0.4909    ndcg@10 : 0.3487    mrr@10 : 0.3042
+Sat 07 Feb 2026 14:37:21 INFO  epoch 22 training [time: 73.23s, train loss: 61.6292]
+Sat 07 Feb 2026 14:37:50 INFO  epoch 22 evaluating [time: 28.41s, valid_score: 0.300900]
+Sat 07 Feb 2026 14:37:50 INFO  valid result: 
+hit@10 : 0.4831    ndcg@10 : 0.3444    mrr@10 : 0.3009
+Sat 07 Feb 2026 14:39:04 INFO  epoch 23 training [time: 74.02s, train loss: 62.2428]
+Sat 07 Feb 2026 14:39:33 INFO  epoch 23 evaluating [time: 29.06s, valid_score: 0.306300]
+Sat 07 Feb 2026 14:39:33 INFO  valid result: 
+hit@10 : 0.4879    ndcg@10 : 0.3496    mrr@10 : 0.3063
+Sat 07 Feb 2026 14:40:46 INFO  epoch 24 training [time: 73.38s, train loss: 62.0301]
+Sat 07 Feb 2026 14:41:15 INFO  epoch 24 evaluating [time: 28.47s, valid_score: 0.305200]
+Sat 07 Feb 2026 14:41:15 INFO  valid result: 
+hit@10 : 0.4893    ndcg@10 : 0.3492    mrr@10 : 0.3052
+Sat 07 Feb 2026 14:42:28 INFO  epoch 25 training [time: 73.31s, train loss: 60.3191]
+Sat 07 Feb 2026 14:42:56 INFO  epoch 25 evaluating [time: 28.35s, valid_score: 0.311800]
+Sat 07 Feb 2026 14:42:56 INFO  valid result: 
+hit@10 : 0.4901    ndcg@10 : 0.3543    mrr@10 : 0.3118
+Sat 07 Feb 2026 14:42:56 INFO  Saving current: saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 14:44:10 INFO  epoch 26 training [time: 74.12s, train loss: 58.8662]
+Sat 07 Feb 2026 14:44:39 INFO  epoch 26 evaluating [time: 28.32s, valid_score: 0.308900]
+Sat 07 Feb 2026 14:44:39 INFO  valid result: 
+hit@10 : 0.4907    ndcg@10 : 0.3522    mrr@10 : 0.3089
+Sat 07 Feb 2026 14:45:52 INFO  epoch 27 training [time: 73.20s, train loss: 58.2431]
+Sat 07 Feb 2026 14:46:20 INFO  epoch 27 evaluating [time: 28.39s, valid_score: 0.307700]
+Sat 07 Feb 2026 14:46:20 INFO  valid result: 
+hit@10 : 0.4897    ndcg@10 : 0.3511    mrr@10 : 0.3077
+Sat 07 Feb 2026 14:47:34 INFO  epoch 28 training [time: 74.14s, train loss: 59.0567]
+Sat 07 Feb 2026 14:48:03 INFO  epoch 28 evaluating [time: 28.36s, valid_score: 0.306500]
+Sat 07 Feb 2026 14:48:03 INFO  valid result: 
+hit@10 : 0.4901    ndcg@10 : 0.3504    mrr@10 : 0.3065
+Sat 07 Feb 2026 14:49:16 INFO  epoch 29 training [time: 73.38s, train loss: 58.0261]
+Sat 07 Feb 2026 14:49:44 INFO  epoch 29 evaluating [time: 28.27s, valid_score: 0.307300]
+Sat 07 Feb 2026 14:49:44 INFO  valid result: 
+hit@10 : 0.4906    ndcg@10 : 0.351    mrr@10 : 0.3073
+Sat 07 Feb 2026 14:50:58 INFO  epoch 30 training [time: 73.50s, train loss: 58.3163]
+Sat 07 Feb 2026 14:51:27 INFO  epoch 30 evaluating [time: 28.83s, valid_score: 0.307000]
+Sat 07 Feb 2026 14:51:27 INFO  valid result: 
+hit@10 : 0.4911    ndcg@10 : 0.351    mrr@10 : 0.307
+Sat 07 Feb 2026 14:52:34 INFO  epoch 31 training [time: 67.27s, train loss: 56.6341]
+Sat 07 Feb 2026 14:53:01 INFO  epoch 31 evaluating [time: 27.24s, valid_score: 0.307300]
+Sat 07 Feb 2026 14:53:01 INFO  valid result: 
+hit@10 : 0.4919    ndcg@10 : 0.3513    mrr@10 : 0.3073
+Sat 07 Feb 2026 14:54:03 INFO  epoch 32 training [time: 62.05s, train loss: 56.3870]
+Sat 07 Feb 2026 14:54:30 INFO  epoch 32 evaluating [time: 27.06s, valid_score: 0.310300]
+Sat 07 Feb 2026 14:54:30 INFO  valid result: 
+hit@10 : 0.4964    ndcg@10 : 0.3546    mrr@10 : 0.3103
+Sat 07 Feb 2026 14:55:34 INFO  epoch 33 training [time: 63.79s, train loss: 55.6773]
+Sat 07 Feb 2026 14:56:02 INFO  epoch 33 evaluating [time: 27.47s, valid_score: 0.307700]
+Sat 07 Feb 2026 14:56:02 INFO  valid result: 
+hit@10 : 0.4923    ndcg@10 : 0.3518    mrr@10 : 0.3077
+Sat 07 Feb 2026 14:56:58 INFO  epoch 34 training [time: 56.87s, train loss: 56.0566]
+Sat 07 Feb 2026 14:57:25 INFO  epoch 34 evaluating [time: 26.60s, valid_score: 0.306400]
+Sat 07 Feb 2026 14:57:25 INFO  valid result: 
+hit@10 : 0.488    ndcg@10 : 0.3497    mrr@10 : 0.3064
+Sat 07 Feb 2026 14:58:24 INFO  epoch 35 training [time: 58.99s, train loss: 54.4916]
+Sat 07 Feb 2026 14:58:51 INFO  epoch 35 evaluating [time: 26.43s, valid_score: 0.308000]
+Sat 07 Feb 2026 14:58:51 INFO  valid result: 
+hit@10 : 0.4941    ndcg@10 : 0.3523    mrr@10 : 0.308
+Sat 07 Feb 2026 14:59:49 INFO  epoch 36 training [time: 58.34s, train loss: 55.0049]
+Sat 07 Feb 2026 15:00:16 INFO  epoch 36 evaluating [time: 26.76s, valid_score: 0.304600]
+Sat 07 Feb 2026 15:00:16 INFO  valid result: 
+hit@10 : 0.4893    ndcg@10 : 0.3487    mrr@10 : 0.3046
+Sat 07 Feb 2026 15:00:16 INFO  Finished training, best eval result in epoch 25
+Sat 07 Feb 2026 15:00:16 INFO  Loading model structure and parameters from saved\TiSASRec-Feb-07-2026_14-00-25.pth
+Sat 07 Feb 2026 15:00:43 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    10.20 %     |
++-------------+----------------+
+| GPU         | 0.97 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.46 G/15.63 G |
++-------------+----------------+
+Sat 07 Feb 2026 15:00:43 INFO  best valid : OrderedDict([('hit@10', 0.4901), ('ndcg@10', 0.3543), ('mrr@10', 0.3118)])
+Sat 07 Feb 2026 15:00:43 INFO  test result: OrderedDict([('hit@10', 0.4469), ('ndcg@10', 0.3104), ('mrr@10', 0.2679)])
+Sat 07 Feb 2026 15:00:43 WARNING  command line args [--models tisasrec --datasets amazon-beauty-5core-subset,amazon-electronics-5core-subset] will not be used in RecBole
+Sat 07 Feb 2026 15:00:43 INFO  ['scripts/run_grid.py', '--models', 'tisasrec', '--datasets', 'amazon-beauty-5core-subset,amazon-electronics-5core-subset']
+Sat 07 Feb 2026 15:00:43 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2024
+state = INFO
+reproducibility = True
+data_path = data/amazon\amazon-beauty-5core-subset
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TiSASRec
+hidden_size = 64
+inner_size = 256
+n_layers = 2
+n_heads = 4
+hidden_dropout_prob = 0.2
+attn_dropout_prob = 0.2
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+time_span = 512
+loss_type = BCE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sat 07 Feb 2026 15:00:44 INFO  amazon-beauty-5core-subset
+The number of users: 7001
+Average actions of users: 15.458
+The number of items: 11924
+Average actions of items: 9.075400486454752
+The number of inters: 108206
+The sparsity of the dataset: 99.87038081155896%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Sat 07 Feb 2026 15:00:46 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sat 07 Feb 2026 15:00:46 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sat 07 Feb 2026 15:00:46 INFO  TiSASRec(
+  (item_embedding): Embedding(11924, 64, padding_idx=0)
+  (time_matrix_K_emb): Embedding(513, 64)
+  (time_matrix_V_emb): Embedding(513, 64)
+  (position_key_embedding): Embedding(32, 64)
+  (position_value_embedding): Embedding(32, 64)
+  (trm_encoder): TransformerEncoder(
+    (layer): ModuleList(
+      (0-1): 2 x TransformerLayer(
+        (multi_head_attention): MultiHeadAttention(
+          (query): Linear(in_features=64, out_features=64, bias=True)
+          (key): Linear(in_features=64, out_features=64, bias=True)
+          (value): Linear(in_features=64, out_features=64, bias=True)
+          (softmax): Softmax(dim=-1)
+          (attn_dropout): Dropout(p=0.2, inplace=False)
+          (dense): Linear(in_features=64, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (out_dropout): Dropout(p=0.2, inplace=False)
+        )
+        (feed_forward): FeedForward(
+          (dense_1): Linear(in_features=64, out_features=256, bias=True)
+          (dense_2): Linear(in_features=256, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (dropout): Dropout(p=0.2, inplace=False)
+        )
+      )
+    )
+  )
+  (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+)
+Trainable parameters: 932992
+Sat 07 Feb 2026 15:00:46 INFO  FLOPs: 3327808.0
+Sat 07 Feb 2026 15:01:44 INFO  epoch 0 training [time: 57.94s, train loss: 422.0874]
+Sat 07 Feb 2026 15:02:11 INFO  epoch 0 evaluating [time: 27.18s, valid_score: 0.167800]
+Sat 07 Feb 2026 15:02:11 INFO  valid result: 
+hit@10 : 0.3966    ndcg@10 : 0.2214    mrr@10 : 0.1678
+Sat 07 Feb 2026 15:02:11 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:03:08 INFO  epoch 1 training [time: 56.90s, train loss: 341.4040]
+Sat 07 Feb 2026 15:03:35 INFO  epoch 1 evaluating [time: 26.89s, valid_score: 0.216300]
+Sat 07 Feb 2026 15:03:35 INFO  valid result: 
+hit@10 : 0.4614    ndcg@10 : 0.2742    mrr@10 : 0.2163
+Sat 07 Feb 2026 15:03:35 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:04:32 INFO  epoch 2 training [time: 57.23s, train loss: 282.5178]
+Sat 07 Feb 2026 15:04:59 INFO  epoch 2 evaluating [time: 27.24s, valid_score: 0.238000]
+Sat 07 Feb 2026 15:04:59 INFO  valid result: 
+hit@10 : 0.4824    ndcg@10 : 0.296    mrr@10 : 0.238
+Sat 07 Feb 2026 15:04:59 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:05:56 INFO  epoch 3 training [time: 56.57s, train loss: 233.3646]
+Sat 07 Feb 2026 15:06:23 INFO  epoch 3 evaluating [time: 27.20s, valid_score: 0.259000]
+Sat 07 Feb 2026 15:06:23 INFO  valid result: 
+hit@10 : 0.487    ndcg@10 : 0.3132    mrr@10 : 0.259
+Sat 07 Feb 2026 15:06:23 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:07:20 INFO  epoch 4 training [time: 57.22s, train loss: 194.1604]
+Sat 07 Feb 2026 15:07:47 INFO  epoch 4 evaluating [time: 27.30s, valid_score: 0.272600]
+Sat 07 Feb 2026 15:07:47 INFO  valid result: 
+hit@10 : 0.4874    ndcg@10 : 0.3239    mrr@10 : 0.2726
+Sat 07 Feb 2026 15:07:47 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:08:45 INFO  epoch 5 training [time: 57.23s, train loss: 164.6876]
+Sat 07 Feb 2026 15:09:12 INFO  epoch 5 evaluating [time: 27.12s, valid_score: 0.285400]
+Sat 07 Feb 2026 15:09:12 INFO  valid result: 
+hit@10 : 0.4916    ndcg@10 : 0.3347    mrr@10 : 0.2854
+Sat 07 Feb 2026 15:09:12 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:10:09 INFO  epoch 6 training [time: 57.35s, train loss: 141.3799]
+Sat 07 Feb 2026 15:10:36 INFO  epoch 6 evaluating [time: 27.01s, valid_score: 0.291200]
+Sat 07 Feb 2026 15:10:36 INFO  valid result: 
+hit@10 : 0.4954    ndcg@10 : 0.3397    mrr@10 : 0.2912
+Sat 07 Feb 2026 15:10:36 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:11:34 INFO  epoch 7 training [time: 57.89s, train loss: 125.5094]
+Sat 07 Feb 2026 15:12:02 INFO  epoch 7 evaluating [time: 27.53s, valid_score: 0.300600]
+Sat 07 Feb 2026 15:12:02 INFO  valid result: 
+hit@10 : 0.4973    ndcg@10 : 0.3474    mrr@10 : 0.3006
+Sat 07 Feb 2026 15:12:02 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:12:59 INFO  epoch 8 training [time: 56.97s, train loss: 111.9522]
+Sat 07 Feb 2026 15:13:25 INFO  epoch 8 evaluating [time: 26.64s, valid_score: 0.292600]
+Sat 07 Feb 2026 15:13:25 INFO  valid result: 
+hit@10 : 0.4936    ndcg@10 : 0.3407    mrr@10 : 0.2926
+Sat 07 Feb 2026 15:14:23 INFO  epoch 9 training [time: 58.19s, train loss: 103.2599]
+Sat 07 Feb 2026 15:14:50 INFO  epoch 9 evaluating [time: 26.62s, valid_score: 0.294100]
+Sat 07 Feb 2026 15:14:50 INFO  valid result: 
+hit@10 : 0.4971    ndcg@10 : 0.3424    mrr@10 : 0.2941
+Sat 07 Feb 2026 15:15:49 INFO  epoch 10 training [time: 58.71s, train loss: 95.1661]
+Sat 07 Feb 2026 15:16:16 INFO  epoch 10 evaluating [time: 26.96s, valid_score: 0.296700]
+Sat 07 Feb 2026 15:16:16 INFO  valid result: 
+hit@10 : 0.494    ndcg@10 : 0.3438    mrr@10 : 0.2967
+Sat 07 Feb 2026 15:17:13 INFO  epoch 11 training [time: 56.84s, train loss: 88.9113]
+Sat 07 Feb 2026 15:17:39 INFO  epoch 11 evaluating [time: 26.71s, valid_score: 0.306500]
+Sat 07 Feb 2026 15:17:39 INFO  valid result: 
+hit@10 : 0.4976    ndcg@10 : 0.352    mrr@10 : 0.3065
+Sat 07 Feb 2026 15:17:39 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:18:37 INFO  epoch 12 training [time: 58.11s, train loss: 84.4752]
+Sat 07 Feb 2026 15:19:04 INFO  epoch 12 evaluating [time: 26.50s, valid_score: 0.302100]
+Sat 07 Feb 2026 15:19:04 INFO  valid result: 
+hit@10 : 0.4974    ndcg@10 : 0.3487    mrr@10 : 0.3021
+Sat 07 Feb 2026 15:20:03 INFO  epoch 13 training [time: 58.68s, train loss: 81.1335]
+Sat 07 Feb 2026 15:20:29 INFO  epoch 13 evaluating [time: 26.40s, valid_score: 0.305400]
+Sat 07 Feb 2026 15:20:29 INFO  valid result: 
+hit@10 : 0.4971    ndcg@10 : 0.3512    mrr@10 : 0.3054
+Sat 07 Feb 2026 15:21:26 INFO  epoch 14 training [time: 56.82s, train loss: 77.0636]
+Sat 07 Feb 2026 15:21:53 INFO  epoch 14 evaluating [time: 27.02s, valid_score: 0.302400]
+Sat 07 Feb 2026 15:21:53 INFO  valid result: 
+hit@10 : 0.4994    ndcg@10 : 0.3493    mrr@10 : 0.3024
+Sat 07 Feb 2026 15:22:50 INFO  epoch 15 training [time: 57.65s, train loss: 75.4451]
+Sat 07 Feb 2026 15:23:17 INFO  epoch 15 evaluating [time: 26.70s, valid_score: 0.301900]
+Sat 07 Feb 2026 15:23:17 INFO  valid result: 
+hit@10 : 0.4946    ndcg@10 : 0.3478    mrr@10 : 0.3019
+Sat 07 Feb 2026 15:24:15 INFO  epoch 16 training [time: 57.95s, train loss: 73.7192]
+Sat 07 Feb 2026 15:24:42 INFO  epoch 16 evaluating [time: 26.71s, valid_score: 0.302900]
+Sat 07 Feb 2026 15:24:42 INFO  valid result: 
+hit@10 : 0.4966    ndcg@10 : 0.349    mrr@10 : 0.3029
+Sat 07 Feb 2026 15:25:39 INFO  epoch 17 training [time: 56.71s, train loss: 69.0491]
+Sat 07 Feb 2026 15:26:06 INFO  epoch 17 evaluating [time: 27.17s, valid_score: 0.307700]
+Sat 07 Feb 2026 15:26:06 INFO  valid result: 
+hit@10 : 0.4954    ndcg@10 : 0.3525    mrr@10 : 0.3077
+Sat 07 Feb 2026 15:26:06 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:27:03 INFO  epoch 18 training [time: 57.15s, train loss: 70.3964]
+Sat 07 Feb 2026 15:27:30 INFO  epoch 18 evaluating [time: 26.83s, valid_score: 0.303600]
+Sat 07 Feb 2026 15:27:30 INFO  valid result: 
+hit@10 : 0.494    ndcg@10 : 0.349    mrr@10 : 0.3036
+Sat 07 Feb 2026 15:28:27 INFO  epoch 19 training [time: 57.40s, train loss: 67.1290]
+Sat 07 Feb 2026 15:28:54 INFO  epoch 19 evaluating [time: 27.24s, valid_score: 0.301000]
+Sat 07 Feb 2026 15:28:54 INFO  valid result: 
+hit@10 : 0.4933    ndcg@10 : 0.3469    mrr@10 : 0.301
+Sat 07 Feb 2026 15:29:51 INFO  epoch 20 training [time: 56.76s, train loss: 65.0882]
+Sat 07 Feb 2026 15:30:18 INFO  epoch 20 evaluating [time: 27.13s, valid_score: 0.301400]
+Sat 07 Feb 2026 15:30:18 INFO  valid result: 
+hit@10 : 0.4923    ndcg@10 : 0.3469    mrr@10 : 0.3014
+Sat 07 Feb 2026 15:31:15 INFO  epoch 21 training [time: 56.84s, train loss: 64.3431]
+Sat 07 Feb 2026 15:31:42 INFO  epoch 21 evaluating [time: 27.13s, valid_score: 0.301000]
+Sat 07 Feb 2026 15:31:42 INFO  valid result: 
+hit@10 : 0.4897    ndcg@10 : 0.346    mrr@10 : 0.301
+Sat 07 Feb 2026 15:32:39 INFO  epoch 22 training [time: 56.67s, train loss: 64.0519]
+Sat 07 Feb 2026 15:33:06 INFO  epoch 22 evaluating [time: 27.16s, valid_score: 0.302200]
+Sat 07 Feb 2026 15:33:06 INFO  valid result: 
+hit@10 : 0.492    ndcg@10 : 0.3475    mrr@10 : 0.3022
+Sat 07 Feb 2026 15:34:03 INFO  epoch 23 training [time: 56.86s, train loss: 63.0104]
+Sat 07 Feb 2026 15:34:30 INFO  epoch 23 evaluating [time: 27.24s, valid_score: 0.305700]
+Sat 07 Feb 2026 15:34:30 INFO  valid result: 
+hit@10 : 0.4911    ndcg@10 : 0.3499    mrr@10 : 0.3057
+Sat 07 Feb 2026 15:35:27 INFO  epoch 24 training [time: 57.06s, train loss: 61.8859]
+Sat 07 Feb 2026 15:35:55 INFO  epoch 24 evaluating [time: 27.45s, valid_score: 0.303900]
+Sat 07 Feb 2026 15:35:55 INFO  valid result: 
+hit@10 : 0.4911    ndcg@10 : 0.3485    mrr@10 : 0.3039
+Sat 07 Feb 2026 15:36:51 INFO  epoch 25 training [time: 56.29s, train loss: 60.3630]
+Sat 07 Feb 2026 15:37:18 INFO  epoch 25 evaluating [time: 26.84s, valid_score: 0.303400]
+Sat 07 Feb 2026 15:37:18 INFO  valid result: 
+hit@10 : 0.4944    ndcg@10 : 0.3489    mrr@10 : 0.3034
+Sat 07 Feb 2026 15:38:15 INFO  epoch 26 training [time: 57.24s, train loss: 58.7182]
+Sat 07 Feb 2026 15:38:42 INFO  epoch 26 evaluating [time: 26.93s, valid_score: 0.308300]
+Sat 07 Feb 2026 15:38:42 INFO  valid result: 
+hit@10 : 0.4934    ndcg@10 : 0.3524    mrr@10 : 0.3083
+Sat 07 Feb 2026 15:38:42 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:39:40 INFO  epoch 27 training [time: 57.86s, train loss: 60.1740]
+Sat 07 Feb 2026 15:40:07 INFO  epoch 27 evaluating [time: 27.27s, valid_score: 0.304500]
+Sat 07 Feb 2026 15:40:07 INFO  valid result: 
+hit@10 : 0.4907    ndcg@10 : 0.3487    mrr@10 : 0.3045
+Sat 07 Feb 2026 15:41:04 INFO  epoch 28 training [time: 56.95s, train loss: 58.7300]
+Sat 07 Feb 2026 15:41:31 INFO  epoch 28 evaluating [time: 26.50s, valid_score: 0.305100]
+Sat 07 Feb 2026 15:41:31 INFO  valid result: 
+hit@10 : 0.4914    ndcg@10 : 0.3494    mrr@10 : 0.3051
+Sat 07 Feb 2026 15:42:29 INFO  epoch 29 training [time: 58.12s, train loss: 58.7546]
+Sat 07 Feb 2026 15:42:55 INFO  epoch 29 evaluating [time: 26.51s, valid_score: 0.304200]
+Sat 07 Feb 2026 15:42:55 INFO  valid result: 
+hit@10 : 0.4836    ndcg@10 : 0.3471    mrr@10 : 0.3042
+Sat 07 Feb 2026 15:43:54 INFO  epoch 30 training [time: 58.56s, train loss: 57.6289]
+Sat 07 Feb 2026 15:44:20 INFO  epoch 30 evaluating [time: 26.69s, valid_score: 0.303000]
+Sat 07 Feb 2026 15:44:20 INFO  valid result: 
+hit@10 : 0.4869    ndcg@10 : 0.3468    mrr@10 : 0.303
+Sat 07 Feb 2026 15:45:17 INFO  epoch 31 training [time: 56.28s, train loss: 56.2027]
+Sat 07 Feb 2026 15:45:43 INFO  epoch 31 evaluating [time: 26.68s, valid_score: 0.304500]
+Sat 07 Feb 2026 15:45:43 INFO  valid result: 
+hit@10 : 0.483    ndcg@10 : 0.347    mrr@10 : 0.3045
+Sat 07 Feb 2026 15:46:41 INFO  epoch 32 training [time: 57.77s, train loss: 55.8260]
+Sat 07 Feb 2026 15:47:08 INFO  epoch 32 evaluating [time: 26.57s, valid_score: 0.304800]
+Sat 07 Feb 2026 15:47:08 INFO  valid result: 
+hit@10 : 0.4864    ndcg@10 : 0.3481    mrr@10 : 0.3048
+Sat 07 Feb 2026 15:48:06 INFO  epoch 33 training [time: 58.54s, train loss: 56.3924]
+Sat 07 Feb 2026 15:48:33 INFO  epoch 33 evaluating [time: 26.45s, valid_score: 0.306100]
+Sat 07 Feb 2026 15:48:33 INFO  valid result: 
+hit@10 : 0.4906    ndcg@10 : 0.3501    mrr@10 : 0.3061
+Sat 07 Feb 2026 15:49:30 INFO  epoch 34 training [time: 56.98s, train loss: 56.0199]
+Sat 07 Feb 2026 15:49:57 INFO  epoch 34 evaluating [time: 27.13s, valid_score: 0.303300]
+Sat 07 Feb 2026 15:49:57 INFO  valid result: 
+hit@10 : 0.4857    ndcg@10 : 0.3468    mrr@10 : 0.3033
+Sat 07 Feb 2026 15:50:54 INFO  epoch 35 training [time: 57.39s, train loss: 54.9956]
+Sat 07 Feb 2026 15:51:21 INFO  epoch 35 evaluating [time: 26.66s, valid_score: 0.300900]
+Sat 07 Feb 2026 15:51:21 INFO  valid result: 
+hit@10 : 0.487    ndcg@10 : 0.3452    mrr@10 : 0.3009
+Sat 07 Feb 2026 15:52:19 INFO  epoch 36 training [time: 57.79s, train loss: 55.3339]
+Sat 07 Feb 2026 15:52:46 INFO  epoch 36 evaluating [time: 26.91s, valid_score: 0.304900]
+Sat 07 Feb 2026 15:52:46 INFO  valid result: 
+hit@10 : 0.4847    ndcg@10 : 0.3478    mrr@10 : 0.3049
+Sat 07 Feb 2026 15:53:42 INFO  epoch 37 training [time: 56.83s, train loss: 53.3692]
+Sat 07 Feb 2026 15:54:09 INFO  epoch 37 evaluating [time: 26.96s, valid_score: 0.304300]
+Sat 07 Feb 2026 15:54:09 INFO  valid result: 
+hit@10 : 0.4867    ndcg@10 : 0.3479    mrr@10 : 0.3043
+Sat 07 Feb 2026 15:54:09 INFO  Finished training, best eval result in epoch 26
+Sat 07 Feb 2026 15:54:09 INFO  Loading model structure and parameters from saved\TiSASRec-Feb-07-2026_15-00-46.pth
+Sat 07 Feb 2026 15:54:38 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |    11.40 %     |
++-------------+----------------+
+| GPU         | 0.97 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.50 G/15.63 G |
++-------------+----------------+
+Sat 07 Feb 2026 15:54:38 INFO  best valid : OrderedDict([('hit@10', 0.4934), ('ndcg@10', 0.3524), ('mrr@10', 0.3083)])
+Sat 07 Feb 2026 15:54:38 INFO  test result: OrderedDict([('hit@10', 0.4401), ('ndcg@10', 0.3042), ('mrr@10', 0.2616)])
+Sat 07 Feb 2026 15:54:38 WARNING  command line args [--models tisasrec --datasets amazon-beauty-5core-subset,amazon-electronics-5core-subset] will not be used in RecBole
+Sat 07 Feb 2026 15:54:38 INFO  ['scripts/run_grid.py', '--models', 'tisasrec', '--datasets', 'amazon-beauty-5core-subset,amazon-electronics-5core-subset']
+Sat 07 Feb 2026 15:54:38 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 42
+state = INFO
+reproducibility = True
+data_path = data/amazon\amazon-electronics-5core-subset
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TiSASRec
+hidden_size = 64
+inner_size = 256
+n_layers = 2
+n_heads = 4
+hidden_dropout_prob = 0.2
+attn_dropout_prob = 0.2
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+time_span = 512
+loss_type = BCE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sat 07 Feb 2026 15:54:38 INFO  amazon-electronics-5core-subset
+The number of users: 1501
+Average actions of users: 108.42733333333334
+The number of items: 54722
+Average actions of items: 2.9721861808080994
+The number of inters: 162641
+The sparsity of the dataset: 99.80198988231011%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Sat 07 Feb 2026 15:54:41 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sat 07 Feb 2026 15:54:41 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sat 07 Feb 2026 15:54:41 INFO  TiSASRec(
+  (item_embedding): Embedding(54722, 64, padding_idx=0)
+  (time_matrix_K_emb): Embedding(513, 64)
+  (time_matrix_V_emb): Embedding(513, 64)
+  (position_key_embedding): Embedding(32, 64)
+  (position_value_embedding): Embedding(32, 64)
+  (trm_encoder): TransformerEncoder(
+    (layer): ModuleList(
+      (0-1): 2 x TransformerLayer(
+        (multi_head_attention): MultiHeadAttention(
+          (query): Linear(in_features=64, out_features=64, bias=True)
+          (key): Linear(in_features=64, out_features=64, bias=True)
+          (value): Linear(in_features=64, out_features=64, bias=True)
+          (softmax): Softmax(dim=-1)
+          (attn_dropout): Dropout(p=0.2, inplace=False)
+          (dense): Linear(in_features=64, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (out_dropout): Dropout(p=0.2, inplace=False)
+        )
+        (feed_forward): FeedForward(
+          (dense_1): Linear(in_features=64, out_features=256, bias=True)
+          (dense_2): Linear(in_features=256, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (dropout): Dropout(p=0.2, inplace=False)
+        )
+      )
+    )
+  )
+  (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+)
+Trainable parameters: 3672064
+Sat 07 Feb 2026 15:54:41 INFO  FLOPs: 3327808.0
+Sat 07 Feb 2026 15:56:24 INFO  epoch 0 training [time: 103.21s, train loss: 811.5350]
+Sat 07 Feb 2026 15:56:30 INFO  epoch 0 evaluating [time: 5.78s, valid_score: 0.139000]
+Sat 07 Feb 2026 15:56:30 INFO  valid result: 
+hit@10 : 0.3067    ndcg@10 : 0.1781    mrr@10 : 0.139
+Sat 07 Feb 2026 15:56:30 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 15:58:12 INFO  epoch 1 training [time: 102.33s, train loss: 647.8666]
+Sat 07 Feb 2026 15:58:18 INFO  epoch 1 evaluating [time: 5.93s, valid_score: 0.152800]
+Sat 07 Feb 2026 15:58:18 INFO  valid result: 
+hit@10 : 0.3293    ndcg@10 : 0.1943    mrr@10 : 0.1528
+Sat 07 Feb 2026 15:58:18 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:00:02 INFO  epoch 2 training [time: 103.68s, train loss: 505.0948]
+Sat 07 Feb 2026 16:00:08 INFO  epoch 2 evaluating [time: 5.76s, valid_score: 0.164500]
+Sat 07 Feb 2026 16:00:08 INFO  valid result: 
+hit@10 : 0.3427    ndcg@10 : 0.2065    mrr@10 : 0.1645
+Sat 07 Feb 2026 16:00:08 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:01:49 INFO  epoch 3 training [time: 101.11s, train loss: 397.3991]
+Sat 07 Feb 2026 16:01:55 INFO  epoch 3 evaluating [time: 5.91s, valid_score: 0.160700]
+Sat 07 Feb 2026 16:01:55 INFO  valid result: 
+hit@10 : 0.3327    ndcg@10 : 0.2012    mrr@10 : 0.1607
+Sat 07 Feb 2026 16:03:37 INFO  epoch 4 training [time: 102.52s, train loss: 311.3065]
+Sat 07 Feb 2026 16:03:43 INFO  epoch 4 evaluating [time: 6.01s, valid_score: 0.157300]
+Sat 07 Feb 2026 16:03:43 INFO  valid result: 
+hit@10 : 0.3287    ndcg@10 : 0.1976    mrr@10 : 0.1573
+Sat 07 Feb 2026 16:05:25 INFO  epoch 5 training [time: 101.96s, train loss: 249.7177]
+Sat 07 Feb 2026 16:05:31 INFO  epoch 5 evaluating [time: 5.74s, valid_score: 0.172400]
+Sat 07 Feb 2026 16:05:31 INFO  valid result: 
+hit@10 : 0.3373    ndcg@10 : 0.2111    mrr@10 : 0.1724
+Sat 07 Feb 2026 16:05:31 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:07:13 INFO  epoch 6 training [time: 102.36s, train loss: 204.3437]
+Sat 07 Feb 2026 16:07:19 INFO  epoch 6 evaluating [time: 5.82s, valid_score: 0.182200]
+Sat 07 Feb 2026 16:07:19 INFO  valid result: 
+hit@10 : 0.3513    ndcg@10 : 0.222    mrr@10 : 0.1822
+Sat 07 Feb 2026 16:07:19 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:09:02 INFO  epoch 7 training [time: 102.65s, train loss: 173.7779]
+Sat 07 Feb 2026 16:09:08 INFO  epoch 7 evaluating [time: 5.78s, valid_score: 0.183100]
+Sat 07 Feb 2026 16:09:08 INFO  valid result: 
+hit@10 : 0.3573    ndcg@10 : 0.2239    mrr@10 : 0.1831
+Sat 07 Feb 2026 16:09:08 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:10:50 INFO  epoch 8 training [time: 102.44s, train loss: 152.8419]
+Sat 07 Feb 2026 16:10:56 INFO  epoch 8 evaluating [time: 5.75s, valid_score: 0.187600]
+Sat 07 Feb 2026 16:10:56 INFO  valid result: 
+hit@10 : 0.3487    ndcg@10 : 0.2255    mrr@10 : 0.1876
+Sat 07 Feb 2026 16:10:56 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:12:39 INFO  epoch 9 training [time: 103.13s, train loss: 136.4643]
+Sat 07 Feb 2026 16:12:45 INFO  epoch 9 evaluating [time: 5.90s, valid_score: 0.183800]
+Sat 07 Feb 2026 16:12:45 INFO  valid result: 
+hit@10 : 0.3413    ndcg@10 : 0.221    mrr@10 : 0.1838
+Sat 07 Feb 2026 16:14:27 INFO  epoch 10 training [time: 102.29s, train loss: 124.4290]
+Sat 07 Feb 2026 16:14:33 INFO  epoch 10 evaluating [time: 5.84s, valid_score: 0.189300]
+Sat 07 Feb 2026 16:14:33 INFO  valid result: 
+hit@10 : 0.3507    ndcg@10 : 0.2274    mrr@10 : 0.1893
+Sat 07 Feb 2026 16:14:33 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:16:16 INFO  epoch 11 training [time: 102.89s, train loss: 113.6501]
+Sat 07 Feb 2026 16:16:22 INFO  epoch 11 evaluating [time: 5.72s, valid_score: 0.187800]
+Sat 07 Feb 2026 16:16:22 INFO  valid result: 
+hit@10 : 0.36    ndcg@10 : 0.2283    mrr@10 : 0.1878
+Sat 07 Feb 2026 16:18:04 INFO  epoch 12 training [time: 102.08s, train loss: 107.2707]
+Sat 07 Feb 2026 16:18:10 INFO  epoch 12 evaluating [time: 5.88s, valid_score: 0.191100]
+Sat 07 Feb 2026 16:18:10 INFO  valid result: 
+hit@10 : 0.3493    ndcg@10 : 0.2286    mrr@10 : 0.1911
+Sat 07 Feb 2026 16:18:10 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:19:53 INFO  epoch 13 training [time: 103.68s, train loss: 100.2204]
+Sat 07 Feb 2026 16:19:59 INFO  epoch 13 evaluating [time: 6.01s, valid_score: 0.193100]
+Sat 07 Feb 2026 16:19:59 INFO  valid result: 
+hit@10 : 0.35    ndcg@10 : 0.2303    mrr@10 : 0.1931
+Sat 07 Feb 2026 16:19:59 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:21:41 INFO  epoch 14 training [time: 101.38s, train loss: 96.5339]
+Sat 07 Feb 2026 16:21:47 INFO  epoch 14 evaluating [time: 5.86s, valid_score: 0.195100]
+Sat 07 Feb 2026 16:21:47 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.233    mrr@10 : 0.1951
+Sat 07 Feb 2026 16:21:47 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:23:30 INFO  epoch 15 training [time: 103.29s, train loss: 90.4272]
+Sat 07 Feb 2026 16:23:36 INFO  epoch 15 evaluating [time: 5.95s, valid_score: 0.188700]
+Sat 07 Feb 2026 16:23:36 INFO  valid result: 
+hit@10 : 0.3547    ndcg@10 : 0.2279    mrr@10 : 0.1887
+Sat 07 Feb 2026 16:25:17 INFO  epoch 16 training [time: 101.45s, train loss: 85.6493]
+Sat 07 Feb 2026 16:25:23 INFO  epoch 16 evaluating [time: 5.75s, valid_score: 0.187000]
+Sat 07 Feb 2026 16:25:23 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.2266    mrr@10 : 0.187
+Sat 07 Feb 2026 16:27:06 INFO  epoch 17 training [time: 102.82s, train loss: 84.2496]
+Sat 07 Feb 2026 16:27:12 INFO  epoch 17 evaluating [time: 5.86s, valid_score: 0.194900]
+Sat 07 Feb 2026 16:27:12 INFO  valid result: 
+hit@10 : 0.3567    ndcg@10 : 0.2332    mrr@10 : 0.1949
+Sat 07 Feb 2026 16:28:55 INFO  epoch 18 training [time: 103.16s, train loss: 83.3186]
+Sat 07 Feb 2026 16:29:01 INFO  epoch 18 evaluating [time: 5.93s, valid_score: 0.196200]
+Sat 07 Feb 2026 16:29:01 INFO  valid result: 
+hit@10 : 0.3567    ndcg@10 : 0.2341    mrr@10 : 0.1962
+Sat 07 Feb 2026 16:29:01 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:30:44 INFO  epoch 19 training [time: 102.85s, train loss: 78.9859]
+Sat 07 Feb 2026 16:30:50 INFO  epoch 19 evaluating [time: 5.72s, valid_score: 0.197500]
+Sat 07 Feb 2026 16:30:50 INFO  valid result: 
+hit@10 : 0.3613    ndcg@10 : 0.2362    mrr@10 : 0.1975
+Sat 07 Feb 2026 16:30:50 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:32:32 INFO  epoch 20 training [time: 102.83s, train loss: 78.3438]
+Sat 07 Feb 2026 16:32:38 INFO  epoch 20 evaluating [time: 5.92s, valid_score: 0.202100]
+Sat 07 Feb 2026 16:32:38 INFO  valid result: 
+hit@10 : 0.366    ndcg@10 : 0.2408    mrr@10 : 0.2021
+Sat 07 Feb 2026 16:32:38 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:34:21 INFO  epoch 21 training [time: 102.87s, train loss: 74.3299]
+Sat 07 Feb 2026 16:34:27 INFO  epoch 21 evaluating [time: 5.94s, valid_score: 0.204000]
+Sat 07 Feb 2026 16:34:27 INFO  valid result: 
+hit@10 : 0.3567    ndcg@10 : 0.2402    mrr@10 : 0.204
+Sat 07 Feb 2026 16:34:27 INFO  Saving current: saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:36:10 INFO  epoch 22 training [time: 102.82s, train loss: 73.4259]
+Sat 07 Feb 2026 16:36:16 INFO  epoch 22 evaluating [time: 5.75s, valid_score: 0.195800]
+Sat 07 Feb 2026 16:36:16 INFO  valid result: 
+hit@10 : 0.354    ndcg@10 : 0.2333    mrr@10 : 0.1958
+Sat 07 Feb 2026 16:37:57 INFO  epoch 23 training [time: 101.23s, train loss: 70.7976]
+Sat 07 Feb 2026 16:38:03 INFO  epoch 23 evaluating [time: 5.95s, valid_score: 0.201300]
+Sat 07 Feb 2026 16:38:03 INFO  valid result: 
+hit@10 : 0.3567    ndcg@10 : 0.2381    mrr@10 : 0.2013
+Sat 07 Feb 2026 16:39:46 INFO  epoch 24 training [time: 102.62s, train loss: 69.4347]
+Sat 07 Feb 2026 16:39:52 INFO  epoch 24 evaluating [time: 6.02s, valid_score: 0.202300]
+Sat 07 Feb 2026 16:39:52 INFO  valid result: 
+hit@10 : 0.3647    ndcg@10 : 0.2406    mrr@10 : 0.2023
+Sat 07 Feb 2026 16:41:34 INFO  epoch 25 training [time: 102.64s, train loss: 67.6454]
+Sat 07 Feb 2026 16:41:40 INFO  epoch 25 evaluating [time: 5.89s, valid_score: 0.200900]
+Sat 07 Feb 2026 16:41:40 INFO  valid result: 
+hit@10 : 0.3627    ndcg@10 : 0.2389    mrr@10 : 0.2009
+Sat 07 Feb 2026 16:43:23 INFO  epoch 26 training [time: 102.54s, train loss: 65.2908]
+Sat 07 Feb 2026 16:43:29 INFO  epoch 26 evaluating [time: 5.94s, valid_score: 0.201400]
+Sat 07 Feb 2026 16:43:29 INFO  valid result: 
+hit@10 : 0.3573    ndcg@10 : 0.2383    mrr@10 : 0.2014
+Sat 07 Feb 2026 16:45:11 INFO  epoch 27 training [time: 101.80s, train loss: 65.9867]
+Sat 07 Feb 2026 16:45:16 INFO  epoch 27 evaluating [time: 5.75s, valid_score: 0.196800]
+Sat 07 Feb 2026 16:45:16 INFO  valid result: 
+hit@10 : 0.3527    ndcg@10 : 0.2337    mrr@10 : 0.1968
+Sat 07 Feb 2026 16:46:57 INFO  epoch 28 training [time: 101.13s, train loss: 64.1574]
+Sat 07 Feb 2026 16:47:03 INFO  epoch 28 evaluating [time: 5.74s, valid_score: 0.198800]
+Sat 07 Feb 2026 16:47:03 INFO  valid result: 
+hit@10 : 0.3453    ndcg@10 : 0.2337    mrr@10 : 0.1988
+Sat 07 Feb 2026 16:48:45 INFO  epoch 29 training [time: 101.93s, train loss: 63.6314]
+Sat 07 Feb 2026 16:48:51 INFO  epoch 29 evaluating [time: 5.94s, valid_score: 0.203700]
+Sat 07 Feb 2026 16:48:51 INFO  valid result: 
+hit@10 : 0.356    ndcg@10 : 0.2396    mrr@10 : 0.2037
+Sat 07 Feb 2026 16:50:32 INFO  epoch 30 training [time: 101.38s, train loss: 63.1275]
+Sat 07 Feb 2026 16:50:38 INFO  epoch 30 evaluating [time: 5.81s, valid_score: 0.199000]
+Sat 07 Feb 2026 16:50:38 INFO  valid result: 
+hit@10 : 0.3613    ndcg@10 : 0.2373    mrr@10 : 0.199
+Sat 07 Feb 2026 16:52:21 INFO  epoch 31 training [time: 102.99s, train loss: 62.5334]
+Sat 07 Feb 2026 16:52:27 INFO  epoch 31 evaluating [time: 5.76s, valid_score: 0.196300]
+Sat 07 Feb 2026 16:52:27 INFO  valid result: 
+hit@10 : 0.3467    ndcg@10 : 0.2317    mrr@10 : 0.1963
+Sat 07 Feb 2026 16:54:09 INFO  epoch 32 training [time: 102.07s, train loss: 60.9769]
+Sat 07 Feb 2026 16:54:15 INFO  epoch 32 evaluating [time: 5.95s, valid_score: 0.200600]
+Sat 07 Feb 2026 16:54:15 INFO  valid result: 
+hit@10 : 0.362    ndcg@10 : 0.2387    mrr@10 : 0.2006
+Sat 07 Feb 2026 16:54:15 INFO  Finished training, best eval result in epoch 21
+Sat 07 Feb 2026 16:54:15 INFO  Loading model structure and parameters from saved\TiSASRec-Feb-07-2026_15-54-41.pth
+Sat 07 Feb 2026 16:54:22 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     7.30 %     |
++-------------+----------------+
+| GPU         | 0.97 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.30 G/15.63 G |
++-------------+----------------+
+Sat 07 Feb 2026 16:54:22 INFO  best valid : OrderedDict([('hit@10', 0.3567), ('ndcg@10', 0.2402), ('mrr@10', 0.204)])
+Sat 07 Feb 2026 16:54:22 INFO  test result: OrderedDict([('hit@10', 0.2973), ('ndcg@10', 0.1862), ('mrr@10', 0.1525)])
+Sat 07 Feb 2026 16:54:22 WARNING  command line args [--models tisasrec --datasets amazon-beauty-5core-subset,amazon-electronics-5core-subset] will not be used in RecBole
+Sat 07 Feb 2026 16:54:22 INFO  ['scripts/run_grid.py', '--models', 'tisasrec', '--datasets', 'amazon-beauty-5core-subset,amazon-electronics-5core-subset']
+Sat 07 Feb 2026 16:54:22 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2023
+state = INFO
+reproducibility = True
+data_path = data/amazon\amazon-electronics-5core-subset
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TiSASRec
+hidden_size = 64
+inner_size = 256
+n_layers = 2
+n_heads = 4
+hidden_dropout_prob = 0.2
+attn_dropout_prob = 0.2
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+time_span = 512
+loss_type = BCE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sat 07 Feb 2026 16:54:22 INFO  amazon-electronics-5core-subset
+The number of users: 1501
+Average actions of users: 108.42733333333334
+The number of items: 54722
+Average actions of items: 2.9721861808080994
+The number of inters: 162641
+The sparsity of the dataset: 99.80198988231011%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Sat 07 Feb 2026 16:54:25 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sat 07 Feb 2026 16:54:25 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sat 07 Feb 2026 16:54:25 INFO  TiSASRec(
+  (item_embedding): Embedding(54722, 64, padding_idx=0)
+  (time_matrix_K_emb): Embedding(513, 64)
+  (time_matrix_V_emb): Embedding(513, 64)
+  (position_key_embedding): Embedding(32, 64)
+  (position_value_embedding): Embedding(32, 64)
+  (trm_encoder): TransformerEncoder(
+    (layer): ModuleList(
+      (0-1): 2 x TransformerLayer(
+        (multi_head_attention): MultiHeadAttention(
+          (query): Linear(in_features=64, out_features=64, bias=True)
+          (key): Linear(in_features=64, out_features=64, bias=True)
+          (value): Linear(in_features=64, out_features=64, bias=True)
+          (softmax): Softmax(dim=-1)
+          (attn_dropout): Dropout(p=0.2, inplace=False)
+          (dense): Linear(in_features=64, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (out_dropout): Dropout(p=0.2, inplace=False)
+        )
+        (feed_forward): FeedForward(
+          (dense_1): Linear(in_features=64, out_features=256, bias=True)
+          (dense_2): Linear(in_features=256, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (dropout): Dropout(p=0.2, inplace=False)
+        )
+      )
+    )
+  )
+  (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+)
+Trainable parameters: 3672064
+Sat 07 Feb 2026 16:54:25 INFO  FLOPs: 3327808.0
+Sat 07 Feb 2026 16:56:09 INFO  epoch 0 training [time: 104.10s, train loss: 812.3970]
+Sat 07 Feb 2026 16:56:15 INFO  epoch 0 evaluating [time: 5.77s, valid_score: 0.131000]
+Sat 07 Feb 2026 16:56:15 INFO  valid result: 
+hit@10 : 0.282    ndcg@10 : 0.1664    mrr@10 : 0.131
+Sat 07 Feb 2026 16:56:15 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 16:57:56 INFO  epoch 1 training [time: 101.35s, train loss: 649.1475]
+Sat 07 Feb 2026 16:58:02 INFO  epoch 1 evaluating [time: 5.97s, valid_score: 0.166500]
+Sat 07 Feb 2026 16:58:02 INFO  valid result: 
+hit@10 : 0.3247    ndcg@10 : 0.2038    mrr@10 : 0.1665
+Sat 07 Feb 2026 16:58:02 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 16:59:45 INFO  epoch 2 training [time: 102.93s, train loss: 506.2662]
+Sat 07 Feb 2026 16:59:51 INFO  epoch 2 evaluating [time: 6.05s, valid_score: 0.162600]
+Sat 07 Feb 2026 16:59:51 INFO  valid result: 
+hit@10 : 0.3347    ndcg@10 : 0.203    mrr@10 : 0.1626
+Sat 07 Feb 2026 17:01:31 INFO  epoch 3 training [time: 100.25s, train loss: 394.1440]
+Sat 07 Feb 2026 17:01:37 INFO  epoch 3 evaluating [time: 5.91s, valid_score: 0.160900]
+Sat 07 Feb 2026 17:01:37 INFO  valid result: 
+hit@10 : 0.346    ndcg@10 : 0.2042    mrr@10 : 0.1609
+Sat 07 Feb 2026 17:03:19 INFO  epoch 4 training [time: 101.82s, train loss: 310.2738]
+Sat 07 Feb 2026 17:03:25 INFO  epoch 4 evaluating [time: 5.91s, valid_score: 0.169700]
+Sat 07 Feb 2026 17:03:25 INFO  valid result: 
+hit@10 : 0.346    ndcg@10 : 0.2112    mrr@10 : 0.1697
+Sat 07 Feb 2026 17:03:25 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:05:07 INFO  epoch 5 training [time: 102.01s, train loss: 248.8254]
+Sat 07 Feb 2026 17:05:13 INFO  epoch 5 evaluating [time: 5.77s, valid_score: 0.174900]
+Sat 07 Feb 2026 17:05:13 INFO  valid result: 
+hit@10 : 0.362    ndcg@10 : 0.219    mrr@10 : 0.1749
+Sat 07 Feb 2026 17:05:13 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:06:55 INFO  epoch 6 training [time: 102.24s, train loss: 206.1070]
+Sat 07 Feb 2026 17:07:01 INFO  epoch 6 evaluating [time: 5.77s, valid_score: 0.173300]
+Sat 07 Feb 2026 17:07:01 INFO  valid result: 
+hit@10 : 0.3547    ndcg@10 : 0.2161    mrr@10 : 0.1733
+Sat 07 Feb 2026 17:08:43 INFO  epoch 7 training [time: 102.00s, train loss: 173.8311]
+Sat 07 Feb 2026 17:08:49 INFO  epoch 7 evaluating [time: 5.96s, valid_score: 0.184100]
+Sat 07 Feb 2026 17:08:49 INFO  valid result: 
+hit@10 : 0.37    ndcg@10 : 0.2278    mrr@10 : 0.1841
+Sat 07 Feb 2026 17:08:49 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:10:31 INFO  epoch 8 training [time: 102.01s, train loss: 151.4415]
+Sat 07 Feb 2026 17:10:37 INFO  epoch 8 evaluating [time: 5.79s, valid_score: 0.185900]
+Sat 07 Feb 2026 17:10:37 INFO  valid result: 
+hit@10 : 0.364    ndcg@10 : 0.228    mrr@10 : 0.1859
+Sat 07 Feb 2026 17:10:37 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:12:20 INFO  epoch 9 training [time: 103.01s, train loss: 133.3141]
+Sat 07 Feb 2026 17:12:26 INFO  epoch 9 evaluating [time: 5.76s, valid_score: 0.201000]
+Sat 07 Feb 2026 17:12:26 INFO  valid result: 
+hit@10 : 0.3693    ndcg@10 : 0.2407    mrr@10 : 0.201
+Sat 07 Feb 2026 17:12:26 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:14:07 INFO  epoch 10 training [time: 101.01s, train loss: 122.9788]
+Sat 07 Feb 2026 17:14:13 INFO  epoch 10 evaluating [time: 5.94s, valid_score: 0.189900]
+Sat 07 Feb 2026 17:14:13 INFO  valid result: 
+hit@10 : 0.3473    ndcg@10 : 0.2272    mrr@10 : 0.1899
+Sat 07 Feb 2026 17:15:55 INFO  epoch 11 training [time: 102.30s, train loss: 113.3095]
+Sat 07 Feb 2026 17:16:01 INFO  epoch 11 evaluating [time: 6.04s, valid_score: 0.192700]
+Sat 07 Feb 2026 17:16:01 INFO  valid result: 
+hit@10 : 0.3573    ndcg@10 : 0.2316    mrr@10 : 0.1927
+Sat 07 Feb 2026 17:17:42 INFO  epoch 12 training [time: 100.85s, train loss: 105.6073]
+Sat 07 Feb 2026 17:17:48 INFO  epoch 12 evaluating [time: 5.92s, valid_score: 0.196900]
+Sat 07 Feb 2026 17:17:48 INFO  valid result: 
+hit@10 : 0.3567    ndcg@10 : 0.2347    mrr@10 : 0.1969
+Sat 07 Feb 2026 17:19:31 INFO  epoch 13 training [time: 102.76s, train loss: 99.5588]
+Sat 07 Feb 2026 17:19:37 INFO  epoch 13 evaluating [time: 6.04s, valid_score: 0.188400]
+Sat 07 Feb 2026 17:19:37 INFO  valid result: 
+hit@10 : 0.3507    ndcg@10 : 0.2269    mrr@10 : 0.1884
+Sat 07 Feb 2026 17:21:18 INFO  epoch 14 training [time: 101.47s, train loss: 94.7728]
+Sat 07 Feb 2026 17:21:24 INFO  epoch 14 evaluating [time: 5.80s, valid_score: 0.189700]
+Sat 07 Feb 2026 17:21:24 INFO  valid result: 
+hit@10 : 0.354    ndcg@10 : 0.2285    mrr@10 : 0.1897
+Sat 07 Feb 2026 17:23:06 INFO  epoch 15 training [time: 101.71s, train loss: 90.2955]
+Sat 07 Feb 2026 17:23:11 INFO  epoch 15 evaluating [time: 5.88s, valid_score: 0.201500]
+Sat 07 Feb 2026 17:23:11 INFO  valid result: 
+hit@10 : 0.354    ndcg@10 : 0.2375    mrr@10 : 0.2015
+Sat 07 Feb 2026 17:23:11 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:24:54 INFO  epoch 16 training [time: 102.82s, train loss: 85.5915]
+Sat 07 Feb 2026 17:25:00 INFO  epoch 16 evaluating [time: 6.00s, valid_score: 0.198500]
+Sat 07 Feb 2026 17:25:00 INFO  valid result: 
+hit@10 : 0.358    ndcg@10 : 0.2361    mrr@10 : 0.1985
+Sat 07 Feb 2026 17:26:42 INFO  epoch 17 training [time: 102.20s, train loss: 83.5923]
+Sat 07 Feb 2026 17:26:48 INFO  epoch 17 evaluating [time: 5.76s, valid_score: 0.186500]
+Sat 07 Feb 2026 17:26:48 INFO  valid result: 
+hit@10 : 0.3407    ndcg@10 : 0.2228    mrr@10 : 0.1865
+Sat 07 Feb 2026 17:28:30 INFO  epoch 18 training [time: 102.11s, train loss: 80.2594]
+Sat 07 Feb 2026 17:28:36 INFO  epoch 18 evaluating [time: 5.96s, valid_score: 0.195000]
+Sat 07 Feb 2026 17:28:36 INFO  valid result: 
+hit@10 : 0.36    ndcg@10 : 0.2339    mrr@10 : 0.195
+Sat 07 Feb 2026 17:30:18 INFO  epoch 19 training [time: 101.88s, train loss: 78.4538]
+Sat 07 Feb 2026 17:30:24 INFO  epoch 19 evaluating [time: 5.97s, valid_score: 0.187300]
+Sat 07 Feb 2026 17:30:24 INFO  valid result: 
+hit@10 : 0.3433    ndcg@10 : 0.2241    mrr@10 : 0.1873
+Sat 07 Feb 2026 17:32:07 INFO  epoch 20 training [time: 102.45s, train loss: 75.4349]
+Sat 07 Feb 2026 17:32:12 INFO  epoch 20 evaluating [time: 5.81s, valid_score: 0.198700]
+Sat 07 Feb 2026 17:32:12 INFO  valid result: 
+hit@10 : 0.348    ndcg@10 : 0.2339    mrr@10 : 0.1987
+Sat 07 Feb 2026 17:33:53 INFO  epoch 21 training [time: 100.92s, train loss: 74.4338]
+Sat 07 Feb 2026 17:33:59 INFO  epoch 21 evaluating [time: 5.96s, valid_score: 0.190300]
+Sat 07 Feb 2026 17:33:59 INFO  valid result: 
+hit@10 : 0.348    ndcg@10 : 0.2274    mrr@10 : 0.1903
+Sat 07 Feb 2026 17:35:42 INFO  epoch 22 training [time: 102.87s, train loss: 72.0960]
+Sat 07 Feb 2026 17:35:48 INFO  epoch 22 evaluating [time: 6.06s, valid_score: 0.191600]
+Sat 07 Feb 2026 17:35:48 INFO  valid result: 
+hit@10 : 0.334    ndcg@10 : 0.2252    mrr@10 : 0.1916
+Sat 07 Feb 2026 17:37:29 INFO  epoch 23 training [time: 100.78s, train loss: 70.1699]
+Sat 07 Feb 2026 17:37:35 INFO  epoch 23 evaluating [time: 5.87s, valid_score: 0.198000]
+Sat 07 Feb 2026 17:37:35 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.235    mrr@10 : 0.198
+Sat 07 Feb 2026 17:39:17 INFO  epoch 24 training [time: 102.41s, train loss: 67.8268]
+Sat 07 Feb 2026 17:39:23 INFO  epoch 24 evaluating [time: 5.88s, valid_score: 0.199000]
+Sat 07 Feb 2026 17:39:23 INFO  valid result: 
+hit@10 : 0.35    ndcg@10 : 0.2347    mrr@10 : 0.199
+Sat 07 Feb 2026 17:41:06 INFO  epoch 25 training [time: 102.64s, train loss: 66.8142]
+Sat 07 Feb 2026 17:41:12 INFO  epoch 25 evaluating [time: 5.76s, valid_score: 0.192300]
+Sat 07 Feb 2026 17:41:12 INFO  valid result: 
+hit@10 : 0.338    ndcg@10 : 0.2267    mrr@10 : 0.1923
+Sat 07 Feb 2026 17:42:53 INFO  epoch 26 training [time: 101.22s, train loss: 67.2032]
+Sat 07 Feb 2026 17:42:59 INFO  epoch 26 evaluating [time: 5.77s, valid_score: 0.203000]
+Sat 07 Feb 2026 17:42:59 INFO  valid result: 
+hit@10 : 0.3487    ndcg@10 : 0.2376    mrr@10 : 0.203
+Sat 07 Feb 2026 17:42:59 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:44:41 INFO  epoch 27 training [time: 101.92s, train loss: 65.3892]
+Sat 07 Feb 2026 17:44:47 INFO  epoch 27 evaluating [time: 5.98s, valid_score: 0.196400]
+Sat 07 Feb 2026 17:44:47 INFO  valid result: 
+hit@10 : 0.358    ndcg@10 : 0.2346    mrr@10 : 0.1964
+Sat 07 Feb 2026 17:46:28 INFO  epoch 28 training [time: 101.64s, train loss: 65.6147]
+Sat 07 Feb 2026 17:46:34 INFO  epoch 28 evaluating [time: 5.86s, valid_score: 0.195700]
+Sat 07 Feb 2026 17:46:34 INFO  valid result: 
+hit@10 : 0.35    ndcg@10 : 0.2321    mrr@10 : 0.1957
+Sat 07 Feb 2026 17:48:16 INFO  epoch 29 training [time: 101.65s, train loss: 61.9451]
+Sat 07 Feb 2026 17:48:21 INFO  epoch 29 evaluating [time: 5.77s, valid_score: 0.190000]
+Sat 07 Feb 2026 17:48:21 INFO  valid result: 
+hit@10 : 0.3353    ndcg@10 : 0.2245    mrr@10 : 0.19
+Sat 07 Feb 2026 17:50:03 INFO  epoch 30 training [time: 101.20s, train loss: 61.4792]
+Sat 07 Feb 2026 17:50:09 INFO  epoch 30 evaluating [time: 5.97s, valid_score: 0.199000]
+Sat 07 Feb 2026 17:50:09 INFO  valid result: 
+hit@10 : 0.346    ndcg@10 : 0.2337    mrr@10 : 0.199
+Sat 07 Feb 2026 17:51:52 INFO  epoch 31 training [time: 103.29s, train loss: 61.4913]
+Sat 07 Feb 2026 17:51:58 INFO  epoch 31 evaluating [time: 6.11s, valid_score: 0.190900]
+Sat 07 Feb 2026 17:51:58 INFO  valid result: 
+hit@10 : 0.3467    ndcg@10 : 0.2276    mrr@10 : 0.1909
+Sat 07 Feb 2026 17:53:39 INFO  epoch 32 training [time: 100.94s, train loss: 60.2439]
+Sat 07 Feb 2026 17:53:45 INFO  epoch 32 evaluating [time: 5.96s, valid_score: 0.201000]
+Sat 07 Feb 2026 17:53:45 INFO  valid result: 
+hit@10 : 0.3647    ndcg@10 : 0.2396    mrr@10 : 0.201
+Sat 07 Feb 2026 17:55:27 INFO  epoch 33 training [time: 102.42s, train loss: 59.3027]
+Sat 07 Feb 2026 17:55:33 INFO  epoch 33 evaluating [time: 5.97s, valid_score: 0.204400]
+Sat 07 Feb 2026 17:55:33 INFO  valid result: 
+hit@10 : 0.3513    ndcg@10 : 0.2391    mrr@10 : 0.2044
+Sat 07 Feb 2026 17:55:33 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 17:57:16 INFO  epoch 34 training [time: 102.19s, train loss: 56.8049]
+Sat 07 Feb 2026 17:57:21 INFO  epoch 34 evaluating [time: 5.78s, valid_score: 0.197100]
+Sat 07 Feb 2026 17:57:21 INFO  valid result: 
+hit@10 : 0.3587    ndcg@10 : 0.2351    mrr@10 : 0.1971
+Sat 07 Feb 2026 17:59:03 INFO  epoch 35 training [time: 101.75s, train loss: 56.2798]
+Sat 07 Feb 2026 17:59:09 INFO  epoch 35 evaluating [time: 5.88s, valid_score: 0.207600]
+Sat 07 Feb 2026 17:59:09 INFO  valid result: 
+hit@10 : 0.358    ndcg@10 : 0.243    mrr@10 : 0.2076
+Sat 07 Feb 2026 17:59:09 INFO  Saving current: saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 18:00:51 INFO  epoch 36 training [time: 102.15s, train loss: 57.9176]
+Sat 07 Feb 2026 18:00:57 INFO  epoch 36 evaluating [time: 5.94s, valid_score: 0.201900]
+Sat 07 Feb 2026 18:00:57 INFO  valid result: 
+hit@10 : 0.3527    ndcg@10 : 0.2376    mrr@10 : 0.2019
+Sat 07 Feb 2026 18:02:39 INFO  epoch 37 training [time: 101.60s, train loss: 54.4299]
+Sat 07 Feb 2026 18:02:44 INFO  epoch 37 evaluating [time: 5.76s, valid_score: 0.203200]
+Sat 07 Feb 2026 18:02:44 INFO  valid result: 
+hit@10 : 0.3493    ndcg@10 : 0.2376    mrr@10 : 0.2032
+Sat 07 Feb 2026 18:04:27 INFO  epoch 38 training [time: 102.72s, train loss: 54.3546]
+Sat 07 Feb 2026 18:04:33 INFO  epoch 38 evaluating [time: 5.84s, valid_score: 0.195900]
+Sat 07 Feb 2026 18:04:33 INFO  valid result: 
+hit@10 : 0.3473    ndcg@10 : 0.2316    mrr@10 : 0.1959
+Sat 07 Feb 2026 18:06:15 INFO  epoch 39 training [time: 102.00s, train loss: 53.3231]
+Sat 07 Feb 2026 18:06:21 INFO  epoch 39 evaluating [time: 5.95s, valid_score: 0.195700]
+Sat 07 Feb 2026 18:06:21 INFO  valid result: 
+hit@10 : 0.358    ndcg@10 : 0.234    mrr@10 : 0.1957
+Sat 07 Feb 2026 18:08:03 INFO  epoch 40 training [time: 102.34s, train loss: 53.5485]
+Sat 07 Feb 2026 18:08:09 INFO  epoch 40 evaluating [time: 5.79s, valid_score: 0.198600]
+Sat 07 Feb 2026 18:08:09 INFO  valid result: 
+hit@10 : 0.342    ndcg@10 : 0.2324    mrr@10 : 0.1986
+Sat 07 Feb 2026 18:09:51 INFO  epoch 41 training [time: 101.82s, train loss: 52.8239]
+Sat 07 Feb 2026 18:09:57 INFO  epoch 41 evaluating [time: 5.98s, valid_score: 0.198800]
+Sat 07 Feb 2026 18:09:57 INFO  valid result: 
+hit@10 : 0.3447    ndcg@10 : 0.2332    mrr@10 : 0.1988
+Sat 07 Feb 2026 18:11:39 INFO  epoch 42 training [time: 102.32s, train loss: 54.6356]
+Sat 07 Feb 2026 18:11:45 INFO  epoch 42 evaluating [time: 6.08s, valid_score: 0.198400]
+Sat 07 Feb 2026 18:11:45 INFO  valid result: 
+hit@10 : 0.3467    ndcg@10 : 0.2337    mrr@10 : 0.1984
+Sat 07 Feb 2026 18:13:26 INFO  epoch 43 training [time: 101.09s, train loss: 52.7811]
+Sat 07 Feb 2026 18:13:32 INFO  epoch 43 evaluating [time: 5.82s, valid_score: 0.197000]
+Sat 07 Feb 2026 18:13:32 INFO  valid result: 
+hit@10 : 0.3567    ndcg@10 : 0.2348    mrr@10 : 0.197
+Sat 07 Feb 2026 18:15:14 INFO  epoch 44 training [time: 102.20s, train loss: 51.3821]
+Sat 07 Feb 2026 18:15:20 INFO  epoch 44 evaluating [time: 5.92s, valid_score: 0.203500]
+Sat 07 Feb 2026 18:15:20 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.2394    mrr@10 : 0.2035
+Sat 07 Feb 2026 18:17:03 INFO  epoch 45 training [time: 102.69s, train loss: 50.8682]
+Sat 07 Feb 2026 18:17:09 INFO  epoch 45 evaluating [time: 5.77s, valid_score: 0.192400]
+Sat 07 Feb 2026 18:17:09 INFO  valid result: 
+hit@10 : 0.3353    ndcg@10 : 0.2265    mrr@10 : 0.1924
+Sat 07 Feb 2026 18:18:51 INFO  epoch 46 training [time: 102.47s, train loss: 51.1848]
+Sat 07 Feb 2026 18:18:57 INFO  epoch 46 evaluating [time: 5.77s, valid_score: 0.191700]
+Sat 07 Feb 2026 18:18:57 INFO  valid result: 
+hit@10 : 0.344    ndcg@10 : 0.2277    mrr@10 : 0.1917
+Sat 07 Feb 2026 18:18:57 INFO  Finished training, best eval result in epoch 35
+Sat 07 Feb 2026 18:18:57 INFO  Loading model structure and parameters from saved\TiSASRec-Feb-07-2026_16-54-25.pth
+Sat 07 Feb 2026 18:19:04 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     2.80 %     |
++-------------+----------------+
+| GPU         | 0.97 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.58 G/15.63 G |
++-------------+----------------+
+Sat 07 Feb 2026 18:19:04 INFO  best valid : OrderedDict([('hit@10', 0.358), ('ndcg@10', 0.243), ('mrr@10', 0.2076)])
+Sat 07 Feb 2026 18:19:04 INFO  test result: OrderedDict([('hit@10', 0.27), ('ndcg@10', 0.1755), ('mrr@10', 0.1461)])
+Sat 07 Feb 2026 18:19:04 WARNING  command line args [--models tisasrec --datasets amazon-beauty-5core-subset,amazon-electronics-5core-subset] will not be used in RecBole
+Sat 07 Feb 2026 18:19:04 INFO  ['scripts/run_grid.py', '--models', 'tisasrec', '--datasets', 'amazon-beauty-5core-subset,amazon-electronics-5core-subset']
+Sat 07 Feb 2026 18:19:04 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2024
+state = INFO
+reproducibility = True
+data_path = data/amazon\amazon-electronics-5core-subset
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 100
+train_batch_size = 256
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 512
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [0,inf)
+item_inter_num_interval = [0,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 32
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.SEQUENTIAL
+model_name = TiSASRec
+hidden_size = 64
+inner_size = 256
+n_layers = 2
+n_heads = 4
+hidden_dropout_prob = 0.2
+attn_dropout_prob = 0.2
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+time_span = 512
+loss_type = BCE
+early_stop = 10
+neg_sampling = None
+device = cuda
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 100}
+
+
+Sat 07 Feb 2026 18:19:05 INFO  amazon-electronics-5core-subset
+The number of users: 1501
+Average actions of users: 108.42733333333334
+The number of items: 54722
+Average actions of items: 2.9721861808080994
+The number of inters: 162641
+The sparsity of the dataset: 99.80198988231011%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Sat 07 Feb 2026 18:19:07 INFO  [Training]: train_batch_size = [256] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Sat 07 Feb 2026 18:19:07 INFO  [Evaluation]: eval_batch_size = [512] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'uni100', 'test': 'uni100'}}]
+Sat 07 Feb 2026 18:19:07 INFO  TiSASRec(
+  (item_embedding): Embedding(54722, 64, padding_idx=0)
+  (time_matrix_K_emb): Embedding(513, 64)
+  (time_matrix_V_emb): Embedding(513, 64)
+  (position_key_embedding): Embedding(32, 64)
+  (position_value_embedding): Embedding(32, 64)
+  (trm_encoder): TransformerEncoder(
+    (layer): ModuleList(
+      (0-1): 2 x TransformerLayer(
+        (multi_head_attention): MultiHeadAttention(
+          (query): Linear(in_features=64, out_features=64, bias=True)
+          (key): Linear(in_features=64, out_features=64, bias=True)
+          (value): Linear(in_features=64, out_features=64, bias=True)
+          (softmax): Softmax(dim=-1)
+          (attn_dropout): Dropout(p=0.2, inplace=False)
+          (dense): Linear(in_features=64, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (out_dropout): Dropout(p=0.2, inplace=False)
+        )
+        (feed_forward): FeedForward(
+          (dense_1): Linear(in_features=64, out_features=256, bias=True)
+          (dense_2): Linear(in_features=256, out_features=64, bias=True)
+          (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+          (dropout): Dropout(p=0.2, inplace=False)
+        )
+      )
+    )
+  )
+  (layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (dropout): Dropout(p=0.2, inplace=False)
+)
+Trainable parameters: 3672064
+Sat 07 Feb 2026 18:19:07 INFO  FLOPs: 3327808.0
+Sat 07 Feb 2026 18:20:50 INFO  epoch 0 training [time: 102.91s, train loss: 809.6763]
+Sat 07 Feb 2026 18:20:56 INFO  epoch 0 evaluating [time: 6.02s, valid_score: 0.138100]
+Sat 07 Feb 2026 18:20:56 INFO  valid result: 
+hit@10 : 0.2967    ndcg@10 : 0.1752    mrr@10 : 0.1381
+Sat 07 Feb 2026 18:20:56 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:22:39 INFO  epoch 1 training [time: 102.54s, train loss: 648.6988]
+Sat 07 Feb 2026 18:22:44 INFO  epoch 1 evaluating [time: 5.80s, valid_score: 0.153800]
+Sat 07 Feb 2026 18:22:44 INFO  valid result: 
+hit@10 : 0.324    ndcg@10 : 0.1936    mrr@10 : 0.1538
+Sat 07 Feb 2026 18:22:44 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:24:27 INFO  epoch 2 training [time: 102.70s, train loss: 508.6473]
+Sat 07 Feb 2026 18:24:33 INFO  epoch 2 evaluating [time: 5.88s, valid_score: 0.155200]
+Sat 07 Feb 2026 18:24:33 INFO  valid result: 
+hit@10 : 0.3287    ndcg@10 : 0.1956    mrr@10 : 0.1552
+Sat 07 Feb 2026 18:24:33 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:26:15 INFO  epoch 3 training [time: 102.22s, train loss: 397.2911]
+Sat 07 Feb 2026 18:26:21 INFO  epoch 3 evaluating [time: 5.98s, valid_score: 0.166900]
+Sat 07 Feb 2026 18:26:21 INFO  valid result: 
+hit@10 : 0.336    ndcg@10 : 0.2065    mrr@10 : 0.1669
+Sat 07 Feb 2026 18:26:21 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:28:06 INFO  epoch 4 training [time: 104.80s, train loss: 313.5775]
+Sat 07 Feb 2026 18:28:12 INFO  epoch 4 evaluating [time: 5.83s, valid_score: 0.168200]
+Sat 07 Feb 2026 18:28:12 INFO  valid result: 
+hit@10 : 0.3533    ndcg@10 : 0.2117    mrr@10 : 0.1682
+Sat 07 Feb 2026 18:28:12 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:29:54 INFO  epoch 5 training [time: 102.20s, train loss: 250.2270]
+Sat 07 Feb 2026 18:30:00 INFO  epoch 5 evaluating [time: 5.97s, valid_score: 0.170600]
+Sat 07 Feb 2026 18:30:00 INFO  valid result: 
+hit@10 : 0.3513    ndcg@10 : 0.2132    mrr@10 : 0.1706
+Sat 07 Feb 2026 18:30:00 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:31:43 INFO  epoch 6 training [time: 102.73s, train loss: 207.7249]
+Sat 07 Feb 2026 18:31:49 INFO  epoch 6 evaluating [time: 6.09s, valid_score: 0.174800]
+Sat 07 Feb 2026 18:31:49 INFO  valid result: 
+hit@10 : 0.3467    ndcg@10 : 0.2151    mrr@10 : 0.1748
+Sat 07 Feb 2026 18:31:49 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:33:30 INFO  epoch 7 training [time: 100.71s, train loss: 176.1147]
+Sat 07 Feb 2026 18:33:36 INFO  epoch 7 evaluating [time: 5.96s, valid_score: 0.181200]
+Sat 07 Feb 2026 18:33:36 INFO  valid result: 
+hit@10 : 0.3633    ndcg@10 : 0.2239    mrr@10 : 0.1812
+Sat 07 Feb 2026 18:33:36 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:35:18 INFO  epoch 8 training [time: 102.13s, train loss: 154.8495]
+Sat 07 Feb 2026 18:35:24 INFO  epoch 8 evaluating [time: 5.91s, valid_score: 0.184400]
+Sat 07 Feb 2026 18:35:24 INFO  valid result: 
+hit@10 : 0.352    ndcg@10 : 0.2239    mrr@10 : 0.1844
+Sat 07 Feb 2026 18:35:24 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:37:06 INFO  epoch 9 training [time: 102.25s, train loss: 136.1606]
+Sat 07 Feb 2026 18:37:12 INFO  epoch 9 evaluating [time: 5.85s, valid_score: 0.193400]
+Sat 07 Feb 2026 18:37:12 INFO  valid result: 
+hit@10 : 0.3593    ndcg@10 : 0.2324    mrr@10 : 0.1934
+Sat 07 Feb 2026 18:37:12 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:38:54 INFO  epoch 10 training [time: 101.48s, train loss: 123.3373]
+Sat 07 Feb 2026 18:38:59 INFO  epoch 10 evaluating [time: 5.80s, valid_score: 0.196300]
+Sat 07 Feb 2026 18:38:59 INFO  valid result: 
+hit@10 : 0.3647    ndcg@10 : 0.2361    mrr@10 : 0.1963
+Sat 07 Feb 2026 18:38:59 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:40:43 INFO  epoch 11 training [time: 103.19s, train loss: 113.7485]
+Sat 07 Feb 2026 18:40:49 INFO  epoch 11 evaluating [time: 6.05s, valid_score: 0.191800]
+Sat 07 Feb 2026 18:40:49 INFO  valid result: 
+hit@10 : 0.364    ndcg@10 : 0.2325    mrr@10 : 0.1918
+Sat 07 Feb 2026 18:42:31 INFO  epoch 12 training [time: 102.48s, train loss: 105.8710]
+Sat 07 Feb 2026 18:42:37 INFO  epoch 12 evaluating [time: 5.83s, valid_score: 0.191000]
+Sat 07 Feb 2026 18:42:37 INFO  valid result: 
+hit@10 : 0.3547    ndcg@10 : 0.2295    mrr@10 : 0.191
+Sat 07 Feb 2026 18:44:19 INFO  epoch 13 training [time: 102.48s, train loss: 100.1200]
+Sat 07 Feb 2026 18:44:25 INFO  epoch 13 evaluating [time: 5.82s, valid_score: 0.195300]
+Sat 07 Feb 2026 18:44:25 INFO  valid result: 
+hit@10 : 0.3673    ndcg@10 : 0.236    mrr@10 : 0.1953
+Sat 07 Feb 2026 18:46:07 INFO  epoch 14 training [time: 101.27s, train loss: 95.4705]
+Sat 07 Feb 2026 18:46:13 INFO  epoch 14 evaluating [time: 5.97s, valid_score: 0.190900]
+Sat 07 Feb 2026 18:46:13 INFO  valid result: 
+hit@10 : 0.3673    ndcg@10 : 0.2325    mrr@10 : 0.1909
+Sat 07 Feb 2026 18:47:55 INFO  epoch 15 training [time: 102.26s, train loss: 89.6286]
+Sat 07 Feb 2026 18:48:01 INFO  epoch 15 evaluating [time: 6.09s, valid_score: 0.187700]
+Sat 07 Feb 2026 18:48:01 INFO  valid result: 
+hit@10 : 0.3487    ndcg@10 : 0.2255    mrr@10 : 0.1877
+Sat 07 Feb 2026 18:49:41 INFO  epoch 16 training [time: 100.57s, train loss: 86.8739]
+Sat 07 Feb 2026 18:49:47 INFO  epoch 16 evaluating [time: 6.02s, valid_score: 0.189500]
+Sat 07 Feb 2026 18:49:47 INFO  valid result: 
+hit@10 : 0.346    ndcg@10 : 0.2264    mrr@10 : 0.1895
+Sat 07 Feb 2026 18:51:30 INFO  epoch 17 training [time: 102.50s, train loss: 83.7136]
+Sat 07 Feb 2026 18:51:36 INFO  epoch 17 evaluating [time: 6.07s, valid_score: 0.188300]
+Sat 07 Feb 2026 18:51:36 INFO  valid result: 
+hit@10 : 0.3507    ndcg@10 : 0.2267    mrr@10 : 0.1883
+Sat 07 Feb 2026 18:53:17 INFO  epoch 18 training [time: 101.27s, train loss: 80.5453]
+Sat 07 Feb 2026 18:53:23 INFO  epoch 18 evaluating [time: 5.82s, valid_score: 0.194600]
+Sat 07 Feb 2026 18:53:23 INFO  valid result: 
+hit@10 : 0.3513    ndcg@10 : 0.2318    mrr@10 : 0.1946
+Sat 07 Feb 2026 18:55:05 INFO  epoch 19 training [time: 101.69s, train loss: 79.1357]
+Sat 07 Feb 2026 18:55:11 INFO  epoch 19 evaluating [time: 5.92s, valid_score: 0.198100]
+Sat 07 Feb 2026 18:55:11 INFO  valid result: 
+hit@10 : 0.342    ndcg@10 : 0.2325    mrr@10 : 0.1981
+Sat 07 Feb 2026 18:55:11 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 18:56:53 INFO  epoch 20 training [time: 102.33s, train loss: 76.7738]
+Sat 07 Feb 2026 18:56:59 INFO  epoch 20 evaluating [time: 6.08s, valid_score: 0.187500]
+Sat 07 Feb 2026 18:56:59 INFO  valid result: 
+hit@10 : 0.3453    ndcg@10 : 0.2247    mrr@10 : 0.1875
+Sat 07 Feb 2026 18:58:41 INFO  epoch 21 training [time: 101.73s, train loss: 74.2333]
+Sat 07 Feb 2026 18:58:47 INFO  epoch 21 evaluating [time: 5.78s, valid_score: 0.195100]
+Sat 07 Feb 2026 18:58:47 INFO  valid result: 
+hit@10 : 0.3507    ndcg@10 : 0.2315    mrr@10 : 0.1951
+Sat 07 Feb 2026 19:00:29 INFO  epoch 22 training [time: 102.69s, train loss: 72.9400]
+Sat 07 Feb 2026 19:00:35 INFO  epoch 22 evaluating [time: 5.95s, valid_score: 0.198900]
+Sat 07 Feb 2026 19:00:35 INFO  valid result: 
+hit@10 : 0.36    ndcg@10 : 0.2368    mrr@10 : 0.1989
+Sat 07 Feb 2026 19:00:35 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 19:02:18 INFO  epoch 23 training [time: 102.68s, train loss: 70.9694]
+Sat 07 Feb 2026 19:02:24 INFO  epoch 23 evaluating [time: 6.01s, valid_score: 0.197800]
+Sat 07 Feb 2026 19:02:24 INFO  valid result: 
+hit@10 : 0.3453    ndcg@10 : 0.2327    mrr@10 : 0.1978
+Sat 07 Feb 2026 19:04:06 INFO  epoch 24 training [time: 102.37s, train loss: 69.0583]
+Sat 07 Feb 2026 19:04:12 INFO  epoch 24 evaluating [time: 5.81s, valid_score: 0.196200]
+Sat 07 Feb 2026 19:04:12 INFO  valid result: 
+hit@10 : 0.346    ndcg@10 : 0.2317    mrr@10 : 0.1962
+Sat 07 Feb 2026 19:05:53 INFO  epoch 25 training [time: 101.07s, train loss: 69.0869]
+Sat 07 Feb 2026 19:05:59 INFO  epoch 25 evaluating [time: 5.97s, valid_score: 0.208300]
+Sat 07 Feb 2026 19:05:59 INFO  valid result: 
+hit@10 : 0.362    ndcg@10 : 0.2444    mrr@10 : 0.2083
+Sat 07 Feb 2026 19:05:59 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 19:07:42 INFO  epoch 26 training [time: 102.53s, train loss: 66.4024]
+Sat 07 Feb 2026 19:07:48 INFO  epoch 26 evaluating [time: 6.07s, valid_score: 0.193100]
+Sat 07 Feb 2026 19:07:48 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.2313    mrr@10 : 0.1931
+Sat 07 Feb 2026 19:09:29 INFO  epoch 27 training [time: 100.77s, train loss: 65.2915]
+Sat 07 Feb 2026 19:09:35 INFO  epoch 27 evaluating [time: 5.97s, valid_score: 0.205600]
+Sat 07 Feb 2026 19:09:35 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.241    mrr@10 : 0.2056
+Sat 07 Feb 2026 19:11:18 INFO  epoch 28 training [time: 102.84s, train loss: 64.3693]
+Sat 07 Feb 2026 19:11:23 INFO  epoch 28 evaluating [time: 5.94s, valid_score: 0.197300]
+Sat 07 Feb 2026 19:11:23 INFO  valid result: 
+hit@10 : 0.3513    ndcg@10 : 0.2338    mrr@10 : 0.1973
+Sat 07 Feb 2026 19:13:06 INFO  epoch 29 training [time: 102.05s, train loss: 63.7185]
+Sat 07 Feb 2026 19:13:11 INFO  epoch 29 evaluating [time: 5.84s, valid_score: 0.200900]
+Sat 07 Feb 2026 19:13:11 INFO  valid result: 
+hit@10 : 0.3473    ndcg@10 : 0.2356    mrr@10 : 0.2009
+Sat 07 Feb 2026 19:14:54 INFO  epoch 30 training [time: 102.99s, train loss: 61.4859]
+Sat 07 Feb 2026 19:15:00 INFO  epoch 30 evaluating [time: 5.79s, valid_score: 0.190900]
+Sat 07 Feb 2026 19:15:00 INFO  valid result: 
+hit@10 : 0.346    ndcg@10 : 0.2275    mrr@10 : 0.1909
+Sat 07 Feb 2026 19:16:43 INFO  epoch 31 training [time: 103.14s, train loss: 62.0646]
+Sat 07 Feb 2026 19:16:49 INFO  epoch 31 evaluating [time: 6.03s, valid_score: 0.208000]
+Sat 07 Feb 2026 19:16:49 INFO  valid result: 
+hit@10 : 0.3593    ndcg@10 : 0.2438    mrr@10 : 0.208
+Sat 07 Feb 2026 19:18:32 INFO  epoch 32 training [time: 102.66s, train loss: 59.9056]
+Sat 07 Feb 2026 19:18:38 INFO  epoch 32 evaluating [time: 5.81s, valid_score: 0.197800]
+Sat 07 Feb 2026 19:18:38 INFO  valid result: 
+hit@10 : 0.3667    ndcg@10 : 0.2374    mrr@10 : 0.1978
+Sat 07 Feb 2026 19:20:20 INFO  epoch 33 training [time: 102.57s, train loss: 58.2529]
+Sat 07 Feb 2026 19:20:26 INFO  epoch 33 evaluating [time: 5.82s, valid_score: 0.201400]
+Sat 07 Feb 2026 19:20:26 INFO  valid result: 
+hit@10 : 0.3527    ndcg@10 : 0.2371    mrr@10 : 0.2014
+Sat 07 Feb 2026 19:22:09 INFO  epoch 34 training [time: 103.12s, train loss: 57.6811]
+Sat 07 Feb 2026 19:22:15 INFO  epoch 34 evaluating [time: 5.98s, valid_score: 0.194800]
+Sat 07 Feb 2026 19:22:15 INFO  valid result: 
+hit@10 : 0.3533    ndcg@10 : 0.2319    mrr@10 : 0.1948
+Sat 07 Feb 2026 19:23:59 INFO  epoch 35 training [time: 103.39s, train loss: 57.6072]
+Sat 07 Feb 2026 19:24:05 INFO  epoch 35 evaluating [time: 5.92s, valid_score: 0.208800]
+Sat 07 Feb 2026 19:24:05 INFO  valid result: 
+hit@10 : 0.368    ndcg@10 : 0.2465    mrr@10 : 0.2088
+Sat 07 Feb 2026 19:24:05 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 19:25:46 INFO  epoch 36 training [time: 101.15s, train loss: 58.7577]
+Sat 07 Feb 2026 19:25:52 INFO  epoch 36 evaluating [time: 5.96s, valid_score: 0.201200]
+Sat 07 Feb 2026 19:25:52 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.2375    mrr@10 : 0.2012
+Sat 07 Feb 2026 19:27:35 INFO  epoch 37 training [time: 102.90s, train loss: 54.6047]
+Sat 07 Feb 2026 19:27:41 INFO  epoch 37 evaluating [time: 6.16s, valid_score: 0.203600]
+Sat 07 Feb 2026 19:27:41 INFO  valid result: 
+hit@10 : 0.362    ndcg@10 : 0.2411    mrr@10 : 0.2036
+Sat 07 Feb 2026 19:29:23 INFO  epoch 38 training [time: 101.90s, train loss: 55.2586]
+Sat 07 Feb 2026 19:29:29 INFO  epoch 38 evaluating [time: 5.79s, valid_score: 0.203600]
+Sat 07 Feb 2026 19:29:29 INFO  valid result: 
+hit@10 : 0.36    ndcg@10 : 0.2404    mrr@10 : 0.2036
+Sat 07 Feb 2026 19:31:11 INFO  epoch 39 training [time: 102.36s, train loss: 53.3345]
+Sat 07 Feb 2026 19:31:17 INFO  epoch 39 evaluating [time: 5.90s, valid_score: 0.212100]
+Sat 07 Feb 2026 19:31:17 INFO  valid result: 
+hit@10 : 0.3747    ndcg@10 : 0.2504    mrr@10 : 0.2121
+Sat 07 Feb 2026 19:31:17 INFO  Saving current: saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 19:33:00 INFO  epoch 40 training [time: 102.90s, train loss: 53.6175]
+Sat 07 Feb 2026 19:33:06 INFO  epoch 40 evaluating [time: 5.89s, valid_score: 0.205100]
+Sat 07 Feb 2026 19:33:06 INFO  valid result: 
+hit@10 : 0.3653    ndcg@10 : 0.2426    mrr@10 : 0.2051
+Sat 07 Feb 2026 19:34:48 INFO  epoch 41 training [time: 102.01s, train loss: 52.3205]
+Sat 07 Feb 2026 19:34:53 INFO  epoch 41 evaluating [time: 5.82s, valid_score: 0.203100]
+Sat 07 Feb 2026 19:34:53 INFO  valid result: 
+hit@10 : 0.3667    ndcg@10 : 0.2416    mrr@10 : 0.2031
+Sat 07 Feb 2026 19:36:36 INFO  epoch 42 training [time: 102.85s, train loss: 53.3657]
+Sat 07 Feb 2026 19:36:42 INFO  epoch 42 evaluating [time: 6.03s, valid_score: 0.199100]
+Sat 07 Feb 2026 19:36:42 INFO  valid result: 
+hit@10 : 0.3687    ndcg@10 : 0.239    mrr@10 : 0.1991
+Sat 07 Feb 2026 19:38:25 INFO  epoch 43 training [time: 102.66s, train loss: 52.7768]
+Sat 07 Feb 2026 19:38:31 INFO  epoch 43 evaluating [time: 6.02s, valid_score: 0.204100]
+Sat 07 Feb 2026 19:38:31 INFO  valid result: 
+hit@10 : 0.3553    ndcg@10 : 0.2399    mrr@10 : 0.2041
+Sat 07 Feb 2026 19:40:14 INFO  epoch 44 training [time: 102.61s, train loss: 50.4162]
+Sat 07 Feb 2026 19:40:19 INFO  epoch 44 evaluating [time: 5.81s, valid_score: 0.200400]
+Sat 07 Feb 2026 19:40:19 INFO  valid result: 
+hit@10 : 0.3627    ndcg@10 : 0.2383    mrr@10 : 0.2004
+Sat 07 Feb 2026 19:42:01 INFO  epoch 45 training [time: 102.03s, train loss: 50.1485]
+Sat 07 Feb 2026 19:42:07 INFO  epoch 45 evaluating [time: 5.96s, valid_score: 0.206600]
+Sat 07 Feb 2026 19:42:07 INFO  valid result: 
+hit@10 : 0.3587    ndcg@10 : 0.2425    mrr@10 : 0.2066
+Sat 07 Feb 2026 19:43:50 INFO  epoch 46 training [time: 102.71s, train loss: 49.4852]
+Sat 07 Feb 2026 19:43:56 INFO  epoch 46 evaluating [time: 6.09s, valid_score: 0.197600]
+Sat 07 Feb 2026 19:43:56 INFO  valid result: 
+hit@10 : 0.356    ndcg@10 : 0.235    mrr@10 : 0.1976
+Sat 07 Feb 2026 19:45:37 INFO  epoch 47 training [time: 101.21s, train loss: 49.8897]
+Sat 07 Feb 2026 19:45:43 INFO  epoch 47 evaluating [time: 5.99s, valid_score: 0.201300]
+Sat 07 Feb 2026 19:45:43 INFO  valid result: 
+hit@10 : 0.354    ndcg@10 : 0.2373    mrr@10 : 0.2013
+Sat 07 Feb 2026 19:47:26 INFO  epoch 48 training [time: 102.54s, train loss: 48.9530]
+Sat 07 Feb 2026 19:47:32 INFO  epoch 48 evaluating [time: 5.97s, valid_score: 0.199400]
+Sat 07 Feb 2026 19:47:32 INFO  valid result: 
+hit@10 : 0.3533    ndcg@10 : 0.2358    mrr@10 : 0.1994
+Sat 07 Feb 2026 19:49:14 INFO  epoch 49 training [time: 102.36s, train loss: 48.5325]
+Sat 07 Feb 2026 19:49:20 INFO  epoch 49 evaluating [time: 5.81s, valid_score: 0.202000]
+Sat 07 Feb 2026 19:49:20 INFO  valid result: 
+hit@10 : 0.3593    ndcg@10 : 0.2391    mrr@10 : 0.202
+Sat 07 Feb 2026 19:51:05 INFO  epoch 50 training [time: 105.07s, train loss: 48.9257]
+Sat 07 Feb 2026 19:51:11 INFO  epoch 50 evaluating [time: 6.16s, valid_score: 0.206500]
+Sat 07 Feb 2026 19:51:11 INFO  valid result: 
+hit@10 : 0.3493    ndcg@10 : 0.2406    mrr@10 : 0.2065
+Sat 07 Feb 2026 19:51:11 INFO  Finished training, best eval result in epoch 39
+Sat 07 Feb 2026 19:51:11 INFO  Loading model structure and parameters from saved\TiSASRec-Feb-07-2026_18-19-07.pth
+Sat 07 Feb 2026 19:51:18 INFO  The running environment of this training is as follows:
++-------------+----------------+
+| Environment |     Usage      |
++=============+================+
+| CPU         |     3.60 %     |
++-------------+----------------+
+| GPU         | 0.97 G/6.00 G  |
++-------------+----------------+
+| Memory      | 0.59 G/15.63 G |
++-------------+----------------+
+Sat 07 Feb 2026 19:51:18 INFO  best valid : OrderedDict([('hit@10', 0.3747), ('ndcg@10', 0.2504), ('mrr@10', 0.2121)])
+Sat 07 Feb 2026 19:51:18 INFO  test result: OrderedDict([('hit@10', 0.28), ('ndcg@10', 0.1826), ('mrr@10', 0.1527)])
